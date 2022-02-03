@@ -1,0 +1,18 @@
+@import '../../../../theme/variable.module.scss';
+
+.contentStyle{
+	height:70vh;
+  	color: $secondary_app_color;
+  	line-height :160px;
+  	text-align: center;
+  	background-color: $primary_app_color;
+  	border-radius: 25px;
+}
+
+.imageSection{
+	img{
+	    width: 300px;
+            border-radius: 15px;
+            height: 100%;
+	}
+}

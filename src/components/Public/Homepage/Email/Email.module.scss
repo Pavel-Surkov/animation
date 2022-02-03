@@ -1,0 +1,25 @@
+@import '../../../../theme/variable.module.scss';
+
+
+.container{
+	max-width: 1200px;
+	margin:0 auto;
+	text-align: center;
+	
+	h2{
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: 800;
+		font-size: 38px;
+		line-height: 52px;
+		letter-spacing: 1px;
+		margin-top: 120px;
+	}
+}
+.emailSection{
+	max-width: 700px;	
+	margin: 0 auto;
+	input{
+		width: 384px;
+	}
+}

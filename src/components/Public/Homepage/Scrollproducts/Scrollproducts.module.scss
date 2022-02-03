@@ -1,0 +1,16 @@
+@import '../../../../theme/variable.module.scss';
+
+.container{
+	max-width: 1200px;
+	margin: 0 auto;
+
+}
+.scrollSection{
+	padding: 50px 0;
+	h2{
+		font-family: 'inter';
+		font-weight: 800;
+		line-height: 52px;
+		letter-spacing: 1px;
+	}	
+}

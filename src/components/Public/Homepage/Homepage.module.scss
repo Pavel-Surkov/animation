@@ -1,0 +1,170 @@
+@import '../../../theme/variable.module.scss';
+
+.container{
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.banner{
+	.bannerSection{
+		height: 100vh;
+		}
+}
+.tabs{
+	letter-spacing: 4%;
+	font-family: 'Inter', sans-serif;
+	h2{		
+		font-weight: 800;
+		font-size: 38px;
+		line-height: 52px;
+	}
+	h4{
+		color: $red_app_color;		
+		font-weight: 800;
+		font-size: 24px;
+		line-height: 52px;
+	}
+}
+
+.section{
+	padding:130px 0;
+	background-color: $off_orange_app_color;
+}
+
+.keyFeature{
+	h2{
+		font-size: 30px;
+		font-weight: 800;
+		line-height: 40px;
+		font-family: 'Inter', sans-serif;
+	}
+}
+
+.aboutSection{
+	padding-bottom: 120px;
+	h1{
+		line-height: 74px;
+		font-family: 'Inter', sans-serif;
+		font-weight: 900;
+		font-size: 60px;
+		letter-spacing: 1px;
+		margin-top: 120px;
+		margin-bottom: 50px;
+	}
+	h3{
+		line-height: 52px;
+		font-family: 'Inter', sans-serif;
+		font-weight: 800;
+		font-size: 38px;
+		letter-spacing: 1px;
+		margin-top: 120px;
+		margin-bottom: 50px;
+		color:$red_app_color;
+	}
+}
+.keyFeature{
+	
+	h2{
+		line-height: 30px;
+		font-family: 'Inter', sans-serif;
+		font-weight: 800;
+		font-size: 24px;
+		letter-spacing: 1px;		
+	}
+	p{
+		line-height: 26px;
+		font-family: 'Inter', sans-serif;
+		font-weight: 400;
+		font-size: 17px;
+		letter-spacing: 1px;		
+	}
+	img{
+		margin-top: 5px;
+	}
+}
+.aboutUs{
+	h2{
+		font-family:'Montserrat', sans-serif;		
+		font-weight: 300;
+		font-size: 28px;
+		line-height: 43px;
+	}
+	p{
+		font-family: Montserrat;
+		font-weight: normal;
+		font-size: 17px;
+		line-height: 26px;
+	}
+}
+
+.heroBanner{
+	text-align: center;
+	padding: 100px 0;
+	background-image: url('../../../assets/images/banner.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size:cover;
+	.heroBannerContent{
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	
+	h3{
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: 800;
+		font-size: 30px;
+		line-height: 40px;
+		color: $secondary_app_color;
+	}
+	
+	.aboutUsSection{
+		
+		h4{
+			font-family: 'Inter',sans-serif;
+			font-style: normal;
+			font-weight: 800;
+			font-size: 24px;
+			line-height: 30px;
+			color: $secondary_app_color;
+			letter-spacing: 1px;
+		}
+		p{
+			font-family:'Montserrat',sans-serif;
+			font-style: normal;
+			font-weight: 200;
+			font-size: 17px;
+			line-height: 26px;
+			color: $secondary_app_color;
+		}
+	}
+}
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2) { 
+	
+}
+
+/* Portrait */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) { 
+
+}
+
+/* Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) { 
+
+}
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
