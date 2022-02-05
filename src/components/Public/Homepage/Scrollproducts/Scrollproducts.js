@@ -15,7 +15,7 @@ const Scrollproducts = () => (
   <>
     <div className={classes.container}>
       <div className={classes.scrollSection}>
-        <h2>Browse product categories by value</h2>
+        <h2>Browse product categories by value important to you</h2>
       </div>
     </div>
     <div className={classes.scrollItem}>

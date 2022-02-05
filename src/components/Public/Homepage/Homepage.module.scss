@@ -6,24 +6,20 @@
 }
 .banner{
 	.bannerSection{
-		height: 100vh;
+		height: 90vh;
 		}
 }
-.tabs{
-	letter-spacing: 4%;
-	font-family: 'Inter', sans-serif;
-	h2{		
-		font-weight: 800;
-		font-size: 38px;
-		line-height: 52px;
-	}
-	h4{
-		color: $red_app_color;		
-		font-weight: 800;
-		font-size: 24px;
-		line-height: 52px;
-	}
+
+.actionButton{
+	width: 250px;
+	font-family: 'Montserrat',sans-serif;
+	font-style: normal;
+	font-weight: 500 !important; 
+	font-size: 17px !important;
+	line-height: 26px !important;
+	
 }
+
 
 .section{
 	padding:130px 0;
@@ -135,6 +131,14 @@
 			font-size: 17px;
 			line-height: 26px;
 			color: $secondary_app_color;
+			
+		}
+		hr{
+			height: 1px;
+			background-color:$red_app_color;
+			border: none;
+			width: 55px;
+			
 		}
 	}
 }

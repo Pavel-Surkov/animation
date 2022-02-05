@@ -1,13 +1,14 @@
 import React from 'react'
-import { Row, Col, Tabs, Button } from 'antd'
+import { Row, Col, Button } from 'antd'
 
 import { Link } from 'react-router-dom'
 
 import Footer from '../common/Footer/Footer'
 import Carouselsection from './Carouselsection/Carouselsection'
-import Search from '../../common/Search/Search'
 import Scrollproducts from './Scrollproducts/Scrollproducts'
 import Email from './Email/Email'
+import Tab from './Tabs/Tabs'
+import Navigation from './Navigation/Navigation'
 
 import classes from './Homepage.module.scss'
 import mouse_icon from '../../../assets/svg/mouse.svg'
@@ -17,11 +18,12 @@ import eye_icon from '../../../assets/svg/eye.svg'
 import shield_icon from '../../../assets/svg/shield_icon.svg'
 import factory_icon from '../../../assets/svg/factory.svg'
 
-const { TabPane } = Tabs
+import data from './Tabs/Data'
 
 const Homepage = () => {
   return (
     <>
+      <Navigation />
       <div className={classes.container}>
         <div className={classes.banner}>
           <Row
@@ -32,25 +34,7 @@ const Homepage = () => {
           >
             <Col className="gutter-row" md={16} sm={24} xs={24}>
               <div>
-                <Tabs type="card" defaultActiveKey="2">
-                  <TabPane tab="For Buyers" key="1">
-                    <div className={classes.tabs}>
-                      <h2>
-                        Find trusted suppliers for <br /> your brand.
-                      </h2>
-                      <h4>Start your search here</h4>
-                    </div>
-                  </TabPane>
-                  <TabPane tab="For Suppliers" key="2">
-                    <div className={classes.tabs}>
-                      <h2>
-                        Find trusted buyers for <br /> your brand.
-                      </h2>
-                      <h4>Start your search here</h4>
-                    </div>
-                  </TabPane>
-                </Tabs>
-                <Search />
+                <Tab data={data} />
               </div>
             </Col>
             <Col className="gutter-row" md={8} sm={0} xs={0}>
@@ -65,7 +49,6 @@ const Homepage = () => {
         <div className={classes.container}>
           <Row
             gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}
-            align="middle"
             justify="space-around"
             className={classes.keyFeature}
           >
@@ -215,8 +198,8 @@ const Homepage = () => {
                   We believe the future of <br /> commerce is direct and simple:
                 </h2>
                 <p>
-                  Local manufacturers and businesses working <br /> together
-                  without the middlemen.
+                  Local manufacturers and businesses working together without
+                  the intermediaries.
                 </p>
               </Col>
               <Col md={14} sm={24} xs={24}>
@@ -241,22 +224,36 @@ const Homepage = () => {
             <Col md={12} sm={24} xs={24}>
               <div className={classes.aboutUsSection}>
                 <h4>Buyers</h4>
+                <hr />
                 <p>
                   Start building your dream
                   <br /> products now.
                 </p>
               </div>
-              <Button type="primary">Begin Here</Button>
+              <Button
+                size="large"
+                className={classes.actionButton}
+                type="primary"
+              >
+                Begin Here
+              </Button>
             </Col>
             <Col md={12} sm={24} xs={24}>
               <div className={classes.aboutUsSection}>
                 <h4>Suppliers</h4>
+                <hr />
                 <p>
                   Get connected to more
                   <br /> qualified leads now.
                 </p>
               </div>
-              <Button type="primary">Begin Here</Button>
+              <Button
+                size="large"
+                className={classes.actionButton}
+                type="primary"
+              >
+                Begin Here
+              </Button>
             </Col>
           </Row>
         </div>
