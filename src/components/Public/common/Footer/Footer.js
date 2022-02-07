@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import { Row, Col, Divider } from 'antd'
 import logo from '../../../../assets/svg/logo_white.svg'
 import classes from './Footer.module.scss'
@@ -18,43 +20,43 @@ const Footer = () => (
           <Col className="gutter-row" md={4} sm={24} xs={24}>
             <div className={classes.footerTitle}>
               <h2>Contact</h2>
-              <a href="/">
+              <Link to="/about">
                 <h3>About Us</h3>
-              </a>
-              <a href="/">
+              </Link>
+              <Link to="/newsroom">
                 <h3>Newsroom</h3>
-              </a>
-              <a href="/">
+              </Link>
+              <Link to="/careers">
                 <h3>Careers</h3>
-              </a>
+              </Link>
             </div>
           </Col>
           <Col className="gutter-row" md={4} sm={24} xs={24}>
             <div className={classes.footerTitle}>
               <h2>Support</h2>
-              <a href="/">
+              <Link to="/help-center">
                 <h3>Help Center</h3>
-              </a>
-              <a href="/">
+              </Link>
+              <Link to="/">
                 <h3>Apply as Supplier</h3>
-              </a>
-              <a href="/">
+              </Link>
+              <Link href="/">
                 <h3>Become a Brand</h3>
-              </a>
+              </Link>
             </div>
           </Col>
           <Col className="gutter-row" md={4} sm={24} xs={24}>
             <div className={classes.footerTitle}>
               <h2>Contact</h2>
-              <a href="/">
+              <Link href="/contact">
                 <h3>Blog</h3>
-              </a>
-              <a href="tel:714-316-3163" target="_blank">
+              </Link>
+              <Link href="tel:714-316-31">
                 <h3>Instagram</h3>
-              </a>
-              <a href="mailto:asal@uplio.com" target="_blank">
+              </Link>
+              <Link href="mailto:asal@uplio.com">
                 <h3>Twitter</h3>
-              </a>
+              </Link>
             </div>
           </Col>
         </Row>
