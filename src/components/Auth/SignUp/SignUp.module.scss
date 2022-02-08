@@ -9,17 +9,31 @@
 	
 		margin-top: 126px;
 }
-.textOverlay{
+.textOverlaySupplier{
 	transform: rotate(270deg);
-    margin-left: -1320px;
-    margin-top: -950px;    
-    font-style: normal;    
-    font-size: 65px;    
-    line-height: 146px;
-    h1{
-	    color:$primary_app_color;
-	    opacity: 0.1;
-	    font-weight: 800;
-	    
-    }
+	margin-left: -1320px;
+	margin-top: -770px;    
+	font-style: normal;    
+	font-size: 65px;    
+	line-height: 146px;
+	h1{
+		color:$primary_app_color;
+		opacity: 0.1;
+		font-weight: 800;
+		
+	}	
+}
+.textOverlayBuyer{
+	transform: rotate(270deg);
+	margin-left: -1320px;
+	margin-top: -950px;    
+	font-style: normal;    
+	font-size: 65px;    
+	line-height: 146px;
+	h1{
+		color:$primary_app_color;
+		opacity: 0.1;
+		font-weight: 800;
+		
+	}
 }

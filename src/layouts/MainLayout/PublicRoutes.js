@@ -14,6 +14,10 @@ import SignUp from '../../components/Auth/SignUp/SignUp.js'
 import SignIn from '../../components/Auth/SignIn/SignIn.js'
 import GreetingTemp from '../../components/Auth/SignUp/GreetingTemp.js'
 import BuyerTemp from '../../components/Auth/SignUp/Buyertemp.js'
+import SupplierTemp from '../../components/Auth/SignUp/SupplierTemp'
+import SupplierDetailTemp from '../../components/Auth/SignUp/SupplierDetailTemp.js'
+import SupplierCompletedTemp from '../../components/Auth/SignUp/SupplierCompleted.js'
+import SupplierProfile from '../../components/Public/SupplierProfile/SupplierProfile.js'
 const PublicRoutes = () => (
   <Suspense fallback={<p>Loading ..</p>}>
     <Router>
@@ -28,7 +32,19 @@ const PublicRoutes = () => (
 
         {/* TODO remove link  */}
         <Route exact path="/signup/buyer" component={BuyerTemp} />
-        <Route excat path="/signup/completed" component={GreetingTemp} />
+        <Route exact path="/signup/supplier" component={SupplierTemp} />
+        <Route
+          exact
+          path="/signup/supplier-details"
+          component={SupplierDetailTemp}
+        />
+        <Route
+          exact
+          path="/signup/completed-supplier"
+          component={SupplierCompletedTemp}
+        />
+        <Route exact path="/profile" component={SupplierProfile} />
+        <Route exact path="/signup/completed" component={GreetingTemp} />
         <Route exact path="/login" component={SignIn} />
         <Redirect to="/" />
       </Switch>

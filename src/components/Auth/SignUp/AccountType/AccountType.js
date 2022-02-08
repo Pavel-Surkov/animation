@@ -24,13 +24,15 @@ const AccountType = () => {
             </Link>
           </Col>
           <Col span={12}>
-            <div className={classes.card}>
-              <img src={SupplierImage} alt="Uplio" />
-              <div className={classes.cardContent}>
-                <h2>Suplier</h2>
-                <p>Acquire and support customers</p>
+            <Link to="/signup/supplier">
+              <div className={classes.card}>
+                <img src={SupplierImage} alt="Uplio" />
+                <div className={classes.cardContent}>
+                  <h2>Suplier</h2>
+                  <p>Acquire and support customers</p>
+                </div>
               </div>
-            </div>
+            </Link>
           </Col>
         </Row>
       </div>

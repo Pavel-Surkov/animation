@@ -2,18 +2,28 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col } from 'antd'
 import classes from './Greetings.module.scss'
-export default function Greetings() {
+export default function Greetings(prop) {
+  console.log(prop)
   return (
     <>
       <div className={classes.mainSection}>
         <h3>Nice</h3>
         <h4>Sign up is complete.</h4>
         <hr />
-        <p>
-          Thank you for signing up to be a part of the Uplio community. We are
-          excited to have you with us. You may now begin sourcing from our list
-          of trusted suppliers...
-        </p>
+        {prop.supplier ? (
+          <p>
+            Thank you for applying to be a part of the Uplio family. We will be
+            in touch with you very soon. Keep an eye on your inbox for our “next
+            steps” email.
+          </p>
+        ) : (
+          <p>
+            Thank you for signing up to be a part of the Uplio community. We are
+            excited to have you with us. You may now begin sourcing from our
+            list of trusted suppliers...
+          </p>
+        )}
+
         <Row gutter={16}>
           <Col span={12}>
             <Link className={classes.buttonHome} to="/">

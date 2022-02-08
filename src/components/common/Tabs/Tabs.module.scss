@@ -1,0 +1,67 @@
+@import '../../../theme/variable.module.scss';
+
+.tabs{
+	
+      }
+      
+.tabsTitles {
+	list-style: none;
+	padding: 0px;
+	margin: 0;
+	display: flex;
+	margin-left: -1px;
+}
+
+.tabTitle {
+	background-color:$red_app_color;
+	display: inline-block;
+	padding: 10px;
+	color:$secondary_app_color;
+	cursor: pointer;
+	margin-left: 1px;
+}
+.tabTitleActive {
+	background-color:$red_app_color;
+	color:$secondary_app_color;
+	font-family: 'Montserrat', sans-serif; 
+	font-weight: 500;
+	font-size: 17px;
+	line-height: 26px;
+}
+.tabContent {
+	border-top: 1px solid $red_app_color;
+	padding: 5px;
+	margin: 0;
+
+	letter-spacing: 4%;
+	font-family: 'Inter', sans-serif;
+	h2{		
+		font-weight: 800;
+		font-size: 38px;
+		line-height: 52px;
+		width: 540px;
+		margin-top: 24px;
+		height: 104px; 
+	}
+	h4{
+		
+		margin: 30px 0;	
+		font-family: Inter;
+		font-style: normal; 
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 26px;
+		letter-spacing: 0.02em;
+	}
+
+}
+
+
+
+li{
+	padding: 10px;	
+	font-family: 'Montserrat', sans-serif; 
+	font-weight: 500;
+	font-size: 17px;
+	line-height: 26px;	
+}
