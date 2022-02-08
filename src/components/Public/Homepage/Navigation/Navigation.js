@@ -2,6 +2,9 @@ import React, { useLayoutEffect, useEffect, useState, useRef } from 'react'
 import { Row, Col, Space, Button } from 'antd'
 import classes from './Navigation.module.scss'
 import logo from '../../../../assets/svg/logo_black_small.svg'
+import { createBrowserHistory as history } from 'history'
+import { RotateRightOutlined } from '@ant-design/icons'
+import { Link } from 'react-router-dom'
 
 function Navigation(params) {
   const ref = useRef()
@@ -13,7 +16,10 @@ function Navigation(params) {
   const checkChange = (value) => {
     setCheck(value)
   }
-
+  const toNewPage = () => {
+    debugger
+    history.push('/signup')
+  }
   return (
     <div className={classes.header}>
       <header ref={ref} className={sticky && check ? classes.sticky : null}>
@@ -26,9 +32,9 @@ function Navigation(params) {
               <Button className={classes.signIn} type="link">
                 Sign In
               </Button>
-              <Button className={classes.signUp} type="secondary">
+              <Link to="/signup" className={classes.signUp} type="secondary">
                 Sign Up
-              </Button>
+              </Link>
             </Space>
           </Col>
         </Row>
