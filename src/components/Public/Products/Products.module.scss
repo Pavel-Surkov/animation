@@ -1,0 +1,77 @@
+@import '../../../theme/variable.module.scss';
+
+.container{
+	max-width: $max-width_container_lg;
+	margin: 0 auto;
+}
+.section {
+	padding: 60px 0;
+}
+.filterOption{
+	h3{
+		font-family:'Montserrat', sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 17px;
+		line-height: 26px;
+		padding-top: 32px ;
+	}
+}
+.searchFilter{
+	h3{
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 18px;
+		opacity: 0.5;
+	}
+}
+
+.rating{
+	li{
+		padding: 0;
+	}
+}
+
+.productImg{
+	img{
+		border-radius: 35px;
+	}
+	h2{
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 18px;
+	}
+	span{
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		line-height: 14px;
+	}
+	p{
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		line-height: 14px;
+	}
+}
+.wishlistButton{
+	font-family: 'Inter',sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	
+}
+.contactButton{
+	font-family: 'Inter',sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	background-color: $primary_app_color !important;
+	color: $secondary_app_color !important;
+}

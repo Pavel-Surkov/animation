@@ -18,6 +18,8 @@ import SupplierTemp from '../../components/Auth/SignUp/SupplierTemp'
 import SupplierDetailTemp from '../../components/Auth/SignUp/SupplierDetailTemp.js'
 import SupplierCompletedTemp from '../../components/Auth/SignUp/SupplierCompleted.js'
 import SupplierProfile from '../../components/Public/SupplierProfile/SupplierProfile.js'
+import Products from '../../components/Public/Products/Products'
+import Quote from '../../components/Public/Quote/Quote.js'
 const PublicRoutes = () => (
   <Suspense fallback={<p>Loading ..</p>}>
     <Router>
@@ -44,6 +46,8 @@ const PublicRoutes = () => (
           component={SupplierCompletedTemp}
         />
         <Route exact path="/profile" component={SupplierProfile} />
+        <Route exact path="/product" component={Products} />
+        <Route exact path="/quote" component={Quote} />
         <Route exact path="/signup/completed" component={GreetingTemp} />
         <Route exact path="/login" component={SignIn} />
         <Redirect to="/" />

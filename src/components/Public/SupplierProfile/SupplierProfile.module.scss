@@ -44,3 +44,36 @@ hr{
 	background-color: $light_grey_app_color;
 	margin: 50px 0;
 }
+
+.companyDetailsImg{
+	text-align: center;
+	img{
+		background-color: $mid_white_app_color;
+		border-radius: 15px;		
+	}
+	p{
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 18px;
+		
+	}
+	h5{
+		font-family: 'Montserrat',sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 12px;
+		line-height: 20px;
+		opacity: 0.5;
+	}
+
+}
+
+.buttonSection{
+	width: 100%;
+	.buttonRequest{	
+		background-color: $primary_app_color;
+		color: $secondary_app_color;
+	}
+}

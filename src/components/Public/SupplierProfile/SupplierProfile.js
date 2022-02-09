@@ -2,13 +2,24 @@ import React from 'react'
 import classes from './SupplierProfile.module.scss'
 import Scroll from '../../common/Scroll/Scrollproducts'
 import profileImage from '../../../assets/images/profile_image.png'
-import { Row, Col, Breadcrumb } from 'antd'
+import { Row, Col, Breadcrumb, Button, Space } from 'antd'
 import Tabs from '../../common/Tabs/Tabs'
+import sampleImage1 from '../../../assets/images/sample_upload_1.png'
+import sampleImage2 from '../../../assets/images/sample_upload_2.png'
+import sampleImage3 from '../../../assets/images/sample_upload_3.png'
+import sampleImage4 from '../../../assets/images/sample_upload_4.png'
+import {
+  RightOutlined,
+  HeartOutlined,
+  MessageOutlined,
+} from '@ant-design/icons'
+import Navigation from '../Homepage/Navigation/Navigation'
 
 import data from './Data'
 const SupplierProfile = () => {
   return (
     <>
+      <Navigation />
       <div className={classes.section}>
         <Scroll />
       </div>
@@ -40,7 +51,19 @@ const SupplierProfile = () => {
             <Col span={18}>
               <Tabs data={data} />
             </Col>
-            <Col span={6}>Section</Col>
+            <Col span={6}>
+              <Space direction="vertical" className={classes.buttonSection}>
+                <Button block size="large" className={classes.buttonRequest}>
+                  Request a quote <RightOutlined />
+                </Button>
+                <Button block size="large">
+                  <MessageOutlined /> Contact Supplier
+                </Button>
+                <Button block size="large">
+                  <HeartOutlined /> Add to favorites
+                </Button>
+              </Space>
+            </Col>
           </Row>
         </div>
         <div classes={classes.section}>
@@ -71,6 +94,37 @@ const SupplierProfile = () => {
             </Col>
           </Row>
           <hr />
+          <h5>Specialization</h5>
+          <Row>
+            <Col span={4}>
+              <div className={classes.companyDetailsImg}>
+                <img src={sampleImage1} alt="uplio" />
+                <p>Item Title</p>
+                <h5>Detail copy</h5>
+              </div>
+            </Col>
+            <Col span={4}>
+              <div className={classes.companyDetailsImg}>
+                <img src={sampleImage2} alt="uplio" />
+                <p>Item Title</p>
+                <h5>Detail copy</h5>
+              </div>
+            </Col>
+            <Col span={4}>
+              <div className={classes.companyDetailsImg}>
+                <img src={sampleImage3} alt="uplio" />
+                <p>Item Title</p>
+                <h5>Detail copy</h5>
+              </div>
+            </Col>
+            <Col span={4}>
+              <div className={classes.companyDetailsImg}>
+                <img src={sampleImage4} alt="uplio" />
+                <p>Item Title</p>
+                <h5>Detail copy</h5>
+              </div>
+            </Col>
+          </Row>
           <div className={classes.section}></div>
         </div>
       </div>
