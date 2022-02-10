@@ -1,14 +1,68 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classes from './Products.module.scss'
-import { Row, Col, Input, Radio, Space, Rate, Button, Divider } from 'antd'
+import {
+  Row,
+  Col,
+  Input,
+  Radio,
+  Space,
+  Rate,
+  Button,
+  Divider,
+  Tag,
+  Spin,
+} from 'antd'
 import image1 from '../../../assets/images/product_image_1.png'
 import image2 from '../../../assets/images/product_image_2.png'
 import image3 from '../../../assets/images/product_image_3.png'
 import Navigation from '../../Public/Homepage/Navigation/Navigation'
 import companyLogo from '../../../assets/images/profile_image.png'
-import { SearchOutlined, HeartOutlined } from '@ant-design/icons'
+import {
+  SearchOutlined,
+  HeartOutlined,
+  CheckCircleOutlined,
+  DollarCircleOutlined,
+  BarChartOutlined,
+  LoadingOutlined,
+} from '@ant-design/icons'
 export default function Products() {
-  let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  const [loading, setLoading] = useState(false)
+  let arr = [1, 2, 3, 4, 5]
+  const currentTag = () => {
+    let key = Math.floor(Math.random() * (3 - 1 + 1) + 1)
+    switch (key) {
+      case 1:
+        return (
+          <Tag className={classes.tag} color="green">
+            <CheckCircleOutlined />
+            Approved
+          </Tag>
+        )
+
+      case 2:
+        return (
+          <Tag className={classes.tag} color="red">
+            <DollarCircleOutlined />
+            Hot Seller
+          </Tag>
+        )
+
+      default:
+        return (
+          <Tag className={classes.tag} color="blue">
+            <BarChartOutlined />
+            Top Rated
+          </Tag>
+        )
+    }
+  }
+
+  const loadMore = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000)
+  }
 
   return (
     <>
@@ -49,29 +103,39 @@ export default function Products() {
                 {arr.map((item) => (
                   <>
                     <Divider />
-                    <Row gutter={10}>
-                      <Col span={6}>
+                    <Row
+                      gutter={16}
+                      // justify="space-between"
+                    >
+                      <Col span={8}>
                         <div className={classes.productImg}>
                           <Row>
                             <Col span={8}>
-                              <img src={companyLogo} alt="uplio" />
+                              <div className={classes.logoImg}>
+                                <img src={companyLogo} alt="uplio" />
+                                {currentTag()}
+                              </div>
                             </Col>
                             <Col span={16}>
                               <h2>Company Name</h2>
-                              <span>4.5 Ups | </span>
                               <Rate
                                 className={classes.rating}
                                 disabled
                                 defaultValue={2}
                               />
-                              <Space>
-                                <Button className={classes.wishlistButton}>
-                                  <HeartOutlined />
-                                </Button>
-                                <Button className={classes.contactButton}>
-                                  Contact
-                                </Button>
-                              </Space>
+                              <h3>4.5 Ups | 123 Reviews </h3>
+                              <Row>
+                                <Col span={6}>
+                                  <Button className={classes.wishlistButton}>
+                                    <HeartOutlined />
+                                  </Button>
+                                </Col>
+                                <Col span={18}>
+                                  <Button className={classes.contactButton}>
+                                    Contact
+                                  </Button>
+                                </Col>
+                              </Row>
                               <span>
                                 Minimum Order |<strong>500</strong>
                               </span>
@@ -83,18 +147,17 @@ export default function Products() {
                           </Row>
                         </div>
                       </Col>
-                      <Col span={6}>
+                      <Col span={5}>
                         <div className={classes.productImg}>
                           <img src={image1} alt="uplio" />
                         </div>
                       </Col>
-                      <Col span={6}>
+                      <Col span={5}>
                         <div className={classes.productImg}>
                           <img src={image2} alt="uplio" />
                         </div>
                       </Col>
-
-                      <Col span={6}>
+                      <Col span={5}>
                         <div className={classes.productImg}>
                           <img src={image3} alt="uplio" />
                         </div>
@@ -102,6 +165,25 @@ export default function Products() {
                     </Row>
                   </>
                 ))}
+                <div className={classes.section}>
+                  {loading ? (
+                    <div className={classes.loader}>
+                      <Spin
+                        indicator={
+                          <LoadingOutlined style={{ fontSize: 40 }} spin />
+                        }
+                      />
+                    </div>
+                  ) : (
+                    <Button
+                      size="large"
+                      onClick={() => loadMore()}
+                      className={classes.contactButton}
+                    >
+                      Load next 5
+                    </Button>
+                  )}
+                </div>
               </div>
             </div>
           </Col>

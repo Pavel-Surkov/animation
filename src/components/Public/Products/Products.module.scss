@@ -35,8 +35,18 @@
 }
 
 .productImg{
+	//productImage
 	img{
-		border-radius: 35px;
+		border-radius: 4px;
+	}
+	.logoImg{
+		text-align: center;
+		padding: 0 10px;
+		img{
+
+			border-radius: 35px;
+		}
+		
 	}
 	h2{
 		font-family: 'Inter',sans-serif;
@@ -44,8 +54,9 @@
 		font-weight: 500;
 		font-size: 14px;
 		line-height: 18px;
+		margin: 0;
 	}
-	span{
+	h3{
 		font-family: 'Inter',sans-serif;
 		font-style: normal;
 		font-weight: normal;
@@ -68,10 +79,20 @@
 	
 }
 .contactButton{
+	width: 100%;
 	font-family: 'Inter',sans-serif;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 14px;
 	background-color: $primary_app_color !important;
 	color: $secondary_app_color !important;
+}
+
+.tag{
+	padding: 2px;
+	margin: 5px 0 !important;
+	width: 100%;
+}
+.loader{
+	text-align: center;
 }
