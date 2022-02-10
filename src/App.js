@@ -2,15 +2,19 @@ import React from 'react'
 import MainLayout from './layouts/MainLayout/MainLayout'
 import { BrowserRouter } from 'react-router-dom'
 import './App.less'
+import store from './redux/store'
+import { Provider } from 'react-redux'
 
 //TODO Adding theme along with <themeprovider />
 //TODO Adding Redux
 
 const App = () => (
   <>
-    <BrowserRouter>
-      <MainLayout />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <MainLayout />
+      </BrowserRouter>
+    </Provider>
   </>
 )
 
