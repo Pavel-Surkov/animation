@@ -10,11 +10,11 @@ import { Provider } from 'react-redux'
 
 const App = () => (
   <>
-    <Provider store={store}>
-      <BrowserRouter>
-        <MainLayout />
-      </BrowserRouter>
-    </Provider>
+    {/* <Provider store={store}> */}
+    <BrowserRouter>
+      <MainLayout />
+    </BrowserRouter>
+    {/* </Provider> */}
   </>
 )
 
