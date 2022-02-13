@@ -19,7 +19,7 @@ const Emailcatcher = () => {
             autoSize={true}
           />
         </div>
-        <Button type="primary" size="large">
+        <Button className={classes.submitButton} type="primary" size="large">
           Submit
         </Button>
       </Space>
