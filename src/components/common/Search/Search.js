@@ -19,7 +19,7 @@ const Search = () => {
             autoSize={true}
           />
         </div>
-        <Button type="primary" size="large">
+        <Button className={classes.searchButton} type="primary" size="large">
           Search
         </Button>
       </Space>
