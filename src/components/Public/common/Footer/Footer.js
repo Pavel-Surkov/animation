@@ -51,10 +51,13 @@ const Footer = () => (
               <Link href="/contact">
                 <h3>Blog</h3>
               </Link>
-              <Link href="tel:714-316-31">
+              <Link
+                href="https://www.instagram.com/uplio_marketplace/"
+                target="_blank"
+              >
                 <h3>Instagram</h3>
               </Link>
-              <Link href="mailto:asal@uplio.com">
+              <Link href="https://twitter.com/Uplio11" target="_blank">
                 <h3>Twitter</h3>
               </Link>
             </div>
