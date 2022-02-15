@@ -150,7 +150,89 @@
 and (min-device-width: 375px) 
 and (max-device-width: 667px) 
 and (-webkit-min-device-pixel-ratio: 2) { 
+	.container{
+		max-width: 350px;
+		margin: 0 auto;
+	}	
+	.section{
+		padding: 100px 0;
+	}
+	.keyFeature{
+		h2{
+			font-family: 'Inter',sans-serif;
+			font-style: normal;
+			font-weight: 800;
+			font-size: 30px;
+			line-height: 40px;
+		}
+	}
+	.aboutSection{
+		h1{
+			font-family: 'Inter',sans-serif;
+			font-style: normal;
+			font-weight: 800;
+			font-size: 38px;
+			line-height: 52px;
+			margin-bottom: 24px;
+		}
+		h3{
+			font-family: 'Inter',sans-serif;
+			font-style: normal;
+			font-weight: 800;
+			font-size: 24px;
+			line-height: 30px;
+			margin-top: 0;
+			margin-bottom: 48px;
+		}
+	}	
+	.content{
+		h2{
+			font-family: 'Inter',sans-serif;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 16px;
+			line-height: 30px;
+		}
+	}
+	.aboutUs{
+		h2{
+			font-family: 'Inter',sans-serif;
+			font-style: normal;
+			font-weight: 800;
+			font-size: 24px;
+			line-height: 30px;
+		}
+		p{
+			font-family:'Montserrat',sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 12px;
+			line-height: 20px;
+		}
+		.h4{
+			margin-top: 48px;
+			font-family: 'Inter',sans-serif;
+			font-style: normal;
+			font-weight: 800;
+			font-size: 24px;
+			line-height: 30px;
+		}
 	
+	}
+	.heroBanner{
+		h3{
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: 800;
+		font-size: 24px;
+		line-height: 30px;
+		}
+	}
+	.heroBannerContent{
+		h4{
+			margin-top: 48px;
+		}
+	}
 }
 
 /* Portrait */
