@@ -25,6 +25,7 @@ import SupplierDashboardMessage from '../../components/Admin/Supplier/DashboardM
 import SupplierDashboardService from '../../components/Admin/Supplier/DashboardServicesTemp'
 import SupplierDashboardOrders from '../../components/Admin/Supplier/DashboardOrderTemp'
 import SupplierDashboardProfile from '../../components/Admin/Supplier/DashboardProfileTemp'
+import ForgotPassword from '../../components/Auth/ForgotPassword/ForgotPassword.js'
 
 const PublicRoutes = () => (
   <Suspense fallback={<p>Loading ..</p>}>
@@ -81,6 +82,7 @@ const PublicRoutes = () => (
           path="/dashboard/supplier/profile"
           component={SupplierDashboardProfile}
         />
+        <Route exact path="/forgot-password" component={ForgotPassword} />
         <Redirect to="/" />
       </Switch>
     </Router>
