@@ -4,12 +4,12 @@ import {
   Row,
   Col,
   Input,
+  Pagination,
   Radio,
   Space,
   Rate,
   Button,
   Divider,
-  Tag,
   Spin,
 } from 'antd'
 import image1 from '../../../assets/images/product_image_1.png'
@@ -17,46 +17,13 @@ import image2 from '../../../assets/images/product_image_2.png'
 import image3 from '../../../assets/images/product_image_3.png'
 import Navigation from '../../Public/Homepage/Navigation/Navigation'
 import companyLogo from '../../../assets/images/profile_image.png'
-import {
-  SearchOutlined,
-  HeartOutlined,
-  CheckCircleOutlined,
-  DollarCircleOutlined,
-  BarChartOutlined,
-  LoadingOutlined,
-} from '@ant-design/icons'
+import Rating from '../../common/Rating/Rating'
+import { SearchOutlined, HeartOutlined } from '@ant-design/icons'
+import Tags from '../../common/Tags/Tags'
+
 export default function Products() {
   const [loading, setLoading] = useState(false)
-  let arr = [1, 2, 3, 4, 5]
-  const currentTag = () => {
-    let key = Math.floor(Math.random() * (3 - 1 + 1) + 1)
-    switch (key) {
-      case 1:
-        return (
-          <Tag className={classes.tag} color="green">
-            <CheckCircleOutlined />
-            Approved
-          </Tag>
-        )
-
-      case 2:
-        return (
-          <Tag className={classes.tag} color="red">
-            <DollarCircleOutlined />
-            Hot Seller
-          </Tag>
-        )
-
-      default:
-        return (
-          <Tag className={classes.tag} color="blue">
-            <BarChartOutlined />
-            Top Rated
-          </Tag>
-        )
-    }
-  }
-
+  const arr = [1, 2, 3, 4]
   const loadMore = () => {
     setLoading(true)
     setTimeout(() => {
@@ -113,17 +80,25 @@ export default function Products() {
                             <Col span={8}>
                               <div className={classes.logoImg}>
                                 <img src={companyLogo} alt="uplio" />
-                                {currentTag()}
+                                <Tags prop="top rated" />
+                                <Tags prop="approved" />
+                                <Tags prop="hot seller" />
                               </div>
                             </Col>
                             <Col span={16}>
                               <h2>Company Name</h2>
-                              <Rate
-                                className={classes.rating}
-                                disabled
-                                defaultValue={2}
-                              />
-                              <h3>4.5 Ups | 123 Reviews </h3>
+                              <Rating value={1} />
+                              <div className={classes.ratingText}>
+                                <h3>
+                                  <span> 4.5 Ups</span>
+                                  <Divider
+                                    type="vertical"
+                                    className={classes.ratingTextDivider}
+                                  />
+                                  <span>123 Reviews</span>
+                                </h3>
+                              </div>
+
                               <Row>
                                 <Col span={6}>
                                   <Button className={classes.wishlistButton}>
@@ -137,8 +112,17 @@ export default function Products() {
                                 </Col>
                               </Row>
                               <span>
-                                Minimum Order |<strong>500</strong>
+                                Minimum Order
+                                <Divider
+                                  type="vertical"
+                                  className={classes.ratingTextDivider}
+                                />
+                                <strong>500</strong>
                               </span>
+                              <Divider
+                                className={classes.dividerForServices}
+                                type="horizontal"
+                              />
                               <p>
                                 Service 1, Service 2, Service 3, Service 4,
                                 Customized Service
@@ -166,7 +150,7 @@ export default function Products() {
                   </>
                 ))}
                 <div className={classes.section}>
-                  {loading ? (
+                  {/* {loading ? (
                     <div className={classes.loader}>
                       <Spin
                         indicator={
@@ -182,7 +166,12 @@ export default function Products() {
                     >
                       Load next 5
                     </Button>
-                  )}
+                  )} */}
+                  <Pagination
+                    className={classes.paginationStyle}
+                    defaultCurrent={1}
+                    total={50}
+                  />
                 </div>
               </div>
             </div>

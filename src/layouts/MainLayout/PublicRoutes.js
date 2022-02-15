@@ -20,6 +20,12 @@ import SupplierCompletedTemp from '../../components/Auth/SignUp/SupplierComplete
 import SupplierProfile from '../../components/Public/SupplierProfile/SupplierProfile.js'
 import Products from '../../components/Public/Products/Products'
 import Quote from '../../components/Public/Quote/Quote.js'
+import SupplierDashboard from '../../components/Admin/Supplier/Dashboard'
+import SupplierDashboardMessage from '../../components/Admin/Supplier/DashboardMessageTemp'
+import SupplierDashboardService from '../../components/Admin/Supplier/DashboardServicesTemp'
+import SupplierDashboardOrders from '../../components/Admin/Supplier/DashboardOrderTemp'
+import SupplierDashboardProfile from '../../components/Admin/Supplier/DashboardProfileTemp'
+
 const PublicRoutes = () => (
   <Suspense fallback={<p>Loading ..</p>}>
     <Router>
@@ -31,6 +37,7 @@ const PublicRoutes = () => (
         <Route exact path="/help-center" component={Helpcenter} />
 
         <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/login" component={SignIn} />
 
         {/* TODO remove link  */}
         <Route exact path="/signup/buyer" component={BuyerTemp} />
@@ -49,7 +56,31 @@ const PublicRoutes = () => (
         <Route exact path="/product" component={Products} />
         <Route exact path="/quote" component={Quote} />
         <Route exact path="/signup/completed" component={GreetingTemp} />
-        <Route exact path="/login" component={SignIn} />
+        <Route
+          exact
+          path="/dashboard/supplier/lead"
+          component={SupplierDashboard}
+        />
+        <Route
+          exact
+          path="/dashboard/supplier/message"
+          component={SupplierDashboardMessage}
+        />
+        <Route
+          exact
+          path="/dashboard/supplier/services"
+          component={SupplierDashboardService}
+        />
+        <Route
+          exact
+          path="/dashboard/supplier/orders"
+          component={SupplierDashboardOrders}
+        />
+        <Route
+          exact
+          path="/dashboard/supplier/profile"
+          component={SupplierDashboardProfile}
+        />
         <Redirect to="/" />
       </Switch>
     </Router>

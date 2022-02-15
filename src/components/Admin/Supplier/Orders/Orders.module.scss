@@ -1,0 +1,35 @@
+@import '../../../../theme/variable.module.scss';
+
+.container{
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.actionSection{
+	margin-top:60px;
+	height: 80vh;
+	border-right: 1px solid $light_grey_app_color;
+	.actionButton{
+		width: 225px;
+		text-align: left;
+		img{
+			margin: 0 10px ;
+		}
+
+	}
+	.completedButton{
+		width: 225px;
+		text-align: left;
+		img{
+			margin:0 10px;
+			color:$red_app_color
+		}
+	}
+}
+
+.mainSection{
+	margin-top: 60px;
+	li{
+		padding: 0;
+	}
+}

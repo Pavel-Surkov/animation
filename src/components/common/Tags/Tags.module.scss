@@ -1,0 +1,53 @@
+@import '../../../theme/variable.module.scss';
+
+.approvedTag{
+	background-color: $green_app_color;
+	color:$secondary_app_color;
+	margin: 4px auto;
+	padding: 3px 0;
+	border-radius: 15px;
+	max-width: 65px;
+	
+	p{
+		margin: 0px;
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 9px;
+		line-height: 14px;
+	}
+}
+.hotSellerTags{
+	background-color: $dark_red_app_color;
+	color:$secondary_app_color;
+	margin: 4px auto;
+	padding: 3px 0;
+	border-radius: 15px;
+	max-width: 65px;
+	
+	p{
+		margin: 0px;
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 9px;
+		line-height: 14px;
+	}
+}
+.topRatedTag{
+	background-color: $blue_app_color;
+	color:$secondary_app_color;
+	margin: 4px auto;
+	padding: 3px 0;
+	border-radius: 15px;
+	max-width: 65px;
+	
+	p{
+		margin: 0px;
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 9px;
+		line-height: 14px;
+	}	
+}

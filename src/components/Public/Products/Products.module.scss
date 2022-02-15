@@ -39,6 +39,16 @@
 	img{
 		border-radius: 4px;
 	}
+	.ratingText{
+		span{
+			text-decoration: underline;
+			opacity: 0.7;
+		}
+	}
+	.ratingTextDivider{
+		background-color: $primary_app_color;
+		opacity: 0.2;
+	}
 	.logoImg{
 		text-align: center;
 		padding: 0 10px;
@@ -76,7 +86,7 @@
 	font-style: normal;
 	font-weight: 500;
 	font-size: 14px;
-	
+	margin-bottom: 25px;	
 }
 .contactButton{
 	width: 100%;
@@ -86,13 +96,24 @@
 	font-size: 14px;
 	background-color: $primary_app_color !important;
 	color: $secondary_app_color !important;
+	margin-bottom: 25px;	
 }
-
+.dividerForServices{
+	min-width: 30px !important;
+	max-width: 30px !important;
+	margin: 4px 0!important;
+}
 .tag{
 	padding: 2px;
 	margin: 5px 0 !important;
 	width: 100%;
 }
 .loader{
+	text-align: center;
+}
+.paginationStyle{
+	li{
+		padding: 0;
+	}
 	text-align: center;
 }

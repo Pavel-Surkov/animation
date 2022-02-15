@@ -90,7 +90,7 @@ function Quote() {
               </Row>
             </Form.Item>
             <h4>Project details:</h4>
-            <Form.Item>
+            <Form.Item label="Project Name">
               <Input
                 value="Wooden Brushes - Washington Dental Group Anual Galla"
                 size="large"
