@@ -67,6 +67,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
 		 padding: 35px 0;
 		 font-weight: 400;
 		}
+		h3{
+			text-align: left;
+		}
 		.footerTitle{
 			h2{
 	
@@ -90,6 +93,11 @@ and (-webkit-min-device-pixel-ratio: 2) {
 	
 		}
 		
+	}
+	.dividerVertical{	
+		height: 1px !important; 
+		background-color: $grey_app_color;
+		margin-left: 0px !important;
 	}
 }
 
