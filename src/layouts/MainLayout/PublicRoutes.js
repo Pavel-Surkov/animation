@@ -10,6 +10,7 @@ import Career from '../../components/Public/Career/Career.js'
 import Helpcenter from '../../components/Public/Helpcenter/Helpcenter.js'
 import Homepage from '../../components/Public/Homepage/Homepage.js'
 import Newsroom from '../../components/Public/Newsroom/Newsroom.js'
+
 const PublicRoutes = () => (
   <Suspense fallback={<p>Loading ..</p>}>
     <Router>
@@ -19,6 +20,7 @@ const PublicRoutes = () => (
         <Route exact path="/newsroom" component={Newsroom} />
         <Route exact path="/careers" component={Career} />
         <Route exact path="/help-center" component={Helpcenter} />
+
         <Redirect to="/" />
       </Switch>
     </Router>
