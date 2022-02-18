@@ -43,7 +43,7 @@ const AccountType = () => {
               <button onClick={() => handleAccountType('supplier')}>
                 <img src={SupplierImage} alt="Uplio" />
                 <div className={classes.cardContent}>
-                  <h2>Suplier</h2>
+                  <h2>Supplier</h2>
                   <p>Acquire and support customers</p>
                 </div>
               </button>

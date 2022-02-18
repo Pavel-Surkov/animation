@@ -12,9 +12,6 @@ const SignUp = () => {
           <Link to="/">
             <img src={logo} alt="uplio" />{' '}
           </Link>
-          <div className={classes.textOverlayBuyer}>
-            <h1>BUYER</h1>
-          </div>
         </div>
         <AccountType />
       </div>

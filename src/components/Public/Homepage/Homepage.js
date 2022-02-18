@@ -73,7 +73,7 @@ const Homepage = () => {
           </Row>
         </div>
       </div>
-      <Scrollproducts />
+      {/* <Scrollproducts /> */}
       <div className={classes.container}>
         <div className={classes.aboutSection}>
           <h1>Why Uplio?</h1>
