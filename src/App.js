@@ -5,16 +5,13 @@ import './App.less'
 import store from './redux/store'
 import { Provider } from 'react-redux'
 
-//TODO Adding theme along with <themeprovider />
-//TODO Adding Redux
-
 const App = () => (
   <>
-    {/* <Provider store={store}> */}
-    <BrowserRouter>
-      <MainLayout />
-    </BrowserRouter>
-    {/* </Provider> */}
+    <Provider store={store}>
+      <BrowserRouter>
+        <MainLayout />
+      </BrowserRouter>
+    </Provider>
   </>
 )
 
