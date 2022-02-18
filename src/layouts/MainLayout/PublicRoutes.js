@@ -26,6 +26,7 @@ import SupplierDashboardService from '../../components/Admin/Supplier/DashboardS
 import SupplierDashboardOrders from '../../components/Admin/Supplier/DashboardOrderTemp'
 import SupplierDashboardProfile from '../../components/Admin/Supplier/DashboardProfileTemp'
 import ForgotPassword from '../../components/Auth/ForgotPassword/ForgotPassword.js'
+import SignUpTemp from '../../components/Auth/SignUp/SignUpTemp/SignUpTemp.js'
 
 const PublicRoutes = () => (
   <Suspense fallback={<p>Loading ..</p>}>
@@ -37,7 +38,8 @@ const PublicRoutes = () => (
         <Route exact path="/careers" component={Career} />
         <Route exact path="/help-center" component={Helpcenter} />
 
-        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/user-type" component={SignUp} />
+        <Route exact path="/signup" component={SignUpTemp} />
         <Route exact path="/login" component={SignIn} />
 
         {/* TODO remove link  */}
@@ -53,9 +55,9 @@ const PublicRoutes = () => (
           path="/signup/completed-supplier"
           component={SupplierCompletedTemp}
         />
-        <Route exact path="/profile" component={SupplierProfile} />
-        <Route exact path="/product" component={Products} />
-        <Route exact path="/quote" component={Quote} />
+        <Route exact path="/profile/:id" component={SupplierProfile} />
+        <Route exact path="/products/:id" component={Products} />
+        <Route exact path="/quote/:id" component={Quote} />
         <Route exact path="/signup/completed" component={GreetingTemp} />
         <Route
           exact

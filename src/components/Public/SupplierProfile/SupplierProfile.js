@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import classes from './SupplierProfile.module.scss'
 import Scroll from '../../common/Scroll/Scrollproducts'
 import profileImage from '../../../assets/images/profile_image.png'
-import { Row, Col, Breadcrumb, Button, Space } from 'antd'
 
+import { Row, Col, Breadcrumb, Button, Space } from 'antd'
+import { useParams, useHistory } from 'react-router-dom'
+import axios from 'axios'
 import sampleImage1 from '../../../assets/images/sample_upload_1.png'
 import sampleImage2 from '../../../assets/images/sample_upload_2.png'
 import sampleImage3 from '../../../assets/images/sample_upload_3.png'
@@ -19,6 +21,31 @@ import {
 import Navigation from '../Homepage/Navigation/Navigation'
 
 const SupplierProfile = () => {
+  const history = useHistory()
+  let { id } = useParams()
+  const [loading, setLoading] = useState(false)
+  const [supplierData, setSupplierData] = useState([])
+  const [pageinate, setPaginate] = useState(1)
+
+  const handleQuote = () => {
+    history.push({
+      pathname: `/quote/${id}`,
+    })
+  }
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/users/suppliers/${id}`)
+      .then((res) => {
+        console.log(res)
+
+        setSupplierData(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
+
   const [overview, setOverview] = useState(true)
   const [service, setService] = useState(false)
 
@@ -49,7 +76,12 @@ const SupplierProfile = () => {
         <div className={classes.companyDetails}>
           <Row gutter={12}>
             <Col span={2}>
-              <img src={profileImage} alt="uplio" />
+              <img
+                width={65}
+                height={65}
+                src={supplierData.companyLogo}
+                alt="uplio"
+              />
             </Col>
             <Col span={12}>
               <Breadcrumb>
@@ -57,13 +89,13 @@ const SupplierProfile = () => {
                   <a href="">Supplier</a>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                  <a href="">Country</a>
+                  <a href="">{supplierData.country}</a>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                  <a href="">City</a>
+                  <a href="">{supplierData.city}</a>
                 </Breadcrumb.Item>
               </Breadcrumb>
-              <h3>Company Name</h3>
+              <h3>{supplierData.companyName}</h3>
             </Col>
           </Row>
         </div>
@@ -86,20 +118,25 @@ const SupplierProfile = () => {
                 </button>
               </div>
 
-              {overview ? <Overview /> : null}
-              {service ? <Services /> : null}
+              {overview ? <Overview props={supplierData} /> : null}
+              {service ? <Services props={supplierData} /> : null}
             </Col>
             <Col span={6}>
               <Space direction="vertical" className={classes.buttonSection}>
-                <Button block size="large" className={classes.buttonRequest}>
+                <Button
+                  onClick={() => handleQuote()}
+                  block
+                  size="large"
+                  className={classes.buttonRequest}
+                >
                   Request a quote <RightOutlined />
                 </Button>
-                <Button block size="large">
+                {/* <Button block size="large">
                   <MessageOutlined /> Contact Supplier
                 </Button>
                 <Button block size="large">
                   <HeartOutlined /> Add to favorites
-                </Button>
+                </Button> */}
               </Space>
             </Col>
           </Row>
@@ -109,20 +146,12 @@ const SupplierProfile = () => {
   )
 }
 
-const Overview = () => {
+const Overview = (data) => {
   return (
     <>
       <div classes={classes.section}>
         <div className={classes.companyDetailsTab}>
-          <h2>
-            Senectus donec quisque nibh sapien volutpat et eget volutpat. Vel
-            est sit lectus nullam consequat aenean nulla. Neque, elit pharetra
-            blandit egestas lectus aliquet. Tincidunt eget id urna, condimentum
-            et odio. Cum id eget luctus viverra a commodo sed ullamcorper
-            elementum. Eros, nullam amet lacus amet, ut. Egestas ipsum risus
-            consequat, aliquam bibendum nulla elementum eleifend purus. Eget est
-            non libero gravida. Pharetra in nibh nulla gravida nunc leo.
-          </h2>
+          <h2>{data.props.companyOverview}</h2>
         </div>
         <Row>
           <Col span={4}>
@@ -131,16 +160,16 @@ const Overview = () => {
               <h3>1-5,000 units/mo</h3>
             </div>
           </Col>
-          <Col span={4}>
+          {/* <Col span={4}>
             <div className={classes.companyDetailsTab}>
               <p>Production capacity</p>
               <h3>1-5,000 units/mo</h3>
             </div>
-          </Col>
+          </Col> */}
           <Col span={4}>
             <div className={classes.companyDetailsTab}>
               <p>Estimated lead time</p>
-              <h3>4-5 weeks</h3>
+              <h3>{data.props.averageLeadtime}</h3>
             </div>
           </Col>
           <Col span={4}>
@@ -190,7 +219,14 @@ const Overview = () => {
   )
 }
 
-const Services = () => {
+const Services = (data) => {
+  const id = useParams()
+  const history = useHistory()
+  const handleQuote = () => {
+    history.push({
+      pathname: `/quote/${id}`,
+    })
+  }
   const supplierArray = [1, 2, 3]
   return (
     <div classes={classes.section}>
@@ -271,7 +307,11 @@ const Services = () => {
               <Row gutter={12}>
                 <Col span={16}></Col>
                 <Col span={8}>
-                  <Button size="large" className={classes.shopButton}>
+                  <Button
+                    onClick={() => handleQuote()}
+                    size="large"
+                    className={classes.shopButton}
+                  >
                     Request a quote
                     <RightOutlined />
                   </Button>

@@ -19,8 +19,6 @@ const SupplierTemp = () => {
           </div>
         </div>
         <SupplierAccountDetails />
-        {/* <SupplierCategoryDetails /> */}
-        {/* <Greetings supplier={true} /> */}
       </div>
     </>
   )

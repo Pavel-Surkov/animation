@@ -9,44 +9,73 @@ import {
   Space,
   Rate,
   Button,
+  Empty,
   Divider,
   Spin,
 } from 'antd'
-import image1 from '../../../assets/images/product_image_1.png'
-import image2 from '../../../assets/images/product_image_2.png'
-import image3 from '../../../assets/images/product_image_3.png'
+
 import Navigation from '../../Public/Homepage/Navigation/Navigation'
 import companyLogo from '../../../assets/images/profile_image.png'
 import Rating from '../../common/Rating/Rating'
 import { SearchOutlined, HeartOutlined } from '@ant-design/icons'
 import Tags from '../../common/Tags/Tags'
 
+import { Link, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import { useEffect } from 'react'
+
 export default function Products() {
+  let { id } = useParams()
+  const history = useHistory()
   const [loading, setLoading] = useState(false)
-  const arr = [1, 2, 3, 4]
-  const loadMore = () => {
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    }, 3000)
+  const [supplierData, setSupplierData] = useState([])
+  const [pageinate, setPaginate] = useState(1)
+  const [search, setSearch] = useState('')
+  const [newSearch, setNewSearch] = useState('')
+
+  const handleSearch = (event) => {
+    if (event.key === 'Enter') {
+      history.push({ pathname: `/products/${newSearch}` })
+      console.log('do validate')
+    }
   }
+  useEffect(() => {
+    setLoading(true)
+    setSearch(id)
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/users/suppliers?category=${id}`)
+      .then((res) => {
+        console.log(res)
+        setLoading(false)
+        setSupplierData(res.data.data)
+        setPaginate(res.data.data.length)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [newSearch])
 
   return (
     <>
       <Navigation />
+
       <div className={classes.container}>
         <Row gutter={16}>
           <Col span={5}>
             <div className={classes.section}>
               <div className={classes.searchFilter}>
                 <Input
+                  value={newSearch}
                   size="large"
+                  onChange={(e) => setNewSearch(e.target.value)}
                   placeholder="Search keywords..."
                   prefix={<SearchOutlined />}
+                  onKeyDown={(e) => handleSearch(e)}
                 />
                 <h3>Ex. fabric, retro, minimal, etc...</h3>
               </div>
-              <div className={classes.filterOption}>
+              {/* <div className={classes.filterOption}>
                 <h3>Categories</h3>
                 <Radio.Group>
                   <Space direction="vertical">
@@ -56,39 +85,49 @@ export default function Products() {
                     <Radio value="4">Location</Radio>
                   </Space>
                 </Radio.Group>
-              </div>
+              </div> */}
             </div>
           </Col>
           <Col span={19}>
             <div className={classes.section}>
               <div className={classes.resultsHeader}>
                 <h3>
-                  10,000+ Suppliers found for <strong>Ring</strong>
+                  {pageinate}+ Suppliers found for <strong>{id}</strong>
                 </h3>
               </div>
               <div className={classes.productSection}>
-                {arr.map((item) => (
-                  <>
-                    <Divider />
-                    <Row
-                      gutter={16}
-                      // justify="space-between"
-                    >
-                      <Col span={8}>
-                        <div className={classes.productImg}>
-                          <Row>
-                            <Col span={8}>
-                              <div className={classes.logoImg}>
-                                <img src={companyLogo} alt="uplio" />
-                                <Tags prop="top rated" />
+                {supplierData.length > 0 ? (
+                  supplierData.map((item) => (
+                    <>
+                      <Divider />
+                      <Link
+                        className={classes.cardLink}
+                        to={`/profile/${item._id}`}
+                      >
+                        <Row
+                          gutter={16}
+                          // justify="space-between"
+                        >
+                          <Col span={8}>
+                            <div className={classes.productImg}>
+                              <Row>
+                                <Col span={8}>
+                                  <div className={classes.logoImg}>
+                                    <img
+                                      width={65}
+                                      height={65}
+                                      src={item.companyLogo}
+                                      alt="uplio"
+                                    />
+                                    {/* <Tags prop="top rated" />
                                 <Tags prop="approved" />
-                                <Tags prop="hot seller" />
-                              </div>
-                            </Col>
-                            <Col span={16}>
-                              <h2>Company Name</h2>
-                              <Rating value={1} />
-                              <div className={classes.ratingText}>
+                                <Tags prop="hot seller" /> */}
+                                  </div>
+                                </Col>
+                                <Col span={16}>
+                                  <h2>{item.companyName}</h2>
+                                  {/* <Rating value={1} /> */}
+                                  {/* <div className={classes.ratingText}>
                                 <h3>
                                   <span> 4.5 Ups</span>
                                   <Divider
@@ -97,80 +136,79 @@ export default function Products() {
                                   />
                                   <span>123 Reviews</span>
                                 </h3>
-                              </div>
+                              </div> */}
 
-                              <Row>
-                                <Col span={6}>
+                                  <Row>
+                                    {/* <Col span={6}>
                                   <Button className={classes.wishlistButton}>
                                     <HeartOutlined />
                                   </Button>
-                                </Col>
-                                <Col span={18}>
-                                  <Button className={classes.contactButton}>
-                                    Contact
-                                  </Button>
+                                </Col> */}
+                                    <Col span={24}>
+                                      <Button className={classes.contactButton}>
+                                        Contact
+                                      </Button>
+                                    </Col>
+                                  </Row>
+                                  <span>
+                                    Minimum Order
+                                    <Divider
+                                      type="vertical"
+                                      className={classes.ratingTextDivider}
+                                    />
+                                    <strong>{item.MOQ}</strong>
+                                  </span>
+                                  <Divider
+                                    className={classes.dividerForServices}
+                                    type="horizontal"
+                                  />
+                                  <p>{item.specialization}</p>
                                 </Col>
                               </Row>
-                              <span>
-                                Minimum Order
-                                <Divider
-                                  type="vertical"
-                                  className={classes.ratingTextDivider}
-                                />
-                                <strong>500</strong>
-                              </span>
-                              <Divider
-                                className={classes.dividerForServices}
-                                type="horizontal"
+                            </div>
+                          </Col>
+                          <Col span={5}>
+                            <div className={classes.productImg}>
+                              <img
+                                width={175}
+                                height={175}
+                                src={item.images[0]}
+                                alt="uplio"
                               />
-                              <p>
-                                Service 1, Service 2, Service 3, Service 4,
-                                Customized Service
-                              </p>
-                            </Col>
-                          </Row>
-                        </div>
-                      </Col>
-                      <Col span={5}>
-                        <div className={classes.productImg}>
-                          <img src={image1} alt="uplio" />
-                        </div>
-                      </Col>
-                      <Col span={5}>
-                        <div className={classes.productImg}>
-                          <img src={image2} alt="uplio" />
-                        </div>
-                      </Col>
-                      <Col span={5}>
-                        <div className={classes.productImg}>
-                          <img src={image3} alt="uplio" />
-                        </div>
-                      </Col>
-                    </Row>
-                  </>
-                ))}
+                            </div>
+                          </Col>
+                          <Col span={5}>
+                            <div className={classes.productImg}>
+                              <img
+                                width={175}
+                                height={175}
+                                src={item.images[1]}
+                                alt="uplio"
+                              />
+                            </div>
+                          </Col>
+                          <Col span={5}>
+                            <div className={classes.productImg}>
+                              <img
+                                width={175}
+                                height={175}
+                                src={item.images[2]}
+                                alt="uplio"
+                              />
+                            </div>
+                          </Col>
+                        </Row>
+                      </Link>
+                    </>
+                  ))
+                ) : (
+                  <Empty />
+                )}
                 <div className={classes.section}>
-                  {/* {loading ? (
-                    <div className={classes.loader}>
-                      <Spin
-                        indicator={
-                          <LoadingOutlined style={{ fontSize: 40 }} spin />
-                        }
-                      />
-                    </div>
-                  ) : (
-                    <Button
-                      size="large"
-                      onClick={() => loadMore()}
-                      className={classes.contactButton}
-                    >
-                      Load next 5
-                    </Button>
-                  )} */}
                   <Pagination
                     className={classes.paginationStyle}
                     defaultCurrent={1}
-                    total={50}
+                    total={pageinate}
                   />
                 </div>
               </div>

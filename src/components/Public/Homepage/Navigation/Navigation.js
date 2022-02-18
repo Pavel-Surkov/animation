@@ -4,22 +4,23 @@ import classes from './Navigation.module.scss'
 import logo from '../../../../assets/svg/logo_black_small.svg'
 import { createBrowserHistory as history } from 'history'
 import { RotateRightOutlined } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
-function Navigation(params) {
+const Navigation = (params) => {
+  const history = useHistory()
+
+  const userLoggedIn = useSelector((state) => state.counter.userLoggedIn)
+  const userName = useSelector((state) => state.counter.user.name)
+  const handleSignIn = () => {
+    history.push({ pathname: '/login' })
+  }
   const ref = useRef()
   let [check, setCheck] = useState(true)
   const sticky = useStickyHeader(50)
 
   const { clientHeight } = ref
 
-  const checkChange = (value) => {
-    setCheck(value)
-  }
-  const toNewPage = () => {
-    debugger
-    history.push('/signup')
-  }
   return (
     <div className={classes.header}>
       <header ref={ref} className={sticky && check ? classes.sticky : null}>
@@ -28,14 +29,24 @@ function Navigation(params) {
             <img src={logo} alt="Uplios" />
           </Col>
           <Col span={12} align="right">
-            <Space>
-              <Button className={classes.signIn} type="link">
-                Sign In
-              </Button>
-              <Link to="/signup" className={classes.signUp} type="secondary">
-                Sign Up
-              </Link>
-            </Space>
+            {userLoggedIn ? (
+              <h4 style={{ letterSpacing: '2px' }}>
+                <strong>Hi,</strong> {userName}
+              </h4>
+            ) : (
+              <Space>
+                <Button
+                  className={classes.signIn}
+                  type="link"
+                  onClick={() => handleSignIn()}
+                >
+                  Sign In
+                </Button>
+                <Link to="/signup" className={classes.signUp} type="secondary">
+                  Sign Up
+                </Link>
+              </Space>
+            )}
           </Col>
         </Row>
       </header>

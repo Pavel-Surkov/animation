@@ -52,6 +52,16 @@
 		background-color: $off_grey_app_color;
 		text-align: center;
 		
+		button{
+			background: none;
+			color: inherit;
+			border: none;
+			padding: 0;
+			font: inherit;
+			cursor: pointer;
+			outline: inherit;
+		}
+		
 		img{
 			width: 500px;
 			border-top-left-radius: 25px;
