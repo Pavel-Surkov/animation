@@ -57,7 +57,7 @@ const PublicRoutes = () => (
         />
         <Route exact path="/profile/:id" component={SupplierProfile} />
         <Route exact path="/products/:id" component={Products} />
-        <Route exact path="/quote/:id" component={Quote} />
+        <Route exact path="/quote" component={Quote} />
         <Route exact path="/signup/completed" component={GreetingTemp} />
         <Route
           exact

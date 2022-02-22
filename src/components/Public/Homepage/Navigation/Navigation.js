@@ -26,7 +26,9 @@ const Navigation = (params) => {
       <header ref={ref} className={sticky && check ? classes.sticky : null}>
         <Row align="middle" justify="space-around">
           <Col span={12}>
-            <img src={logo} alt="Uplios" />
+            <Link to="/">
+              <img src={logo} alt="Uplios" />
+            </Link>
           </Col>
           <Col span={12} align="right">
             {userLoggedIn ? (

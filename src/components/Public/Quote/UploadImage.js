@@ -9,15 +9,21 @@ function getBase64(img, callback) {
 }
 
 function beforeUpload(file) {
-  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
-  if (!isJpgOrPng) {
-    message.error('You can only upload JPG/PNG file!')
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2
-  if (!isLt2M) {
-    message.error('Image must smaller than 2MB!')
-  }
-  return isJpgOrPng && isLt2M
+  // Validate image type
+  // const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
+  // if (!isJpgOrPng) {
+  //   message.error('You can only upload JPG/PNG file!')
+  // }
+
+  // TODO allow validation in HOC
+  // const isLt2M = file.size / 1024 / 1024 < 2
+  // if (!isLt2M) {
+  //   message.error('Image must smaller than 2MB!')
+  // }
+  // return isJpgOrPng && isLt2M
+  // return isLt2M
+
+  return true
 }
 
 class UploadImage extends React.Component {
@@ -26,6 +32,7 @@ class UploadImage extends React.Component {
   }
 
   handleChange = (info) => {
+    debugger
     if (info.file.status === 'uploading') {
       this.setState({ loading: true })
       return
@@ -39,6 +46,14 @@ class UploadImage extends React.Component {
         })
       )
     }
+  }
+  handleUpload = (info) => {
+    debugger
+    console.log(info)
+
+    setTimeout(() => {
+      info.file.status = 'done'
+    }, 5000)
   }
 
   render() {
@@ -54,8 +69,8 @@ class UploadImage extends React.Component {
         name="avatar"
         listType="picture-card"
         className="avatar-uploader"
-        showUploadList={false}
-        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        showUploadList={true}
+        action={this.handleUpload}
         beforeUpload={beforeUpload}
         onChange={this.handleChange}
       >

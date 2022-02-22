@@ -15,8 +15,11 @@
 	font-weight: 800;
 	font-size: 30px;
 	line-height: 40px;
-	color:$red_app_color;
+	color:$primary_app_color;
 	margin: 30px ;
+	}
+	span{
+		color:$red_app_color;
 	}
 	h5{
 		font-family:'Montserrat',sans-serif;
@@ -53,7 +56,32 @@
 		line-height: 26px;
 	}	
 }
-
+	.buttonLoginBack{
+		h6{	
+			font-family: 'Montserrat',sans-serif;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 17px;
+			line-height: 26px;
+			background-color:$secondary_app_color;
+			color: $primary_app_color;
+			width: 100%;    
+			padding: 9px;    
+			border: 1px solid $primary_app_color;
+			    border-radius: 4px;    		
+			    margin-top: 24px;
+			    margin-bottom: 24px;
+			}
+			
+				background: none;
+				color: inherit;
+				border: none;
+				padding: 0;
+				font: inherit;
+				cursor: pointer;
+				outline: inherit;
+				width: 100%;		
+	}
 	.buttonLogin{
 		h6{	
 		font-family: 'Montserrat',sans-serif;
@@ -67,6 +95,7 @@
 		padding: 10px;    
     		border-radius: 4px;    		
 		    margin-bottom: 24px;
+		    margin-top: 24px;
 		}
 		
 			background: none;
@@ -78,3 +107,41 @@
 			outline: inherit;
 			width: 100%;	
 	}
+
+
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2) { 
+	.container{
+		max-width: 350px;
+		margin: 0 auto;
+	}	
+	.section{
+		padding: 100px 0;
+	}
+}
+
+/* Portrait */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) { 
+
+}
+
+/* Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) { 
+
+}
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */

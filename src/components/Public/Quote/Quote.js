@@ -7,11 +7,11 @@ import {
   Col,
   Form,
   Input,
+  DatePicker,
   Select,
   Modal,
   Space,
   Button,
-  message,
   notification,
 } from 'antd'
 import { ArrowRightOutlined } from '@ant-design/icons'
@@ -19,12 +19,15 @@ import UploadImage from './UploadImage'
 import logo from '../../../assets/svg/logo_black_medium.svg'
 import Navigation from '../../../components/Public/Homepage/Navigation/Navigation'
 import classes from './Quote.module.scss'
+import { quoteData } from '../../../CounterSlice'
 
 const { TextArea } = Input
 const Option = Select
 
 const Quote = () => {
   const history = useHistory()
+  const dispatch = useDispatch()
+
   const user = useSelector((state) => state.counter.user)
   const userType = useSelector((state) => state.counter.userType)
   const token = localStorage.getItem('token')
@@ -38,6 +41,7 @@ const Quote = () => {
   const [color, setColor] = useState('')
   const [messageData, setMessageData] = useState('')
   const [isModalVisible, setIsModalVisible] = useState(false)
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/categories`)
@@ -48,11 +52,12 @@ const Quote = () => {
         console.log(err)
       })
   }, [])
-  useEffect(() => {
-    if (user === undefined || user === '') {
-      setIsModalVisible(true)
-    }
-  }, [])
+
+  // useEffect(() => {
+  //   if (user === undefined || user === '') {
+  //     setIsModalVisible(true)
+  //   }
+  // }, [])
 
   const handleNotification = () => {
     notification.open({
@@ -62,39 +67,71 @@ const Quote = () => {
     })
   }
 
-  const handleSubmit = () => {
-    axios
-      .post(
-        `${process.env.REACT_APP_API_URL}/quotes/save_quote`,
-        {
-          projectName: projectDetail,
-          productCategory: category,
-          color: color,
-          description: messageData,
-          projectStartDate: projectStartDate,
-          projectLaunchDate: projectEndDate,
-          quantity: quantity,
-          budget: budget,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((res) => {
-        handleNotification()
-        setTimeout(() => {
-          history.push({
-            pathname: '/',
-          })
-        }, 5000)
+  const handleDateStartDate = (date, dateString) => {
+    setProjectStartDate(dateString)
+  }
 
-        console.log(res)
+  const handleDateEndDate = (date, dateString) => {
+    setProjectEndDate(dateString)
+  }
+
+  const handleSubmit = () => {
+    debugger
+    console.log(
+      projectDetail,
+      category,
+      color,
+      messageData,
+      projectStartDate,
+      projectEndDate,
+      quantity,
+      budget
+    )
+    dispatch(
+      quoteData({
+        projectName: projectDetail,
+        productCategory: category,
+        color: color,
+        description: messageData,
+        projectStartDate: projectStartDate,
+        projectLaunchDate: projectEndDate,
+        quantity: quantity,
+        budget: budget,
       })
-      .catch((err) => {
-        console.log(err)
-      })
+    )
+    history.push({ pathname: '/signup' })
+    // axios
+    //   .post(
+    //     `${process.env.REACT_APP_API_URL}/quotes/save_quote`,
+    //     {
+    //       projectName: projectDetail,
+    //       productCategory: category,
+    //       color: color,
+    //       description: messageData,
+    //       projectStartDate: projectStartDate,
+    //       projectLaunchDate: projectEndDate,
+    //       quantity: quantity,
+    //       budget: budget,
+    //     },
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     }
+    //   )
+    //   .then((res) => {
+    //     handleNotification()
+    //     setTimeout(() => {
+    //       history.push({
+    //         pathname: '/',
+    //       })
+    //     }, 5000)
+
+    //     console.log(res)
+    //   })
+    //   .catch((err) => {
+    //     console.log(err)
+    //   })
   }
 
   const handleCategory = (e) => {
@@ -127,22 +164,24 @@ const Quote = () => {
   }
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <div className={classes.container}>
         <div className={classes.logoContainer}>
           <Link to="/">
             <img src={logo} alt="uplio" />
           </Link>
           <div className={classes.textOverlaySupplier}>
-            <h1>Specs</h1>
+            <h1>SPECS</h1>
           </div>
         </div>
         <div className={classes.mainSection}>
-          <h3>View</h3>
-          <h4>Opening an existing spec sheet document.</h4>
+          <h3>Get your Free Quote</h3>
+          <h4>Create a request and get your quote in 30 minutes. </h4>
 
           <hr />
-          <h4>Category:</h4>
+          <h4>
+            <strong>Category:</strong>
+          </h4>
 
           <Form layout="vertical">
             {/* <Form.Item label="Product category">
@@ -165,7 +204,7 @@ const Quote = () => {
 
             <Form.Item>
               <Row gutter={12}>
-                <Col span={20}>
+                <Col span={24}>
                   <Form.Item label="Product category">
                     <Select
                       style={{ width: '100%' }}
@@ -183,7 +222,7 @@ const Quote = () => {
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={4}>
+                {/* <Col span={4}>
                   <Form.Item label="Color">
                     <Select
                       style={{ width: '100%' }}
@@ -198,10 +237,12 @@ const Quote = () => {
                       <Option value="yellow">Yellow</Option>
                     </Select>
                   </Form.Item>
-                </Col>
+                </Col> */}
               </Row>
             </Form.Item>
-            <h4>Project details:</h4>
+            <h4>
+              <strong>Project details:</strong>
+            </h4>
             <Form.Item label="Project Name">
               <Input
                 value={projectDetail}
@@ -215,23 +256,18 @@ const Quote = () => {
             <Row gutter={12}>
               <Col span={12}>
                 <Form.Item label="Project start date">
-                  <Input
-                    value={projectStartDate}
-                    onChange={(e) => {
-                      setProjectStartDate(e.target.value)
-                    }}
+                  <DatePicker
+                    style={{ width: '100%' }}
+                    onChange={handleDateStartDate}
                     size="large"
-                    allowClear
                   />
                 </Form.Item>
               </Col>
               <Col span={12}>
                 <Form.Item label="Target launch date">
-                  <Input
-                    value={projectEndDate}
-                    onChange={(e) => {
-                      setProjectEndDate(e.target.value)
-                    }}
+                  <DatePicker
+                    style={{ width: '100%' }}
+                    onChange={handleDateEndDate}
                     size="large"
                     allowClear
                   />
@@ -263,7 +299,7 @@ const Quote = () => {
                 </Form.Item>
               </Col>
             </Row>
-            {/* <h4>Project reference files:</h4>
+            <h4>Project reference files:</h4>
             <p>Images or sourced documents such as tech packs</p>
             <Form.Item>
               <UploadImage />
@@ -276,7 +312,7 @@ const Quote = () => {
             </p>
             <Form.Item>
               <UploadImage />
-            </Form.Item> */}
+            </Form.Item>
             <hr />
             <h4>Project description:</h4>
             <p>
