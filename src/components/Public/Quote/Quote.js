@@ -21,6 +21,8 @@ import Navigation from '../../../components/Public/Homepage/Navigation/Navigatio
 import classes from './Quote.module.scss'
 import { quoteData } from '../../../CounterSlice'
 
+import Footer from '../common/Footer/Footer'
+
 const { TextArea } = Input
 const Option = Select
 
@@ -168,9 +170,7 @@ const Quote = () => {
           <h4>Create a request and get your quote in 30 minutes. </h4>
 
           <hr />
-          <h4>
-            <strong>Category:</strong>
-          </h4>
+          <h6>Category:</h6>
 
           <Form layout="vertical">
             {/* <Form.Item label="Product category">
@@ -196,6 +196,7 @@ const Quote = () => {
                 <Col span={24}>
                   <Form.Item label="Product category">
                     <Select
+                      placeholder="Select a category..."
                       style={{ width: '100%' }}
                       onChange={(e) => handleCategory(e)}
                       allowClear
@@ -230,13 +231,14 @@ const Quote = () => {
                 </Col> */}
               </Row>
             </Form.Item>
-            <h4 className={classes.headingQuote}>
-              <strong>Project details:</strong>
-            </h4>
+            <div className={classes.headingQuote}>
+              <h6>Project details:</h6>
+            </div>
 
             <Form.Item label="Project Name">
               <Input
                 value={projectDetail}
+                placeholder="Project name..."
                 onChange={(e) => {
                   setProjectDetail(e.target.value)
                 }}
@@ -249,6 +251,7 @@ const Quote = () => {
               <Col span={12}>
                 <Form.Item label="Project start date">
                   <DatePicker
+                    placeholder="Select a date"
                     style={{ width: '100%' }}
                     onChange={handleDateStartDate}
                     size="large"
@@ -259,6 +262,7 @@ const Quote = () => {
                 <Form.Item label="Target launch date">
                   <DatePicker
                     style={{ width: '100%' }}
+                    placeholder="Select a date"
                     onChange={handleDateEndDate}
                     size="large"
                     allowClear
@@ -269,6 +273,7 @@ const Quote = () => {
                 <Form.Item label="Quantity">
                   <Input
                     value={quantity}
+                    placeholder="Quantity..."
                     onChange={(e) => {
                       setQuantity(e.target.value)
                     }}
@@ -280,7 +285,7 @@ const Quote = () => {
               <Col span={12}>
                 <Form.Item label="Budget">
                   <Input
-                    prefix="$"
+                    placeholder="Budget amount..."
                     value={budget}
                     onChange={(e) => {
                       setBudget(e.target.value)
@@ -291,9 +296,10 @@ const Quote = () => {
                 </Form.Item>
               </Col>
             </Row>
-            <h4 className={classes.headingQuote} style={{ marginBottom: '0' }}>
-              <strong>Project description:</strong>
-            </h4>
+            <div className={classes.headingQuote}>
+              <h6 style={{ marginBottom: '0' }}>Project description:</h6>
+            </div>
+
             <p style={{ marginBottom: '40px' }}>
               Briefly explain what you are looking for. (ex. We are looking to
               design active wear. We would like the fabric to be at least 90%
@@ -302,14 +308,16 @@ const Quote = () => {
             <Form.Item>
               <TextArea
                 value={messageData}
+                placeholder="Enter your project description..."
                 onChange={(e) => setMessageData(e.target.value)}
                 rows={5}
                 size="large"
               />
             </Form.Item>
-            <h4 className={classes.headingQuote}>
-              <strong>Project reference files:</strong>
-            </h4>
+            <div className={classes.headingQuote}>
+              <h6 style={{ marginBottom: '0' }}>Project reference files:</h6>
+            </div>
+
             <p>Images or sourced documents such as tech packs</p>
             <Form.Item>
               <div className={classes.uploadImage}>
@@ -317,9 +325,10 @@ const Quote = () => {
               </div>
             </Form.Item>
             <hr />
-            <h4 className={classes.headingQuote}>
-              <strong>Inspiration files:</strong>
-            </h4>
+            <div className={classes.headingQuote}>
+              <h6 style={{ marginBottom: '0' }}>Inspiration files:</h6>
+            </div>
+
             <p>
               Images/design so that your supplier gets an idea of the style you
               are looking for
@@ -342,7 +351,7 @@ const Quote = () => {
                 to="/"
               >
                 <h6>
-                  Submit
+                  Submit{'           '}
                   <ArrowRightOutlined />
                 </h6>
               </button>
@@ -350,6 +359,7 @@ const Quote = () => {
           </Form>
         </div>
       </div>
+      <Footer />
       {/* not logged in */}
       <Modal
         title="Oops !"

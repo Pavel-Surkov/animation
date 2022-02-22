@@ -2,22 +2,81 @@
 
 
 .container{
-	max-width: 1200px;
+	max-width: 1300px;
 	margin: 0 auto;
 }
 .footer{
-	margin: 150px 0;
-	background-color: $primary_app_color;	
-	padding-top: 85px;
-	padding-bottom: 15px;
+	
+	text-align: center;
+	padding-top: 81px;
+	padding-bottom: 57px;
 	h2{
-	 color:$secondary_app_color;
+	 
 	 padding: 35px 0;
 	 font-weight: 400;
 	}
 	h3{
-		color:$secondary_app_color;
+	
 		text-align: center;
+	}
+	img{
+		width:184.13px;
+		height: 72.58px;
+	}
+	.footerContentLeft{
+		text-align: left;
+		h3{
+			font-family: 'Montserrat', sans-serif;
+			color: $dark_grey_app_color;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 30px;
+		}
+	}
+	.footerBottomContentLeft{
+		
+		h3{
+			font-family: 'Montserrat', sans-serif;
+			margin-top: 52px;
+			text-align: left;
+			color: $dark_grey_app_color;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 30px;
+		}
+	}
+	.footerBottomContentRight{		
+		text-align: right;
+		h3{
+			
+			font-family: 'Montserrat', sans-serif;
+			margin-top: 52px;
+			
+			color: $dark_grey_app_color;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 30px;
+		}
+	}
+	.footerContentCenter{
+		img{
+			width :18.74px;
+			height:18.74px;
+		}
+	}
+	.footerContentRight{
+		text-align: right;
+		h3{
+			font-family: 'Montserrat', sans-serif;
+			color: $dark_grey_app_color;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 30px;
+		}
 	}
 	.footerTitle{
 		h2{
@@ -26,7 +85,7 @@
 			padding-top: 0;
 		}
 		h3{
-			color:$secondary_app_color;
+		
 			font-weight: 300;	
 			text-align: left;		
 		}
@@ -43,7 +102,8 @@
 	
 }
 .divider{
-	background-color: $light_grey_app_color;
+	background-color: $red_app_color;
+	height: 2px;
 }
 .dividerVertical{	
 	height: 1.7rem !important; 
@@ -59,7 +119,7 @@ and (max-device-width: 667px)
 and (-webkit-min-device-pixel-ratio: 2) { 
 	.footer{
 		margin: 50px 0;
-		background-color: $primary_app_color;	
+		text-align: center;
 		padding: 15px 20px;
 
 		h2{

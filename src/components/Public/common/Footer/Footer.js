@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { Row, Col, Divider } from 'antd'
-import logo from '../../../../assets/svg/logo_white.svg'
+import { Row, Col, Divider, Space } from 'antd'
+import logo from '../../../../assets/png/logo_medium_red.png'
+import facebookIcon from '../../../../assets/svg/facebook_icon.svg'
+import instagramIcon from '../../../../assets/svg/instagramIcon.svg'
+import twitterIcon from '../../../../assets/svg/twitterIcon.svg'
 import classes from './Footer.module.scss'
 
 const Footer = () => {
@@ -31,7 +34,10 @@ const Footer = () => {
     <>
       <div className={classes.footer}>
         <div className={classes.container}>
-          <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+          <Link to="/">
+            <img src={logo} alt="Uplio" />
+          </Link>
+          {/* <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col className="gutter-row" md={12} sm={24} xs={24}>
               <img src={logo} alt="Uplio" />
               <h2>
@@ -84,59 +90,74 @@ const Footer = () => {
                 </Link>
               </div>
             </Col>
-          </Row>
-        </div>
-        <Divider className={classes.divider} />
-        <div className={classes.container}>
+          </Row> */}
+          <Divider className={classes.divider} />
           <Row>
-            <Col className="gutter-row" md={3} sm={24} xs={24}>
-              <h3>@2022 Uplio Inc.</h3>
+            <Col className="gutter-row" md={8} sm={24} xs={24}>
+              <div className={classes.footerContentLeft}>
+                <Space size={65}>
+                  <Link to="/">
+                    <h3>Home</h3>
+                  </Link>
+                  <Link to="/about">
+                    <h3>About Us</h3>
+                  </Link>
+                </Space>
+              </div>
+              <div className={classes.footerBottomContentLeft}>
+                <h3>@2022 Uplio, Inc. All rights reserved</h3>
+              </div>
             </Col>
-            <Col className="gutter-row" md={1} sm={24} xs={24}>
+            <Col className="gutter-row" md={8} sm={24} xs={24}>
+              <div className={classes.footerContentCenter}>
+                <Space size={76}>
+                  <a
+                    href="https://www.facebook.com/Uplio-103062572308513"
+                    target="_blank"
+                  >
+                    <img src={facebookIcon} alt="Uplio" />
+                  </a>
+                  <a href="https://twitter.com/Uplio11" target="_blank">
+                    <img src={twitterIcon} alt="Uplio" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/uplio_marketplace/"
+                    target="_blank"
+                  >
+                    <img src={instagramIcon} alt="Uplio" />
+                  </a>
+                </Space>
+              </div>
+            </Col>
+            <Col className="gutter-row" md={8} sm={24} xs={24}>
+              <div className={classes.footerContentRight}>
+                <Space size={65}>
+                  <Link to="/privacy-policy">
+                    <h3>Privacy Policy</h3>
+                  </Link>
+                  <Link to="/faq">
+                    <h3>FAQs</h3>
+                  </Link>
+                </Space>
+              </div>
+              <div className={classes.footerBottomContentRight}>
+                <Space size={29}>
+                  <a href="mailto:hello@uplio.com" target="_blank">
+                    <h3>hello@uplio.com</h3>
+                  </a>
+                  <a href="tel:+1 835 254 8456" target="_blank">
+                    <h3>+1 835 254 8456</h3>
+                  </a>
+                </Space>
+              </div>
+            </Col>
+
+            {/* <Col className="gutter-row" md={1} sm={24} xs={24}>
               <Divider
                 type={screenSize.dynamicWidth < 500 ? 'horizontal' : 'vertical'}
                 className={classes.dividerVertical}
               />
-            </Col>
-            <Col className="gutter-row" md={3} sm={24} xs={24}>
-              <h3>Terms of Service</h3>
-            </Col>
-            <Col className="gutter-row" md={1} sm={24} xs={24}>
-              <Divider
-                type={screenSize.dynamicWidth < 500 ? 'horizontal' : 'vertical'}
-                className={classes.dividerVertical}
-              />
-            </Col>
-            <Col className="gutter-row" md={3} sm={24} xs={24}>
-              <h3>Privacy Policy</h3>
-            </Col>
-            <Col className="gutter-row" md={1} sm={24} xs={24}>
-              <Divider
-                type={screenSize.dynamicWidth < 500 ? 'horizontal' : 'vertical'}
-                className={classes.dividerVertical}
-              />
-            </Col>
-            <Col className="gutter-row" md={3} sm={24} xs={24}>
-              <h3>Cookie Policy</h3>
-            </Col>
-            <Col className="gutter-row" md={1} sm={24} xs={24}>
-              <Divider
-                type={screenSize.dynamicWidth < 500 ? 'horizontal' : 'vertical'}
-                className={classes.dividerVertical}
-              />
-            </Col>
-            <Col className="gutter-row" md={3} sm={24} xs={24}>
-              <h3>IP Policy</h3>
-            </Col>
-            <Col className="gutter-row" md={1} sm={24} xs={24}>
-              <Divider
-                type={screenSize.dynamicWidth < 500 ? 'horizontal' : 'vertical'}
-                className={classes.dividerVertical}
-              />
-            </Col>
-            <Col className="gutter-row" md={3} sm={24} xs={24}>
-              <h3>Sitemap</h3>
-            </Col>
+            </Col> */}
           </Row>
         </div>
       </div>
