@@ -20,6 +20,7 @@ module.exports = {
               // '@tabs-card-tab-active-border-top': '2px solid #E14A48',
               // '@input-bg': '#e1dfde',
               '@input-placeholder-color': '#8e8b8a',
+              '@list-customize-card-bg': '#fff',
             },
             javascriptEnabled: true,
           },

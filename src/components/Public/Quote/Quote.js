@@ -76,17 +76,6 @@ const Quote = () => {
   }
 
   const handleSubmit = () => {
-    debugger
-    console.log(
-      projectDetail,
-      category,
-      color,
-      messageData,
-      projectStartDate,
-      projectEndDate,
-      quantity,
-      budget
-    )
     dispatch(
       quoteData({
         projectName: projectDetail,
@@ -222,6 +211,7 @@ const Quote = () => {
                     </Select>
                   </Form.Item>
                 </Col>
+
                 {/* <Col span={4}>
                   <Form.Item label="Color">
                     <Select
@@ -240,9 +230,10 @@ const Quote = () => {
                 </Col> */}
               </Row>
             </Form.Item>
-            <h4>
+            <h4 className={classes.headingQuote}>
               <strong>Project details:</strong>
             </h4>
+
             <Form.Item label="Project Name">
               <Input
                 value={projectDetail}
@@ -253,6 +244,7 @@ const Quote = () => {
                 allowClear
               />
             </Form.Item>
+
             <Row gutter={12}>
               <Col span={12}>
                 <Form.Item label="Project start date">
@@ -299,23 +291,10 @@ const Quote = () => {
                 </Form.Item>
               </Col>
             </Row>
-            <h4>Project reference files:</h4>
-            <p>Images or sourced documents such as tech packs</p>
-            <Form.Item>
-              <UploadImage />
-            </Form.Item>
-            <hr />
-            <h4>Inspiration files:</h4>
-            <p>
-              Images/design so that your supplier gets an idea of the style you
-              are looking for
-            </p>
-            <Form.Item>
-              <UploadImage />
-            </Form.Item>
-            <hr />
-            <h4>Project description:</h4>
-            <p>
+            <h4 className={classes.headingQuote} style={{ marginBottom: '0' }}>
+              <strong>Project description:</strong>
+            </h4>
+            <p style={{ marginBottom: '40px' }}>
               Briefly explain what you are looking for. (ex. We are looking to
               design active wear. We would like the fabric to be at least 90%
               cotton and include our brand logo.)
@@ -328,6 +307,33 @@ const Quote = () => {
                 size="large"
               />
             </Form.Item>
+            <h4 className={classes.headingQuote}>
+              <strong>Project reference files:</strong>
+            </h4>
+            <p>Images or sourced documents such as tech packs</p>
+            <Form.Item>
+              <div className={classes.uploadImage}>
+                <UploadImage />
+              </div>
+            </Form.Item>
+            <hr />
+            <h4 className={classes.headingQuote}>
+              <strong>Inspiration files:</strong>
+            </h4>
+            <p>
+              Images/design so that your supplier gets an idea of the style you
+              are looking for
+            </p>
+            <Form.Item label="Images...">
+              <div className={classes.uploadImage}>
+                <UploadImage />{' '}
+              </div>
+            </Form.Item>
+            <Form.Item label="Documents & Links...">
+              <div className={classes.uploadImage}>
+                <UploadImage />
+              </div>
+            </Form.Item>
 
             <Form.Item>
               <button
@@ -336,7 +342,7 @@ const Quote = () => {
                 to="/"
               >
                 <h6>
-                  Start from scratch
+                  Submit
                   <ArrowRightOutlined />
                 </h6>
               </button>

@@ -1,6 +1,8 @@
 import React from 'react'
 import { Upload, message } from 'antd'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
+import uploadImage from '../../../assets/svg/uploadIcon.svg'
+import classes from './UploadImage.module.scss'
 
 function getBase64(img, callback) {
   const reader = new FileReader()
@@ -59,9 +61,8 @@ class UploadImage extends React.Component {
   render() {
     const { loading, imageUrl } = this.state
     const uploadButton = (
-      <div>
-        {loading ? <LoadingOutlined /> : <PlusOutlined />}
-        <div style={{ marginTop: 8 }}>Upload</div>
+      <div className={classes.uploadContainer}>
+        {loading ? <LoadingOutlined /> : <img src={uploadImage} alt="uplio" />}
       </div>
     )
     return (
@@ -75,7 +76,9 @@ class UploadImage extends React.Component {
         onChange={this.handleChange}
       >
         {imageUrl ? (
-          <img src={imageUrl} alt="avatar" style={{ width: '100%' }} />
+          <>
+            <img src={imageUrl} alt="avatar" style={{ width: '100%' }} />
+          </>
         ) : (
           uploadButton
         )}
