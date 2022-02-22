@@ -1,0 +1,32 @@
+@import '../../../theme/variable.module.scss';
+
+.header{	
+	max-width: 1200px;
+	margin:0 auto;
+	padding:40px 0;
+
+}
+.container{
+	max-width: 1200px;
+	margin:0 auto
+}
+.banner{
+	h2{
+		font-family: 'Montserrat', sans-serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 72px;
+		line-height: 74px;
+		letter-spacing: 1.5px;
+	}
+	h3{
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 17px;
+		line-height: 26px;
+	}
+	span{
+		color:$red_app_color;
+	}
+}
