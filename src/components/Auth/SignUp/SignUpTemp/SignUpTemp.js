@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { Form, Input, Spin, Row, Col } from 'antd'
 
 import classes from './SignUpTemp.module.scss'
 import logo from '../../../../assets/svg/logo_black_medium.svg'
-import rightArrow from '../../../../assets/svg/rightArrow.svg'
+
 import { useSelector, useDispatch } from 'react-redux'
 import { userLoggedIn, userDataStatus } from '../../../../CounterSlice'
 import { quoteData } from '../../../../CounterSlice'
@@ -95,7 +95,9 @@ const SignUpTemp = () => {
     <>
       <div className={classes.container}>
         <div className={classes.mainContent}>
-          <img src={logo} alt="uplio" />
+          <Link to="/">
+            <img src={logo} alt="uplio" />
+          </Link>
 
           {isQuoteCompleted ? (
             <>
