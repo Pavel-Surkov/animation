@@ -4,6 +4,7 @@ import classes from './Hompagetemp.module.scss'
 import logo from '../../../assets/svg/logo_black_medium.svg'
 import { Link, useHistory } from 'react-router-dom'
 import { Row, Col, Button, Space } from 'antd'
+import Footer from '../common/Footer/Footer'
 
 const Hompagetemp = () => {
   const history = useHistory()
@@ -40,6 +41,7 @@ const Hompagetemp = () => {
           </Row>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

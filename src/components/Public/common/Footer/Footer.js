@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Row, Col, Divider, Space } from 'antd'
-import logo from '../../../../assets/png/logo_medium_red.png'
+import logo from '../../../../assets/svg/logo_red_medium.svg'
 import facebookIcon from '../../../../assets/svg/facebook_icon.svg'
 import instagramIcon from '../../../../assets/svg/instagramIcon.svg'
 import twitterIcon from '../../../../assets/svg/twitterIcon.svg'

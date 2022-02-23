@@ -21,8 +21,6 @@ import Navigation from '../../../components/Public/Homepage/Navigation/Navigatio
 import classes from './Quote.module.scss'
 import { quoteData } from '../../../CounterSlice'
 
-import Footer from '../common/Footer/Footer'
-
 const { TextArea } = Input
 const Option = Select
 
@@ -318,29 +316,35 @@ const Quote = () => {
               <h6 style={{ marginBottom: '0' }}>Project reference files:</h6>
             </div>
 
-            <p>Images or sourced documents such as tech packs</p>
+            <p style={{ marginBottom: '32px' }}>
+              Images or sourced documents such as tech packs
+            </p>
+
             <Form.Item>
-              <div className={classes.uploadImage}>
-                <UploadImage />
-              </div>
+              <UploadImage />
             </Form.Item>
             <hr />
             <div className={classes.headingQuote}>
               <h6 style={{ marginBottom: '0' }}>Inspiration files:</h6>
             </div>
 
-            <p>
+            <p style={{ marginBottom: '32px' }}>
               Images/design so that your supplier gets an idea of the style you
               are looking for
             </p>
             <Form.Item label="Images...">
-              <div className={classes.uploadImage}>
-                <UploadImage />{' '}
+              <div className={classes.uploadImageHeadText}>
+                <UploadImage />
+              </div>
+
+              <div className={classes.uploadImageSubText}>
+                <p>Add image</p>
               </div>
             </Form.Item>
             <Form.Item label="Documents & Links...">
-              <div className={classes.uploadImage}>
-                <UploadImage />
+              <UploadImage />
+              <div className={classes.uploadImageSubText}>
+                <p>Add document/link</p>
               </div>
             </Form.Item>
 
@@ -359,7 +363,7 @@ const Quote = () => {
           </Form>
         </div>
       </div>
-      <Footer />
+
       {/* not logged in */}
       <Modal
         title="Oops !"

@@ -28,6 +28,8 @@ import SupplierDashboardOrders from '../../components/Admin/Supplier/DashboardOr
 import SupplierDashboardProfile from '../../components/Admin/Supplier/DashboardProfileTemp'
 import ForgotPassword from '../../components/Auth/ForgotPassword/ForgotPassword.js'
 import SignUpTemp from '../../components/Auth/SignUp/SignUpTemp/SignUpTemp.js'
+import PrivacyPolicy from '../../components/Public/PrivacyPolicy/PrivacyPolicy.js'
+import FrequentlyAskedQuestion from '../../components/Public/FrequentlyAskedQuestion/FrequentlyAskedQuestion.js'
 
 const PublicRoutes = () => (
   <Suspense fallback={<p>Loading ..</p>}>
@@ -44,8 +46,10 @@ const PublicRoutes = () => (
         <Route exact path="/login" component={SignIn} />
 
         {/* TODO remove link  */}
+        <Route exact path="/privacy-policy" component={PrivacyPolicy} />
         <Route exact path="/signup/buyer" component={BuyerTemp} />
         <Route exact path="/signup/supplier" component={SupplierTemp} />
+        <Route exact path="/faq" component={FrequentlyAskedQuestion} />
         <Route
           exact
           path="/signup/supplier-details"
@@ -70,6 +74,7 @@ const PublicRoutes = () => (
           path="/dashboard/supplier/message"
           component={SupplierDashboardMessage}
         />
+
         <Route
           exact
           path="/dashboard/supplier/services"
