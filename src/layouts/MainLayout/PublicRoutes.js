@@ -5,6 +5,7 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom'
+import ScrollToTop from '../../hooks/ScrollToTop'
 import Aboutus from '../../components/Public/Aboutus/Aboutus.js'
 import Career from '../../components/Public/Career/Career.js'
 import Helpcenter from '../../components/Public/Helpcenter/Helpcenter.js'
@@ -30,69 +31,77 @@ import ForgotPassword from '../../components/Auth/ForgotPassword/ForgotPassword.
 import SignUpTemp from '../../components/Auth/SignUp/SignUpTemp/SignUpTemp.js'
 import PrivacyPolicy from '../../components/Public/PrivacyPolicy/PrivacyPolicy.js'
 import FrequentlyAskedQuestion from '../../components/Public/FrequentlyAskedQuestion/FrequentlyAskedQuestion.js'
+import TermsAndConditions from '../../components/Public/TermsAndConditions/TermsAndConditions'
 
 const PublicRoutes = () => (
   <Suspense fallback={<p>Loading ..</p>}>
     <Router>
-      <Switch>
-        <Route exact path="/" component={Homepagetemp} />
-        <Route exact path="/about" component={Aboutus} />
-        <Route exact path="/newsroom" component={Newsroom} />
-        <Route exact path="/careers" component={Career} />
-        <Route exact path="/help-center" component={Helpcenter} />
+      <ScrollToTop>
+        <Switch>
+          <Route exact path="/" component={Homepagetemp} />
+          <Route exact path="/about" component={Aboutus} />
+          <Route exact path="/newsroom" component={Newsroom} />
+          <Route exact path="/careers" component={Career} />
+          <Route exact path="/help-center" component={Helpcenter} />
 
-        <Route exact path="/user-type" component={SignUp} />
-        <Route exact path="/signup" component={SignUpTemp} />
-        <Route exact path="/login" component={SignIn} />
+          <Route exact path="/user-type" component={SignUp} />
+          <Route exact path="/signup" component={SignUpTemp} />
+          <Route exact path="/login" component={SignIn} />
 
-        {/* TODO remove link  */}
-        <Route exact path="/privacy-policy" component={PrivacyPolicy} />
-        <Route exact path="/signup/buyer" component={BuyerTemp} />
-        <Route exact path="/signup/supplier" component={SupplierTemp} />
-        <Route exact path="/faq" component={FrequentlyAskedQuestion} />
-        <Route
-          exact
-          path="/signup/supplier-details"
-          component={SupplierDetailTemp}
-        />
-        <Route
-          exact
-          path="/signup/completed-supplier"
-          component={SupplierCompletedTemp}
-        />
-        <Route exact path="/profile/:id" component={SupplierProfile} />
-        <Route exact path="/products/:id" component={Products} />
-        <Route exact path="/quote" component={Quote} />
-        <Route exact path="/signup/completed" component={GreetingTemp} />
-        <Route
-          exact
-          path="/dashboard/supplier/lead"
-          component={SupplierDashboard}
-        />
-        <Route
-          exact
-          path="/dashboard/supplier/message"
-          component={SupplierDashboardMessage}
-        />
+          {/* TODO remove link  */}
+          <Route exact path="/privacy-policy" component={PrivacyPolicy} />
+          <Route exact path="/signup/buyer" component={BuyerTemp} />
+          <Route exact path="/signup/supplier" component={SupplierTemp} />
+          <Route exact path="/faq" component={FrequentlyAskedQuestion} />
+          <Route
+            exact
+            path="/terms-conditions"
+            component={TermsAndConditions}
+          />
+          <Route
+            exact
+            path="/signup/supplier-details"
+            component={SupplierDetailTemp}
+          />
+          <Route
+            exact
+            path="/signup/completed-supplier"
+            component={SupplierCompletedTemp}
+          />
+          <Route exact path="/profile/:id" component={SupplierProfile} />
+          <Route exact path="/products/:id" component={Products} />
+          <Route exact path="/quote" component={Quote} />
+          <Route exact path="/signup/completed" component={GreetingTemp} />
+          <Route
+            exact
+            path="/dashboard/supplier/lead"
+            component={SupplierDashboard}
+          />
+          <Route
+            exact
+            path="/dashboard/supplier/message"
+            component={SupplierDashboardMessage}
+          />
 
-        <Route
-          exact
-          path="/dashboard/supplier/services"
-          component={SupplierDashboardService}
-        />
-        <Route
-          exact
-          path="/dashboard/supplier/orders"
-          component={SupplierDashboardOrders}
-        />
-        <Route
-          exact
-          path="/dashboard/supplier/profile"
-          component={SupplierDashboardProfile}
-        />
-        <Route exact path="/forgot-password" component={ForgotPassword} />
-        <Redirect to="/" />
-      </Switch>
+          <Route
+            exact
+            path="/dashboard/supplier/services"
+            component={SupplierDashboardService}
+          />
+          <Route
+            exact
+            path="/dashboard/supplier/orders"
+            component={SupplierDashboardOrders}
+          />
+          <Route
+            exact
+            path="/dashboard/supplier/profile"
+            component={SupplierDashboardProfile}
+          />
+          <Route exact path="/forgot-password" component={ForgotPassword} />
+          <Redirect to="/" />
+        </Switch>
+      </ScrollToTop>
     </Router>
   </Suspense>
 )

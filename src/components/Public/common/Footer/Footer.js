@@ -34,9 +34,9 @@ const Footer = () => {
     <>
       <div className={classes.footer}>
         <div className={classes.container}>
-          <Link to="/">
+          {/* <Link to="/">
             <img src={logo} alt="Uplio" />
-          </Link>
+          </Link> */}
           {/* <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col className="gutter-row" md={12} sm={24} xs={24}>
               <img src={logo} alt="Uplio" />
@@ -93,65 +93,147 @@ const Footer = () => {
           </Row> */}
           <Divider className={classes.divider} />
           <Row>
-            <Col className="gutter-row" md={8} sm={24} xs={24}>
-              <div className={classes.footerContentLeft}>
-                <Space size={65}>
-                  <Link to="/">
-                    <h3>Home</h3>
-                  </Link>
-                  <Link to="/about">
-                    <h3>About Us</h3>
-                  </Link>
-                </Space>
-              </div>
-              <div className={classes.footerBottomContentLeft}>
-                <h3>@2022 Uplio, Inc. All rights reserved</h3>
-              </div>
-            </Col>
-            <Col className="gutter-row" md={8} sm={24} xs={24}>
-              <div className={classes.footerContentCenter}>
-                <Space size={76}>
-                  <a
-                    href="https://www.facebook.com/Uplio-103062572308513"
-                    target="_blank"
-                  >
-                    <img src={facebookIcon} alt="Uplio" />
-                  </a>
-                  <a href="https://twitter.com/Uplio11" target="_blank">
-                    <img src={twitterIcon} alt="Uplio" />
-                  </a>
-                  <a
-                    href="https://www.instagram.com/uplio_marketplace/"
-                    target="_blank"
-                  >
-                    <img src={instagramIcon} alt="Uplio" />
-                  </a>
-                </Space>
-              </div>
-            </Col>
-            <Col className="gutter-row" md={8} sm={24} xs={24}>
-              <div className={classes.footerContentRight}>
-                <Space size={65}>
-                  <Link to="/privacy-policy">
-                    <h3>Privacy Policy</h3>
-                  </Link>
-                  <Link to="/faq">
-                    <h3>FAQs</h3>
-                  </Link>
-                </Space>
-              </div>
-              <div className={classes.footerBottomContentRight}>
-                <Space size={29}>
-                  <a href="mailto:hello@uplio.com" target="_blank">
-                    <h3>hello@uplio.com</h3>
-                  </a>
-                  <a href="tel:+1 835 254 8456" target="_blank">
-                    <h3>+1 835 254 8456</h3>
-                  </a>
-                </Space>
-              </div>
-            </Col>
+            {screenSize.dynamicWidth < 500 ? (
+              <>
+                <Col className="gutter-row" md={8} sm={24} xs={24}>
+                  <div className={classes.footerContentCenter}>
+                    <Space size={47}>
+                      <a
+                        href="https://www.facebook.com/Uplio-103062572308513"
+                        target="_blank"
+                      >
+                        <img src={facebookIcon} alt="Uplio" />
+                      </a>
+                      <a href="https://twitter.com/Uplio11" target="_blank">
+                        <img src={twitterIcon} alt="Uplio" />
+                      </a>
+                      <a
+                        href="https://www.instagram.com/uplio_marketplace/"
+                        target="_blank"
+                      >
+                        <img src={instagramIcon} alt="Uplio" />
+                      </a>
+                    </Space>
+                  </div>
+                </Col>
+                <Col className="gutter-row" md={8} sm={24} xs={8}>
+                  <div className={classes.footerContentLeft}>
+                    <Space direction="vertical" size={21}>
+                      <Link to="/">
+                        <h3>Home</h3>
+                      </Link>
+                      <Link to="/about">
+                        <h3>About Us</h3>
+                      </Link>
+                    </Space>
+                  </div>
+                </Col>
+                <Col className="gutter-row" md={8} sm={24} xs={8}>
+                  <div className={classes.footerContentLeft}>
+                    <Space direction="vertical" size={21}>
+                      <Link to="/">
+                        <h3>Terms & Conditions</h3>
+                      </Link>
+                    </Space>
+                  </div>
+                </Col>
 
+                <Col className="gutter-row" md={8} sm={24} xs={8}>
+                  <div className={classes.footerContentRight}>
+                    <Space size={21} direction="vertical">
+                      <Link to="/privacy-policy">
+                        <h3>Privacy Policy</h3>
+                      </Link>
+                      <Link to="/faq">
+                        <h3>FAQs</h3>
+                      </Link>
+                    </Space>
+                  </div>
+                </Col>
+                <Col className="gutter-row" md={8} sm={24} xs={24}>
+                  <div className={classes.footerBottomContent}>
+                    <Space size={113}>
+                      <a href="mailto:hello@uplio.com" target="_blank">
+                        <h3>hello@uplio.com</h3>
+                      </a>
+                      <a href="tel:+1 714 604 6709" target="_blank">
+                        <h3>+1 714 604 6709</h3>
+                      </a>
+                    </Space>
+                  </div>
+                </Col>
+
+                <Col className="gutter-row" md={8} sm={24} xs={24}>
+                  <div className={classes.footerBottomContent}>
+                    <h3>@2022 Uplio, Inc. All rights reserved</h3>
+                  </div>
+                </Col>
+              </>
+            ) : (
+              <>
+                <Col className="gutter-row" md={8} sm={24} xs={24}>
+                  <div className={classes.footerContentLeft}>
+                    <Space size={65}>
+                      <Link to="/">
+                        <h3>Home</h3>
+                      </Link>
+                      <Link to="/about">
+                        <h3>About Us</h3>
+                      </Link>
+                    </Space>
+                  </div>
+                  <div className={classes.footerBottomContentLeft}>
+                    <h3>@2022 Uplio, Inc. All rights reserved</h3>
+                  </div>
+                </Col>
+                <Col className="gutter-row" md={8} sm={24} xs={24}>
+                  <div className={classes.footerContentCenter}>
+                    <Space size={76}>
+                      <a
+                        href="https://www.facebook.com/Uplio-103062572308513"
+                        target="_blank"
+                      >
+                        <img src={facebookIcon} alt="Uplio" />
+                      </a>
+                      <a href="https://twitter.com/Uplio11" target="_blank">
+                        <img src={twitterIcon} alt="Uplio" />
+                      </a>
+                      <a
+                        href="https://www.instagram.com/uplio_marketplace/"
+                        target="_blank"
+                      >
+                        <img src={instagramIcon} alt="Uplio" />
+                      </a>
+                    </Space>
+                  </div>
+                </Col>
+                <Col className="gutter-row" md={8} sm={24} xs={24}>
+                  <div className={classes.footerContentRight}>
+                    <Space size={31}>
+                      <Link to="/terms-conditions">
+                        <h3>Terms & Conditions</h3>
+                      </Link>
+                      <Link to="/privacy-policy">
+                        <h3>Privacy Policy</h3>
+                      </Link>
+                      <Link to="/faq">
+                        <h3>FAQs</h3>
+                      </Link>
+                    </Space>
+                  </div>
+                  <div className={classes.footerBottomContentRight}>
+                    <Space size={29}>
+                      <a href="mailto:hello@uplio.com" target="_blank">
+                        <h3>hello@uplio.com</h3>
+                      </a>
+                      <a href="tel:+1 714 604 6709" target="_blank">
+                        <h3>+1 714 604 6709</h3>
+                      </a>
+                    </Space>
+                  </div>
+                </Col>{' '}
+              </>
+            )}
             {/* <Col className="gutter-row" md={1} sm={24} xs={24}>
               <Divider
                 type={screenSize.dynamicWidth < 500 ? 'horizontal' : 'vertical'}

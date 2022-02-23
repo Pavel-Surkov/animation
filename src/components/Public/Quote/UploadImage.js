@@ -3,8 +3,11 @@ import { Upload, message } from 'antd'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import uploadImage from '../../../assets/svg/uploadIcon.svg'
 import classes from './UploadImage.module.scss'
+import axios from 'axios'
 
 function getBase64(img, callback) {
+  debugger
+  console.log(img)
   const reader = new FileReader()
   reader.addEventListener('load', () => callback(reader.result))
   reader.readAsDataURL(img)
@@ -31,12 +34,32 @@ function beforeUpload(file) {
 class UploadImage extends React.Component {
   state = {
     loading: false,
+    imageUrl: undefined,
+    file: undefined,
   }
 
   handleChange = (info) => {
-    debugger
     if (info.file.status === 'uploading') {
-      this.setState({ loading: true })
+      this.setState({ loading: true, file: info.file.originFileObj })
+      debugger
+      console.log(this.state.file)
+      const data = new FormData()
+      data.append('file', info.file.originFileObj)
+      // console.warn(this.state.selectedFile)
+      let url = `${process.env.REACT_APP_API_URL}/quotes/uploadFile`
+      console.log(info.file.originFileObj)
+      axios
+        .post(url, data, {
+          // receive two parameter endpoint url ,form data
+        })
+        .then((res) => {
+          // then print response status
+          console.log(res)
+          this.setState({ loading: false })
+        })
+        .catch((err) => {
+          console.log(err)
+        })
       return
     }
     if (info.file.status === 'done') {
@@ -50,12 +73,24 @@ class UploadImage extends React.Component {
     }
   }
   handleUpload = (info) => {
-    debugger
-    console.log(info)
-
-    setTimeout(() => {
-      info.file.status = 'done'
-    }, 5000)
+    // debugger
+    // console.log(this.state.file)
+    // const data = new FormData()
+    // data.append('file', this.state.imageUrl)
+    // console.warn(this.state.selectedFile)
+    // let url = `${process.env.REACT_APP_API_URL}/quotes/uploadFile`
+    // console.log(info)
+    // axios
+    //   .post(url, data, {
+    //     // receive two parameter endpoint url ,form data
+    //   })
+    //   .then((res) => {
+    //     // then print response status
+    //     console.log(res)
+    //   })
+    //   .catch((err) => {
+    //     console.log(err)
+    //   })
   }
 
   render() {

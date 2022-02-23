@@ -186,7 +186,7 @@ const SignUpTemp = () => {
               </h5>
               {/* <p>(*Required field)</p> */}
               <Row gutter={12}>
-                <Col span={12}>
+                <Col span={12} xs={24}>
                   <button
                     onClick={() => {
                       history.push({ pathname: '/' })
@@ -196,7 +196,7 @@ const SignUpTemp = () => {
                     <h6>Back to Home page</h6>
                   </button>
                 </Col>
-                <Col span={12}>
+                <Col span={12} xs={24}>
                   <button
                     onClick={() => {
                       history.push({ pathname: '/quote' })

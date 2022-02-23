@@ -159,6 +159,15 @@ and (-webkit-min-device-pixel-ratio: 2) {
 		background-color: $grey_app_color;
 		margin-left: 0px !important;
 	}
+	.footerBottomContent{
+		h3{
+			text-align: center;
+			color: $dark_grey_app_color;
+		}
+	}
+	.footerContentCenter{
+		margin-bottom: 34px;
+	}
 }
 
 /* Portrait */

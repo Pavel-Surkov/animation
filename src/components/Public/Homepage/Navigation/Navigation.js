@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useEffect, useState, useRef } from 'react'
 import { Row, Col, Space, Button } from 'antd'
 import classes from './Navigation.module.scss'
-import logo from '../../../../assets/svg/logo_black_small.svg'
+import logo from '../../../../assets/svg/logo_red_small.svg'
 import { createBrowserHistory as history } from 'history'
 import { RotateRightOutlined } from '@ant-design/icons'
 import { Link, useHistory } from 'react-router-dom'
@@ -23,33 +23,16 @@ const Navigation = (params) => {
 
   return (
     <div className={classes.header}>
-      <header ref={ref} className={sticky && check ? classes.sticky : null}>
+      {/* TODO makes sticky */}
+      {/* <header ref={ref} className={sticky && check ? classes.sticky : null}> */}
+      <header ref={ref}>
         <Row align="middle" justify="space-around">
           <Col span={12}>
             <Link to="/">
               <img src={logo} alt="Uplios" />
             </Link>
           </Col>
-          <Col span={12} align="right">
-            {userLoggedIn ? (
-              <h4 style={{ letterSpacing: '2px' }}>
-                <strong>Hi,</strong> {userName}
-              </h4>
-            ) : (
-              <Space>
-                <Button
-                  className={classes.signIn}
-                  type="link"
-                  onClick={() => handleSignIn()}
-                >
-                  Sign In
-                </Button>
-                <Link to="/signup" className={classes.signUp} type="secondary">
-                  Sign Up
-                </Link>
-              </Space>
-            )}
-          </Col>
+          <Col span={12} align="right"></Col>
         </Row>
       </header>
     </div>
