@@ -50,9 +50,9 @@ const SignUpTemp = () => {
           name: name,
           description: quote.description,
           projectStartDate: quote.projectStartDate,
-          projectLaunchDate: quote.projectEndDate,
+          projectLaunchDate: quote.projectLaunchDate,
           quantity: quote.quantity,
-          budget: quote.budget,
+          budget: `$${quote.budget}`,
           email: email,
           password: password,
         })

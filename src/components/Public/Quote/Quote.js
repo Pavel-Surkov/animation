@@ -9,6 +9,7 @@ import {
   Form,
   Input,
   DatePicker,
+  InputNumber,
   Select,
   Modal,
   Space,
@@ -176,6 +177,10 @@ const Quote = () => {
     setColor(e)
   }
 
+  const onChangeBudget = (value) => {
+    setBudget(value)
+  }
+
   const handleSignUp = () => {
     history.push({
       pathname: '/signup',
@@ -339,12 +344,13 @@ const Quote = () => {
               </Col>
               <Col span={12}>
                 <Form.Item label="Budget">
-                  <Input
+                  <InputNumber
+                    className={classes.fullWidth}
                     placeholder="Budget amount..."
+                    min={0}
+                    prefix="$"
                     value={budget}
-                    onChange={(e) => {
-                      setBudget(e.target.value)
-                    }}
+                    onChange={onChangeBudget}
                     size="large"
                     allowClear
                   />
