@@ -185,7 +185,16 @@
 	}
 	
 }
+.uploadCustomDiv{
 
+}
+.uploadButton{
+	background-color: $secondary_app_color;
+	border: 1px dashed $light_grey_app_color;
+	width: 175px;
+	height: 140px;
+	border-radius: 12px;
+}
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 
 /* Portrait and Landscape */

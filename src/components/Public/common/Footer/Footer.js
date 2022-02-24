@@ -144,7 +144,7 @@ const Footer = () => {
                 <Col className="gutter-row" md={8} sm={24} xs={24}>
                   <div>
                     <Space direction="vertical" size={21}>
-                      <Link to="/">
+                      <Link to="/terms-conditions">
                         <h3>Terms & Conditions</h3>
                       </Link>
                     </Space>

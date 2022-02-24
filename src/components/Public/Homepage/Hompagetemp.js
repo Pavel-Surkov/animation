@@ -81,7 +81,12 @@ const Hompagetemp = () => {
                   </Space>
                 </Col>
                 <Col xl={8} md={8} xs={24}>
-                  <img src={banner1} alt="uplio" />
+                  <img
+                    // TODO fix it later remove hard code
+                    style={{ marginLeft: '-290px' }}
+                    src={banner1}
+                    alt="uplio"
+                  />
                 </Col>
               </Row>
             </div>
@@ -111,7 +116,12 @@ const Hompagetemp = () => {
                   </Space>
                 </Col>
                 <Col xl={8} md={8} xs={24}>
-                  <img src={banner2} alt="Uplio" />
+                  <img
+                    // TODO fix it later remove hard code
+                    style={{ marginLeft: '-200px' }}
+                    src={banner2}
+                    alt="Uplio"
+                  />
                 </Col>
               </Row>
             </div>
@@ -141,7 +151,12 @@ const Hompagetemp = () => {
                   </Space>
                 </Col>
                 <Col xl={8} md={8} xs={24}>
-                  <img src={banner3} alt="Uplio" />
+                  <img
+                    // TODO fix it later remove hard code
+                    style={{ marginLeft: '-200px' }}
+                    src={banner3}
+                    alt="Uplio"
+                  />
                 </Col>
               </Row>
             </div>
@@ -160,7 +175,7 @@ const Hompagetemp = () => {
             <h3>Furniture</h3>
           </div>
           <div className={classes.categoriesCarouselContent}>
-            <h3>Cosmetic</h3>
+            <h3>Cosmetics</h3>
           </div>
           <div className={classes.categoriesCarouselContent}>
             <h3>Fashion</h3>
@@ -178,7 +193,7 @@ const Hompagetemp = () => {
             <h3>Furniture</h3>
           </div>
           <div className={classes.categoriesCarouselContent}>
-            <h3>Cosmetic</h3>
+            <h3>Cosmetics</h3>
           </div>
           <div className={classes.categoriesCarouselContent}>
             <h3>Fashion</h3>
@@ -196,7 +211,7 @@ const Hompagetemp = () => {
             <h3>Furniture</h3>
           </div>
           <div className={classes.categoriesCarouselContent}>
-            <h3>Cosmetic</h3>
+            <h3>Cosmetics</h3>
           </div>
           <div className={classes.categoriesCarouselContent}>
             <h3>Fashion</h3>
@@ -214,7 +229,7 @@ const Hompagetemp = () => {
             <h3>Furniture</h3>
           </div>
           <div className={classes.categoriesCarouselContent}>
-            <h3>Cosmetic</h3>
+            <h3>Cosmetics</h3>
           </div>
           <div className={classes.categoriesCarouselContent}>
             <h3>Fashion</h3>
@@ -297,7 +312,7 @@ const Hompagetemp = () => {
               <Col span={7}>
                 <div className={classes.categoryWrapper}>
                   <img src={image_3_1} alt="uplio" />
-                  <h4>Cosmetic</h4>
+                  <h4>Cosmetics</h4>
                 </div>
                 <div className={classes.categoryWrapperBottom}>
                   <h4>Eyewear</h4>
@@ -418,7 +433,7 @@ const Hompagetemp = () => {
               can launch your product line responsibly.
             </p>
             <button onClick={() => history.push({ pathname: '/quote' })}>
-              Get a Free Quote now
+              Get a Free Quote Now
             </button>
           </div>
         </Col>

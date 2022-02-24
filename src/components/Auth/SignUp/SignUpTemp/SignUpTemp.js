@@ -168,8 +168,9 @@ const SignUpTemp = () => {
                     )}
                   </button>
                   <h5>
-                    You acknowledge that you have read and agree <br /> to our
-                    Terms of Service and Privacy Policy.
+                    You acknowledge that you have read and agree <br /> to our{' '}
+                    <Link to="/terms-conditions">Terms of Service</Link> and{' '}
+                    <Link to="/privacy-policy">Privacy Policy</Link>.
                   </h5>
                 </div>
               </Form>

@@ -12,11 +12,13 @@ import {
   Select,
   Modal,
   Space,
+  Spin,
   Button,
   notification,
 } from 'antd'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import UploadImage from './UploadImage'
+import plusIcon from '../../../assets/svg/uploadIcon.svg'
 import logo from '../../../assets/svg/logo_black_medium.svg'
 import Navigation from '../../../components/Public/Homepage/Navigation/Navigation'
 import classes from './Quote.module.scss'
@@ -32,6 +34,8 @@ const Quote = () => {
   const user = useSelector((state) => state.counter.user)
   const userType = useSelector((state) => state.counter.userType)
   const token = localStorage.getItem('token')
+  const [imageLoading, setImageLoading] = useState(false)
+  const [imageResponseUrlArray] = useState([])
   const [projectDetail, setProjectDetail] = useState('')
   const [projectStartDate, setProjectStartDate] = useState('')
   const [projectEndDate, setProjectEndDate] = useState('')
@@ -42,7 +46,14 @@ const Quote = () => {
   const [color, setColor] = useState('')
   const [messageData, setMessageData] = useState('')
   const [isModalVisible, setIsModalVisible] = useState(false)
+  const [imagePreview, setImgPreview] = useState(false)
 
+  useEffect(() => {
+    if (imageResponseUrlArray.length > 0) {
+      setImgPreview(true)
+    }
+    setImgPreview(false)
+  }, [imageResponseUrlArray])
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/categories`)
@@ -70,6 +81,39 @@ const Quote = () => {
 
   const handleDateStartDate = (date, dateString) => {
     setProjectStartDate(dateString)
+  }
+
+  const hiddenFileInput = React.useRef(null)
+
+  // Programatically click the hidden file input element
+  // when the Button component is clicked
+  const handleClick = (event) => {
+    hiddenFileInput.current.click()
+  }
+  // Call a function (passed as a prop from the parent component)
+  // to handle the user-selected file
+  const handleChange = (event) => {
+    debugger
+    setImageLoading(true)
+    const fileUploaded = event.target.files[0]
+    const data = new FormData()
+    data.append('file', fileUploaded)
+    // console.warn(this.state.selectedFile)
+    let url = `${process.env.REACT_APP_API_URL}/quotes/uploadFile`
+    console.log(fileUploaded)
+    axios
+      .post(url, data, {
+        // receive two parameter endpoint url ,form data
+      })
+      .then((res) => {
+        // then print response status
+        imageResponseUrlArray.push(res.data.data)
+        setImageLoading(false)
+      })
+      .catch((err) => {
+        console.log(err)
+        setImageLoading(true)
+      })
   }
 
   const handleDateEndDate = (date, dateString) => {
@@ -334,7 +378,43 @@ const Quote = () => {
             </p>
 
             <Form.Item>
-              <input type="file" />
+              <div className={classes.uploadCustomDiv}>
+                <input
+                  type="file"
+                  ref={hiddenFileInput}
+                  onChange={handleChange}
+                  style={{ display: 'none' }}
+                />
+                <Row gutter={10}>
+                  <Col span={6}>
+                    <button
+                      className={classes.uploadButton}
+                      onClick={handleClick}
+                    >
+                      {imageLoading ? (
+                        <Spin size="large" />
+                      ) : (
+                        <img src={plusIcon} alt="uplio" />
+                      )}
+                    </button>
+                  </Col>
+                  {imagePreview
+                    ? 'show image'
+                    : imageResponseUrlArray.map((item) => (
+                        <Col span={6}>
+                          <div>
+                            <img
+                              width={175}
+                              height={140}
+                              src={item}
+                              alt="uplio"
+                            />
+                          </div>
+                        </Col>
+                      ))}
+                </Row>
+              </div>
+
               {/* <UploadImage /> */}
             </Form.Item>
             <hr />

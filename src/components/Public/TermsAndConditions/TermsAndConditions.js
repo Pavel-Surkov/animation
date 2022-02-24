@@ -11,7 +11,10 @@ const TermsAndConditions = () => {
       <Navigation />
       <div className={classes.container}>
         <div className={classes.content}>
+          <h1>Terms of Service</h1>
           <h3>
+            Last Updated: Feb 23, 2022
+            <br />
             Uplio, Inc. (“Uplio”) is an online marketplace connecting buyers
             with manufacturers, accessible through its websites (collectively,
             the “Site”). Throughout these Terms of Service (“Terms”), the terms

@@ -66,10 +66,15 @@
 		border-radius: 50px;
 		border: none;
 	}
+	.bannerButton:hover{
+		border: 1px solid $red_app_color;
+		background: $secondary_app_color;
+		color: $red_app_color
+	}
 	img{
 		
 		// width: 900px;
-		// margin-left: -200px;
+		// margin-left: -350px;
 	}
 	
 
@@ -285,7 +290,15 @@
 		position: absolute;
 		left:    38px;
 		bottom:   34px;
+		transition: 100ms;
 	}
+	button:hover{
+	background-color: $red_app_color;
+	border: 1px solid $secondary_app_color;
+	color :$secondary_app_color;
+	transition: 100ms;
+	}
+
 }
 .getQuoteSectionImage{
 	width: 100%;
@@ -349,6 +362,7 @@ and (orientation: portrait) {
 		font-size: 17px;
 		line-height: 26px;
 	}
+
 	.categoriesCarouselContent{
 		h3{
 			font-family: 'Montserrat',sans-serif;

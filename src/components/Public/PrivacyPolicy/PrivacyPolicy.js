@@ -11,19 +11,23 @@ const PrivacyPolicy = () => {
       <Navigation />
       <div className={classes.container}>
         <div className={classes.content}>
+          <h1>Privacy Policy</h1>
           <h3>
-            Last Updated: Feb 23, 2022 Uplio understands you care about how your
-            personal information is used and shared, and we take your privacy
-            seriously. Please read the following to learn more about our privacy
-            practices. By using or accessing the Services in any manner, you
-            acknowledge that you accept the practices and policies outlined in
-            this Privacy Policy, and that we will collect, use, and share your
-            information in the following ways. Remember that your use of Uplio’s
-            Services is subject to the{' '}
-            <Link to="/terms-conditions">Terms of Service</Link> , which
-            incorporates this Privacy Policy. Any terms we use in this Policy
-            without defining them have the definitions given to them in the{' '}
-            <Link to="/terms-conditions">Terms of Service</Link> .
+            Last Updated: Feb 23, 2022
+            <br />
+            Uplio understands you care about how your personal information is
+            used and shared, and we take your privacy seriously. Please read the
+            following to learn more about our privacy practices. By using or
+            accessing the Services in any manner, you acknowledge that you
+            accept the practices and policies outlined in this Privacy Policy,
+            and that we will collect, use, and share your information in the
+            following ways. Remember that your use of Uplio’s Services is
+            subject to the <Link to="/terms-conditions">
+              Terms of Service
+            </Link>{' '}
+            , which incorporates this Privacy Policy. Any terms we use in this
+            Policy without defining them have the definitions given to them in
+            the <Link to="/terms-conditions">Terms of Service</Link> .
           </h3>
         </div>
         <div className={classes.content}>
