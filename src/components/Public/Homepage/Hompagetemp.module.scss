@@ -320,7 +320,7 @@ and (orientation: portrait) {
 			font-family: 'Playfair Display',sans-serif;
 			font-style: normal;
 			font-weight: bold;
-			font-size: 28px;
+			font-size: 30px;
 			line-height: 40px;
 		}
 		span{
@@ -390,6 +390,7 @@ and (orientation: portrait) {
 		h4{
 			font-family: 'Inter',sans-serif;
 			font-style: normal;
+			top: 1px;
 			font-weight: bold;
 			font-size: 16px;
 			line-height: 30px;
@@ -403,6 +404,7 @@ and (orientation: portrait) {
 		font-style: normal;
 		font-weight: bold;
 		font-size: 16px;
+		top: 50%;
 		line-height: 30px;
 		width: 100px;
 		}

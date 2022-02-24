@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 import { Link, useHistory } from 'react-router-dom'
+import moment from 'moment'
 import {
   Row,
   Col,
@@ -249,6 +250,12 @@ const Quote = () => {
               <Col span={12}>
                 <Form.Item label="Project start date">
                   <DatePicker
+                    disabledDate={(current) => {
+                      let customDate = moment().format('YYYY-MM-DD')
+                      return (
+                        current && current < moment(customDate, 'YYYY-MM-DD')
+                      )
+                    }}
                     placeholder="Select a date"
                     style={{ width: '100%' }}
                     onChange={handleDateStartDate}
@@ -259,6 +266,12 @@ const Quote = () => {
               <Col span={12}>
                 <Form.Item label="Target launch date">
                   <DatePicker
+                    disabledDate={(current) => {
+                      let customDate = moment().format('YYYY-MM-DD')
+                      return (
+                        current && current < moment(customDate, 'YYYY-MM-DD')
+                      )
+                    }}
                     style={{ width: '100%' }}
                     placeholder="Select a date"
                     onChange={handleDateEndDate}
@@ -321,7 +334,8 @@ const Quote = () => {
             </p>
 
             <Form.Item>
-              <UploadImage />
+              <input type="file" />
+              {/* <UploadImage /> */}
             </Form.Item>
             <hr />
             <div className={classes.headingQuote}>
@@ -383,4 +397,5 @@ const Quote = () => {
     </>
   )
 }
+
 export default Quote
