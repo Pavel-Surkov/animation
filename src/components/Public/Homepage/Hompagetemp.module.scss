@@ -182,7 +182,11 @@
 	margin-bottom: 104px;
 }
 .aboutSection{
-	margin-bottom: 123px;
+	padding-bottom: 123px;
+	background-image: url('../../../assets/images/About\ us\ banner.png');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
 	img{
 		width: 115px;
 		height: 115px;
@@ -404,6 +408,10 @@ and (orientation: portrait) {
 		}
 	}
 	.aboutSection{
+		background-image: url('../../../assets/images/Mobile\ Screen\ About\ Us.png');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;	
 		h6{
 			font-family: 'Inter',sans-serif;
 			font-style: normal;

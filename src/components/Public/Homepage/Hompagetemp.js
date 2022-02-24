@@ -62,8 +62,8 @@ const Hompagetemp = () => {
           <div className={classes.banner}>
             <div>
               <Row>
-                <Col xl={1} md={1} xs={0}></Col>
-                <Col xl={13} md={13} xs={24}>
+                <Col xl={1} md={1} xs={1}></Col>
+                <Col xl={13} md={13} xs={23}>
                   <h2>
                     Find trusted Suppliers in <span>Fashion</span>
                   </h2>
@@ -92,8 +92,8 @@ const Hompagetemp = () => {
           <div className={classes.banner}>
             <div>
               <Row>
-                <Col xl={1} md={1} xs={0}></Col>
-                <Col xl={13} md={13} xs={24}>
+                <Col xl={1} md={1} xs={1}></Col>
+                <Col xl={13} md={13} xs={23}>
                   <h2>
                     Find trusted Suppliers in <span>Cosmetics</span>
                   </h2>
@@ -122,8 +122,8 @@ const Hompagetemp = () => {
           <div className={classes.banner}>
             <div>
               <Row>
-                <Col xl={1} md={1} xs={0}></Col>
-                <Col xl={13} md={13} xs={24}>
+                <Col xl={1} md={1} xs={1}></Col>
+                <Col xl={13} md={13} xs={23}>
                   <h2>
                     Find trusted Suppliers in <span>Furniture</span>
                   </h2>
