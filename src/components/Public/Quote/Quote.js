@@ -24,6 +24,7 @@ import logo from '../../../assets/svg/logo_black_medium.svg'
 import Navigation from '../../../components/Public/Homepage/Navigation/Navigation'
 import classes from './Quote.module.scss'
 import { quoteData } from '../../../CounterSlice'
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons'
 
 const { TextArea } = Input
 const Option = Select
@@ -49,12 +50,32 @@ const Quote = () => {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [imagePreview, setImgPreview] = useState(false)
 
+  const [uploadType, setUploadType] = useState('')
+  const [referenceFiles, setRefernceFiles] = useState(false)
+  const [inspirationFiles, setInspirationFiles] = useState(false)
+  const [documentFiles, setDocumentFiles] = useState(false)
+
+  const [referenceFilesUrlArray] = useState([])
+  const [inspirationFilesUrlArray] = useState([])
+  const [documentUrlArray] = useState([])
+
+  const [preview, setPreView] = useState('')
   useEffect(() => {
-    if (imageResponseUrlArray.length > 0) {
-      setImgPreview(true)
+    debugger
+    if (referenceFilesUrlArray.length > 0) {
+      setRefernceFiles(true)
+    } else if (documentUrlArray.length > 0) {
+      setDocumentFiles(true)
+    } else if (inspirationFilesUrlArray.length > 0) {
+      setInspirationFiles(true)
+    } else if (referenceFilesUrlArray.length == 0) {
+      setRefernceFiles(false)
+    } else if (documentUrlArray.length == 0) {
+      setDocumentFiles(false)
+    } else if (inspirationFilesUrlArray.length == 0) {
+      setInspirationFiles(false)
     }
-    setImgPreview(false)
-  }, [imageResponseUrlArray])
+  }, [referenceFilesUrlArray, documentUrlArray, inspirationFilesUrlArray])
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/categories`)
@@ -90,6 +111,7 @@ const Quote = () => {
   // when the Button component is clicked
   const handleClick = (event) => {
     hiddenFileInput.current.click()
+    setUploadType(event)
   }
   // Call a function (passed as a prop from the parent component)
   // to handle the user-selected file
@@ -108,8 +130,18 @@ const Quote = () => {
       })
       .then((res) => {
         // then print response status
-        imageResponseUrlArray.push(res.data.data)
+        debugger
         setImageLoading(false)
+        if (uploadType === 'reference') {
+          referenceFilesUrlArray.push(res.data.data)
+          setRefernceFiles(true)
+        } else if (uploadType === 'inspiration') {
+          inspirationFilesUrlArray.push(res.data.data)
+          setInspirationFiles(true)
+        } else if (uploadType === 'document') {
+          documentUrlArray.push(res.data.data)
+          setDocumentFiles(true)
+        }
       })
       .catch((err) => {
         console.log(err)
@@ -132,6 +164,9 @@ const Quote = () => {
         projectLaunchDate: projectEndDate,
         quantity: quantity,
         budget: budget,
+        inspirationImages: inspirationFilesUrlArray,
+        inspirationDocument: documentUrlArray,
+        referenceImages: referenceFilesUrlArray,
       })
     )
     history.push({ pathname: '/signup' })
@@ -194,12 +229,33 @@ const Quote = () => {
   }
   const handleOk = () => {
     setIsModalVisible(false)
-    history.push({ pathname: '/' })
   }
 
   const handleCancel = () => {
     setIsModalVisible(false)
-    history.push({ pathname: '/' })
+  }
+  const handleView = (item) => {
+    setIsModalVisible(true)
+    setPreView(item)
+  }
+  const handleRemove = (item, type) => {
+    debugger
+    if (type === 'reference') {
+      const index = referenceFilesUrlArray.indexOf(item)
+      if (index > -1) {
+        referenceFilesUrlArray.splice(index, 1)
+      }
+    } else if (type === 'document') {
+      const index = documentUrlArray.indexOf(item)
+      if (index > -1) {
+        documentUrlArray.splice(index, 1)
+      }
+    } else if (type === 'inspiration') {
+      const index = inspirationFilesUrlArray.indexOf(item)
+      if (index > -1) {
+        inspirationFilesUrlArray.splice(index, 1)
+      }
+    }
   }
   return (
     <>
@@ -395,7 +451,7 @@ const Quote = () => {
                   <Col span={6}>
                     <button
                       className={classes.uploadButton}
-                      onClick={handleClick}
+                      onClick={() => handleClick('reference')}
                     >
                       {imageLoading ? (
                         <Spin size="large" />
@@ -404,20 +460,27 @@ const Quote = () => {
                       )}
                     </button>
                   </Col>
-                  {imagePreview
-                    ? 'show image'
-                    : imageResponseUrlArray.map((item) => (
+                  {referenceFiles
+                    ? referenceFilesUrlArray.map((item) => (
                         <Col span={6}>
-                          <div>
-                            <img
-                              width={175}
-                              height={140}
-                              src={item}
-                              alt="uplio"
-                            />
+                          <div className={classes.previewWrapper}>
+                            <button
+                              className={classes.rightButton}
+                              onClick={() => handleRemove(item, 'reference')}
+                            >
+                              <DeleteOutlined />
+                            </button>
+                            <button
+                              className={classes.leftButton}
+                              onClick={() => handleView(item)}
+                            >
+                              <EyeOutlined />
+                            </button>
+                            <img src={item} alt="uplio" />
                           </div>
                         </Col>
-                      ))}
+                      ))
+                    : null}
                 </Row>
               </div>
 
@@ -434,7 +497,42 @@ const Quote = () => {
             </p>
             <Form.Item label="Images...">
               <div className={classes.uploadImageHeadText}>
-                <UploadImage />
+                <Row gutter={10}>
+                  <Col span={6}>
+                    <button
+                      className={classes.uploadButton}
+                      onClick={() => handleClick('inspiration')}
+                    >
+                      {imageLoading ? (
+                        <Spin size="large" />
+                      ) : (
+                        <img src={plusIcon} alt="uplio" />
+                      )}
+                    </button>
+                  </Col>
+                  {!inspirationFiles
+                    ? null
+                    : inspirationFilesUrlArray.map((item) => (
+                        <Col span={6}>
+                          <div className={classes.previewWrapper}>
+                            <button
+                              className={classes.rightButton}
+                              onClick={() => handleRemove(item, 'inspiration')}
+                            >
+                              <DeleteOutlined />
+                            </button>
+                            <button
+                              className={classes.leftButton}
+                              onClick={() => handleView(item)}
+                            >
+                              <EyeOutlined />
+                            </button>
+                            <img src={item} alt="uplio" />
+                          </div>
+                        </Col>
+                      ))}
+                </Row>
+                {/* <UploadImage /> */}
               </div>
 
               <div className={classes.uploadImageSubText}>
@@ -442,7 +540,44 @@ const Quote = () => {
               </div>
             </Form.Item>
             <Form.Item label="Documents & Links...">
-              <UploadImage />
+              <Row gutter={10}>
+                <Col span={6}>
+                  <button
+                    className={classes.uploadButton}
+                    onClick={() => handleClick('document')}
+                  >
+                    {imageLoading ? (
+                      <Spin size="large" />
+                    ) : (
+                      <img src={plusIcon} alt="uplio" />
+                    )}
+                  </button>
+                </Col>
+                {!documentFiles
+                  ? null
+                  : documentUrlArray.map((item) => (
+                      <Col span={6}>
+                        <div>
+                          <div className={classes.previewWrapper}>
+                            <button
+                              className={classes.rightButton}
+                              onClick={() => handleRemove(item, 'document')}
+                            >
+                              <DeleteOutlined />
+                            </button>
+                            <button
+                              className={classes.leftButton}
+                              onClick={() => handleView(item)}
+                            >
+                              <EyeOutlined />
+                            </button>
+                            <img src={item} alt="uplio" />
+                          </div>
+                        </div>
+                      </Col>
+                    ))}
+              </Row>
+              {/* <UploadImage /> */}
               <div className={classes.uploadImageSubText}>
                 <p>Add document/link</p>
               </div>
@@ -466,18 +601,14 @@ const Quote = () => {
 
       {/* not logged in */}
       <Modal
-        title="Oops !"
+        title="Preview"
         visible={isModalVisible}
         onOk={handleOk}
         footer={false}
         onCancel={handleCancel}
       >
         <div style={{ textAlign: 'center' }}>
-          <p>In Order to send quote you need to</p>
-          <Space size="large">
-            <Button onClick={() => handleSignUp()}>SignUp</Button>
-            <Button onClick={() => handleSignIn()}>SignIn</Button>
-          </Space>
+          <img src={preview} alt="uplio" />
         </div>
       </Modal>
     </>

@@ -55,6 +55,9 @@ const SignUpTemp = () => {
           budget: `$${quote.budget}`,
           email: email,
           password: password,
+          inspirationImages: quote.inspirationImages,
+          inspirationDocument: quote.inspirationDocument,
+          referenceImages: quote.referenceImages,
         })
         .then((res) => {
           debugger

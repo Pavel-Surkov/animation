@@ -8,6 +8,46 @@
 .fullWidth{
 	width: 100%;
 }
+.previewWrapper{
+	width: 175px;
+	height: 140px;
+	background-color: $off_grey_app_color;
+	border: 1px dashed $light_grey_app_color;
+	border-radius: 12px;
+	position: relative;
+	text-align: center;
+	img{
+		width: 80%;
+		height: 140px;	
+	}
+	.rightButton{
+		top: 25%;
+		right: 30px;	
+		padding: 20px;
+		position: absolute;
+		background: none;
+		border: none;
+	}
+	.rightButton:hover{
+		background-color: $secondary_app_color;
+		opacity: 0.5;
+		border-radius: 25px;
+	}	
+	.leftButton{
+		top: 25%;		
+		left: 30px;	
+		padding: 20px;
+		position: absolute;
+		background: none;
+		border: none;
+	}
+	.leftButton:hover{
+		background-color: $secondary_app_color;
+		opacity: 0.7;
+		border-radius: 25px;
+		opacity: 0.5;
+	}
+}
 .logoContainer{
 	
 		margin-top: 126px;
@@ -151,15 +191,17 @@
 	
 }
 .uploadImageSubText{
+	text-align: center;
 	p{
 		font-family: 'Inter',sans-serif;
 		font-style: normal;
 		font-weight: 500;
 		font-size: 14px;
+		width: 175px;
 		line-height: 18px;
 		letter-spacing: 0.02em;
 		opacity: 0.7;
-		margin-left: 15px;
+		
 	}
 }
 
