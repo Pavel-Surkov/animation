@@ -7,7 +7,9 @@ import { Row, Col, Divider } from 'antd'
 import icon from '../../../assets/svg/crossRounded.svg'
 import Header from '../../Public/Homepage/Navigation/Navigation'
 import Footer from '../common/Footer/Footer'
-import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons'
+import cross from '../../../assets/svg/FAQs Close Icon.svg'
+import plus from '../../../assets/svg/FAQs Open.svg'
+
 const FrequentlyAskedQuestion = () => {
   const [question1, setQuestion1] = useState(false)
   const [question2, setQuestion2] = useState(false)
@@ -21,17 +23,21 @@ const FrequentlyAskedQuestion = () => {
       <Header />
       <div className={classes.container}>
         <Row>
-          <Col span={12} xs={24}>
+          <Col lg={12} m={12} xs={24}>
             <div className={classes.mainSectionLeft}>
               <h1>Frequently asked questions</h1>
 
               <p>
                 Do you have another question? <br />
-                <span>Contact Us</span>
+                <span>
+                  <a href="mailto:hello@uplio.com" target="_blank">
+                    Contact Us
+                  </a>
+                </span>
               </p>
             </div>
           </Col>
-          <Col span={12} xs={24}>
+          <Col lg={12} m={12} xs={24}>
             <div className={classes.mainSection}>
               <div className={classes.contentQuestion}>
                 <div className={classes.mainSectionRight}>
@@ -42,9 +48,9 @@ const FrequentlyAskedQuestion = () => {
                     <Col span={2}>
                       <button onClick={() => setQuestion1(!question1)}>
                         {question1 ? (
-                          <CaretUpOutlined />
+                          <img src={cross} alt="uplio" />
                         ) : (
-                          <CaretDownOutlined />
+                          <img src={plus} alt="uplio" />
                         )}
                       </button>
                     </Col>
@@ -71,9 +77,9 @@ const FrequentlyAskedQuestion = () => {
                     <Col span={2}>
                       <button onClick={() => setQuestion2(!question2)}>
                         {question2 ? (
-                          <CaretUpOutlined />
+                          <img src={cross} alt="uplio" />
                         ) : (
-                          <CaretDownOutlined />
+                          <img src={plus} alt="uplio" />
                         )}
                       </button>
                     </Col>
@@ -96,16 +102,16 @@ const FrequentlyAskedQuestion = () => {
                   <Row>
                     <Col span={22}>
                       <h2>
-                        How do I get manufacturing quote? <br /> How do I see
-                        costs and lead times?
+                        How do I get manufacturing quote? How do I see costs and
+                        lead times?
                       </h2>
                     </Col>
                     <Col span={2}>
                       <button onClick={() => setQuestion3(!question3)}>
                         {question3 ? (
-                          <CaretUpOutlined />
+                          <img src={cross} alt="uplio" />
                         ) : (
-                          <CaretDownOutlined />
+                          <img src={plus} alt="uplio" />
                         )}
                       </button>
                     </Col>
@@ -133,9 +139,9 @@ const FrequentlyAskedQuestion = () => {
                     <Col span={2}>
                       <button onClick={() => setQuestion4(!question4)}>
                         {question4 ? (
-                          <CaretUpOutlined />
+                          <img src={cross} alt="uplio" />
                         ) : (
-                          <CaretDownOutlined />
+                          <img src={plus} alt="uplio" />
                         )}
                       </button>
                     </Col>
@@ -162,9 +168,9 @@ const FrequentlyAskedQuestion = () => {
                     <Col span={2}>
                       <button onClick={() => setQuestion5(!question5)}>
                         {question5 ? (
-                          <CaretUpOutlined />
+                          <img src={cross} alt="uplio" />
                         ) : (
-                          <CaretDownOutlined />
+                          <img src={plus} alt="uplio" />
                         )}
                       </button>
                     </Col>
@@ -190,11 +196,11 @@ const FrequentlyAskedQuestion = () => {
                       </h2>
                     </Col>
                     <Col span={2}>
-                      <button onClick={() => setQuestion6(!setQuestion6)}>
+                      <button onClick={() => setQuestion6(!question6)}>
                         {question6 ? (
-                          <CaretUpOutlined />
+                          <img src={cross} alt="uplio" />
                         ) : (
-                          <CaretDownOutlined />
+                          <img src={plus} alt="uplio" />
                         )}
                       </button>
                     </Col>

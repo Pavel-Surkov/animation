@@ -23,6 +23,8 @@ import icon5 from '../../../assets/images/Group 83.png'
 import icon6 from '../../../assets/images/Group 84.png'
 
 import banner_1 from '../../../assets/images/main_banner.png'
+import banner_2 from '../../../assets/images/banner_2.png'
+import banner_3 from '../../../assets/images/banner_3.png'
 import Navigation from '../Homepage/Navigation/Navigation'
 import Footer from '../common/Footer/Footer'
 
@@ -42,11 +44,34 @@ const Aboutus = () => {
           </h2>
         </div>
       </div>
-      <Row>
-        <Col span={14} xs={24}>
-          <img src={banner_1} className={classes.quoteSectionImg} alt="uplio" />
+      <Row className={classes.aboutSectionBanner}>
+        <Col lg={14} md={14} xs={24}>
+          <Carousel autoplay dots={false} pauseOnHover={false}>
+            <div>
+              <img
+                src={banner_1}
+                alt="uplio"
+                className={classes.getQuoteSectionImage}
+              />
+            </div>
+            <div>
+              <img
+                src={banner_2}
+                alt="uplio"
+                className={classes.getQuoteSectionImage}
+              />
+            </div>
+            <div>
+              <img
+                src={banner_3}
+                alt="uplio"
+                className={classes.getQuoteSectionImage}
+              />
+            </div>
+          </Carousel>
+          {/* <img src={banner_1} className={classes.quoteSectionImg} alt="uplio" /> */}
         </Col>
-        <Col span={10} xs={24}>
+        <Col lg={10} md={10} xs={24}>
           <div className={classes.quoteSection}>
             <h3>Ready to bring your vision to life</h3>
             <p>

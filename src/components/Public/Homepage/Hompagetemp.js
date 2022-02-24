@@ -26,6 +26,8 @@ import icon5 from '../../../assets/images/Group 83.png'
 import icon6 from '../../../assets/images/Group 84.png'
 
 import banner_1 from '../../../assets/images/main_banner.png'
+import banner_2 from '../../../assets/images/banner_2.png'
+import banner_3 from '../../../assets/images/banner_3.png'
 const Hompagetemp = () => {
   const history = useHistory()
 
@@ -57,97 +59,91 @@ const Hompagetemp = () => {
       <Navigation />
       <Carousel autoplay dots={false} effect="fade" pauseOnHover={false}>
         <div>
-          <div className={classes.container}>
-            <div className={classes.banner}>
-              <div>
-                <Row>
-                  <Col xl={16} md={16} xs={24}>
-                    <h2>
-                      Find trusted Suppliers in <span>Fashion</span>
-                    </h2>
-                    <h3>
-                      No more manual vetting or endless supplier outreach.
-                      Submit your quote and get personalized sourcing support in
-                      minutes.
-                    </h3>
-                    <Space size={12}>
-                      <button
-                        className={classes.bannerButton}
-                        onClick={() => history.push({ pathname: '/quote' })}
-                      >
-                        Get a Free Quote Now
-                      </button>
-                    </Space>
-                  </Col>
-                  <Col xl={8} md={8} xs={24}>
-                    <img src={banner1} alt="uplio" />
-                  </Col>
-                </Row>
-              </div>
+          <div className={classes.banner}>
+            <div>
+              <Row>
+                <Col xl={1} md={1} xs={0}></Col>
+                <Col xl={13} md={13} xs={24}>
+                  <h2>
+                    Find trusted Suppliers in <span>Fashion</span>
+                  </h2>
+                  <h3>
+                    No more manual vetting or endless supplier outreach. Submit
+                    your quote and get personalized sourcing support in minutes.
+                  </h3>
+                  <Space size={12}>
+                    <button
+                      className={classes.bannerButton}
+                      onClick={() => history.push({ pathname: '/quote' })}
+                    >
+                      Get a Free Quote Now
+                    </button>
+                  </Space>
+                </Col>
+                <Col xl={8} md={8} xs={24}>
+                  <img src={banner1} alt="uplio" />
+                </Col>
+              </Row>
             </div>
           </div>
         </div>
 
         <div>
-          <div className={classes.container}>
-            <div className={classes.banner}>
-              <div>
-                <Row>
-                  <Col xl={16} md={16} xs={24}>
-                    <h2>
-                      Find trusted Suppliers in <span>Cosmetics</span>
-                    </h2>
-                    <h3>
-                      No more manual vetting or endless supplier outreach.
-                      Submit your quote and get personalized sourcing support in
-                      minutes.
-                    </h3>
-                    <Space size={12}>
-                      <button
-                        className={classes.bannerButton}
-                        onClick={() => history.push({ pathname: '/quote' })}
-                      >
-                        Get a Free Quote Now
-                      </button>
-                    </Space>
-                  </Col>
-                  <Col xl={8} md={8} xs={24}>
-                    <img src={banner2} alt="Uplio" />
-                  </Col>
-                </Row>
-              </div>
+          <div className={classes.banner}>
+            <div>
+              <Row>
+                <Col xl={1} md={1} xs={0}></Col>
+                <Col xl={13} md={13} xs={24}>
+                  <h2>
+                    Find trusted Suppliers in <span>Cosmetics</span>
+                  </h2>
+                  <h3>
+                    No more manual vetting or endless supplier outreach. Submit
+                    your quote and get personalized sourcing support in minutes.
+                  </h3>
+                  <Space size={12}>
+                    <button
+                      className={classes.bannerButton}
+                      onClick={() => history.push({ pathname: '/quote' })}
+                    >
+                      Get a Free Quote Now
+                    </button>
+                  </Space>
+                </Col>
+                <Col xl={8} md={8} xs={24}>
+                  <img src={banner2} alt="Uplio" />
+                </Col>
+              </Row>
             </div>
           </div>
         </div>
 
         <div>
-          <div className={classes.container}>
-            <div className={classes.banner}>
-              <div>
-                <Row>
-                  <Col xl={16} md={16} xs={24}>
-                    <h2>
-                      Find trusted Suppliers in <span>Furniture</span>
-                    </h2>
-                    <h3>
-                      No more manual vetting or endless supplier outreach.
-                      Submit your quote and get personalized sourcing support in
-                      minutes.
-                    </h3>
-                    <Space size={12}>
-                      <button
-                        className={classes.bannerButton}
-                        onClick={() => history.push({ pathname: '/quote' })}
-                      >
-                        Get a Free Quote Now
-                      </button>
-                    </Space>
-                  </Col>
-                  <Col xl={8} md={8} xs={24}>
-                    <img src={banner3} alt="Uplio" />
-                  </Col>
-                </Row>
-              </div>
+          <div className={classes.banner}>
+            <div>
+              <Row>
+                <Col xl={1} md={1} xs={0}></Col>
+                <Col xl={13} md={13} xs={24}>
+                  <h2>
+                    Find trusted Suppliers in <span>Furniture</span>
+                  </h2>
+                  <h3>
+                    No more manual vetting or endless supplier outreach. Submit
+                    your quote and get personalized sourcing support in minutes.
+                  </h3>
+                  <Space size={12}>
+                    <button
+                      className={classes.bannerButton}
+                      onClick={() => history.push({ pathname: '/quote' })}
+                    >
+                      Get a Free Quote Now
+                    </button>
+                  </Space>
+                </Col>
+                <Col xl={8} md={8} xs={24}>
+                  <img src={banner3} alt="Uplio" />
+                </Col>
+              </Row>
             </div>
           </div>
         </div>
@@ -301,7 +297,7 @@ const Hompagetemp = () => {
               <Col span={7}>
                 <div className={classes.categoryWrapper}>
                   <img src={image_3_1} alt="uplio" />
-                  <h4>Cosmetics</h4>
+                  <h4>Cosmetic</h4>
                 </div>
                 <div className={classes.categoryWrapperBottom}>
                   <h4>Eyewear</h4>
@@ -390,11 +386,29 @@ const Hompagetemp = () => {
       </div>
       <Row>
         <Col xl={14} md={14} xs={24}>
-          <img
-            src={banner_1}
-            alt="uplio"
-            className={classes.getQuoteSectionImage}
-          />
+          <Carousel autoplay dots={false} pauseOnHover={false}>
+            <div>
+              <img
+                src={banner_1}
+                alt="uplio"
+                className={classes.getQuoteSectionImage}
+              />
+            </div>
+            <div>
+              <img
+                src={banner_2}
+                alt="uplio"
+                className={classes.getQuoteSectionImage}
+              />
+            </div>
+            <div>
+              <img
+                src={banner_3}
+                alt="uplio"
+                className={classes.getQuoteSectionImage}
+              />
+            </div>
+          </Carousel>
         </Col>
         <Col xl={10} md={10} xs={24}>
           <div className={classes.quoteSection}>

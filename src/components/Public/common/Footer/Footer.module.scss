@@ -127,9 +127,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
 		 padding: 35px 0;
 		 font-weight: 400;
 		}
-		h3{
-			text-align: left;
-		}
+		
 		.footerTitle{
 			h2{
 	
@@ -167,6 +165,11 @@ and (-webkit-min-device-pixel-ratio: 2) {
 	}
 	.footerContentCenter{
 		margin-bottom: 34px;
+	}
+	.footerMobileContent{
+		h3{
+			text-align: center;
+		}
 	}
 }
 

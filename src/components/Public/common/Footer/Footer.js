@@ -34,9 +34,9 @@ const Footer = () => {
     <>
       <div className={classes.footer}>
         <div className={classes.container}>
-          {/* <Link to="/">
+          <Link to="/">
             <img src={logo} alt="Uplio" />
-          </Link> */}
+          </Link>
           {/* <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col className="gutter-row" md={12} sm={24} xs={24}>
               <img src={logo} alt="Uplio" />
@@ -92,7 +92,7 @@ const Footer = () => {
             </Col>
           </Row> */}
           <Divider className={classes.divider} />
-          <Row>
+          <Row align="center">
             {screenSize.dynamicWidth < 500 ? (
               <>
                 <Col className="gutter-row" md={8} sm={24} xs={24}>
@@ -116,8 +116,8 @@ const Footer = () => {
                     </Space>
                   </div>
                 </Col>
-                <Col className="gutter-row" md={8} sm={24} xs={8}>
-                  <div className={classes.footerContentLeft}>
+                <Col className="gutter-row" md={8} sm={24} xs={12}>
+                  <div className={classes.footerMobileContent}>
                     <Space direction="vertical" size={21}>
                       <Link to="/">
                         <h3>Home</h3>
@@ -128,18 +128,9 @@ const Footer = () => {
                     </Space>
                   </div>
                 </Col>
-                <Col className="gutter-row" md={8} sm={24} xs={8}>
-                  <div className={classes.footerContentLeft}>
-                    <Space direction="vertical" size={21}>
-                      <Link to="/">
-                        <h3>Terms & Conditions</h3>
-                      </Link>
-                    </Space>
-                  </div>
-                </Col>
 
-                <Col className="gutter-row" md={8} sm={24} xs={8}>
-                  <div className={classes.footerContentRight}>
+                <Col className="gutter-row" md={8} sm={24} xs={12}>
+                  <div style={{ textAlign: 'center' }}>
                     <Space size={21} direction="vertical">
                       <Link to="/privacy-policy">
                         <h3>Privacy Policy</h3>
@@ -151,8 +142,17 @@ const Footer = () => {
                   </div>
                 </Col>
                 <Col className="gutter-row" md={8} sm={24} xs={24}>
+                  <div>
+                    <Space direction="vertical" size={21}>
+                      <Link to="/">
+                        <h3>Terms & Conditions</h3>
+                      </Link>
+                    </Space>
+                  </div>
+                </Col>
+                <Col className="gutter-row" md={8} sm={24} xs={24}>
                   <div className={classes.footerBottomContent}>
-                    <Space size={113}>
+                    <Space direction="vertical">
                       <a href="mailto:hello@uplio.com" target="_blank">
                         <h3>hello@uplio.com</h3>
                       </a>

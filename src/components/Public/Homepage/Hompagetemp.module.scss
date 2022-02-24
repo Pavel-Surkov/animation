@@ -68,8 +68,8 @@
 	}
 	img{
 		
-		width: 900px;
-		margin-left: -200px;
+		// width: 900px;
+		// margin-left: -200px;
 	}
 	
 
@@ -165,7 +165,7 @@
 		 
 		left: 31px; 
 		width: 100%; 
-
+		top: 53%;
 		font-family: 'Inter',sans-serif;
 		font-style: normal;
 		font-weight: bold;
@@ -282,6 +282,9 @@
 		left:    38px;
 		bottom:   34px;
 	}
+}
+.getQuoteSectionImage{
+	width: 100%;
 }
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
@@ -445,7 +448,7 @@ and (orientation: portrait) {
 
 	}
 	.getQuoteSectionImage{
-		width: 375px;
+		// width: 375px;
 	}
 	.quoteSection{
 		padding:21px 16px;

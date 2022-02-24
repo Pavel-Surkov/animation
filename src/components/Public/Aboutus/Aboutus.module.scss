@@ -1,13 +1,13 @@
 @import '../../../theme/variable.module.scss';
 
 .header{	
-	max-width: 1200px;
+	max-width: 1300px;
 	margin:0 auto;
 	padding:40px 0;
 
 }
 .container{
-	max-width: 1200px;
+	max-width: 1300px;
 	margin:0 auto
 }
 .categoriesCarousel{
@@ -180,9 +180,19 @@
 .categoriesSection{
 	margin-bottom: 104px;
 }
+.aboutSectionBanner{
+	
+	img{
+		width: 100%;
+	}
+}
 .aboutSection{
-	margin-top: 153px;
-	margin-bottom: 280px;
+	background-image: url('../../../assets/images/About\ us\ banner.png');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	padding-top: 153px;
+	padding-bottom: 280px;
 	text-align: justify;
 	span{
 		color: $red_app_color;
@@ -263,8 +273,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
 		padding: 100px 0;
 	}
 	.aboutSection{
-		margin-top: 100px;
-		margin-bottom: 78px;
+		padding-top: 100px;
+		padding-bottom: 78px;
+		background-image: url('../../../assets/images/Mobile\ Screen\ About\ Us.png');
 		h2{
 			letter-spacing: 1px;
 			font-family: 'Inter',sans-serif;
