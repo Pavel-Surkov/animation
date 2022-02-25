@@ -83,7 +83,11 @@ const Hompagetemp = () => {
                 <Col xl={8} md={8} xs={24}>
                   <img
                     // TODO fix it later remove hard code
-                    style={{ marginLeft: '-290px' }}
+                    style={
+                      screenSize.dynamicWidth > 500
+                        ? { marginLeft: '-290px' }
+                        : null
+                    }
                     src={banner1}
                     alt="uplio"
                   />
@@ -118,7 +122,12 @@ const Hompagetemp = () => {
                 <Col xl={8} md={8} xs={24}>
                   <img
                     // TODO fix it later remove hard code
-                    style={{ marginLeft: '-200px' }}
+
+                    style={
+                      screenSize.dynamicWidth > 500
+                        ? { marginLeft: '-290px' }
+                        : null
+                    }
                     src={banner2}
                     alt="Uplio"
                   />
@@ -153,7 +162,11 @@ const Hompagetemp = () => {
                 <Col xl={8} md={8} xs={24}>
                   <img
                     // TODO fix it later remove hard code
-                    style={{ marginLeft: '-200px' }}
+                    style={
+                      screenSize.dynamicWidth < 500
+                        ? null
+                        : { marginLeft: '-200px' }
+                    }
                     src={banner3}
                     alt="Uplio"
                   />
@@ -372,7 +385,7 @@ const Hompagetemp = () => {
                 <p>
                   We brought the traditional quotation process online to quickly
                   match you with the top five suppliers. Choose the best ones to
-                  explore further because You’re in control.
+                  explore further because you’re in control.
                 </p>
               </Col>
               <Col xl={8} md={8} xs={24}>
@@ -380,7 +393,7 @@ const Hompagetemp = () => {
                 <p>02</p>
                 <h2>More reliability and transparency</h2>
                 <p>
-                  We help make the supply chain proccess much easier. Get more
+                  We help make the supply chain process much easier. Get more
                   transparency into every step of the process from design and
                   discovery to production and delivery.
                 </p>
@@ -391,7 +404,7 @@ const Hompagetemp = () => {
                 <h2>Own your IP and protect your brand</h2>
                 <p>
                   Your designs will remain yours; as it should be. We audit
-                  manufactures to ensure that your private labels stay private
+                  manufacturers to ensure that your private labels stay private
                   and secure.
                 </p>
               </Col>

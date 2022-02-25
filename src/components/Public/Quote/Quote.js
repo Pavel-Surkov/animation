@@ -403,6 +403,7 @@ const Quote = () => {
                   <InputNumber
                     className={classes.fullWidth}
                     placeholder="Budget amount..."
+                    controls={false}
                     min={0}
                     prefix="$"
                     value={budget}
