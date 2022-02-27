@@ -186,7 +186,7 @@
 	}
 }
 .aboutSection{
-	background-image: url('../../../assets/images/About\ us\ banner.png');
+	// background-image: url('../../../assets/images/About\ us\ banner.png');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;
@@ -280,17 +280,19 @@ and (-webkit-min-device-pixel-ratio: 2) {
 		padding: 100px 0;
 	}
 	.aboutSection{
-		padding-top: 100px;
-		padding-bottom: 78px;
-		background-image: url('../../../assets/images/Mobile\ Screen\ About\ Us.png');
+		padding-top: 25px;
+    		padding-bottom: 0px;
+    		text-align: left;
+		// background-image: url('../../../assets/images/Mobile\ Screen\ About\ Us.png');
 		h2{
 			letter-spacing: 1px;
 			font-family: 'Inter',sans-serif;
 			font-style: normal;
-			font-weight: 800;
+			font-weight: 500;
 			font-size: 38px;
 			line-height: 52px;
 			margin-bottom: 78px;
+			
 		}
 		h6{
 			font-family: 'Montserrat',sans-serif;

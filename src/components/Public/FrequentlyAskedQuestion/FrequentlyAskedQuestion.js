@@ -17,6 +17,7 @@ const FrequentlyAskedQuestion = () => {
   const [question4, setQuestion4] = useState(false)
   const [question5, setQuestion5] = useState(false)
   const [question6, setQuestion6] = useState(false)
+  const [question7, setQuestion7] = useState(false)
 
   return (
     <>
@@ -90,8 +91,7 @@ const FrequentlyAskedQuestion = () => {
                     <p>
                       Using Uplio platform to request quotes is free. If you
                       accept a quote, that order will be produced by one of our
-                      manufacturing partners. 50% of invoice will be paid
-                      upfront, and 50% upon order delivery.
+                      manufacturing partners.
                     </p>
                   </div>
                 ) : null}
@@ -217,6 +217,36 @@ const FrequentlyAskedQuestion = () => {
                         hello@uplio.com
                       </a>
                       .
+                    </p>
+                  </div>
+                ) : null}
+                <Divider className={classes.divider} />
+              </div>
+              <div className={classes.contentQuestion}>
+                <div className={classes.mainSectionRight}>
+                  <Row>
+                    <Col span={22}>
+                      <h2>How do I pay for orders?</h2>
+                    </Col>
+                    <Col span={2}>
+                      <button onClick={() => setQuestion7(!question7)}>
+                        {question7 ? (
+                          <img src={cross} alt="uplio" />
+                        ) : (
+                          <img src={plus} alt="uplio" />
+                        )}
+                      </button>
+                    </Col>
+                  </Row>
+                </div>
+                {question7 ? (
+                  <div className={classes.content}>
+                    <p>
+                      On Uplio, you can pay by credit card, debit card, or
+                      directly from your bank account! At this time, we are
+                      unable to accept other forms of payment (pre-paid cards,
+                      checks, etc). Please note that most manufacturing partners
+                      require 50% of the order upfront and 50% upon shipping.
                     </p>
                   </div>
                 ) : null}

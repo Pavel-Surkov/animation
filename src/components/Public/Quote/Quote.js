@@ -299,8 +299,8 @@ const Quote = () => {
           </div>
         </div>
         <div className={classes.mainSection}>
-          <h3>Get your Free Quote</h3>
-          <h4>Create a request and get your quote in 30 minutes. </h4>
+          <h3>Get your Quote</h3>
+          <h4>Create a request and get your quote in two business days. </h4>
 
           <hr />
           <h6>Category:</h6>
@@ -569,7 +569,7 @@ const Quote = () => {
                 <p>Add image</p>
               </div>
             </Form.Item>
-            <Form.Item label="Documents & Links...">
+            <Form.Item label="Documents">
               <Row gutter={[15, 10]}>
                 <Col md={6} lg={6} xs={12}>
                   <button

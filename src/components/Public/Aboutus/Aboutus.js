@@ -79,7 +79,7 @@ const Aboutus = () => {
               can launch your product line responsibly.
             </p>
             <button onClick={() => history.push({ pathname: '/quote' })}>
-              Get a Free Quote Now
+              Get a Quote Now
             </button>
           </div>
         </Col>

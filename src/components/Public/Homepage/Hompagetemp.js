@@ -76,7 +76,7 @@ const Hompagetemp = () => {
                       className={classes.bannerButton}
                       onClick={() => history.push({ pathname: '/quote' })}
                     >
-                      Get a Free Quote Now
+                      Get a Quote Now
                     </button>
                   </Space>
                 </Col>
@@ -115,7 +115,7 @@ const Hompagetemp = () => {
                       className={classes.bannerButton}
                       onClick={() => history.push({ pathname: '/quote' })}
                     >
-                      Get a Free Quote Now
+                      Get a Quote Now
                     </button>
                   </Space>
                 </Col>
@@ -155,7 +155,7 @@ const Hompagetemp = () => {
                       className={classes.bannerButton}
                       onClick={() => history.push({ pathname: '/quote' })}
                     >
-                      Get a Free Quote Now
+                      Get a Quote Now
                     </button>
                   </Space>
                 </Col>
@@ -446,7 +446,7 @@ const Hompagetemp = () => {
               can launch your product line responsibly.
             </p>
             <button onClick={() => history.push({ pathname: '/quote' })}>
-              Get a Free Quote Now
+              Get a Quote Now
             </button>
           </div>
         </Col>
