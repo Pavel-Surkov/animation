@@ -48,20 +48,21 @@ const Quote = () => {
   const [color, setColor] = useState('')
   const [messageData, setMessageData] = useState('')
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [imagePreview, setImgPreview] = useState(false)
 
   const [uploadType, setUploadType] = useState('')
   const [referenceFiles, setRefernceFiles] = useState(false)
+  const [inspirationFilesUploading, setInspirationFilesUploading] =
+    useState(false)
+  const [documentFilesUploading, setDocumentFilesUploading] = useState(false)
   const [inspirationFiles, setInspirationFiles] = useState(false)
   const [documentFiles, setDocumentFiles] = useState(false)
 
-  const [referenceFilesUrlArray] = useState([])
-  const [inspirationFilesUrlArray] = useState([])
-  const [documentUrlArray] = useState([])
+  const [referenceFilesUrlArray, setReferenceFilesUrlArray] = useState([])
+  const [inspirationFilesUrlArray, setInspirationFilesUrlArray] = useState([])
+  const [documentUrlArray, setDocumentUrlArray] = useState([])
 
   const [preview, setPreView] = useState('')
   useEffect(() => {
-    debugger
     if (referenceFilesUrlArray.length > 0) {
       setRefernceFiles(true)
     } else if (documentUrlArray.length > 0) {
@@ -116,8 +117,14 @@ const Quote = () => {
   // Call a function (passed as a prop from the parent component)
   // to handle the user-selected file
   const handleChange = (event) => {
-    debugger
-    setImageLoading(true)
+    if (uploadType === 'reference') {
+      setImageLoading(true)
+    } else if (uploadType === 'inspiration') {
+      setInspirationFilesUploading(true)
+    } else if (uploadType === 'document') {
+      setDocumentFilesUploading(true)
+    }
+
     const fileUploaded = event.target.files[0]
     const data = new FormData()
     data.append('file', fileUploaded)
@@ -130,16 +137,29 @@ const Quote = () => {
       })
       .then((res) => {
         // then print response status
-        debugger
-        setImageLoading(false)
+
         if (uploadType === 'reference') {
-          referenceFilesUrlArray.push(res.data.data)
+          setImageLoading(false)
+          const referenceRecentUpload = []
+          referenceRecentUpload.push(res.data.data)
+          setReferenceFilesUrlArray(
+            referenceFilesUrlArray.concat(referenceRecentUpload)
+          )
+
           setRefernceFiles(true)
         } else if (uploadType === 'inspiration') {
-          inspirationFilesUrlArray.push(res.data.data)
+          setInspirationFilesUploading(false)
+          const inspirationRecentUpload = []
+          inspirationRecentUpload.push(res.data.data)
+          setInspirationFilesUrlArray(
+            inspirationFilesUrlArray.concat(inspirationRecentUpload)
+          )
           setInspirationFiles(true)
         } else if (uploadType === 'document') {
-          documentUrlArray.push(res.data.data)
+          setDocumentFilesUploading(false)
+          const documentRecentUpload = []
+          documentRecentUpload.push(res.data.data)
+          setDocumentUrlArray(documentUrlArray.concat(documentRecentUpload))
           setDocumentFiles(true)
         }
       })
@@ -239,11 +259,13 @@ const Quote = () => {
     setPreView(item)
   }
   const handleRemove = (item, type) => {
-    debugger
     if (type === 'reference') {
       const index = referenceFilesUrlArray.indexOf(item)
+
       if (index > -1) {
-        referenceFilesUrlArray.splice(index, 1)
+        setReferenceFilesUrlArray(referenceFilesUrlArray.splice(index, 1))
+      } else {
+        setReferenceFilesUrlArray(referenceFilesUrlArray.splice(index, 1))
       }
     } else if (type === 'document') {
       const index = documentUrlArray.indexOf(item)
@@ -462,25 +484,27 @@ const Quote = () => {
                     </button>
                   </Col>
                   {referenceFiles
-                    ? referenceFilesUrlArray.map((item) => (
-                        <Col span={6}>
-                          <div className={classes.previewWrapper}>
-                            <button
-                              className={classes.rightButton}
-                              onClick={() => handleRemove(item, 'reference')}
-                            >
-                              <DeleteOutlined />
-                            </button>
-                            <button
-                              className={classes.leftButton}
-                              onClick={() => handleView(item)}
-                            >
-                              <EyeOutlined />
-                            </button>
-                            <img src={item} alt="uplio" />
-                          </div>
-                        </Col>
-                      ))
+                    ? referenceFilesUrlArray.map((item) => {
+                        return (
+                          <Col span={6}>
+                            <div className={classes.previewWrapper}>
+                              <button
+                                className={classes.rightButton}
+                                onClick={() => handleRemove(item, 'reference')}
+                              >
+                                <DeleteOutlined />
+                              </button>
+                              <button
+                                className={classes.leftButton}
+                                onClick={() => handleView(item)}
+                              >
+                                <EyeOutlined />
+                              </button>
+                              <img src={item} alt="uplio" />
+                            </div>
+                          </Col>
+                        )
+                      })
                     : null}
                 </Row>
               </div>
@@ -504,7 +528,7 @@ const Quote = () => {
                       className={classes.uploadButton}
                       onClick={() => handleClick('inspiration')}
                     >
-                      {imageLoading ? (
+                      {inspirationFilesUploading ? (
                         <Spin size="large" />
                       ) : (
                         <img src={plusIcon} alt="uplio" />
@@ -547,7 +571,7 @@ const Quote = () => {
                     className={classes.uploadButton}
                     onClick={() => handleClick('document')}
                   >
-                    {imageLoading ? (
+                    {documentFilesUploading ? (
                       <Spin size="large" />
                     ) : (
                       <img src={plusIcon} alt="uplio" />
