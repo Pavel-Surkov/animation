@@ -258,25 +258,32 @@ const Quote = () => {
     setIsModalVisible(true)
     setPreView(item)
   }
+
+  function removeItemFromArray(array, n) {
+    const newArray = []
+
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] !== n) {
+        newArray.push(array[i])
+      }
+    }
+    return newArray
+  }
+
   const handleRemove = (item, type) => {
     if (type === 'reference') {
-      const index = referenceFilesUrlArray.indexOf(item)
-
-      if (index > -1) {
-        setReferenceFilesUrlArray(referenceFilesUrlArray.splice(index, 1))
-      } else {
-        setReferenceFilesUrlArray(referenceFilesUrlArray.splice(index, 1))
-      }
+      // const index = referenceFilesUrlArray.indexOf(item)
+      setReferenceFilesUrlArray(
+        removeItemFromArray(referenceFilesUrlArray, item)
+      )
     } else if (type === 'document') {
-      const index = documentUrlArray.indexOf(item)
-      if (index > -1) {
-        documentUrlArray.splice(index, 1)
-      }
+      // const index = documentUrlArray.indexOf(item)
+      setDocumentUrlArray(removeItemFromArray(documentUrlArray, item))
     } else if (type === 'inspiration') {
-      const index = inspirationFilesUrlArray.indexOf(item)
-      if (index > -1) {
-        inspirationFilesUrlArray.splice(index, 1)
-      }
+      // const index = inspirationFilesUrlArray.indexOf(item)
+      setInspirationFilesUrlArray(
+        removeItemFromArray(inspirationFilesUrlArray, item)
+      )
     }
   }
   return (
@@ -470,8 +477,8 @@ const Quote = () => {
                   onChange={handleChange}
                   style={{ display: 'none' }}
                 />
-                <Row gutter={10}>
-                  <Col span={6}>
+                <Row gutter={[15, 10]}>
+                  <Col md={6} lg={6} xs={12}>
                     <button
                       className={classes.uploadButton}
                       onClick={() => handleClick('reference')}
@@ -486,7 +493,7 @@ const Quote = () => {
                   {referenceFiles
                     ? referenceFilesUrlArray.map((item) => {
                         return (
-                          <Col span={6}>
+                          <Col md={6} lg={6} xs={12}>
                             <div className={classes.previewWrapper}>
                               <button
                                 className={classes.rightButton}
@@ -508,8 +515,6 @@ const Quote = () => {
                     : null}
                 </Row>
               </div>
-
-              {/* <UploadImage /> */}
             </Form.Item>
             <hr />
             <div className={classes.headingQuote}>
@@ -522,8 +527,8 @@ const Quote = () => {
             </p>
             <Form.Item label="Images...">
               <div className={classes.uploadImageHeadText}>
-                <Row gutter={10}>
-                  <Col span={6}>
+                <Row gutter={[15, 10]}>
+                  <Col md={6} lg={6} xs={12}>
                     <button
                       className={classes.uploadButton}
                       onClick={() => handleClick('inspiration')}
@@ -538,7 +543,7 @@ const Quote = () => {
                   {!inspirationFiles
                     ? null
                     : inspirationFilesUrlArray.map((item) => (
-                        <Col span={6}>
+                        <Col md={6} lg={6} xs={12}>
                           <div className={classes.previewWrapper}>
                             <button
                               className={classes.rightButton}
@@ -565,8 +570,8 @@ const Quote = () => {
               </div>
             </Form.Item>
             <Form.Item label="Documents & Links...">
-              <Row gutter={10}>
-                <Col span={6}>
+              <Row gutter={[15, 10]}>
+                <Col md={6} lg={6} xs={12}>
                   <button
                     className={classes.uploadButton}
                     onClick={() => handleClick('document')}
