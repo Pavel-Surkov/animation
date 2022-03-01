@@ -4,6 +4,7 @@ import classes from './TermsAndConditions.module.scss'
 
 import Navigation from '../Homepage/Navigation/Navigation'
 import Footer from '../common/Footer/Footer'
+import BackToTop from '../../common/BackToTop/BackToTop'
 
 const TermsAndConditions = () => {
   return (
@@ -574,7 +575,9 @@ const TermsAndConditions = () => {
           </h3>
         </div>
       </div>
+
       <Footer />
+      <BackToTop />
     </>
   )
 }

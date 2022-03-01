@@ -4,6 +4,7 @@ import classes from './PrivacyPolicy.module.scss'
 
 import Navigation from '../Homepage/Navigation/Navigation'
 import Footer from '../common/Footer/Footer'
+import BackToTop from '../../common/BackToTop/BackToTop'
 
 const PrivacyPolicy = () => {
   return (
@@ -528,6 +529,7 @@ const PrivacyPolicy = () => {
           </h3>
         </div>
       </div>
+      <BackToTop />
       <Footer />
     </>
   )

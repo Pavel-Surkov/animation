@@ -9,6 +9,7 @@ import Header from '../../Public/Homepage/Navigation/Navigation'
 import Footer from '../common/Footer/Footer'
 import cross from '../../../assets/svg/FAQs Close Icon.svg'
 import plus from '../../../assets/svg/FAQs Open.svg'
+import BackToTop from '../../common/BackToTop/BackToTop'
 
 const FrequentlyAskedQuestion = () => {
   const [question1, setQuestion1] = useState(false)
@@ -256,6 +257,7 @@ const FrequentlyAskedQuestion = () => {
           </Col>
         </Row>
       </div>
+      <BackToTop />
       <Footer />
     </>
   )

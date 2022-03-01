@@ -6,14 +6,14 @@ import { Link, useHistory } from 'react-router-dom'
 import { Row, Col, Button, Space, Carousel } from 'antd'
 import Footer from '../common/Footer/Footer'
 import Navigation from './Navigation/Navigation'
-
+import BackToTop from '../../common/BackToTop/BackToTop'
 import icon1 from '../../../assets/images/icon_section_1.png'
 import icon2 from '../../../assets/images/icon_section_2.png'
 import icon3 from '../../../assets/images/icon_section_3.png'
 
-import banner1 from '../../../assets/images/banner image 1.png'
-import banner2 from '../../../assets/png/banner_image_2.png'
-import banner3 from '../../../assets/images/Banner Image 3.png'
+import banner1 from '../../../assets/images/girl model.png'
+import banner2 from '../../../assets/images/makeup box 1.png'
+import banner3 from '../../../assets/images/current_uplio_furniture-removebg-preview.png'
 
 import image_1_1 from '../../../assets/images/category_1_1.png'
 import image_1_2 from '../../../assets/images/category_1_2.png'
@@ -452,6 +452,7 @@ const Hompagetemp = () => {
         </Col>
       </Row>
       <Footer />
+      <BackToTop />
     </>
   )
 }

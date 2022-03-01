@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
-import { Form, Input, Spin, Row, Col } from 'antd'
+import { Form, Input, Spin, Row, Col, InputNumber } from 'antd'
 
 import classes from './SignUpTemp.module.scss'
 import logo from '../../../../assets/svg/logo_black_medium.svg'
@@ -19,6 +19,7 @@ const SignUpTemp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [phone, setPhone] = useState('')
   const [name, setName] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [errorStatus, setErrorStatus] = useState(false)
@@ -48,6 +49,7 @@ const SignUpTemp = () => {
           productCategory: quote.productCategory,
           color: 'null',
           name: name,
+          phone: phone,
           description: quote.description,
           projectStartDate: quote.projectStartDate,
           projectLaunchDate: quote.projectLaunchDate,
@@ -118,12 +120,22 @@ const SignUpTemp = () => {
                     placeholder="Full Name..."
                   />
                 </Form.Item>
+
                 <Form.Item label="*Email">
                   <Input
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                     size="large"
                     placeholder="Email address..."
+                  />
+                </Form.Item>
+                <Form.Item label="Phone">
+                  <InputNumber
+                    onChange={(e) => setPhone(e.target.value)}
+                    value={phone}
+                    style={{ width: '100%' }}
+                    size="large"
+                    placeholder="Phone..."
                   />
                 </Form.Item>
                 <Form.Item
