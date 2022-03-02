@@ -35,10 +35,10 @@ const SupplierProfile = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/users/suppliers/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/users/supplier_profile/${id}`)
       .then((res) => {
         console.log(res)
-
+        debugger
         setSupplierData(res.data)
       })
       .catch((err) => {
@@ -69,9 +69,7 @@ const SupplierProfile = () => {
   return (
     <>
       <Navigation />
-      <div className={classes.section}>
-        <Scroll />
-      </div>
+      <div className={classes.section}>{/* <Scroll /> */}</div>
       <div className={classes.container}>
         <div className={classes.companyDetails}>
           <Row gutter={12}>
@@ -110,12 +108,12 @@ const SupplierProfile = () => {
                 >
                   Overview
                 </button>
-                <button
+                {/* <button
                   className={service ? classes.activeTab : null}
                   onClick={() => handleTab('service')}
                 >
                   Services
-                </button>
+                </button> */}
               </div>
 
               {overview ? <Overview props={supplierData} /> : null}

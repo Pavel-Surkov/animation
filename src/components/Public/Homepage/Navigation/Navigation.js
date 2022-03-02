@@ -5,6 +5,7 @@ import logo from '../../../../assets/svg/logo_red_small.svg'
 import { createBrowserHistory as history } from 'history'
 import { RotateRightOutlined } from '@ant-design/icons'
 import { Link, useHistory } from 'react-router-dom'
+import Search from '../../Search/Search'
 import { useSelector } from 'react-redux'
 
 const Navigation = (params) => {
@@ -33,11 +34,15 @@ const Navigation = (params) => {
           </Col>
           <Col span={12} align="right">
             {userLoggedIn ? (
-              <h4 style={{ letterSpacing: '2px' }}>
-                <strong>Hi,</strong> {userName}
-              </h4>
+              <Space>
+                <Search />
+                <h4 style={{ letterSpacing: '2px' }}>
+                  <strong>Hi,</strong> {userName}
+                </h4>
+              </Space>
             ) : (
               <Space>
+                <Search />
                 <Button
                   className={classes.signIn}
                   type="link"

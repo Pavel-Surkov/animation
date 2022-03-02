@@ -11,11 +11,14 @@ import {
   Button,
   Empty,
   Divider,
+  Image,
   Spin,
 } from 'antd'
 
 import Navigation from '../../Public/Homepage/Navigation/Navigation'
+import loadingImage from '../../../assets/gif/Pulse-1.5s-201px.gif'
 import companyLogo from '../../../assets/images/profile_image.png'
+import defaultImage from '../../../assets/images/sample_logo_img.png'
 import Rating from '../../common/Rating/Rating'
 import { SearchOutlined, HeartOutlined } from '@ant-design/icons'
 import Tags from '../../common/Tags/Tags'
@@ -28,23 +31,27 @@ import { useEffect } from 'react'
 export default function Products() {
   let { id } = useParams()
   const history = useHistory()
+
   const [loading, setLoading] = useState(false)
   const [supplierData, setSupplierData] = useState([])
   const [pageinate, setPaginate] = useState(1)
   const [search, setSearch] = useState('')
+  const [searchInput, setSearchInput] = useState('')
   const [newSearch, setNewSearch] = useState('')
 
-  const handleSearch = (event) => {
-    if (event.key === 'Enter') {
-      history.push({ pathname: `/products/${newSearch}` })
-      console.log('do validate')
-    }
+  const handleSearch = (e) => {
+    history.push({ pathname: `/products/${searchInput}` })
+    console.log('do validate')
   }
   useEffect(() => {
     setLoading(true)
     setSearch(id)
     axios
-      .get(`${process.env.REACT_APP_API_URL}/users/suppliers?category=${id}`)
+      .get(
+        `${process.env.REACT_APP_API_URL}/users/suppliers?category=${
+          id === undefined ? searchInput : id
+        }`
+      )
       .then((res) => {
         console.log(res)
         setLoading(false)
@@ -54,7 +61,7 @@ export default function Products() {
       .catch((err) => {
         console.log(err)
       })
-  }, [newSearch])
+  }, [id])
 
   return (
     <>
@@ -66,12 +73,12 @@ export default function Products() {
             <div className={classes.section}>
               <div className={classes.searchFilter}>
                 <Input
-                  value={newSearch}
+                  value={searchInput}
                   size="large"
-                  onChange={(e) => setNewSearch(e.target.value)}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  onPressEnter={(e) => handleSearch(e)}
                   placeholder="Search keywords..."
                   prefix={<SearchOutlined />}
-                  onKeyDown={(e) => handleSearch(e)}
                 />
                 <h3>Ex. fabric, retro, minimal, etc...</h3>
               </div>
@@ -119,6 +126,7 @@ export default function Products() {
                                       src={item.companyLogo}
                                       alt="uplio"
                                     />
+
                                     {/* <Tags prop="top rated" />
                                 <Tags prop="approved" />
                                 <Tags prop="hot seller" /> */}
@@ -169,31 +177,67 @@ export default function Products() {
                           </Col>
                           <Col span={5}>
                             <div className={classes.productImg}>
-                              <img
+                              <Image
                                 width={175}
+                                preview={false}
                                 height={175}
                                 src={item.images[0]}
-                                alt="uplio"
+                                placeholder={
+                                  <Image
+                                    preview={false}
+                                    src={
+                                      item.images[0] === undefined
+                                        ? defaultImage
+                                        : loadingImage
+                                    }
+                                    width={175}
+                                    height={175}
+                                  />
+                                }
                               />
                             </div>
                           </Col>
                           <Col span={5}>
                             <div className={classes.productImg}>
-                              <img
+                              <Image
                                 width={175}
+                                preview={false}
                                 height={175}
                                 src={item.images[1]}
-                                alt="uplio"
+                                placeholder={
+                                  <Image
+                                    preview={false}
+                                    src={
+                                      item.images[1] === undefined
+                                        ? defaultImage
+                                        : loadingImage
+                                    }
+                                    width={175}
+                                    height={175}
+                                  />
+                                }
                               />
                             </div>
                           </Col>
                           <Col span={5}>
                             <div className={classes.productImg}>
-                              <img
+                              <Image
                                 width={175}
+                                preview={false}
                                 height={175}
                                 src={item.images[2]}
-                                alt="uplio"
+                                placeholder={
+                                  <Image
+                                    preview={false}
+                                    src={
+                                      item.images[2] === undefined
+                                        ? defaultImage
+                                        : loadingImage
+                                    }
+                                    width={175}
+                                    height={175}
+                                  />
+                                }
                               />
                             </div>
                           </Col>
