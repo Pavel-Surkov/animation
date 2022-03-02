@@ -31,7 +31,26 @@ const Navigation = (params) => {
               <img src={logo} alt="Uplios" />
             </Link>
           </Col>
-          <Col span={12} align="right"></Col>
+          <Col span={12} align="right">
+            {userLoggedIn ? (
+              <h4 style={{ letterSpacing: '2px' }}>
+                <strong>Hi,</strong> {userName}
+              </h4>
+            ) : (
+              <Space>
+                <Button
+                  className={classes.signIn}
+                  type="link"
+                  onClick={() => handleSignIn()}
+                >
+                  Sign In
+                </Button>
+                <Link to="/signup" className={classes.signUp} type="secondary">
+                  Sign Up
+                </Link>
+              </Space>
+            )}
+          </Col>
         </Row>
       </header>
     </div>
