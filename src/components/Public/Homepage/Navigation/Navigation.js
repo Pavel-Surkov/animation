@@ -24,8 +24,7 @@ const Navigation = (params) => {
   return (
     <div className={classes.header}>
       {/* TODO makes sticky */}
-      {/* <header ref={ref} className={sticky && check ? classes.sticky : null}> */}
-      <header ref={ref}>
+      <header ref={ref} className={sticky && check ? classes.sticky : null}>
         <Row align="middle" justify="space-around">
           <Col span={12}>
             <Link to="/">
