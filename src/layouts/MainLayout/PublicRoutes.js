@@ -10,7 +10,6 @@ import Aboutus from '../../components/Public/Aboutus/Aboutus.js'
 import Career from '../../components/Public/Career/Career.js'
 import Helpcenter from '../../components/Public/Helpcenter/Helpcenter.js'
 import Homepage from '../../components/Public/Homepage/Homepage.js'
-import Homepagetemp from '../../components/Public/Homepage/Hompagetemp'
 import Newsroom from '../../components/Public/Newsroom/Newsroom.js'
 import SignUp from '../../components/Auth/SignUp/SignUp.js'
 import SignIn from '../../components/Auth/SignIn/SignIn.js'
@@ -38,7 +37,7 @@ const PublicRoutes = () => (
     <Router>
       <ScrollToTop>
         <Switch>
-          <Route exact path="/" component={Homepagetemp} />
+          <Route exact path="/" component={Homepage} />
           <Route exact path="/about" component={Aboutus} />
           <Route exact path="/newsroom" component={Newsroom} />
           <Route exact path="/careers" component={Career} />

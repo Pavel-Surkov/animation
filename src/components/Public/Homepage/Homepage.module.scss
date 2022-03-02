@@ -1,146 +1,307 @@
 @import '../../../theme/variable.module.scss';
 
+.header{	
+	max-width: 1200px;
+	margin:0 auto;
+	padding:40px 0;
+
+}
 .container{
 	max-width: 1200px;
-	margin: 0 auto;
+	margin:0 auto
 }
-.banner{
-	.bannerSection{
-		height: 90vh;
-		}
-}
-
-.actionButton{
-	width: 250px;
-	font-family: 'Montserrat',sans-serif;
-	font-style: normal;
-	font-weight: 500 !important; 
-	font-size: 17px !important;
-	line-height: 26px !important;
+.categoriesCarousel{
+	padding: 10px 0;
+	background: $red_app_color;
+	text-align: center;
 	
+	margin-left: -2px;
+	transform: rotate(-2deg);
+	margin-top: 0px;
 }
-
-
-.section{
-	padding:130px 0;
-	background-color: $off_orange_app_color;
-}
-
-.keyFeature{
-	h2{
-		font-size: 30px;
-		font-weight: 800;
-		line-height: 40px;
-		font-family: 'Inter', sans-serif;
-	}
-}
-
-.aboutSection{
-	padding-bottom: 120px;
-	h1{
-		line-height: 74px;
-		font-family: 'Inter', sans-serif;
-		font-weight: 900;
-		font-size: 60px;
-		letter-spacing: 1px;
-		margin-top: 120px;
-		margin-bottom: 50px;
-	}
-	h3{
-		line-height: 52px;
-		font-family: 'Inter', sans-serif;
-		font-weight: 800;
-		font-size: 38px;
-		letter-spacing: 1px;
-		margin-top: 120px;
-		margin-bottom: 50px;
-		color:$red_app_color;
-	}
-}
-.keyFeature{
-	
-	h2{
-		line-height: 30px;
-		font-family: 'Inter', sans-serif;
-		font-weight: 800;
-		font-size: 24px;
-		letter-spacing: 1px;		
-	}
-	p{
-		line-height: 26px;
-		font-family: 'Inter', sans-serif;
-		font-weight: 400;
-		font-size: 17px;
-		letter-spacing: 1px;		
-	}
-	img{
-		margin-top: 5px;
-	}
-}
-.aboutUs{
-	h2{
-		font-family:'Montserrat', sans-serif;		
-		font-weight: 300;
+.categoriesCarouselContent{
+	h3{	
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: normal;
 		font-size: 28px;
 		line-height: 43px;
+		color: $secondary_app_color;	
+		margin-bottom: 0;
 	}
-	p{
-		font-family: Montserrat;
+}
+.banner{
+	h2{
+		font-family: 'Playfair Display', serif; 
+		font-style: normal;
+		font-weight: bold;
+		font-size: 72px;
+		line-height: 74px;
+		letter-spacing: 1.5px;
+		margin-top: 108px;
+	}
+	h3{
+		font-family:'Montserrat',sans-serif;
+		font-style: normal;
 		font-weight: normal;
 		font-size: 17px;
 		line-height: 26px;
-	}
-}
+		margin-bottom: 30px;
 
-.heroBanner{
-	text-align: center;
-	padding: 100px 0;
-	background-image: url('../../../assets/images/banner.jpg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size:cover;
-	.heroBannerContent{
-		max-width: 600px;
-		margin: 0 auto;
+	}
+	span{
+		color:$red_app_color;
+		text-decoration: underline;
+		text-decoration-thickness: 2.5px;
+	}
+	.bannerButton{
+		background-color: $red_app_color;
+		padding: 7px 17px;
+		color: $secondary_app_color;
+		font-family: 'Montserrat',sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 17px;
+		line-height: 26px;
+		border-radius: 50px;
+		border: none;
+	}
+	.bannerButton:hover{
+		border: 1px solid $red_app_color;
+		background: $secondary_app_color;
+		color: $red_app_color
+	}
+	img{
+		
+		// width: 900px;
+		// margin-left: -350px;
 	}
 	
+
+}
+
+.worksSection{
+	text-align: center;
+	margin-top: 116px;
+	margin-bottom: 128px;
+	border-radius: 25px;
+	padding: 54px 81px;
+	box-shadow:0px 0px 20px 20px #0000000d;
 	h3{
 		font-family: 'Inter',sans-serif;
 		font-style: normal;
 		font-weight: 800;
 		font-size: 30px;
 		line-height: 40px;
-		color: $secondary_app_color;
+		margin-bottom: 10px;
 	}
-	
-	.aboutUsSection{
-		
-		h4{
-			font-family: 'Inter',sans-serif;
-			font-style: normal;
-			font-weight: 800;
-			font-size: 24px;
-			line-height: 30px;
-			color: $secondary_app_color;
-			letter-spacing: 1px;
+	p{
+		font-family: 'Montserrat',sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 17px;
+		line-height: 26px;
+		opacity: 0.7;
+		margin-bottom: 84px;
+	}
+	.worksSectionContent{
+		h3{
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 30px;
+		color: $red_app_color;
+		margin-top: 42px;
+		margin-bottom: 15px;
 		}
 		p{
-			font-family:'Montserrat',sans-serif;
+			font-family: 'Montserrat',sans-serif;
 			font-style: normal;
-			font-weight: 200;
+			font-weight: normal;
 			font-size: 17px;
 			line-height: 26px;
-			color: $secondary_app_color;
-			
-		}
-		hr{
-			height: 1px;
-			background-color:$red_app_color;
-			border: none;
-			width: 55px;
-			margin: 15px auto;						
+			opacity: 0.7;
 		}
 	}
+}
+.categoryWrapper{
+	h4{
+		position: absolute; 
+		top: 31px; 
+		left: 31px; 
+		width: 100%; 
+
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 30px;
+		z-index: 100;
+		width: max-content;
+	}	
+	img{
+		width: 100%;
+		position: relative; 
+	}
+}
+.categoryWrapperCenter{
+	height: 100%;
+	h5{
+		position: absolute; 
+		top: 5px; 
+		left: 31px; 
+		width: 310px;
+
+		width: max-content;
+		font-family: 'Playfair Display', serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 36px;
+		line-height: 74px;
+	}
+	img{
+		height: 100%;
+		position: relative; 
+	}
+}
+.categoryWrapperBottom{
+	h4{
+		position: absolute; 
+		width: max-content; 
+		left: 31px; 
+		top: 53%;
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 30px;
+		z-index: 100;
+	}	
+	img{
+		width: 100%;
+		position: relative; 
+	}	
+}
+.categoriesSection{
+	margin-bottom: 104px;
+}
+.aboutSection{
+	padding-bottom: 123px;
+	// background-image: url('../../../assets/images/About\ us\ banner.png');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+	img{
+		width: 115px;
+		height: 115px;
+	}
+	h6{
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 18px;
+		color: $red_app_color;
+		margin-bottom: 19px;
+	}
+	h2{
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: 800;
+		font-size: 38px;
+		line-height: 52px;
+		letter-spacing: 1px;
+		margin-bottom: 18px;
+	}
+	p{
+		font-family: 'Montserrat',sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 17px;
+		line-height: 26px;
+		opacity: 0.7;
+		margin-bottom: 57px;
+	}
+	.aboutSectionContent{
+		p{
+			margin-top: 24px;
+			margin-bottom: 13px;
+			font-family: 'Montserrat',sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			line-height: 26px;
+		}
+		h2{
+			font-family: 'Inter',sans-serif;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 24px;
+			line-height: 30px;
+			letter-spacing: 0.04em;
+			margin-bottom: 12px;
+		}
+		p{
+			font-family: 'Montserrat',sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			line-height: 26px;
+			opacity: 0.7;
+		}
+	}
+}
+.quoteSection{
+	background-color: $red_app_color;
+	height: 100%;
+	padding: 37px;
+	position: relative;
+	h3{
+		font-family: 'DM Sans',sans-serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 38px;
+		line-height: 52px;
+		color: $secondary_app_color;
+		
+		margin-bottom: 17px;
+	}
+	p{
+		font-family: 'DM Sans',sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		line-height: 26px;
+		color: $secondary_app_color;
+		opacity: 0.7;
+	}
+	button{
+		border: none;
+		background: $secondary_app_color;
+		color: $red_app_color;
+		border-radius: 50px;
+		padding: 7px 17px;
+		font-family: 'Montserrat',sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 17px;
+		line-height: 26px;
+		position: absolute;
+		left:    38px;
+		bottom:   34px;
+		transition: 100ms;
+	}
+	button:hover{
+	background-color: $red_app_color;
+	border: 1px solid $secondary_app_color;
+	color :$secondary_app_color;
+	transition: 100ms;
+	}
+
+}
+.getQuoteSectionImage{
+	width: 100%;
 }
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
@@ -150,90 +311,7 @@
 and (min-device-width: 375px) 
 and (max-device-width: 667px) 
 and (-webkit-min-device-pixel-ratio: 2) { 
-	.container{
-		max-width: 350px;
-		margin: 0 auto;
-	}	
-	.section{
-		padding: 100px 0;
-	}
-	.keyFeature{
-		h2{
-			font-family: 'Inter',sans-serif;
-			font-style: normal;
-			font-weight: 800;
-			font-size: 30px;
-			line-height: 40px;
-		}
-	}
-	.aboutSection{
-		h1{
-			font-family: 'Inter',sans-serif;
-			font-style: normal;
-			font-weight: 800;
-			font-size: 38px;
-			line-height: 52px;
-			margin-bottom: 24px;
-		}
-		h3{
-			font-family: 'Inter',sans-serif;
-			font-style: normal;
-			font-weight: 800;
-			font-size: 24px;
-			line-height: 30px;
-			margin-top: 0;
-			margin-bottom: 48px;
-		}
-	
-	}	
-	.content{
-		h2{
-			font-family: 'Inter',sans-serif;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 16px;
-			line-height: 30px;
-		}
-	}
-	.aboutUs{
-		h2{
-			font-family: 'Inter',sans-serif;
-			font-style: normal;
-			font-weight: 800;
-			font-size: 24px;
-			line-height: 30px;
-		}
-		p{
-			font-family:'Montserrat',sans-serif;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 12px;
-			line-height: 20px;
-		}
-		.h4{
-			margin-top: 48px;
-			font-family: 'Inter',sans-serif;
-			font-style: normal;
-			font-weight: 800;
-			font-size: 24px;
-			line-height: 30px;
-		}
-	
-	}
-	.heroBanner{
-		h3{
-		font-family: 'Inter',sans-serif;
-		font-style: normal;
-		font-weight: 800;
-		font-size: 24px;
-		line-height: 30px;
-		}
-	}
-	.heroBannerContent{
-		h4{
-			margin-top: 48px;
-		}
-	}
+
 }
 
 /* Portrait */
@@ -242,6 +320,180 @@ and (min-device-width: 375px)
 and (max-device-width: 667px) 
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) { 
+	.container{
+		max-width: 350px;
+		margin: 0 auto;
+	}	
+	.section{
+		padding: 100px 0;
+	}
+	.banner{
+		h2{
+			margin-top: 40px;
+			font-family: 'Playfair Display',sans-serif;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 30px;
+			line-height: 40px;
+		}
+		span{
+			font-family: 'Playfair Display',sans-serif;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 40px;
+			line-height: 74px;
+		}
+		h3{
+			font-family: 'Montserrat',sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			line-height: 22px;
+		}
+		img{
+			width:375px;
+			margin: 0 auto;
+		}
+	}
+	.bannerButton{
+		font-family: 'Montserrat',sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 17px;
+		line-height: 26px;
+	}
+
+	.categoriesCarouselContent{
+		h3{
+			font-family: 'Montserrat',sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			line-height: 26px;
+		}
+	}
+	.worksSection{
+		padding: 30px 10px;
+		h3{
+			font-family: 'Inter',sans-serif;
+			font-style: normal;
+			font-weight: 800;
+			font-size: 30px;
+			line-height: 40px;
+			margin-bottom: 6px;
+		}
+		p{
+			font-family: 'Montserrat',sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			line-height: 26px;
+			margin-bottom: 28px;
+		}
+	}
+	.categoryWrapperCenter{
+		h5{
+			font-family: 'Playfair Display',sans-serif;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 20px;
+			width: max-content; 
+			line-height: 40px;
+		}
+	}
+	.categoryWrapper{
+		h4{
+			font-family: 'Inter',sans-serif;
+			font-style: normal;
+			top: 1px;
+			font-weight: bold;
+			font-size: 16px;
+			line-height: 30px;
+			width: 100px;
+			width: max-content; 
+		}
+
+	}
+	.categoryWrapperBottom{
+		h4{
+		font-family: 'Inter',sans-serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		top: 50%;
+		line-height: 30px;
+		width: 100px;
+		}
+	}
+	.aboutSection{
+		// background-image: url('../../../assets/images/Mobile\ Screen\ About\ Us.png');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;	
+		h6{
+			font-family: 'Inter',sans-serif;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 18px;
+			margin-bottom: 19px;
+		}
+		h2{
+			font-family: 'Inter',sans-serif;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 24px;
+			line-height: 30px;
+			margin-bottom: 19px;
+		}
+		p{
+			font-family: 'Montserrat',sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 12px;
+			line-height: 20px;
+			margin-bottom: 30px;
+		}
+		.aboutSectionContent{
+			h2{
+				font-family: 'Inter',sans-serif;
+				font-style: normal;
+				font-weight: bold;
+				font-size: 24px;
+				line-height: 30px;
+			}
+			p{
+				font-family: 'Montserrat',sans-serifs;
+				font-style: normal;
+				font-weight: normal;
+				font-size: 17px;
+				line-height: 26px;
+				margin-bottom: 35px;
+			}
+		}
+
+	}
+	.getQuoteSectionImage{
+		// width: 375px;
+	}
+	.quoteSection{
+		padding:21px 16px;
+		h3{
+			font-family: 'DM Sans',sans-serif;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 38px;
+			line-height: 52px;
+		}
+		p{
+			font-family: 'DM Sans',sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 18px;
+			line-height: 26px;
+			margin-bottom: 173px;
+		}
+	}
 
 }
 
