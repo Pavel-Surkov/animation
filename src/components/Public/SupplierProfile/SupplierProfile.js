@@ -152,12 +152,12 @@ const Overview = (data) => {
           <h2>{data.props.companyOverview}</h2>
         </div>
         <Row>
-          <Col span={4}>
+          {/* <Col span={4}>
             <div className={classes.companyDetailsTab}>
               <p>Production capacity</p>
               <h3>1-5,000 units/mo</h3>
             </div>
-          </Col>
+          </Col> */}
           {/* <Col span={4}>
             <div className={classes.companyDetailsTab}>
               <p>Production capacity</p>
@@ -172,16 +172,23 @@ const Overview = (data) => {
           </Col>
           <Col span={4}>
             <div className={classes.companyDetailsTab}>
+              <p>MOQ</p>
+              <h3>{data.props.MOQ}</h3>
+            </div>
+          </Col>
+          {/* <Col span={4}>
+            <div className={classes.companyDetailsTab}>
               <p>Established</p>
               <h3>1988</h3>
             </div>
-          </Col>
+          </Col> */}
         </Row>
         <hr />
         <div className={classes.companyDetailsFooter}>
           <h5>Specialization</h5>
+          <p>{data.props.specialization}</p>
         </div>
-        <Row>
+        {/* <Row>
           <Col span={6}>
             <div className={classes.companyDetailsImg}>
               <img src={sampleImage1} alt="uplio" />
@@ -210,7 +217,7 @@ const Overview = (data) => {
               <h5>Detail copy</h5>
             </div>
           </Col>
-        </Row>
+        </Row> */}
         <div className={classes.section}></div>
       </div>
     </>
