@@ -29,7 +29,7 @@ const SupplierProfile = () => {
 
   const handleQuote = () => {
     history.push({
-      pathname: `/quote/${id}`,
+      pathname: `/quote`,
     })
   }
 
