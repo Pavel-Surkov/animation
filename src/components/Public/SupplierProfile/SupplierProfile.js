@@ -69,7 +69,9 @@ const SupplierProfile = () => {
   return (
     <>
       <Navigation />
-      <div className={classes.section}>{/* <Scroll /> */}</div>
+      {/* <div className={classes.section}>
+        <Scroll />
+      </div> */}
       <div className={classes.container}>
         <div className={classes.companyDetails}>
           <Row gutter={12}>
