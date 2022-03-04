@@ -53,6 +53,7 @@ export const {
   increment,
   decrement,
   userLoggedIn,
+  userLoggedOut,
   userDataStatus,
   userType,
   quoteData,

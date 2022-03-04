@@ -31,6 +31,7 @@ import SignUpTemp from '../../components/Auth/SignUp/SignUpTemp/SignUpTemp.js'
 import PrivacyPolicy from '../../components/Public/PrivacyPolicy/PrivacyPolicy.js'
 import FrequentlyAskedQuestion from '../../components/Public/FrequentlyAskedQuestion/FrequentlyAskedQuestion.js'
 import TermsAndConditions from '../../components/Public/TermsAndConditions/TermsAndConditions'
+import BuyerMyInquiries from '../../components/Admin/Buyer/MyInquiries/MyInquiries'
 
 const PublicRoutes = () => (
   <Suspense fallback={<p>Loading ..</p>}>
@@ -48,6 +49,12 @@ const PublicRoutes = () => (
           <Route exact path="/login" component={SignIn} />
 
           {/* TODO remove link  */}
+          <Route
+            exact
+            path="/dashboard/buyer/inquiries"
+            component={BuyerMyInquiries}
+          />
+
           <Route exact path="/privacy-policy" component={PrivacyPolicy} />
           <Route exact path="/signup/buyer" component={BuyerTemp} />
           <Route exact path="/signup/supplier" component={SupplierTemp} />
@@ -76,6 +83,7 @@ const PublicRoutes = () => (
             path="/dashboard/supplier/lead"
             component={SupplierDashboard}
           />
+
           <Route
             exact
             path="/dashboard/supplier/message"

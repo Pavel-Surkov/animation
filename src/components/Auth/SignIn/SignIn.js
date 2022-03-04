@@ -7,6 +7,7 @@ import { Form, Input, Spin } from 'antd'
 import classes from './SignIn.module.scss'
 import logo from '../../../assets/svg/logo_black_medium.svg'
 
+import { ArrowRightOutlined } from '@ant-design/icons'
 import { useSelector, useDispatch } from 'react-redux'
 import { userLoggedIn, userDataStatus } from '../../../CounterSlice'
 
@@ -32,7 +33,9 @@ const SignIn = () => {
         dispatch(userLoggedIn())
         dispatch(userDataStatus(res.data.user))
         history.push('/')
+
         localStorage.setItem('token', res.data.tokens.access.token)
+        localStorage.setItem('refresh', res.data.tokens.refresh.token)
       })
       .catch((err) => {
         console.log(err)
@@ -45,8 +48,8 @@ const SignIn = () => {
       <div className={classes.container}>
         <div className={classes.mainContent}>
           <img src={logo} alt="uplio" />
-          <h3>Welcome!</h3>
-          <h5>Create your sign in credentials.</h5>
+          <h3>Welcome back!</h3>
+          <h5>Sign in to access your account.</h5>
           <p>(*Required field)</p>
 
           <Form layout="vertical">
@@ -69,12 +72,12 @@ const SignIn = () => {
           </Form>
 
           <div className={classes.footerContent}>
-            <h3>
+            {/* <h3>
               *Passwords must contain a combination of letters, numbers and{' '}
               <br />
               special characters (ex. @). Please use at least (1) capital
               letter.
-            </h3>
+            </h3> */}
             <button
               onClick={() => handleSignIn()}
               className={classes.buttonLogin}
@@ -83,12 +86,15 @@ const SignIn = () => {
               {loader ? (
                 <Spin style={{ marginBottom: '24px' }} />
               ) : (
-                <h6>Done</h6>
+                <h6>
+                  Sign in <ArrowRightOutlined />
+                </h6>
               )}
             </button>
             <h5>
-              You acknowledge that you have read and agree <br /> to our Terms
-              of Service and Privacy Policy.
+              You acknowledge that you have read and agree <br /> to our
+              <Link to="/terms-conditions"> Terms of Service</Link> and{' '}
+              <Link to="/privacy-policy">Privacy Policy</Link>.
             </h5>
           </div>
         </div>

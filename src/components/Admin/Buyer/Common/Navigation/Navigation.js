@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useEffect, useState, useRef } from 'react'
-import logo from '../../../../../assets/svg/logo_red_medium.svg'
+import logo from '../../../../../assets/svg/logo_red_small.svg'
 import { Row, Col, Space, Button, Menu, Dropdown, Avatar, Divider } from 'antd'
 import classes from './Navigation.module.scss'
 import { useSelector, useDispatch } from 'react-redux'
@@ -74,20 +74,11 @@ const Navigation = () => {
           <Col span={8}>
             <div className={classes.navigationLinks}>
               <Space size={40}>
-                <Link to="/dashboard/supplier/lead">
-                  <p>Leads</p>
+                <Link to="/dashboard/buyer/inquiries">
+                  <p>My Inquiries </p>
                 </Link>
-                <Link to="/dashboard/supplier/message">
-                  <p>Messages</p>
-                </Link>
-                <Link to="/dashboard/supplier/services">
-                  <p>Services</p>
-                </Link>
-                <Link to="/dashboard/supplier/orders">
-                  <p>Orders</p>
-                </Link>
-                <Link to="/dashboard/supplier/profile">
-                  <p>Profile</p>
+                <Link to="/dashboard/buyer/quote">
+                  <p>My quotes</p>
                 </Link>
               </Space>
             </div>
@@ -95,9 +86,6 @@ const Navigation = () => {
           <Col span={12}>
             <div className={classes.navigationProfile}>
               <Space>
-                <Button size="large" className={classes.dashboardButton}>
-                  Dashboard
-                </Button>
                 {userLoggedInState ? (
                   <Space>
                     <Dropdown

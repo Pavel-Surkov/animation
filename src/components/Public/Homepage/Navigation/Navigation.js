@@ -1,17 +1,63 @@
 import React, { useLayoutEffect, useEffect, useState, useRef } from 'react'
-import { Row, Col, Space, Button } from 'antd'
+import { useSelector, useDispatch } from 'react-redux'
+import { Row, Col, Space, Button, Menu, Dropdown, Avatar, Divider } from 'antd'
 import classes from './Navigation.module.scss'
 import logo from '../../../../assets/svg/logo_red_small.svg'
 import { createBrowserHistory as history } from 'history'
-import { RotateRightOutlined } from '@ant-design/icons'
+import {
+  RotateRightOutlined,
+  UserOutlined,
+  DownOutlined,
+} from '@ant-design/icons'
 import { Link, useHistory } from 'react-router-dom'
 import Search from '../../Search/Search'
-import { useSelector } from 'react-redux'
+import axios from 'axios'
+import {
+  userLoggedOut,
+  userDataStatus,
+  userLoggedIn,
+} from '../../../../CounterSlice'
 
 const Navigation = (params) => {
   const history = useHistory()
+  const refreshToken = localStorage.getItem('refresh')
+  const token = localStorage.getItem('token')
+  const dispatch = useDispatch()
+  const userLoggedInState = useSelector((state) => state.counter.userLoggedIn)
 
-  const userLoggedIn = useSelector((state) => state.counter.userLoggedIn)
+  useEffect(() => {
+    if (token !== null) {
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/users/getUserProfile`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          dispatch(userLoggedIn())
+          dispatch(userDataStatus(''))
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+  }, [])
+
+  const handleSignOut = () => {
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/auth/logout`, {
+        refreshToken: refreshToken,
+      })
+      .then((res) => {
+        console.log(res)
+        dispatch(userLoggedOut())
+        dispatch(userDataStatus(''))
+        localStorage.clear()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
   const userName = useSelector((state) => state.counter.user.name)
   const handleSignIn = () => {
     history.push({ pathname: '/login' })
@@ -24,25 +70,55 @@ const Navigation = (params) => {
 
   return (
     <div className={classes.header}>
-      {/* TODO makes sticky */}
       <header ref={ref} className={sticky && check ? classes.sticky : null}>
         <Row align="middle" justify="space-around">
-          <Col span={12}>
+          <Col span={6}>
             <Link to="/">
               <img src={logo} alt="Uplios" />
             </Link>
           </Col>
-          <Col span={12} align="right">
-            {userLoggedIn ? (
+          <Col span={12} align="center">
+            <Search />
+          </Col>
+          <Col span={6} align="right">
+            {userLoggedInState ? (
               <Space>
-                <Search />
-                <h4 style={{ letterSpacing: '2px' }}>
-                  <strong>Hi,</strong> {userName}
-                </h4>
+                <Dropdown
+                  overlay={
+                    <Menu>
+                      <Menu.Item>
+                        <h4 style={{ letterSpacing: '2px' }}>
+                          <strong>Hi,</strong> {userName}
+                        </h4>
+                      </Menu.Item>
+                      <Divider style={{ margin: '0' }} />
+                      <Menu.Item>
+                        <Link>Quotes and Status</Link>
+                      </Menu.Item>
+                      <Menu.Item disabled>Messages</Menu.Item>
+                      <Menu.Item disabled>Invoices</Menu.Item>
+                      <Menu.Item disabled>Orders</Menu.Item>
+                      <Menu.Item disabled>Account</Menu.Item>
+                      <Menu.Item disabled>Help</Menu.Item>
+                      <Divider style={{ margin: '0' }} />
+                      <Menu.Item danger>
+                        <Button type="link" onClick={() => handleSignOut()}>
+                          Sign Out
+                        </Button>
+                      </Menu.Item>
+                    </Menu>
+                  }
+                >
+                  <a
+                    className="ant-dropdown-link"
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    <Avatar size={50} icon={<UserOutlined />} />
+                  </a>
+                </Dropdown>
               </Space>
             ) : (
               <Space>
-                <Search />
                 <Button
                   className={classes.signIn}
                   type="link"

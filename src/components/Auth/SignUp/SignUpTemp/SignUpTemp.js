@@ -62,7 +62,6 @@ const SignUpTemp = () => {
           referenceImages: quote.referenceImages,
         })
         .then((res) => {
-          debugger
           setLoader(false)
           setIsQuoteCompleted(false)
           dispatch(quoteData(null))
