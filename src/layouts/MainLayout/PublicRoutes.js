@@ -32,6 +32,7 @@ import PrivacyPolicy from '../../components/Public/PrivacyPolicy/PrivacyPolicy.j
 import FrequentlyAskedQuestion from '../../components/Public/FrequentlyAskedQuestion/FrequentlyAskedQuestion.js'
 import TermsAndConditions from '../../components/Public/TermsAndConditions/TermsAndConditions'
 import BuyerMyInquiries from '../../components/Admin/Buyer/MyInquiries/MyInquiries'
+import BuyerMyQuote from '../../components/Admin/Buyer/MyQuote/MyQuote'
 
 const PublicRoutes = () => (
   <Suspense fallback={<p>Loading ..</p>}>
@@ -54,6 +55,7 @@ const PublicRoutes = () => (
             path="/dashboard/buyer/inquiries"
             component={BuyerMyInquiries}
           />
+          <Route exact path="/dashboard/buyer/quote" component={BuyerMyQuote} />
 
           <Route exact path="/privacy-policy" component={PrivacyPolicy} />
           <Route exact path="/signup/buyer" component={BuyerTemp} />
