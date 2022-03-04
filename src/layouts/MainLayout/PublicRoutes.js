@@ -33,6 +33,7 @@ import FrequentlyAskedQuestion from '../../components/Public/FrequentlyAskedQues
 import TermsAndConditions from '../../components/Public/TermsAndConditions/TermsAndConditions'
 import BuyerMyInquiries from '../../components/Admin/Buyer/MyInquiries/MyInquiries'
 import BuyerMyQuote from '../../components/Admin/Buyer/MyQuote/MyQuote'
+import BuyerDashboardProfile from '../../components/Admin/Buyer/Profile/Profile'
 
 const PublicRoutes = () => (
   <Suspense fallback={<p>Loading ..</p>}>
@@ -56,6 +57,11 @@ const PublicRoutes = () => (
             component={BuyerMyInquiries}
           />
           <Route exact path="/dashboard/buyer/quote" component={BuyerMyQuote} />
+          <Route
+            exact
+            path="/dashboard/buyer/profile"
+            component={BuyerDashboardProfile}
+          />
 
           <Route exact path="/privacy-policy" component={PrivacyPolicy} />
           <Route exact path="/signup/buyer" component={BuyerTemp} />

@@ -30,7 +30,7 @@ const MyQuote = () => {
             action: 'View Inquiry',
           })
         })
-        setQuoteData(quoteDataArray)
+        setQuoteData([])
       })
       .catch((err) => {
         setLoading(false)
@@ -50,15 +50,19 @@ const MyQuote = () => {
                 </>
               ) : (
                 <Table dataSource={quoteData}>
-                  <Column title="Quote ID" dataIndex="quoteId" key="quoteId" />
                   <Column
-                    title="Category"
+                    title="Unit Price"
+                    dataIndex="quoteId"
+                    key="quoteId"
+                  />
+                  <Column
+                    title="Lead time "
                     dataIndex="category"
                     key="category"
                   />
-                  <Column title="Send to" dataIndex="sendTo" key="sendTo" />
-                  <Column title="Status" dataIndex="status" key="status" />
-                  <Column title="Date Submitted" dataIndex="date" key="date" />
+                  <Column title="MOQ" dataIndex="sendTo" key="sendTo" />
+                  <Column title="Shipping" dataIndex="status" key="status" />
+                  <Column title="Cost" dataIndex="date" key="date" />
                   <Column title="Action" dataIndex="action" key="action" />
                   Action
                 </Table>

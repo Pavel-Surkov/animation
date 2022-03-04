@@ -3,7 +3,12 @@
 	max-width: 1200px;
 	margin: 0 auto;
 }
-
+.mainSection{
+	margin-top: 60px;
+	.spin{
+		text-align: center;
+	}
+}
 .actionSection{
 	margin-top:60px;
 	height: 80vh;

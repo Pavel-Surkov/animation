@@ -35,7 +35,7 @@ const Navigation = () => {
         })
         .then((res) => {
           dispatch(userLoggedIn())
-          dispatch(userDataStatus(''))
+          dispatch(userDataStatus(res.data.data))
         })
         .catch((err) => {
           console.log(err)
@@ -98,13 +98,19 @@ const Navigation = () => {
                           </Menu.Item>
                           <Divider style={{ margin: '0' }} />
                           <Menu.Item>
-                            <Link>Quotes and Status</Link>
+                            <Link to="/dashboard/buyer/inquiries">
+                              Quotes and Status
+                            </Link>
                           </Menu.Item>
-                          <Menu.Item disabled>Messages</Menu.Item>
+                          <Menu.Item>
+                            <Link to="/dashboard/buyer/profile">Account</Link>
+                          </Menu.Item>
+
+                          {/* <Menu.Item disabled>Messages</Menu.Item>
                           <Menu.Item disabled>Invoices</Menu.Item>
                           <Menu.Item disabled>Orders</Menu.Item>
                           <Menu.Item disabled>Account</Menu.Item>
-                          <Menu.Item disabled>Help</Menu.Item>
+                          <Menu.Item disabled>Help</Menu.Item> */}
                           <Divider style={{ margin: '0' }} />
                           <Menu.Item danger>
                             <Button type="link" onClick={() => handleSignOut()}>

@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Button } from 'antd'
+import { Row, Col, Button, Form, Input, Avatar, Spin } from 'antd'
 import classes from './Profile.module.scss'
 
 import axios from 'axios'
-import account from '../../../../assets/svg/Account.svg'
-import bank from '../../../../assets/svg/Bank.svg'
-import chart from '../../../../assets/svg/Chart.svg'
-import { useParams } from 'react-router-dom'
-
+import Navigation from '../Common/Navigation/Navigation'
+import { UserOutlined } from '@ant-design/icons'
 const Profile = () => {
-  let { id } = useParams()
   const [loading, setLoading] = useState(false)
-  const [supplierData, setSupplierData] = useState([])
-  const [pageinate, setPaginate] = useState(1)
-  const [search, setSearch] = useState('')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
 
+  const token = localStorage.getItem('token')
   useEffect(() => {
     setLoading(true)
-    setSearch(id)
     axios
-      .get(`${process.env.REACT_APP_API_URL}/users/suppliers?category=${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/users/getUserProfile`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         console.log(res)
+        debugger
         setLoading(false)
-        setSupplierData(res.data.data)
-        setPaginate(res.data.data.length)
+        setName(res.data.data.name)
+        setEmail(res.data.data.email)
       })
       .catch((err) => {
         console.log(err)
@@ -33,6 +33,7 @@ const Profile = () => {
 
   return (
     <>
+      <Navigation />
       <div className={classes.container}>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           <Col span={8}>
@@ -42,29 +43,73 @@ const Profile = () => {
                 size="large"
                 className={classes.actionButton}
               >
-                <img src={account} alt="Uplio" />
-                Account details
+                My Profile
+              </Button>
+              {/* <Button
+                size="large"
+                type="link"
+                defaultValue="Test"
+                className={classes.completedButton}
+              >
+                Payment Method
               </Button>
               <Button
                 size="large"
                 type="link"
                 className={classes.completedButton}
               >
-                <img src={bank} alt="Uplio" />
-                Banking information
-              </Button>
-              <Button
-                size="large"
-                type="link"
-                className={classes.completedButton}
-              >
-                <img src={chart} alt="Uplio" />
-                Company Profile
-              </Button>
+                Shipping Address
+              </Button> */}
             </div>
           </Col>
           <Col span={16}>
-            <div className={classes.mainSection}></div>
+            <div className={classes.mainSection}>
+              {loading ? (
+                <div className={classes.spin}>
+                  <Spin />
+                </div>
+              ) : (
+                <Form layout="vertical">
+                  <Row gutter={12}>
+                    <Col span={24}>
+                      <Form.Item>
+                        <Avatar size={64} icon={<UserOutlined />} />
+                      </Form.Item>
+                    </Col>
+                    <Col span={12}>
+                      <Form.Item label="First Name">
+                        <Input size="large" value={name} />
+                      </Form.Item>
+                    </Col>
+                    <Col span={12}>
+                      <Form.Item label="Last Name">
+                        <Input size="large" />
+                      </Form.Item>
+                    </Col>
+                    <Col span={12}>
+                      <Form.Item label="Phone Number">
+                        <Input size="large" />
+                      </Form.Item>
+                    </Col>
+                    <Col span={12}>
+                      <Form.Item label="Work Email">
+                        <Input size="large" value={email} />
+                      </Form.Item>
+                    </Col>
+                    <Col span={12}>
+                      <Form.Item label="New Password">
+                        <Input size="large" />
+                      </Form.Item>
+                    </Col>
+                    <Col span={12}>
+                      <Form.Item label="Confirm Password">
+                        <Input size="large" />
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                </Form>
+              )}
+            </div>
           </Col>
         </Row>
       </div>
