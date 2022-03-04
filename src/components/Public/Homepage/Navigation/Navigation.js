@@ -166,43 +166,26 @@ const Navigation = (params) => {
 
         {userLoggedInState ? (
           <Space direction="vertical">
-            <Dropdown
-              overlay={
-                <Menu>
-                  <Menu.Item>
-                    <h4 style={{ letterSpacing: '2px' }}>
-                      <strong>Hi,</strong> {userName}
-                    </h4>
-                  </Menu.Item>
-                  <Divider style={{ margin: '0' }} />
-                  <Menu.Item>
-                    <Link to="/dashboard/buyer/inquiries">
-                      Quotes and Status
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item>
-                    <Link to="/dashboard/buyer/profile">Account</Link>
-                  </Menu.Item>
-                  <Menu.Item disabled>Invoices</Menu.Item>
+            <Divider style={{ margin: '0' }} />
+            <h4 style={{ letterSpacing: '2px' }}>
+              <strong>Hi,</strong> {userName}
+            </h4>
+            <Divider style={{ margin: '0' }} />
+            <Link to="/dashboard/buyer/inquiries">Quotes and Status</Link>
+            <Link to="/dashboard/buyer/profile">Account</Link>
+            {/* <Menu.Item disabled>Invoices</Menu.Item>
                   <Menu.Item disabled>Orders</Menu.Item>
                   <Menu.Item disabled>Account</Menu.Item>
-                  <Menu.Item disabled>Help</Menu.Item>
-                  <Divider style={{ margin: '0' }} />
-                  <Menu.Item danger>
-                    <Button type="link" onClick={() => handleSignOut()}>
-                      Sign Out
-                    </Button>
-                  </Menu.Item>
-                </Menu>
-              }
+                  <Menu.Item disabled>Help</Menu.Item> */}
+            <Divider style={{ margin: '0' }} />
+            <Button
+              style={{ textAlign: 'left' }}
+              type="link"
+              onClick={() => handleSignOut()}
             >
-              <a
-                className="ant-dropdown-link"
-                onClick={(e) => e.preventDefault()}
-              >
-                <Avatar size={50} icon={<UserOutlined />} />
-              </a>
-            </Dropdown>
+              Sign Out
+            </Button>
+            <Divider style={{ margin: '0' }} />
           </Space>
         ) : (
           <Space>
