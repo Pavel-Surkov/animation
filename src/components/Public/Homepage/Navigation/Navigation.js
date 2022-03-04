@@ -1,13 +1,23 @@
 import React, { useLayoutEffect, useEffect, useState, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Row, Col, Space, Button, Menu, Dropdown, Avatar, Divider } from 'antd'
+import {
+  Row,
+  Col,
+  Space,
+  Button,
+  Menu,
+  Dropdown,
+  Avatar,
+  Divider,
+  Drawer,
+} from 'antd'
 import classes from './Navigation.module.scss'
 import logo from '../../../../assets/svg/logo_red_small.svg'
 import { createBrowserHistory as history } from 'history'
 import {
   RotateRightOutlined,
   UserOutlined,
-  DownOutlined,
+  MenuOutlined,
 } from '@ant-design/icons'
 import { Link, useHistory } from 'react-router-dom'
 import Search from '../../Search/Search'
@@ -21,6 +31,7 @@ import {
 const Navigation = (params) => {
   const history = useHistory()
   const refreshToken = localStorage.getItem('refresh')
+  const [visible, setVisible] = useState(false)
   const token = localStorage.getItem('token')
   const dispatch = useDispatch()
   const userLoggedInState = useSelector((state) => state.counter.userLoggedIn)
@@ -72,15 +83,15 @@ const Navigation = (params) => {
     <div className={classes.header}>
       <header ref={ref} className={sticky && check ? classes.sticky : null}>
         <Row align="middle" justify="space-around">
-          <Col span={6}>
+          <Col md={6} xl={6} xs={12}>
             <Link to="/">
               <img src={logo} alt="Uplios" />
             </Link>
           </Col>
-          <Col span={12} align="center">
+          <Col md={6} xl={6} xs={0} align="center">
             <Search />
           </Col>
-          <Col span={6} align="right">
+          <Col md={6} xl={6} xs={0} align="right">
             {userLoggedInState ? (
               <Space>
                 <Dropdown
@@ -100,10 +111,10 @@ const Navigation = (params) => {
                       <Menu.Item>
                         <Link to="/dashboard/buyer/profile">Account</Link>
                       </Menu.Item>
-                      {/* <Menu.Item disabled>Invoices</Menu.Item> */}
-                      {/* <Menu.Item disabled>Orders</Menu.Item> */}
-                      {/* <Menu.Item disabled>Account</Menu.Item> */}
-                      {/* <Menu.Item disabled>Help</Menu.Item> */}
+                      {/* <Menu.Item disabled>Invoices</Menu.Item>
+                      <Menu.Item disabled>Orders</Menu.Item>
+                      <Menu.Item disabled>Account</Menu.Item>
+                      <Menu.Item disabled>Help</Menu.Item> */}
                       <Divider style={{ margin: '0' }} />
                       <Menu.Item danger>
                         <Button type="link" onClick={() => handleSignOut()}>
@@ -136,8 +147,78 @@ const Navigation = (params) => {
               </Space>
             )}
           </Col>
+          <Col xs={12} md={0} xl={0} align="right">
+            <Button onClick={() => setVisible(true)}>
+              <MenuOutlined style={{ color: '#e14a48' }} />
+            </Button>
+          </Col>
         </Row>
       </header>
+      <Drawer
+        title={false}
+        placement="right"
+        closable={true}
+        onClose={() => setVisible(false)}
+        visible={visible}
+        key="right"
+      >
+        <Search />
+
+        {userLoggedInState ? (
+          <Space direction="vertical">
+            <Dropdown
+              overlay={
+                <Menu>
+                  <Menu.Item>
+                    <h4 style={{ letterSpacing: '2px' }}>
+                      <strong>Hi,</strong> {userName}
+                    </h4>
+                  </Menu.Item>
+                  <Divider style={{ margin: '0' }} />
+                  <Menu.Item>
+                    <Link to="/dashboard/buyer/inquiries">
+                      Quotes and Status
+                    </Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <Link to="/dashboard/buyer/profile">Account</Link>
+                  </Menu.Item>
+                  <Menu.Item disabled>Invoices</Menu.Item>
+                  <Menu.Item disabled>Orders</Menu.Item>
+                  <Menu.Item disabled>Account</Menu.Item>
+                  <Menu.Item disabled>Help</Menu.Item>
+                  <Divider style={{ margin: '0' }} />
+                  <Menu.Item danger>
+                    <Button type="link" onClick={() => handleSignOut()}>
+                      Sign Out
+                    </Button>
+                  </Menu.Item>
+                </Menu>
+              }
+            >
+              <a
+                className="ant-dropdown-link"
+                onClick={(e) => e.preventDefault()}
+              >
+                <Avatar size={50} icon={<UserOutlined />} />
+              </a>
+            </Dropdown>
+          </Space>
+        ) : (
+          <Space>
+            <Button
+              className={classes.signIn}
+              type="link"
+              onClick={() => handleSignIn()}
+            >
+              Sign In
+            </Button>
+            <Link to="/signup" className={classes.signUp} type="secondary">
+              Sign Up
+            </Link>
+          </Space>
+        )}
+      </Drawer>
     </div>
   )
 }
