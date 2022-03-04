@@ -188,18 +188,21 @@ const Navigation = (params) => {
             <Divider style={{ margin: '0' }} />
           </Space>
         ) : (
-          <Space>
-            <Button
-              className={classes.signIn}
-              type="link"
-              onClick={() => handleSignIn()}
-            >
-              Sign In
-            </Button>
-            <Link to="/signup" className={classes.signUp} type="secondary">
-              Sign Up
-            </Link>
-          </Space>
+          <>
+            <Divider />
+            <Space>
+              <Button
+                className={classes.signIn}
+                type="link"
+                onClick={() => handleSignIn()}
+              >
+                Sign In
+              </Button>
+              <Link to="/signup" className={classes.signUp} type="secondary">
+                Sign Up
+              </Link>
+            </Space>
+          </>
         )}
       </Drawer>
     </div>
