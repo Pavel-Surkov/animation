@@ -20,7 +20,11 @@ import loadingImage from '../../../assets/gif/Pulse-1.5s-201px.gif'
 import companyLogo from '../../../assets/images/profile_image.png'
 import defaultImage from '../../../assets/images/sample_logo_img.png'
 import Rating from '../../common/Rating/Rating'
-import { SearchOutlined, HeartOutlined } from '@ant-design/icons'
+import {
+  SearchOutlined,
+  HeartOutlined,
+  SecurityScanTwoTone,
+} from '@ant-design/icons'
 import Tags from '../../common/Tags/Tags'
 
 import { Link, useHistory } from 'react-router-dom'
@@ -38,7 +42,7 @@ export default function Products() {
   const [search, setSearch] = useState('')
   const [searchInput, setSearchInput] = useState('')
   const [newSearch, setNewSearch] = useState('')
-
+  const [filterQuantity, setFilterQuantity] = useState('')
   const handleSearch = (e) => {
     history.push({ pathname: `/products/${searchInput}` })
     console.log('do validate')
@@ -63,6 +67,45 @@ export default function Products() {
       })
   }, [id])
 
+  const handleFilterQuantity = (e) => {
+    debugger
+
+    setFilterQuantity(e.target.value)
+    if (e.target.value === '500 units or less') {
+      const newSupplierData = []
+      supplierData.map((item) => {
+        if (item.MOQ <= 500) {
+          newSupplierData.push(item)
+        }
+      })
+      setSupplierData(newSupplierData)
+    } else if (e.target.value === '1,000 units or less') {
+      const newSupplierData = []
+      supplierData.map((item) => {
+        if (item.MOQ <= 1000) {
+          newSupplierData.push(item)
+        }
+      })
+      setSupplierData(newSupplierData)
+    } else if (e.target.value === '10,000 units or less') {
+      const newSupplierData = []
+      supplierData.map((item) => {
+        if (item.MOQ <= 10000) {
+          newSupplierData.push(item)
+        }
+      })
+      setSupplierData(newSupplierData)
+    } else if (e.target.value === '10,000 units or more') {
+      const newSupplierData = []
+      supplierData.map((item) => {
+        if (item.MOQ >= 10000) {
+          newSupplierData.push(item)
+        }
+      })
+      setSupplierData(newSupplierData)
+    }
+  }
+
   return (
     <>
       <Navigation />
@@ -82,8 +125,28 @@ export default function Products() {
                 />
                 <h3>Ex. fabric, retro, minimal, etc...</h3>
               </div>
+              <div className={classes.filterOption}>
+                <Divider orientation="left">Minimum Quantity </Divider>
+                <Radio.Group
+                  onChange={handleFilterQuantity}
+                  value={filterQuantity}
+                >
+                  <Space direction="vertical">
+                    <Radio value="500 units or less">500 units or less</Radio>
+                    <Radio value="1,000 units or less">
+                      1,000 units or less
+                    </Radio>
+                    <Radio value="10,000 units or less">
+                      10,000 units or less
+                    </Radio>
+                    <Radio value="10,000 units or more">
+                      10,000 units or more
+                    </Radio>
+                  </Space>
+                </Radio.Group>
+              </div>
               {/* <div className={classes.filterOption}>
-                <h3>Categories</h3>
+                <Divider orientation="left">Category</Divider>
                 <Radio.Group>
                   <Space direction="vertical">
                     <Radio value="1">Favorites</Radio>
@@ -154,7 +217,7 @@ export default function Products() {
                                 </Col> */}
                                     <Col span={24}>
                                       <Button className={classes.contactButton}>
-                                        Contact
+                                        View Supplier
                                       </Button>
                                     </Col>
                                   </Row>
@@ -170,7 +233,14 @@ export default function Products() {
                                     className={classes.dividerForServices}
                                     type="horizontal"
                                   />
-                                  <p>{item.specialization}</p>
+                                  <p></p>
+                                  <ul>
+                                    {item.specialization
+                                      .split(',')
+                                      .map((item) => (
+                                        <li>{item}</li>
+                                      ))}
+                                  </ul>
                                 </Col>
                               </Row>
                             </div>

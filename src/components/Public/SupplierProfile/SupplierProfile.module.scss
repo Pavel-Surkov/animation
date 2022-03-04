@@ -1,15 +1,26 @@
 @import '../../../theme/variable.module.scss';
 
+
 .container{
 	max-width: 1200px;
 	margin :0 auto;
 }
-
-.section{
-	padding: 100px 0
-	;
+.spin{
+	padding: 100px 0;
+	text-align: center;
 }
-
+.section{
+	padding: 100px 0;
+}
+.slide{
+	border: 1px solid $light_grey_app_color;
+    	width: fit-content !important;
+    	border-radius: 25px;
+	img{
+		width: 300px;
+		border-radius: 25px;
+	}
+}
 .companyDetails{
 	img{
 		border-radius: 45px;
@@ -47,7 +58,7 @@
 		font-family: 'Montserrat',sans-serif;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 12px;
+		font-size: 15px;
 		line-height: 20px;
 		opacity: 0.5;
 	}

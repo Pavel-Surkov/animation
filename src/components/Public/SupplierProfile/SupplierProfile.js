@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import classes from './SupplierProfile.module.scss'
 import Scroll from '../../common/Scroll/Scrollproducts'
 import profileImage from '../../../assets/images/profile_image.png'
+import Slider from 'react-slick'
 
-import { Row, Col, Breadcrumb, Button, Space } from 'antd'
+import { Row, Col, Carousel, Breadcrumb, Button, Space, Spin } from 'antd'
 import { useParams, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import sampleImage1 from '../../../assets/images/sample_upload_1.png'
@@ -19,7 +20,14 @@ import {
   ShoppingCartOutlined,
 } from '@ant-design/icons'
 import Navigation from '../Homepage/Navigation/Navigation'
-
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  autoplay: true,
+}
 const SupplierProfile = () => {
   const history = useHistory()
   let { id } = useParams()
@@ -37,8 +45,7 @@ const SupplierProfile = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/users/supplier_profile/${id}`)
       .then((res) => {
-        console.log(res)
-        debugger
+        console.log(res.data.images)
         setSupplierData(res.data)
       })
       .catch((err) => {
@@ -69,8 +76,20 @@ const SupplierProfile = () => {
   return (
     <>
       <Navigation />
+      {/* {supplierData.length > 0 ? (
+        <> */}
       {/* <div className={classes.section}>
-        <Scroll />
+        {supplierData.images !== undefined ? (
+          supplierData.images.map((item) => (
+            <Slider {...settings}>
+              <div className={classes.slide}>
+                <img src={item} alt="uplio" />
+              </div>
+            </Slider>
+          ))
+        ) : (
+          <Spin />
+        )}
       </div> */}
       <div className={classes.container}>
         <div className={classes.companyDetails}>
@@ -141,8 +160,14 @@ const SupplierProfile = () => {
             </Col>
           </Row>
         </div>
-      </div>
+      </div>{' '}
     </>
+    //     ) : (
+    //       <div className={classes.spin}>
+    //         <Spin />
+    //       </div>
+    //     )}
+    //   </>
   )
 }
 
