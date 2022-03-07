@@ -36,6 +36,13 @@ const Navigation = (params) => {
   const dispatch = useDispatch()
   const userLoggedInState = useSelector((state) => state.counter.userLoggedIn)
 
+  //Auto SignOut session clear
+  useEffect(() => {
+    if (!userLoggedInState) {
+      localStorage.clear()
+    }
+  }, [])
+
   useEffect(() => {
     if (token !== null) {
       axios

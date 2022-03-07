@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 import { Link, useHistory } from 'react-router-dom'
-import { Form, Input, Spin } from 'antd'
+import { Form, Input, Spin, notification } from 'antd'
 
 import classes from './SignIn.module.scss'
 import logo from '../../../assets/svg/logo_black_medium.svg'
@@ -21,6 +21,13 @@ const SignIn = () => {
 
   const [loader, setLoader] = useState(false)
 
+  const openNotificationWithIcon = (type, message, description) => {
+    notification[type]({
+      message: message,
+      description: description,
+    })
+  }
+
   const handleSignIn = () => {
     setLoader(true)
     axios
@@ -29,17 +36,23 @@ const SignIn = () => {
         password: password,
       })
       .then((res) => {
+        debugger
         setLoader(false)
-        dispatch(userLoggedIn())
-        dispatch(userDataStatus(res.data.user))
-        history.push('/')
-
-        localStorage.setItem('token', res.data.tokens.access.token)
-        localStorage.setItem('refresh', res.data.tokens.refresh.token)
+        if (!res.data.error) {
+          dispatch(userLoggedIn())
+          dispatch(userDataStatus(res.data.user))
+          history.push('/')
+          localStorage.setItem('token', res.data.tokens.access.token)
+          localStorage.setItem('refresh', res.data.tokens.refresh.token)
+        } else {
+          openNotificationWithIcon('warning', 'Oops', res.data.message)
+        }
       })
       .catch((err) => {
         console.log(err)
         setLoader(false)
+
+        openNotificationWithIcon('error', 'Something Went Wrong!', '')
       })
   }
 
