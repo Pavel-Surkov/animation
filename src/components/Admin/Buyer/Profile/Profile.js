@@ -21,7 +21,7 @@ const Profile = () => {
       })
       .then((res) => {
         console.log(res)
-        debugger
+
         setLoading(false)
         setName(res.data.data.name)
         setEmail(res.data.data.email)

@@ -28,7 +28,6 @@ const SignUpTemp = () => {
   const [loader, setLoader] = useState(false)
 
   useEffect(() => {
-    debugger
     if (quote === null) {
       history.push({ pathname: '/quote' })
     }

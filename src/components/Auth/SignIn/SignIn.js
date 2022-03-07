@@ -5,7 +5,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { Form, Input, Spin, notification } from 'antd'
 
 import classes from './SignIn.module.scss'
-import logo from '../../../assets/svg/logo_black_medium.svg'
+import logo from '../../../assets/svg/logo_red_medium.svg'
 
 import { ArrowRightOutlined } from '@ant-design/icons'
 import { useSelector, useDispatch } from 'react-redux'
@@ -36,12 +36,11 @@ const SignIn = () => {
         password: password,
       })
       .then((res) => {
-        debugger
         setLoader(false)
         if (!res.data.error) {
           dispatch(userLoggedIn())
           dispatch(userDataStatus(res.data.user))
-          history.push('/')
+          history.goBack()
           localStorage.setItem('token', res.data.tokens.access.token)
           localStorage.setItem('refresh', res.data.tokens.refresh.token)
         } else {
@@ -60,7 +59,9 @@ const SignIn = () => {
     <>
       <div className={classes.container}>
         <div className={classes.mainContent}>
-          <img src={logo} alt="uplio" />
+          <Link to="/">
+            <img src={logo} alt="uplio" />
+          </Link>
           <h3>Welcome back!</h3>
           <h5>Sign in to access your account.</h5>
           <p>(*Required field)</p>

@@ -36,7 +36,7 @@ const Navigation = (params) => {
   const dispatch = useDispatch()
   const userLoggedInState = useSelector((state) => state.counter.userLoggedIn)
 
-  //Auto SignOut session clear
+  // Auto SignOut session clear
   useEffect(() => {
     if (!userLoggedInState) {
       localStorage.clear()
@@ -52,7 +52,6 @@ const Navigation = (params) => {
           },
         })
         .then((res) => {
-          debugger
           dispatch(userLoggedIn())
           dispatch(userDataStatus(res.data.data))
         })

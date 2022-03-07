@@ -68,8 +68,6 @@ export default function Products() {
   }, [id])
 
   const handleFilterQuantity = (e) => {
-    debugger
-
     setFilterQuantity(e.target.value)
     if (e.target.value === '500 units or less') {
       const newSupplierData = []
