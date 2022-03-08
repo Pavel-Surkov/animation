@@ -53,6 +53,7 @@ const Navigation = () => {
         dispatch(userLoggedOut())
         dispatch(userDataStatus(''))
         localStorage.clear()
+        history.push('/')
       })
       .catch((err) => {
         console.log(err)
@@ -77,9 +78,9 @@ const Navigation = () => {
                 <Link to="/dashboard/buyer/inquiries">
                   <p>My Inquiries </p>
                 </Link>
-                <Link to="/dashboard/buyer/quote">
+                {/* <Link to="/dashboard/buyer/quote">
                   <p>My quotes</p>
-                </Link>
+                </Link> */}
               </Space>
             </div>
           </Col>

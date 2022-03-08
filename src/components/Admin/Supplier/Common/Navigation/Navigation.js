@@ -53,6 +53,7 @@ const Navigation = () => {
         dispatch(userLoggedOut())
         dispatch(userDataStatus(''))
         localStorage.clear()
+        history.push('/')
       })
       .catch((err) => {
         console.log(err)

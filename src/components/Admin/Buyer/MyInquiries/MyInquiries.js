@@ -4,7 +4,7 @@ import classes from './MyInquiries.module.scss'
 import Navigation from '../Common/Navigation/Navigation'
 import axios from 'axios'
 import moment from 'moment'
-
+import { Link, useHistory } from 'react-router-dom'
 const { Column, ColumnGroup } = Table
 
 const MyInquiries = () => {
@@ -27,7 +27,7 @@ const MyInquiries = () => {
             sendTo: 'Uplio',
             status: 'Quote Requested',
             date: moment(item.projectStartDate).format('MMM Do YY'),
-            action: 'View Inquiry',
+            action: item._id,
           })
         })
         setQuoteData(quoteDataArray)
@@ -59,8 +59,16 @@ const MyInquiries = () => {
                   <Column title="Send to" dataIndex="sendTo" key="sendTo" />
                   <Column title="Status" dataIndex="status" key="status" />
                   <Column title="Date Submitted" dataIndex="date" key="date" />
-                  <Column title="Action" dataIndex="action" key="action" />
-                  Action
+                  <Column
+                    title="Action"
+                    dataIndex="action"
+                    key="action"
+                    render={(id) => (
+                      <Link to={`/dashboard/buyer/quote/${id}`}>
+                        View Inquiries
+                      </Link>
+                    )}
+                  />
                 </Table>
               )}
             </div>

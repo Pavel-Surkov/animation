@@ -31,6 +31,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useEffect } from 'react'
+import { useRecoilValue_TRANSITION_SUPPORT_UNSTABLE } from 'recoil'
 
 export default function Products() {
   let { id } = useParams()
@@ -41,15 +42,17 @@ export default function Products() {
   const [pageinate, setPaginate] = useState(1)
   const [search, setSearch] = useState('')
   const [searchInput, setSearchInput] = useState('')
-  const [newSearch, setNewSearch] = useState('')
+  const [categoryFilterData, setCategoryFilterData] = useState([])
   const [filterQuantity, setFilterQuantity] = useState('')
+  const [selectedCateory, setSelectedCategory] = useState('')
+
   const handleSearch = (e) => {
     history.push({ pathname: `/products/${searchInput}` })
-    console.log('do validate')
   }
   useEffect(() => {
     setLoading(true)
     setSearch(id)
+    setSelectedCategory(id)
     axios
       .get(
         `${process.env.REACT_APP_API_URL}/users/suppliers?category=${
@@ -58,14 +61,29 @@ export default function Products() {
       )
       .then((res) => {
         console.log(res)
-        setLoading(false)
+
         setSupplierData(res.data.data)
         setPaginate(res.data.data.length)
       })
       .catch((err) => {
         console.log(err)
       })
+
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/categories`)
+      .then((res) => {
+        console.log(res)
+        setLoading(false)
+        setCategoryFilterData(res.data.categories)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }, [id])
+
+  const handleFilterCategory = (e) => {
+    history.push({ pathname: `/products/${e.target.value}` })
+  }
 
   const handleFilterQuantity = (e) => {
     setFilterQuantity(e.target.value)
@@ -108,11 +126,13 @@ export default function Products() {
     <>
       <Navigation />
 
-      <div className={classes.container}>
-        <Row gutter={16}>
-          <Col span={5}>
-            <div className={classes.section}>
-              <div className={classes.searchFilter}>
+      {!loading ? (
+        <>
+          <div className={classes.container}>
+            <Row gutter={16}>
+              <Col span={5}>
+                <div className={classes.section}>
+                  {/* <div className={classes.searchFilter}>
                 <Input
                   value={searchInput}
                   size="large"
@@ -122,28 +142,43 @@ export default function Products() {
                   prefix={<SearchOutlined />}
                 />
                 <h3>Ex. fabric, retro, minimal, etc...</h3>
-              </div>
-              <div className={classes.filterOption}>
-                <Divider orientation="left">Minimum Quantity </Divider>
-                <Radio.Group
-                  onChange={handleFilterQuantity}
-                  value={filterQuantity}
-                >
-                  <Space direction="vertical">
-                    <Radio value="500 units or less">500 units or less</Radio>
-                    <Radio value="1,000 units or less">
-                      1,000 units or less
-                    </Radio>
-                    <Radio value="10,000 units or less">
-                      10,000 units or less
-                    </Radio>
-                    <Radio value="10,000 units or more">
-                      10,000 units or more
-                    </Radio>
-                  </Space>
-                </Radio.Group>
-              </div>
-              {/* <div className={classes.filterOption}>
+              </div> */}
+                  <div className={classes.filterOption}>
+                    <Divider orientation="left">Minimum Quantity </Divider>
+                    <Radio.Group
+                      onChange={handleFilterQuantity}
+                      value={filterQuantity}
+                    >
+                      <Space direction="vertical">
+                        <Radio value="500 units or less">
+                          500 units or less
+                        </Radio>
+                        <Radio value="1,000 units or less">
+                          1,000 units or less
+                        </Radio>
+                        <Radio value="10,000 units or less">
+                          10,000 units or less
+                        </Radio>
+                        <Radio value="10,000 units or more">
+                          10,000 units or more
+                        </Radio>
+                      </Space>
+                    </Radio.Group>
+                  </div>
+                  <div className={classes.filterOption}>
+                    <Divider orientation="left">Category</Divider>
+                    <Radio.Group
+                      onChange={handleFilterCategory}
+                      value={filterQuantity}
+                    >
+                      <Space direction="vertical">
+                        {categoryFilterData.map((item) => (
+                          <Radio value={item.name}>{item.name}</Radio>
+                        ))}
+                      </Space>
+                    </Radio.Group>
+                  </div>
+                  {/* <div className={classes.filterOption}>
                 <Divider orientation="left">Category</Divider>
                 <Radio.Group>
                   <Space direction="vertical">
@@ -154,49 +189,52 @@ export default function Products() {
                   </Space>
                 </Radio.Group>
               </div> */}
-            </div>
-          </Col>
-          <Col span={19}>
-            <div className={classes.section}>
-              <div className={classes.resultsHeader}>
-                <h3>
-                  {pageinate}+ Suppliers found for <strong>{id}</strong>
-                </h3>
-              </div>
-              <div className={classes.productSection}>
-                {supplierData.length > 0 ? (
-                  supplierData.map((item) => (
-                    <>
-                      <Divider />
-                      <Link
-                        className={classes.cardLink}
-                        to={`/profile/${item._id}`}
-                      >
-                        <Row
-                          gutter={16}
-                          // justify="space-between"
-                        >
-                          <Col span={8}>
-                            <div className={classes.productImg}>
-                              <Row>
-                                <Col span={8}>
-                                  <div className={classes.logoImg}>
-                                    <img
-                                      width={65}
-                                      height={65}
-                                      src={item.companyLogo}
-                                      alt="uplio"
-                                    />
+                </div>
+              </Col>
 
-                                    {/* <Tags prop="top rated" />
+              <Col span={19}>
+                <div className={classes.section}>
+                  <div className={classes.resultsHeader}>
+                    <h3>
+                      <Divider orientation="left">
+                        {pageinate}+ Suppliers found for <strong>{id}</strong>
+                      </Divider>
+                    </h3>
+                  </div>
+                  <div className={classes.productSection}>
+                    {supplierData.length > 0 ? (
+                      supplierData.map((item) => (
+                        <>
+                          <Divider />
+                          <Link
+                            className={classes.cardLink}
+                            to={`/profile/${item._id}`}
+                          >
+                            <Row
+                              gutter={16}
+                              // justify="space-between"
+                            >
+                              <Col span={8}>
+                                <div className={classes.productImg}>
+                                  <Row>
+                                    <Col span={8}>
+                                      <div className={classes.logoImg}>
+                                        <img
+                                          width={65}
+                                          height={65}
+                                          src={item.companyLogo}
+                                          alt="uplio"
+                                        />
+
+                                        {/* <Tags prop="top rated" />
                                 <Tags prop="approved" />
                                 <Tags prop="hot seller" /> */}
-                                  </div>
-                                </Col>
-                                <Col span={16}>
-                                  <h2>{item.companyName}</h2>
-                                  {/* <Rating value={1} /> */}
-                                  {/* <div className={classes.ratingText}>
+                                      </div>
+                                    </Col>
+                                    <Col span={16}>
+                                      <h2>{item.companyName}</h2>
+                                      {/* <Rating value={1} /> */}
+                                      {/* <div className={classes.ratingText}>
                                 <h3>
                                   <span> 4.5 Ups</span>
                                   <Divider
@@ -207,127 +245,135 @@ export default function Products() {
                                 </h3>
                               </div> */}
 
-                                  <Row>
-                                    {/* <Col span={6}>
+                                      <Row>
+                                        {/* <Col span={6}>
                                   <Button className={classes.wishlistButton}>
                                     <HeartOutlined />
                                   </Button>
                                 </Col> */}
-                                    <Col span={24}>
-                                      <Button className={classes.contactButton}>
-                                        View Supplier
-                                      </Button>
-                                    </Col>
-                                  </Row>
-                                  <span>
-                                    Minimum Order
-                                    <Divider
-                                      type="vertical"
-                                      className={classes.ratingTextDivider}
-                                    />
-                                    <strong>{item.MOQ}</strong>
-                                  </span>
-                                  <Divider
-                                    className={classes.dividerForServices}
-                                    type="horizontal"
-                                  />
-                                  <p></p>
-                                  <ul>
+                                        <Col span={24}>
+                                          <Button
+                                            className={classes.contactButton}
+                                          >
+                                            View Supplier
+                                          </Button>
+                                        </Col>
+                                      </Row>
+                                      <span>
+                                        Minimum Order
+                                        <Divider
+                                          type="vertical"
+                                          className={classes.ratingTextDivider}
+                                        />
+                                        <strong>{item.MOQ}</strong>
+                                      </span>
+                                      <Divider
+                                        className={classes.dividerForServices}
+                                        type="horizontal"
+                                      />
+                                      <p>{item.specialization}</p>
+                                      {/* <ul>
                                     {item.specialization
                                       .split(',')
                                       .map((item) => (
                                         <li>{item}</li>
                                       ))}
-                                  </ul>
-                                </Col>
-                              </Row>
-                            </div>
-                          </Col>
-                          <Col span={5}>
-                            <div className={classes.productImg}>
-                              <Image
-                                width={175}
-                                preview={false}
-                                height={175}
-                                src={item.images[0]}
-                                placeholder={
+                                  </ul> */}
+                                    </Col>
+                                  </Row>
+                                </div>
+                              </Col>
+                              <Col span={5}>
+                                <div className={classes.productImg}>
                                   <Image
-                                    preview={false}
-                                    src={
-                                      item.images[0] === undefined
-                                        ? defaultImage
-                                        : loadingImage
-                                    }
                                     width={175}
+                                    preview={false}
                                     height={175}
+                                    src={item.images[0]}
+                                    placeholder={
+                                      <Image
+                                        preview={false}
+                                        src={
+                                          item.images[0] === undefined
+                                            ? defaultImage
+                                            : loadingImage
+                                        }
+                                        width={175}
+                                        height={175}
+                                      />
+                                    }
                                   />
-                                }
-                              />
-                            </div>
-                          </Col>
-                          <Col span={5}>
-                            <div className={classes.productImg}>
-                              <Image
-                                width={175}
-                                preview={false}
-                                height={175}
-                                src={item.images[1]}
-                                placeholder={
+                                </div>
+                              </Col>
+                              <Col span={5}>
+                                <div className={classes.productImg}>
                                   <Image
-                                    preview={false}
-                                    src={
-                                      item.images[1] === undefined
-                                        ? defaultImage
-                                        : loadingImage
-                                    }
                                     width={175}
+                                    preview={false}
                                     height={175}
+                                    src={item.images[1]}
+                                    placeholder={
+                                      <Image
+                                        preview={false}
+                                        src={
+                                          item.images[1] === undefined
+                                            ? defaultImage
+                                            : loadingImage
+                                        }
+                                        width={175}
+                                        height={175}
+                                      />
+                                    }
                                   />
-                                }
-                              />
-                            </div>
-                          </Col>
-                          <Col span={5}>
-                            <div className={classes.productImg}>
-                              <Image
-                                width={175}
-                                preview={false}
-                                height={175}
-                                src={item.images[2]}
-                                placeholder={
+                                </div>
+                              </Col>
+                              <Col span={5}>
+                                <div className={classes.productImg}>
                                   <Image
-                                    preview={false}
-                                    src={
-                                      item.images[2] === undefined
-                                        ? defaultImage
-                                        : loadingImage
-                                    }
                                     width={175}
+                                    preview={false}
                                     height={175}
+                                    src={item.images[2]}
+                                    placeholder={
+                                      <Image
+                                        preview={false}
+                                        src={
+                                          item.images[2] === undefined
+                                            ? defaultImage
+                                            : loadingImage
+                                        }
+                                        width={175}
+                                        height={175}
+                                      />
+                                    }
                                   />
-                                }
-                              />
-                            </div>
-                          </Col>
-                        </Row>
-                      </Link>
-                    </>
-                  ))
-                ) : (
-                  <Empty />
-                )}
-                <div className={classes.section}>
-                  <Pagination
-                    className={classes.paginationStyle}
-                    defaultCurrent={1}
-                    total={pageinate}
-                  />
+                                </div>
+                              </Col>
+                            </Row>
+                          </Link>
+                        </>
+                      ))
+                    ) : (
+                      <Empty />
+                    )}
+                    <div className={classes.section}>
+                      <Pagination
+                        className={classes.paginationStyle}
+                        defaultCurrent={1}
+                        total={pageinate}
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </div>
+              </Col>
+            </Row>
+          </div>
+        </>
+      ) : (
+        <div className={classes.spinner}>
+          <Spin />
+        </div>
+      )}
     </>
   )
 }

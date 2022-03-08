@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Row, Col, Button, Form, Input, Avatar, Spin } from 'antd'
-import classes from './Profile.module.scss'
-import { useHistory } from 'react-router-dom'
+import classes from './PaymentMethod.module.scss'
+
 import axios from 'axios'
 import Navigation from '../Common/Navigation/Navigation'
 import { UserOutlined } from '@ant-design/icons'
-const Profile = () => {
+import { useHistory } from 'react-router-dom'
+const PaymentMethod = () => {
   const history = useHistory()
   const [loading, setLoading] = useState(false)
   const [name, setName] = useState('')
@@ -43,9 +44,9 @@ const Profile = () => {
                 onClick={() => {
                   history.push('/dashboard/buyer/profile')
                 }}
-                type="primary"
+                type="link"
                 size="large"
-                className={classes.actionButton}
+                className={classes.completedButton}
               >
                 My Profile
               </Button>
@@ -54,9 +55,9 @@ const Profile = () => {
                   history.push('/dashboard/buyer/profile/payment-method')
                 }}
                 size="large"
-                type="link"
+                type="primary"
                 defaultValue="Test"
-                className={classes.completedButton}
+                className={classes.actionButton}
               >
                 Payment Method
               </Button>
@@ -72,53 +73,53 @@ const Profile = () => {
               </Button>
             </div>
           </Col>
-          <Col span={16}>
+          <Col span={4}>
             <div className={classes.mainSection}>
-              {loading ? (
-                <div className={classes.spin}>
-                  <Spin />
-                </div>
-              ) : (
+              <Button type="primary" size="large">
+                + Add Card
+              </Button>
+            </div>
+          </Col>
+          <Col span={11}>
+            <div className={classes.mainSection}>
+              <div className={classes.mainForm}>
+                <h4>Add Payment Method</h4>
                 <Form layout="vertical">
                   <Row gutter={12}>
                     <Col span={24}>
-                      <Form.Item>
-                        <Avatar size={64} icon={<UserOutlined />} />
-                      </Form.Item>
-                    </Col>
-                    <Col span={12}>
-                      <Form.Item label="First Name">
+                      <Form.Item label="Name on Card">
                         <Input size="large" value={name} />
                       </Form.Item>
                     </Col>
-                    <Col span={12}>
-                      <Form.Item label="Last Name">
+                    <Col span={24}>
+                      <Form.Item label="Card Number">
                         <Input size="large" />
                       </Form.Item>
                     </Col>
-                    <Col span={12}>
-                      <Form.Item label="Phone Number">
+                    <Col span={8}>
+                      <Form.Item label="MM/YY">
                         <Input size="large" />
                       </Form.Item>
                     </Col>
-                    <Col span={12}>
-                      <Form.Item label="Work Email">
+                    <Col span={8}>
+                      <Form.Item label="CVC">
                         <Input size="large" value={email} />
                       </Form.Item>
                     </Col>
-                    <Col span={12}>
-                      <Form.Item label="New Password">
+                    <Col span={8}>
+                      <Form.Item label="Zip Code">
                         <Input size="large" />
                       </Form.Item>
                     </Col>
-                    <Col span={12}>
-                      <Form.Item label="Confirm Password">
-                        <Input size="large" />
-                      </Form.Item>
+
+                    <Col span={24} align="center">
+                      <Button type="primary" size="large">
+                        Add
+                      </Button>
                     </Col>
                   </Row>
                 </Form>
-              )}
+              </div>
             </div>
           </Col>
         </Row>
@@ -126,4 +127,4 @@ const Profile = () => {
     </>
   )
 }
-export default Profile
+export default PaymentMethod

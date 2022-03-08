@@ -34,7 +34,10 @@ import TermsAndConditions from '../../components/Public/TermsAndConditions/Terms
 import BuyerMyInquiries from '../../components/Admin/Buyer/MyInquiries/MyInquiries'
 import BuyerMyQuote from '../../components/Admin/Buyer/MyQuote/MyQuote'
 import BuyerDashboardProfile from '../../components/Admin/Buyer/Profile/Profile'
-
+import BuyerDashboardProfilePaymentMethod from '../../components/Admin/Buyer/PaymentMethod/PaymentMethod'
+import BuyerDashboardProfileShippingAddress from '../../components/Admin/Buyer/ShippingAddress/ShippingAddress'
+import BlogListing from '../../components/Public/Blog/BlogListing/BlogListing'
+import Blog from '../../components/Public/Blog/Blog/Blog'
 const PublicRoutes = () => (
   <Suspense fallback={<p>Loading ..</p>}>
     <Router>
@@ -45,7 +48,8 @@ const PublicRoutes = () => (
           <Route exact path="/newsroom" component={Newsroom} />
           <Route exact path="/careers" component={Career} />
           <Route exact path="/help-center" component={Helpcenter} />
-
+          <Route exact path="/blog" component={BlogListing} />
+          <Route exact path="/blog/:id" component={Blog} />
           <Route exact path="/user-type" component={SignUp} />
           <Route exact path="/signup" component={SignUpTemp} />
           <Route exact path="/login" component={SignIn} />
@@ -56,13 +60,26 @@ const PublicRoutes = () => (
             path="/dashboard/buyer/inquiries"
             component={BuyerMyInquiries}
           />
-          <Route exact path="/dashboard/buyer/quote" component={BuyerMyQuote} />
+          <Route
+            exact
+            path="/dashboard/buyer/quote/:id"
+            component={BuyerMyQuote}
+          />
           <Route
             exact
             path="/dashboard/buyer/profile"
             component={BuyerDashboardProfile}
           />
-
+          <Route
+            exact
+            path="/dashboard/buyer/profile/payment-method"
+            component={BuyerDashboardProfilePaymentMethod}
+          />
+          <Route
+            exact
+            path="/dashboard/buyer/profile/shipping-address"
+            component={BuyerDashboardProfileShippingAddress}
+          />
           <Route exact path="/privacy-policy" component={PrivacyPolicy} />
           <Route exact path="/signup/buyer" component={BuyerTemp} />
           <Route exact path="/signup/supplier" component={SupplierTemp} />

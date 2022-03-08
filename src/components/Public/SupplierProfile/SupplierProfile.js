@@ -7,10 +7,7 @@ import Slider from 'react-slick'
 import { Row, Col, Carousel, Breadcrumb, Button, Space, Spin } from 'antd'
 import { useParams, useHistory } from 'react-router-dom'
 import axios from 'axios'
-import sampleImage1 from '../../../assets/images/sample_upload_1.png'
-import sampleImage2 from '../../../assets/images/sample_upload_2.png'
-import sampleImage3 from '../../../assets/images/sample_upload_3.png'
-import sampleImage4 from '../../../assets/images/sample_upload_4.png'
+
 import image from '../../../assets/images/sample_logo_img.png'
 import {
   RightOutlined,
@@ -20,21 +17,26 @@ import {
   ShoppingCartOutlined,
 } from '@ant-design/icons'
 import Navigation from '../Homepage/Navigation/Navigation'
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 3,
-  slidesToScroll: 3,
-  autoplay: true,
-}
+
 const SupplierProfile = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 100,
+    slidesToShow: 4,
+    pauseOnHover: false,
+    slidesToScroll: 4,
+    autoplay: true,
+    easing: true,
+    fade: false,
+  }
+
   const history = useHistory()
   let { id } = useParams()
   const [loading, setLoading] = useState(false)
   const [supplierData, setSupplierData] = useState([])
   const [pageinate, setPaginate] = useState(1)
-
+  const [supplierSliderImage, setSupplierSlierImage] = useState()
   const handleQuote = () => {
     history.push({
       pathname: `/quote`,
@@ -45,7 +47,13 @@ const SupplierProfile = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/users/supplier_profile/${id}`)
       .then((res) => {
-        console.log(res.data.images)
+        const imageData = []
+        for (let i = 0; i < res.data.images.length; i++) {
+          res.data.images.map((item) => {
+            imageData.push(item)
+          })
+        }
+        setSupplierSlierImage(imageData)
         setSupplierData(res.data)
       })
       .catch((err) => {
@@ -78,29 +86,24 @@ const SupplierProfile = () => {
       <Navigation />
       {/* {supplierData.length > 0 ? (
         <> */}
-      {/* <div className={classes.section}>
-        {supplierData.images !== undefined ? (
-          supplierData.images.map((item) => (
-            <Slider {...settings}>
+      <div className={classes.section}>
+        <Slider {...settings}>
+          {supplierData.images !== undefined ? (
+            supplierSliderImage.map((item) => (
               <div className={classes.slide}>
                 <img src={item} alt="uplio" />
               </div>
-            </Slider>
-          ))
-        ) : (
-          <Spin />
-        )}
-      </div> */}
+            ))
+          ) : (
+            <Spin />
+          )}
+        </Slider>
+      </div>
       <div className={classes.container}>
         <div className={classes.companyDetails}>
           <Row gutter={12}>
-            <Col span={2}>
-              <img
-                width={65}
-                height={65}
-                src={supplierData.companyLogo}
-                alt="uplio"
-              />
+            <Col span={2} className={classes.logo}>
+              <img src={supplierData.companyLogo} alt="uplio" />
             </Col>
             <Col span={12}>
               <Breadcrumb>
@@ -181,28 +184,31 @@ const Overview = (data) => {
         <Row>
           {/* <Col span={4}>
             <div className={classes.companyDetailsTab}>
-              <p>Production capacity</p>
+              <p>
+              Production capacity
+              </p>
               <h3>1-5,000 units/mo</h3>
             </div>
           </Col> */}
+          <Col span={2}>
+            <div className={classes.companyDetailsTab}>
+              <p>MOQ</p>
+              <h3>{data.props.MOQ}</h3>
+            </div>
+          </Col>
           {/* <Col span={4}>
             <div className={classes.companyDetailsTab}>
               <p>Production capacity</p>
               <h3>1-5,000 units/mo</h3>
             </div>
           </Col> */}
-          <Col span={4}>
+          <Col span={6}>
             <div className={classes.companyDetailsTab}>
               <p>Estimated lead time</p>
               <h3>{data.props.averageLeadtime}</h3>
             </div>
           </Col>
-          <Col span={4}>
-            <div className={classes.companyDetailsTab}>
-              <p>MOQ</p>
-              <h3>{data.props.MOQ}</h3>
-            </div>
-          </Col>
+
           {/* <Col span={4}>
             <div className={classes.companyDetailsTab}>
               <p>Established</p>
@@ -245,7 +251,7 @@ const Overview = (data) => {
             </div>
           </Col>
         </Row> */}
-        <div className={classes.section}></div>
+        {/* <div className={classes.section}></div> */}
       </div>
     </>
   )

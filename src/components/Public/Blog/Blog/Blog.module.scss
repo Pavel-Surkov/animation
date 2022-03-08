@@ -1,0 +1,41 @@
+@import '../../../../theme/variable.module.scss';
+
+.container{
+	max-width: 1300px;
+	margin: 0 auto;
+}
+.blogsSection{
+	margin-top: 60px;
+	text-align: center;
+	h2{
+		font-family: "Playfair Display", serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 72px;
+		line-height: 74px;
+		letter-spacing: 1.5px;
+		margin-bottom: 5px;		
+	}
+	p{
+		font-family: 'Montserrat',sans-serif;
+		font-size: 12px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 26px;		
+		width: 800px;
+		margin: 0 auto;
+		margin-bottom: 30px;
+	}
+	h4{
+		font-family: 'Montserrat',sans-serif;
+		font-size: 19px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 26px;		
+		width: 1000px;
+		margin: 80px auto;
+		
+
+	}
+
+}
