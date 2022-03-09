@@ -43,19 +43,13 @@ const BlogListing = () => {
                     style={{ width: 240 }}
                     cover={<img alt="Uplio" src={item.image} />}
                   >
-                    <Meta title={item.title} />
+                    <Meta />
+                    <h3>{item.title}</h3>
 
-                    {/* <Paragraph
-                      ellipsis={{
-                        rows: 3,
-                        expandable: true,
-                        onExpand: this.typoExpand,
-                      }}
-                    >
-                      <div
-                        dangerouslySetInnerHTML={{ __html: item.description }}
-                      />
-                    </Paragraph> */}
+                    <div
+                      className={classes.ellipse}
+                      dangerouslySetInnerHTML={{ __html: item.description }}
+                    />
                   </Card>
                 </Link>
               </Col>
