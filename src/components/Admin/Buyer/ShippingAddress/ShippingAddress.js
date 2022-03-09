@@ -126,8 +126,44 @@ const ShippingAddress = () => {
     setAddressData(updatedArry)
     setUpdateModal(false)
     setName('')
-
     setZipCode('')
+
+    axios
+      .post(
+        `${process.env.REACT_APP_API_URL}/users/${user.id}/update_shipping_address_by_id`,
+        {
+          shippingAddress: {
+            name: name,
+            country: country,
+            address1: street,
+            address2: apt,
+            city: city,
+            state: state,
+            zip: zipCode,
+            _id: user.id,
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res)
+        setLoading(false)
+        setModal(false)
+        setName('')
+        setCountry('')
+        setStreet('')
+        setApt('')
+        setCity('')
+        setState('')
+        setZipCode('')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   const handleRemoveAddress = (data) => {

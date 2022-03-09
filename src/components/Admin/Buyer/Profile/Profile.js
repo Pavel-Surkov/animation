@@ -33,8 +33,8 @@ const Profile = () => {
         const data = res.data.data
         setUser(data)
         setName(data.name)
-        setFirstName(data.firstName)
-        setLastName(data.lastName)
+        setFirstName(data.firstname)
+        setLastName(data.lastname)
         setNumber(data.phone)
         setEmail(data.email)
       })

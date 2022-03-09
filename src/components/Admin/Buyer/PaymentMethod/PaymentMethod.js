@@ -113,6 +113,40 @@ const PaymentMethod = () => {
       }
     })
     setPaymentData(updatedArry)
+    //
+    axios
+      .post(
+        `${process.env.REACT_APP_API_URL}/users/${user.id}/update_card_by_id`,
+        {
+          paymentCards: {
+            name: name,
+            cardNumber: cardNumber,
+            cardExpiry: date,
+            CVV: cvc,
+            zip: zipCode,
+            _id: data.id,
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res)
+        setLoading(false)
+        setModal(false)
+        setName('')
+        setCvc('')
+        setDate('')
+        setCardNumber('')
+        setZipCode('')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
     setUpdateModal(false)
     setName('')
     setCvc('')
