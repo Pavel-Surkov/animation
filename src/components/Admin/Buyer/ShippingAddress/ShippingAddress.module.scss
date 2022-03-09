@@ -3,6 +3,16 @@
 	max-width: 1200px;
 	margin: 0 auto;
 }
+.listPayments{
+	margin-top: 60px;	
+	.paymentCard{
+		border: 1px solid $light_grey_app_color;
+		padding:  20px;
+		border-radius: 4px;
+
+		margin-bottom: 20px;
+	}
+}
 .mainSection{
 	margin-top: 60px;
 	.spin{
@@ -12,7 +22,7 @@
 .mainForm{
 	border-radius: 4px;
 	padding: 5px 10px;
-	border: 1px solid $light_grey_app_color;
+	
 	h4{
 		font-size: 17px;
 		font-weight: 500;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Button, Form, Input, Avatar, Spin } from 'antd'
+import { Row, Col, Button, Form, Input, Space, Avatar, Spin, Modal } from 'antd'
 import classes from './PaymentMethod.module.scss'
 
 import axios from 'axios'
@@ -9,8 +9,17 @@ import { useHistory } from 'react-router-dom'
 const PaymentMethod = () => {
   const history = useHistory()
   const [loading, setLoading] = useState(false)
+  const [updateModal, setUpdateModal] = useState(false)
+  const [paymentData, setPaymentData] = useState([])
+  const [paymentMeta, setPaymentMeta] = useState([])
+  const [modal, setModal] = useState(false)
+  const [currentTab, setCurrentTab] = useState('')
+  const [user, setUser] = useState()
   const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
+  const [cardNumber, setCardNumber] = useState('')
+  const [date, setDate] = useState('')
+  const [cvc, setCvc] = useState('')
+  const [zipCode, setZipCode] = useState('')
 
   const token = localStorage.getItem('token')
   useEffect(() => {
@@ -23,15 +32,128 @@ const PaymentMethod = () => {
       })
       .then((res) => {
         console.log(res)
-
         setLoading(false)
-        setName(res.data.data.name)
-        setEmail(res.data.data.email)
+        setPaymentData(res.data.data.paymentCards)
+        setPaymentMeta(res.data.data.paymentCards)
+        setUser(res.data.data)
       })
       .catch((err) => {
         console.log(err)
       })
   }, [])
+
+  const handleSavingPaymentMethod = () => {
+    setLoading(true)
+    paymentData.push({
+      CVV: cvc,
+      cardExpiry: date,
+      cardNumber: cardNumber,
+      name: name,
+      zip: zipCode,
+      _id: (
+        '0'.repeat(16) + Math.floor(Math.random() * 16 ** 16).toString(16)
+      ).slice(-16),
+    })
+    axios
+      .post(
+        `${process.env.REACT_APP_API_URL}/users/${user.id}/add_card`,
+        {
+          paymentCards: {
+            name: name,
+            cardNumber: cardNumber,
+            cardExpiry: date,
+            CVV: cvc,
+            zip: zipCode,
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res)
+        setLoading(false)
+        setModal(false)
+        setName('')
+        setCvc('')
+        setDate('')
+        setCardNumber('')
+        setZipCode('')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  const handleUpdateAddress = (data) => {
+    setName(data.name)
+    setCvc(data.CVV)
+    setDate(data.cardExpiry)
+    setCardNumber(data.cardNumber)
+    setZipCode(data.zip)
+    setUpdateModal(true)
+    setCurrentTab(data)
+  }
+  const handleUpdatingPayment = () => {
+    let data = currentTab
+    let updatedArry = []
+    paymentData.map((item) => {
+      if (item._id === data._id) {
+        updatedArry.push({
+          CVV: cvc,
+          cardExpiry: date,
+          cardNumber: cardNumber,
+          name: name,
+          zip: zipCode,
+        })
+      } else {
+        updatedArry.push(item)
+      }
+    })
+    setPaymentData(updatedArry)
+    setUpdateModal(false)
+    setName('')
+    setCvc('')
+    setDate('')
+    setCardNumber('')
+    setZipCode('')
+  }
+
+  const handleRemoveAddress = (data) => {
+    let arr = []
+    paymentData.map((item) => {
+      if (item._id !== data) {
+        arr.push(item)
+      }
+    })
+    setPaymentData(arr)
+
+    axios
+      .post(
+        `${process.env.REACT_APP_API_URL}/users/${user.id}/remove_card`,
+        {
+          _id: data,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res)
+        setLoading(false)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  const handleAddingAddress = () => {
+    setModal(true)
+  }
 
   return (
     <>
@@ -75,55 +197,217 @@ const PaymentMethod = () => {
           </Col>
           <Col span={4}>
             <div className={classes.mainSection}>
-              <Button type="primary" size="large">
+              <Button
+                onClick={() => setModal(true)}
+                type="primary"
+                size="large"
+              >
                 + Add Card
               </Button>
             </div>
           </Col>
           <Col span={11}>
-            <div className={classes.mainSection}>
-              <div className={classes.mainForm}>
-                <h4>Add Payment Method</h4>
-                <Form layout="vertical">
-                  <Row gutter={12}>
-                    <Col span={24}>
-                      <Form.Item label="Name on Card">
-                        <Input size="large" value={name} />
-                      </Form.Item>
+            <div className={classes.listPayments}>
+              {paymentData.map((item) => (
+                <div key={item._id} className={classes.paymentCard}>
+                  <Row>
+                    <Col span={12}>
+                      <h3>
+                        <strong>Name : </strong>
+                        {item.name}
+                      </h3>
                     </Col>
-                    <Col span={24}>
-                      <Form.Item label="Card Number">
-                        <Input size="large" />
-                      </Form.Item>
+                    <Col span={12}>
+                      <h3>
+                        <strong>Card : </strong>
+                        {item.cardNumber}
+                      </h3>
                     </Col>
-                    <Col span={8}>
-                      <Form.Item label="MM/YY">
-                        <Input size="large" />
-                      </Form.Item>
+                    <Col span={12}>
+                      <h3>
+                        <strong>CVV : </strong>
+                        {item.CVV}
+                      </h3>
                     </Col>
-                    <Col span={8}>
-                      <Form.Item label="CVC">
-                        <Input size="large" value={email} />
-                      </Form.Item>
+                    <Col span={12}>
+                      <h3>
+                        <strong>Valid Till : </strong>
+                        {item.cardExpiry}
+                      </h3>
                     </Col>
-                    <Col span={8}>
-                      <Form.Item label="Zip Code">
-                        <Input size="large" />
-                      </Form.Item>
+                    <Col span={12}>
+                      <h3>
+                        <strong>Zip : </strong>
+                        {item.zip}
+                      </h3>
                     </Col>
-
                     <Col span={24} align="center">
-                      <Button type="primary" size="large">
-                        Add
-                      </Button>
+                      <Space size={12}>
+                        <Button
+                          type="secondary"
+                          size="large"
+                          onClick={() => handleUpdateAddress(item)}
+                        >
+                          Update
+                        </Button>
+                        <Button
+                          type="primary"
+                          size="large"
+                          onClick={() => handleRemoveAddress(item._id)}
+                        >
+                          Remove
+                        </Button>
+                      </Space>
                     </Col>
                   </Row>
-                </Form>
-              </div>
+                </div>
+              ))}
             </div>
           </Col>
         </Row>
       </div>
+      <Modal
+        visible={modal}
+        onOk={() => setModal(false)}
+        onCancel={() => setModal(false)}
+        footer={false}
+      >
+        <div className={classes.mainSection}>
+          <div className={classes.mainForm}>
+            <h4>Add Payment Method</h4>
+            <Form layout="vertical">
+              <Row gutter={12}>
+                <Col span={24}>
+                  <Form.Item label="Name on Card">
+                    <Input
+                      size="large"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col span={24}>
+                  <Form.Item label="Card Number">
+                    <Input
+                      size="large"
+                      value={cardNumber}
+                      onChange={(e) => setCardNumber(e.target.value)}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col span={8}>
+                  <Form.Item label="MM/YY">
+                    <Input
+                      size="large"
+                      value={date}
+                      onChange={(e) => setDate(e.target.value)}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col span={8}>
+                  <Form.Item label="CVC">
+                    <Input
+                      size="large"
+                      value={cvc}
+                      onChange={(e) => setCvc(e.target.value)}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col span={8}>
+                  <Form.Item label="Zip Code">
+                    <Input
+                      size="large"
+                      value={zipCode}
+                      onChange={(e) => setZipCode(e.target.value)}
+                    />
+                  </Form.Item>
+                </Col>
+
+                <Col span={24} align="center">
+                  <Button
+                    onClick={() => handleSavingPaymentMethod()}
+                    type="primary"
+                    size="large"
+                  >
+                    Add
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </div>
+        </div>
+      </Modal>
+      <Modal
+        visible={updateModal}
+        onOk={() => setUpdateModal(false)}
+        onCancel={() => setUpdateModal(false)}
+        footer={false}
+      >
+        <div className={classes.mainSection}>
+          <div className={classes.mainForm}>
+            <h4>Update Payment Method</h4>
+            <Form layout="vertical">
+              <Row gutter={12}>
+                <Col span={24}>
+                  <Form.Item label="Name on Card">
+                    <Input
+                      size="large"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col span={24}>
+                  <Form.Item label="Card Number">
+                    <Input
+                      size="large"
+                      value={cardNumber}
+                      onChange={(e) => setCardNumber(e.target.value)}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col span={8}>
+                  <Form.Item label="MM/YY">
+                    <Input
+                      size="large"
+                      value={date}
+                      onChange={(e) => setDate(e.target.value)}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col span={8}>
+                  <Form.Item label="CVC">
+                    <Input
+                      size="large"
+                      value={cvc}
+                      onChange={(e) => setCvc(e.target.value)}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col span={8}>
+                  <Form.Item label="Zip Code">
+                    <Input
+                      size="large"
+                      value={zipCode}
+                      onChange={(e) => setZipCode(e.target.value)}
+                    />
+                  </Form.Item>
+                </Col>
+
+                <Col span={24} align="center">
+                  <Button
+                    onClick={() => handleUpdatingPayment(currentTab)}
+                    type="primary"
+                    size="large"
+                  >
+                    Update
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </div>
+        </div>
+      </Modal>
     </>
   )
 }
