@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Button, Form, Input, Avatar, Spin } from 'antd'
+import { Row, Col, Button, Form, Input, Avatar, Spin, Space } from 'antd'
 import classes from './Profile.module.scss'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
@@ -9,7 +9,14 @@ const Profile = () => {
   const history = useHistory()
   const [loading, setLoading] = useState(false)
   const [name, setName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
+  const [number, setNumber] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [editing, setEditing] = useState(true)
+  const [user, setUser] = useState('')
 
   const token = localStorage.getItem('token')
   useEffect(() => {
@@ -22,15 +29,48 @@ const Profile = () => {
       })
       .then((res) => {
         console.log(res)
-
         setLoading(false)
-        setName(res.data.data.name)
-        setEmail(res.data.data.email)
+        const data = res.data.data
+        setUser(data)
+        setName(data.name)
+        setFirstName(data.firstName)
+        setLastName(data.lastName)
+        setNumber(data.phone)
+        setEmail(data.email)
       })
       .catch((err) => {
         console.log(err)
       })
   }, [])
+
+  const handleEditing = () => {
+    debugger
+    console.log(user)
+    axios
+      .patch(
+        `${process.env.REACT_APP_API_URL}/users/${user.id}`,
+        {
+          name: name,
+          firstname: firstName,
+          lastname: lastName,
+          phone: number,
+          workEmail: email,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res)
+        setLoading(false)
+        setEditing(true)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
   return (
     <>
@@ -88,33 +128,91 @@ const Profile = () => {
                     </Col>
                     <Col span={12}>
                       <Form.Item label="First Name">
-                        <Input size="large" value={name} />
+                        <Input
+                          size="large"
+                          disabled={editing}
+                          value={firstName}
+                          onChange={(e) => setFirstName(e.target.value)}
+                        />
                       </Form.Item>
                     </Col>
                     <Col span={12}>
                       <Form.Item label="Last Name">
-                        <Input size="large" />
+                        <Input
+                          size="large"
+                          disabled={editing}
+                          value={lastName}
+                          onChange={(e) => setLastName(e.target.value)}
+                        />
                       </Form.Item>
                     </Col>
                     <Col span={12}>
                       <Form.Item label="Phone Number">
-                        <Input size="large" />
+                        <Input
+                          size="large"
+                          disabled={editing}
+                          value={number}
+                          onChange={(e) => setNumber(e.target.value)}
+                        />
                       </Form.Item>
                     </Col>
                     <Col span={12}>
                       <Form.Item label="Work Email">
-                        <Input size="large" value={email} />
+                        <Input
+                          size="large"
+                          disabled={editing}
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
                       </Form.Item>
                     </Col>
                     <Col span={12}>
                       <Form.Item label="New Password">
-                        <Input size="large" />
+                        <Input
+                          size="large"
+                          disabled={editing}
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
                       </Form.Item>
                     </Col>
                     <Col span={12}>
                       <Form.Item label="Confirm Password">
-                        <Input size="large" />
+                        <Input
+                          value={confirmPassword}
+                          disabled={editing}
+                          onChange={(e) => setConfirmPassword(e.target.value)}
+                          size="large"
+                        />
                       </Form.Item>
+                    </Col>
+                    <Col span={24} align="right">
+                      {!editing ? (
+                        <Space size={12}>
+                          <Button
+                            type="link"
+                            size="large"
+                            onClick={() => setEditing(true)}
+                          >
+                            Cancel
+                          </Button>
+                          <Button
+                            onClick={() => handleEditing()}
+                            type="primary"
+                            size="large"
+                          >
+                            Save
+                          </Button>
+                        </Space>
+                      ) : (
+                        <Button
+                          onClick={() => setEditing(false)}
+                          type="primary"
+                          size="large"
+                        >
+                          Edit
+                        </Button>
+                      )}
                     </Col>
                   </Row>
                 </Form>

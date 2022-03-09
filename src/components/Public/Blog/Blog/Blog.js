@@ -1,13 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../../common/Footer/Footer'
 import Navigation from '../../Homepage/Navigation/Navigation'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Row, Col, Card } from 'antd'
 import classes from './Blog.module.scss'
 import banner from '../../../../assets/images/main_banner.png'
 import banner1 from '../../../../assets/images/banner.jpg'
+import { useParams } from 'react-router-dom'
 const { Meta } = Card
 const BlogListing = () => {
+  let { id } = useParams()
+  const [blog, setBlogData] = useState('')
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/blogs/list`)
+      .then((res) => {
+        console.log(res)
+
+        res.data.data.map((item) => {
+          debugger
+          if (item._id === id) {
+            setBlogData(item)
+          }
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
   return (
     <>
       <Navigation />
@@ -15,29 +36,14 @@ const BlogListing = () => {
         <div className={classes.blogsSection}>
           <Row gutter={[12, 24]}>
             <Col span={24}>
-              <h2>Lorem Ipsum</h2>
-              <p>
-                "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-                consectetur, adipisci velit..." "There is no one who loves pain
-                itself, who seeks after it and wants to have it, simply because
-                it is pain..."
-              </p>
-              <img src={banner} alt="uplio" />
+              <Col span={24}>
+                <h2>{blog.title}</h2>
+                <p> </p>
+                <img src={blog.image} alt="uplio" />
+              </Col>
             </Col>
             <Col span={24}>
-              <h4>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.
-              </h4>
-              <img width={1000} src={banner1} alt="uplio" />
+              <div dangerouslySetInnerHTML={{ __html: blog.description }} />
             </Col>
           </Row>
         </div>
