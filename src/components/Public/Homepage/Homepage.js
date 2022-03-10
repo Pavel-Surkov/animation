@@ -341,7 +341,7 @@ const Hompagetemp = () => {
             <>
               <Col span={24}>
                 <div className={classes.categoryWrapperCenter}>
-                  <img width="380" src={image_2_1} alt="uplio" />
+                  <img style={{ width: '100%' }} src={image_2_1} alt="uplio" />
                   <h5>Browse sample of manufacturers</h5>
                 </div>
               </Col>
@@ -381,7 +381,7 @@ const Hompagetemp = () => {
             anyone who wants to start their brand.
           </p>
           <div className={classes.aboutSectionContent}>
-            <Row gutter={96}>
+            <Row gutter={{ xs: 0, sm: 0, md: 96, lg: 96 }}>
               <Col xl={8} md={8} xs={24}>
                 <img src={icon4} alt="uplio" />
                 <p>01</p>

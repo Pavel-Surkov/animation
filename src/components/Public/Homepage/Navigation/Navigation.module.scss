@@ -7,7 +7,7 @@
 	height: 10vh;
 	background: $secondary_app_color;
       }
-
+  
       .signIn{
 	color: $primary_app_color !important;
 	font-family: 'Montserrat',sans-serif;
@@ -96,7 +96,14 @@ and (orientation: portrait) {
 		max-width: 350px;
 		margin: 0 auto;
 	}	
-	
+	.hamburgerMenu	{
+		
+		  height: 40px !important;			  
+  }
+  .logo{
+	border-radius: 5px;
+	width: 40px;
+  }
 
 }
 

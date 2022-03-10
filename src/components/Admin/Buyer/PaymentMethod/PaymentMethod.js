@@ -124,7 +124,7 @@ const PaymentMethod = () => {
             cardExpiry: date,
             CVV: cvc,
             zip: zipCode,
-            _id: data.id,
+            _id: currentTab._id,
           },
         },
         {

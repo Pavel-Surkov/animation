@@ -80,6 +80,7 @@ const SignIn = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 size="large"
+                onPressEnter={() => handleSignIn()}
                 placeholder="Password..."
               />
             </Form.Item>

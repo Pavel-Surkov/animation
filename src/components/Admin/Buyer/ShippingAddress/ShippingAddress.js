@@ -140,7 +140,7 @@ const ShippingAddress = () => {
             city: city,
             state: state,
             zip: zipCode,
-            _id: user.id,
+            _id: currentTab._id,
           },
         },
         {

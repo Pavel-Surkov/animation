@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Button, Form, Input, Avatar, Spin, Space } from 'antd'
+import {
+  Row,
+  Col,
+  Button,
+  Form,
+  Input,
+  Avatar,
+  Spin,
+  Space,
+  Upload,
+} from 'antd'
 import classes from './Profile.module.scss'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import Navigation from '../Common/Navigation/Navigation'
-import { UserOutlined } from '@ant-design/icons'
+import { UserOutlined, PlusOutlined } from '@ant-design/icons'
 const Profile = () => {
   const history = useHistory()
   const [loading, setLoading] = useState(false)
@@ -17,8 +27,16 @@ const Profile = () => {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [editing, setEditing] = useState(true)
   const [user, setUser] = useState('')
+  const [imageIsUploading, setImageIsUploading] = useState('')
+  const hiddenFileInput = React.useRef(null)
+  const [uploadType, setUploadType] = useState('')
+  const [imageUploading, setImageUploading] = useState(false)
 
   const token = localStorage.getItem('token')
+
+  const handleChange = (event) => {
+    setImageIsUploading(true)
+  }
   useEffect(() => {
     setLoading(true)
     axios
@@ -42,6 +60,11 @@ const Profile = () => {
         console.log(err)
       })
   }, [])
+
+  const handleClick = (event) => {
+    hiddenFileInput.current.click()
+    setUploadType(event)
+  }
 
   const handleEditing = () => {
     debugger
@@ -123,7 +146,39 @@ const Profile = () => {
                   <Row gutter={12}>
                     <Col span={24}>
                       <Form.Item>
-                        <Avatar size={64} icon={<UserOutlined />} />
+                        <Space>
+                          <input
+                            type="file"
+                            ref={hiddenFileInput}
+                            onChange={handleChange}
+                            style={{ display: 'none' }}
+                          />
+
+                          {imageUploading ? (
+                            <>
+                              <button
+                                onClick={() => handleClick('inspiration')}
+                              >
+                                {imageIsUploading ? (
+                                  <Spin size="large" />
+                                ) : (
+                                  <PlusOutlined />
+                                )}
+                              </button>
+                            </>
+                          ) : (
+                            <>
+                              <Avatar size={64} icon={<UserOutlined />} />
+                              <Button
+                                type="link"
+                                size="large"
+                                onClick={() => setImageUploading(true)}
+                              >
+                                Edit
+                              </Button>{' '}
+                            </>
+                          )}
+                        </Space>
                       </Form.Item>
                     </Col>
                     <Col span={12}>

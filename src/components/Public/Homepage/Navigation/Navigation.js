@@ -13,6 +13,7 @@ import {
 } from 'antd'
 import classes from './Navigation.module.scss'
 import logo from '../../../../assets/svg/logo_red_small.svg'
+import logo_mobile from '../../../../assets/svg/logo_mobile.svg'
 import { createBrowserHistory as history } from 'history'
 import {
   RotateRightOutlined,
@@ -90,12 +91,17 @@ const Navigation = (params) => {
     <div className={classes.header}>
       <header ref={ref} className={sticky && check ? classes.sticky : null}>
         <Row align="middle" justify="space-around">
-          <Col md={6} xl={6} xs={12}>
+          <Col md={0} xl={0} xs={3}>
+            <Link to="/">
+              <img className={classes.logo} src={logo_mobile} alt="Uplios" />
+            </Link>
+          </Col>
+          <Col md={6} xl={6} xs={0}>
             <Link to="/">
               <img src={logo} alt="Uplios" />
             </Link>
           </Col>
-          <Col md={6} xl={6} xs={0} align="center">
+          <Col md={6} xl={6} xs={18} align="center">
             <Search />
           </Col>
           <Col md={6} xl={6} xs={0} align="right">
@@ -154,8 +160,11 @@ const Navigation = (params) => {
               </Space>
             )}
           </Col>
-          <Col xs={12} md={0} xl={0} align="right">
-            <Button onClick={() => setVisible(true)}>
+          <Col xs={3} md={0} xl={0} align="right">
+            <Button
+              className={classes.hamburgerMenu}
+              onClick={() => setVisible(true)}
+            >
               <MenuOutlined style={{ color: '#e14a48' }} />
             </Button>
           </Col>
@@ -169,8 +178,6 @@ const Navigation = (params) => {
         visible={visible}
         key="right"
       >
-        <Search />
-
         {userLoggedInState ? (
           <Space direction="vertical">
             <Divider style={{ margin: '0' }} />
@@ -196,7 +203,6 @@ const Navigation = (params) => {
           </Space>
         ) : (
           <>
-            <Divider />
             <Space>
               <Button
                 className={classes.signIn}
