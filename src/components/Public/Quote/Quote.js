@@ -9,6 +9,7 @@ import {
   Form,
   Input,
   DatePicker,
+  Popover,
   InputNumber,
   Select,
   Modal,
@@ -428,19 +429,28 @@ const Quote = () => {
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label="Budget">
-                  <InputNumber
-                    className={classes.fullWidth}
-                    placeholder="Budget amount..."
-                    controls={false}
-                    min={0}
-                    prefix="$"
-                    value={budget}
-                    onChange={onChangeBudget}
-                    size="large"
-                    allowClear
-                  />
-                </Form.Item>
+                <Popover
+                  content={
+                    <h4>
+                      Budget includes sample and production cost that you are
+                      willing to pay for this project.
+                    </h4>
+                  }
+                >
+                  <Form.Item label=" Budget">
+                    <InputNumber
+                      className={classes.fullWidth}
+                      placeholder="Budget amount..."
+                      controls={false}
+                      min={0}
+                      prefix="$"
+                      value={budget}
+                      onChange={onChangeBudget}
+                      size="large"
+                      allowClear
+                    />
+                  </Form.Item>
+                </Popover>
               </Col>
             </Row>
             <div className={classes.headingQuote}>
@@ -466,7 +476,19 @@ const Quote = () => {
             </div>
 
             <p style={{ marginBottom: '32px' }}>
-              Images or sourced documents such as tech packs
+              Images or sourced documents such as
+              <Popover
+                content={
+                  <h4>
+                    Tech pack is a technical document that contains all
+                    technical information <br /> such as your design sketches,
+                    measurements and specs, sizing, etc.
+                  </h4>
+                }
+              >
+                {' '}
+                <Link>tech packs</Link>
+              </Popover>
             </p>
 
             <Form.Item>

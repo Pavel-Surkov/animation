@@ -130,7 +130,7 @@ export default function Products() {
         <>
           <div className={classes.container}>
             <Row gutter={16}>
-              <Col span={5}>
+              <Col md={5} lg={5} xs={0} sm={0}>
                 <div className={classes.section}>
                   {/* <div className={classes.searchFilter}>
                 <Input
