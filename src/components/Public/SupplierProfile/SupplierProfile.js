@@ -31,6 +31,18 @@ const SupplierProfile = () => {
     fade: false,
   }
 
+  const settingsMobile = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    pauseOnHover: false,
+    slidesToScroll: 4,
+    autoplay: true,
+    easing: true,
+    fade: false,
+  }
+
   const history = useHistory()
   let { id } = useParams()
   const [loading, setLoading] = useState(false)
@@ -87,25 +99,43 @@ const SupplierProfile = () => {
       {/* {supplierData.length > 0 ? (
         <> */}
       <div className={classes.section}>
-        <Slider {...settings}>
-          {supplierData.images !== undefined ? (
-            supplierSliderImage.map((item) => (
-              <div className={classes.slide}>
-                <img src={item} alt="uplio" />
-              </div>
-            ))
-          ) : (
-            <Spin />
-          )}
-        </Slider>
+        <Row>
+          {/* TODO fix banner */}
+          <Col lg={24} md={24} xs={0} sm={0}>
+            <Slider {...settings}>
+              {supplierData.images !== undefined ? (
+                supplierSliderImage.map((item) => (
+                  <div className={classes.slide}>
+                    <img src={item} alt="uplio" />
+                  </div>
+                ))
+              ) : (
+                <Spin />
+              )}
+            </Slider>
+          </Col>
+          <Col lg={0} md={0} xs={24} sm={24} align="center">
+            <Slider {...settingsMobile}>
+              {supplierData.images !== undefined ? (
+                supplierSliderImage.map((item) => (
+                  <div className={classes.slide}>
+                    <img src={item} alt="uplio" />
+                  </div>
+                ))
+              ) : (
+                <Spin />
+              )}
+            </Slider>
+          </Col>
+        </Row>
       </div>
       <div className={classes.container}>
         <div className={classes.companyDetails}>
           <Row gutter={12}>
-            <Col span={2} className={classes.logo}>
+            <Col lg={2} md={2} sm={8} xs={8} className={classes.logo}>
               <img src={supplierData.companyLogo} alt="uplio" />
             </Col>
-            <Col span={12}>
+            <Col lg={12} md={12} sm={16} xs={16}>
               <Breadcrumb>
                 <Breadcrumb.Item>
                   <a href="">Supplier</a>
@@ -124,7 +154,7 @@ const SupplierProfile = () => {
 
         <div className={classes.section}>
           <Row gutter={12}>
-            <Col span={18}>
+            <Col md={18} lg={18} sm={24} xs={24}>
               <div className={classes.tabNavigation}>
                 <button
                   className={overview ? classes.activeTab : null}
@@ -143,8 +173,9 @@ const SupplierProfile = () => {
               {overview ? <Overview props={supplierData} /> : null}
               {service ? <Services props={supplierData} /> : null}
             </Col>
-            <Col span={6}>
-              <Space direction="vertical" className={classes.buttonSection}>
+            <Col lg={6} md={6} xs={24} sm={24}>
+              <div className={classes.buttonSection}>
+                {/* <Space direction="vertical" > */}
                 <Button
                   onClick={() => handleQuote()}
                   block
@@ -159,7 +190,8 @@ const SupplierProfile = () => {
                 <Button block size="large">
                   <HeartOutlined /> Add to favorites
                 </Button> */}
-              </Space>
+                {/* </Space> */}
+              </div>
             </Col>
           </Row>
         </div>
@@ -202,7 +234,7 @@ const Overview = (data) => {
               <h3>1-5,000 units/mo</h3>
             </div>
           </Col> */}
-          <Col span={6}>
+          <Col md={6} lg={6}>
             <div className={classes.companyDetailsTab}>
               <p>Estimated lead time</p>
               <h3>{data.props.averageLeadtime}</h3>

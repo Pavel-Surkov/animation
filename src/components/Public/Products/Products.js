@@ -13,6 +13,7 @@ import {
   Divider,
   Image,
   Spin,
+  Carousel,
 } from 'antd'
 
 import Navigation from '../../Public/Homepage/Navigation/Navigation'
@@ -192,7 +193,7 @@ export default function Products() {
                 </div>
               </Col>
 
-              <Col span={19}>
+              <Col md={19} lg={19} xs={24} sm={24}>
                 <div className={classes.section}>
                   <div className={classes.resultsHeader}>
                     <h3>
@@ -214,7 +215,12 @@ export default function Products() {
                               gutter={16}
                               // justify="space-between"
                             >
-                              <Col span={8}>
+                              <Col
+                                md={8}
+                                lg={8}
+                                xs={(24, { order: 2 })}
+                                sm={(24, { order: 2 })}
+                              >
                                 <div className={classes.productImg}>
                                   <Row>
                                     <Col span={8}>
@@ -283,7 +289,80 @@ export default function Products() {
                                   </Row>
                                 </div>
                               </Col>
-                              <Col span={5}>
+                              <Col
+                                md={0}
+                                lg={0}
+                                xs={(24, { order: 1 })}
+                                sm={(24, { order: 1 })}
+                              >
+                                <Carousel
+                                  dots={false}
+                                  autoplay={true}
+                                  autoplaySpeed={4000}
+                                >
+                                  <div className={classes.productImg}>
+                                    <Image
+                                      width={175}
+                                      preview={false}
+                                      height={175}
+                                      src={item.images[0]}
+                                      placeholder={
+                                        <Image
+                                          preview={false}
+                                          src={
+                                            item.images[0] === undefined
+                                              ? defaultImage
+                                              : loadingImage
+                                          }
+                                          width={175}
+                                          height={175}
+                                        />
+                                      }
+                                    />
+                                  </div>
+                                  <div className={classes.productImg}>
+                                    <Image
+                                      width={175}
+                                      preview={false}
+                                      height={175}
+                                      src={item.images[1]}
+                                      placeholder={
+                                        <Image
+                                          preview={false}
+                                          src={
+                                            item.images[1] === undefined
+                                              ? defaultImage
+                                              : loadingImage
+                                          }
+                                          width={175}
+                                          height={175}
+                                        />
+                                      }
+                                    />
+                                  </div>
+                                  <div className={classes.productImg}>
+                                    <Image
+                                      width={175}
+                                      preview={false}
+                                      height={175}
+                                      src={item.images[2]}
+                                      placeholder={
+                                        <Image
+                                          preview={false}
+                                          src={
+                                            item.images[2] === undefined
+                                              ? defaultImage
+                                              : loadingImage
+                                          }
+                                          width={175}
+                                          height={175}
+                                        />
+                                      }
+                                    />
+                                  </div>
+                                </Carousel>
+                              </Col>
+                              <Col md={5} lg={5} xs={0} sm={0}>
                                 <div className={classes.productImg}>
                                   <Image
                                     width={175}
@@ -305,7 +384,7 @@ export default function Products() {
                                   />
                                 </div>
                               </Col>
-                              <Col span={5}>
+                              <Col md={5} lg={5} xs={0} sm={0}>
                                 <div className={classes.productImg}>
                                   <Image
                                     width={175}
@@ -327,7 +406,7 @@ export default function Products() {
                                   />
                                 </div>
                               </Col>
-                              <Col span={5}>
+                              <Col md={5} lg={5} xs={0} sm={0}>
                                 <div className={classes.productImg}>
                                   <Image
                                     width={175}

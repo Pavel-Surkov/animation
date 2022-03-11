@@ -134,3 +134,47 @@
 .cardLink:hover{
 	color:$red_app_color
 }
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2) { 
+
+}
+
+/* Portrait */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) { 
+	.container{
+		max-width: 350px;
+		margin: 0 auto;
+	}	
+	.section{
+		padding: 0;
+	}
+	.productImg{
+		text-align: center;
+		padding-bottom: 20px;
+		p{
+			text-align: justify;
+
+		}
+	}
+}
+
+/* Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) { 
+
+}
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
