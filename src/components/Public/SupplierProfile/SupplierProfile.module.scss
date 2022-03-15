@@ -18,7 +18,7 @@
 	}
 }
 .section{
-	padding: 100px 0;
+	padding: 42px 0;
 }
 .slide{
 	border: 1px solid $light_grey_app_color;
@@ -36,9 +36,10 @@
 	h3{
 		font-family: 'Inter',sans-serif;
 		font-style: normal;
-		font-weight: 800;
+		font-weight: 700;
 		font-size: 24px;
 		line-height: 30px;
+		letter-spacing: 0.04em;
 	}
 }
 
@@ -55,21 +56,23 @@
 		padding:30px 0;
 	}
 	h2{
-		font-family: 'Inter',sans-serif;
+		font-family: 'Inter',sans-serif;		
 		font-style: normal;
-		font-weight: normal;
+		font-weight: 400;
 		font-size: 14px;
 		line-height: 26px;
 		padding:30px 0;
-		
+		letter-spacing: 0.02em;
+
 	}
 	p{
 		font-family: 'Montserrat',sans-serif;
+		font-family: 'Montserrat';
 		font-style: normal;
-		font-weight: normal;
-		font-size: 17px;
+		font-weight: 400;
+		font-size: 12px;
 		line-height: 20px;
-		opacity: 0.7;
+		opacity: 0.5;
 	}
 	h3{
 		font-family: 'Montserrat',sans-serif;
@@ -77,6 +80,7 @@
 		font-weight: 500;
 		font-size: 17px;
 		line-height: 26px;
+		opacity: 0.7;
 		
 	}
 	
@@ -192,12 +196,18 @@ hr{
 
 .companyDetailsFooter{
 	h5{
-		font-family: 'Inter',sans-serif;
+		font-family: 'Inter',sans-serif;		
 		font-style: normal;
-		font-weight: bold;
+		font-weight: 700;
 		font-size: 16px;
 		line-height: 30px;
-		margin-bottom: 30px;
+	}
+	li{
+		font-family: 'Inter',sans-serif;		
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 26px;
+		letter-spacing: 0.02em;
 	}
 }
 

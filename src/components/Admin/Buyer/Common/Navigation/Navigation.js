@@ -24,7 +24,7 @@ const Navigation = () => {
   const token = localStorage.getItem('token')
   const dispatch = useDispatch()
   const userLoggedInState = useSelector((state) => state.counter.userLoggedIn)
-
+  const userProfile = useSelector((state) => state.counter.user.profileImage)
   useEffect(() => {
     if (token !== null) {
       axios
@@ -125,7 +125,11 @@ const Navigation = () => {
                         className="ant-dropdown-link"
                         onClick={(e) => e.preventDefault()}
                       >
-                        <Avatar size={50} icon={<UserOutlined />} />
+                        {userProfile === '' ? (
+                          <Avatar size={50} icon={<UserOutlined />} />
+                        ) : (
+                          <Avatar size={50} src={userProfile} />
+                        )}
                       </a>
                     </Dropdown>
                   </Space>

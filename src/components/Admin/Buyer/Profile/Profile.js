@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useStateCallback } from 'react'
+
 import {
   Row,
   Col,
@@ -11,6 +12,7 @@ import {
   Upload,
 } from 'antd'
 import classes from './Profile.module.scss'
+import plusIcon from '../../../../assets/svg/uploadIcon.svg'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import Navigation from '../Common/Navigation/Navigation'
@@ -19,6 +21,7 @@ const Profile = () => {
   const history = useHistory()
   const [loading, setLoading] = useState(false)
   const [name, setName] = useState('')
+  const [userImage, setUserImage] = useState('')
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -29,14 +32,11 @@ const Profile = () => {
   const [user, setUser] = useState('')
   const [imageIsUploading, setImageIsUploading] = useState('')
   const hiddenFileInput = React.useRef(null)
-  const [uploadType, setUploadType] = useState('')
+
   const [imageUploading, setImageUploading] = useState(false)
 
   const token = localStorage.getItem('token')
 
-  const handleChange = (event) => {
-    setImageIsUploading(true)
-  }
   useEffect(() => {
     setLoading(true)
     axios
@@ -55,20 +55,38 @@ const Profile = () => {
         setLastName(data.lastname)
         setNumber(data.phone)
         setEmail(data.email)
+        setUserImage(data.profileImage)
       })
       .catch((err) => {
         console.log(err)
       })
   }, [])
 
-  const handleClick = (event) => {
+  const handleClick = () => {
     hiddenFileInput.current.click()
-    setUploadType(event)
+  }
+  const handleChange = (event) => {
+    setImageIsUploading(true)
+    const fileUploaded = event.target.files[0]
+    const data = new FormData()
+    data.append('file', fileUploaded)
+    // console.warn(this.state.selectedFile)
+    let url = `${process.env.REACT_APP_API_URL}/quotes/uploadFile`
+    axios
+      .post(url, data, {})
+      .then((res) => {
+        setUserImage(res.data.data)
+        setImageIsUploading(false)
+        setImageUploading(false)
+        handleEditing(true, res.data.data)
+      })
+      .catch((err) => {
+        console.log(err)
+        setImageIsUploading(false)
+      })
   }
 
-  const handleEditing = () => {
-    debugger
-    console.log(user)
+  const handleEditing = (imageUpdate, userImageUploaded) => {
     axios
       .patch(
         `${process.env.REACT_APP_API_URL}/users/${user.id}`,
@@ -78,6 +96,7 @@ const Profile = () => {
           lastname: lastName,
           phone: number,
           workEmail: email,
+          profileImage: imageUpdate ? userImageUploaded : userImage,
         },
         {
           headers: {
@@ -157,18 +176,23 @@ const Profile = () => {
                           {imageUploading ? (
                             <>
                               <button
+                                className={classes.uploadButton}
                                 onClick={() => handleClick('inspiration')}
                               >
                                 {imageIsUploading ? (
                                   <Spin size="large" />
                                 ) : (
-                                  <PlusOutlined />
+                                  <img width={20} src={plusIcon} alt="uplio" />
                                 )}
                               </button>
                             </>
                           ) : (
                             <>
-                              <Avatar size={64} icon={<UserOutlined />} />
+                              {userImage === '' ? (
+                                <Avatar size={64} icon={<UserOutlined />} />
+                              ) : (
+                                <Avatar size={64} src={userImage} />
+                              )}
                               <Button
                                 type="link"
                                 size="large"
@@ -252,7 +276,7 @@ const Profile = () => {
                             Cancel
                           </Button>
                           <Button
-                            onClick={() => handleEditing()}
+                            onClick={() => handleEditing(false, '')}
                             type="primary"
                             size="large"
                           >

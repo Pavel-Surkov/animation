@@ -9,6 +9,13 @@
 		text-align: center;
 	}
 }
+.uploadButton{
+	background-color: $secondary_app_color;
+	border: 1px dashed $light_grey_app_color;
+	width: 75px;
+	height:75px;
+	border-radius: 12px;
+}
 .mainForm{
 	border-radius: 4px;
 	padding: 5px 10px;

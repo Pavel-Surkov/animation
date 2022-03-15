@@ -245,6 +245,7 @@ const ShippingAddress = () => {
               <Button
                 onClick={() => setModal(true)}
                 type="primary"
+                className={classes.addAddress}
                 size="large"
               >
                 + Add New Address

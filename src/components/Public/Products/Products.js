@@ -215,9 +215,71 @@ export default function Products() {
                               gutter={16}
                               // justify="space-between"
                             >
+                              <Col md={8} lg={8} xs={0} sm={0}>
+                                <div className={classes.productImg}>
+                                  <Row>
+                                    <Col span={8}>
+                                      <div className={classes.logoImg}>
+                                        <img
+                                          width={65}
+                                          height={65}
+                                          src={item.companyLogo}
+                                          alt="uplio"
+                                        />
+
+                                        {/* <Tags prop="top rated" />
+                                <Tags prop="approved" />
+                                <Tags prop="hot seller" /> */}
+                                      </div>
+                                    </Col>
+                                    <Col span={16}>
+                                      <h2>{item.companyName}</h2>
+                                      {/* <Rating value={1} /> */}
+                                      {/* <div className={classes.ratingText}>
+                                <h3>
+                                  <span> 4.5 Ups</span>
+                                  <Divider
+                                    type="vertical"
+                                    className={classes.ratingTextDivider}
+                                  />
+                                  <span>123 Reviews</span>
+                                </h3>
+                              </div> */}
+
+                                      <Row>
+                                        {/* <Col span={6}>
+                                  <Button className={classes.wishlistButton}>
+                                    <HeartOutlined />
+                                  </Button>
+                                </Col> */}
+                                        <Col span={24}>
+                                          <Button
+                                            className={classes.contactButton}
+                                          >
+                                            View Supplier
+                                          </Button>
+                                        </Col>
+                                      </Row>
+                                      <span>
+                                        Minimum Order
+                                        <Divider
+                                          type="vertical"
+                                          className={classes.ratingTextDivider}
+                                        />
+                                        <strong>{item.MOQ}</strong>
+                                      </span>
+                                      <Divider
+                                        className={classes.dividerForServices}
+                                        type="horizontal"
+                                      />
+                                      <p>{item.specialization}</p>
+                                    </Col>
+                                  </Row>
+                                </div>
+                              </Col>
                               <Col
-                                md={8}
-                                lg={8}
+                                md={0}
+                                lg={0}
                                 xs={(24, { order: 2 })}
                                 sm={(24, { order: 2 })}
                               >

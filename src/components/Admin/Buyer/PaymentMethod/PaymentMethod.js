@@ -234,6 +234,7 @@ const PaymentMethod = () => {
               <Button
                 onClick={() => setModal(true)}
                 type="primary"
+                className={classes.addCard}
                 size="large"
               >
                 + Add Card

@@ -44,23 +44,23 @@ const Navigation = (params) => {
     }
   }, [])
 
-  useEffect(() => {
-    if (token !== null) {
-      axios
-        .get(`${process.env.REACT_APP_API_URL}/users/getUserProfile`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          dispatch(userLoggedIn())
-          dispatch(userDataStatus(res.data.data))
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (token !== null) {
+  //     axios
+  //       .get(`${process.env.REACT_APP_API_URL}/users/getUserProfile`, {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       })
+  //       .then((res) => {
+  //         dispatch(userLoggedIn())
+  //         dispatch(userDataStatus(res.data.data))
+  //       })
+  //       .catch((err) => {
+  //         console.log(err)
+  //       })
+  //   }
+  // }, [])
 
   const handleSignOut = () => {
     axios
@@ -77,7 +77,9 @@ const Navigation = (params) => {
         console.log(err)
       })
   }
+
   const userName = useSelector((state) => state.counter.user.name)
+  const userProfile = useSelector((state) => state.counter.user.profileImage)
   const handleSignIn = () => {
     history.push({ pathname: '/login' })
   }
@@ -137,12 +139,13 @@ const Navigation = (params) => {
                     </Menu>
                   }
                 >
-                  <a
-                    className="ant-dropdown-link"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <Avatar size={50} icon={<UserOutlined />} />
-                  </a>
+                  <Button className={classes.dropDownButton}>
+                    {userProfile === '' ? (
+                      <Avatar size={50} icon={<UserOutlined />} />
+                    ) : (
+                      <Avatar size={50} src={userProfile} />
+                    )}
+                  </Button>
                 </Dropdown>
               </Space>
             ) : (

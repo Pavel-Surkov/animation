@@ -17,6 +17,21 @@ import {
   ShoppingCartOutlined,
 } from '@ant-design/icons'
 import Navigation from '../Homepage/Navigation/Navigation'
+const loadImage = (setImageDimensions, imageUrl) => {
+  const img = new Image()
+  img.src = imageUrl
+
+  img.onload = () => {
+    setImageDimensions({
+      height: img.height,
+      width: img.width,
+    })
+  }
+  img.onerror = (err) => {
+    console.log('img error')
+    console.error(err)
+  }
+}
 
 const SupplierProfile = () => {
   const settings = {
@@ -49,10 +64,31 @@ const SupplierProfile = () => {
   const [supplierData, setSupplierData] = useState([])
   const [pageinate, setPaginate] = useState(1)
   const [supplierSliderImage, setSupplierSlierImage] = useState()
+  const [showBanner, setShowBanner] = useState(true)
+  const [imageHeight, setImageHeight] = useState(0)
   const handleQuote = () => {
     history.push({
       pathname: `/quote`,
     })
+  }
+
+  const getMeta = (url) => {
+    var img = new Image()
+
+    img.onload = function () {
+      debugger
+      if (imageHeight === 0) {
+        setImageHeight(this.height)
+        return true
+      } else if (this.height === imageHeight) {
+        return false
+      }
+
+      // alert(this.width + ' ' + this.height)
+    }
+    img.src = url
+
+    return false
   }
 
   useEffect(() => {
@@ -60,11 +96,19 @@ const SupplierProfile = () => {
       .get(`${process.env.REACT_APP_API_URL}/users/supplier_profile/${id}`)
       .then((res) => {
         const imageData = []
-        for (let i = 0; i < res.data.images.length; i++) {
-          res.data.images.map((item) => {
-            imageData.push(item)
-          })
+        if (res.data.images.length >= 3) {
+          for (let i = 0; i < res.data.images.length; i++) {
+            //  INFO: check for correct resolution
+            // if (getMeta(res.data.images[i])) {
+            //   setShowBanner(false)
+            //   break
+            // }
+            res.data.images.map((item) => {
+              imageData.push(item)
+            })
+          }
         }
+        showBanner(true)
         setSupplierSlierImage(imageData)
         setSupplierData(res.data)
       })
@@ -102,17 +146,19 @@ const SupplierProfile = () => {
         <Row>
           {/* TODO fix banner */}
           <Col lg={24} md={24} xs={0} sm={0}>
-            <Slider {...settings}>
-              {supplierData.images !== undefined ? (
-                supplierSliderImage.map((item) => (
-                  <div className={classes.slide}>
-                    <img src={item} alt="uplio" />
-                  </div>
-                ))
-              ) : (
-                <Spin />
-              )}
-            </Slider>
+            {showBanner ? (
+              <Slider {...settings}>
+                {supplierData.images !== undefined ? (
+                  supplierSliderImage.map((item) => (
+                    <div className={classes.slide}>
+                      <img src={item} alt="uplio" />
+                    </div>
+                  ))
+                ) : (
+                  <Spin />
+                )}
+              </Slider>
+            ) : null}
           </Col>
           <Col lg={0} md={0} xs={24} sm={24} align="center">
             <Slider {...settingsMobile}>
@@ -251,7 +297,11 @@ const Overview = (data) => {
         <hr />
         <div className={classes.companyDetailsFooter}>
           <h5>Specialization</h5>
-          <p>{data.props.specialization}</p>
+          {/* <ul>
+            {data.props.specialization.split(',').map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul> */}
         </div>
         {/* <Row>
           <Col span={6}>

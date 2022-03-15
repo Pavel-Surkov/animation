@@ -503,7 +503,7 @@ const Quote = () => {
                   <Col md={6} lg={6} xs={12}>
                     <button
                       className={classes.uploadButton}
-                      onClick={() => handleClick('reference')}
+                      onClick={() => handleClick()}
                     >
                       {imageLoading ? (
                         <Spin size="large" />

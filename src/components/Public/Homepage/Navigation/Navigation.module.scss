@@ -30,7 +30,12 @@
       .signUp:hover{
 	color: rgba($secondary_app_color, 0.5) ;	
 }
-
+.dropDownButton{
+	border-color: $secondary_app_color !important;
+	height: auto !important;
+	width: 50px !important;
+	padding: 0 !important;
+}
 
       
       .sticky {
@@ -100,6 +105,7 @@ and (orientation: portrait) {
 		
 		  height: 40px !important;			  
   }
+  
   .logo{
 	border-radius: 5px;
 	width: 40px;
