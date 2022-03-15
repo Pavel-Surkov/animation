@@ -50,7 +50,7 @@ const MyQuote = () => {
             moq: item.MOQ,
             status: handleStatus(item.status),
             shippingCost: item.shippingCost,
-            action: 'View Inquiry',
+            action: 'Get more info',
           })
         })
         setQuoteData(quoteDataArray)
