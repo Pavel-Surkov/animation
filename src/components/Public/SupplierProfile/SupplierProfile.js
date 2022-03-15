@@ -108,7 +108,7 @@ const SupplierProfile = () => {
             })
           }
         }
-        showBanner(true)
+        setShowBanner(true)
         setSupplierSlierImage(imageData)
         setSupplierData(res.data)
       })
@@ -297,11 +297,13 @@ const Overview = (data) => {
         <hr />
         <div className={classes.companyDetailsFooter}>
           <h5>Specialization</h5>
-          {/* <ul>
-            {data.props.specialization.split(',').map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul> */}
+          {data.props.specialization !== undefined ? (
+            <ul>
+              {data.props.specialization.split(',').map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          ) : null}
         </div>
         {/* <Row>
           <Col span={6}>
