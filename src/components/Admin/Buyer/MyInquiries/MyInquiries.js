@@ -11,6 +11,21 @@ const MyInquiries = () => {
   const token = localStorage.getItem('token')
   const [quoteData, setQuoteData] = useState()
   const [loading, setLoading] = useState(true)
+
+  const handleStatus = (status) => {
+    if (status === 0) {
+      return 'Quote Requested'
+    } else if (status === 1) {
+      return 'Quote Submitted'
+    } else if (status === 2) {
+      return 'Awaiting Manufacturer Response'
+    } else if (status === 3) {
+      return 'Quote Received'
+    } else if (status === 4) {
+      return 'More Information Needed'
+    }
+  }
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/quotes/get_user_quotes`, {
@@ -25,7 +40,7 @@ const MyInquiries = () => {
             quoteId: item.quoteNumber,
             category: item.productCategory,
             sendTo: 'Uplio',
-            status: 'Quote Requested',
+            status: handleStatus(item.quote_status),
             date: moment(item.projectStartDate).format('MMM Do YY'),
             action: item._id,
           })
@@ -65,7 +80,7 @@ const MyInquiries = () => {
                     key="action"
                     render={(id) => (
                       <Link to={`/dashboard/buyer/quote/${id}`}>
-                        View Inquiries
+                        View Inquiry
                       </Link>
                     )}
                   />

@@ -41,14 +41,16 @@ const MyQuote = () => {
         setLoading(false)
         const quoteDataArray = []
         res.data.data.map((item) => {
+          debugger
           quoteDataArray.push({
             //     key: item._id,
+            supplier: item.user_id.name,
             unitPrice: item.unitPrice,
             leadTime: item.leadTime,
             moq: item.MOQ,
             status: handleStatus(item.status),
             shippingCost: item.shippingCost,
-            action: 'View Inquiries',
+            action: 'View Inquiry',
           })
         })
         setQuoteData(quoteDataArray)
@@ -71,6 +73,11 @@ const MyQuote = () => {
                 </>
               ) : (
                 <Table dataSource={quoteData}>
+                  <Column
+                    title="Supplier"
+                    dataIndex="supplier"
+                    key="supplier"
+                  />
                   <Column
                     title="Unit Price"
                     dataIndex="unitPrice"
