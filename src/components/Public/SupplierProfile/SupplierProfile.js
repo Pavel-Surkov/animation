@@ -99,16 +99,16 @@ const SupplierProfile = () => {
         if (res.data.images.length >= 3) {
           for (let i = 0; i < res.data.images.length; i++) {
             //  INFO: check for correct resolution
-            // if (getMeta(res.data.images[i])) {
-            //   setShowBanner(false)
-            //   break
-            // }
+            if (getMeta(res.data.images[i])) {
+              setShowBanner(false)
+              break
+            }
             res.data.images.map((item) => {
               imageData.push(item)
             })
           }
         }
-        setShowBanner(true)
+        // setShowBanner(true)
         setSupplierSlierImage(imageData)
         setSupplierData(res.data)
       })
