@@ -1,5 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Button, Form, Input, Space, Avatar, Spin, Modal } from 'antd'
+import {
+  Row,
+  Col,
+  Divider,
+  Button,
+  Form,
+  Input,
+  Space,
+  Avatar,
+  Spin,
+  Modal,
+} from 'antd'
 import classes from './ShippingAddress.module.scss'
 
 import axios from 'axios'
@@ -203,6 +214,12 @@ const ShippingAddress = () => {
   return (
     <>
       <Navigation />
+      <div className={classes.container}>
+        <div className={classes.mainSectionHeading}>
+          <h3>Account Settings</h3>
+        </div>
+      </div>
+      <Divider />
       <div className={classes.container}>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           <Col span={8}>

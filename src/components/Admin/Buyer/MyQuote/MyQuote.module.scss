@@ -100,6 +100,25 @@
 	}
 	
 }
+.navigationLinks{
+	border-bottom: 1px solid $red_app_color;
+	width: 45vw;
+	p{
+		font-weight: 700;
+		font-size: 18px;
+		color: $red_app_color;
+		font-family:'Inter',sans-serif;
+		line-height: 30px;
+	}
+	h3{
+		font-weight: 300;
+		font-size: 18px;
+		font-family:'Inter',sans-serif;
+		line-height: 30px;
+		color: $red_app_color;
+		margin-bottom: 18px;
+	}
+}
 .action{
 	
 	.cancelButton{

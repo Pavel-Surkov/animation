@@ -6,17 +6,7 @@
 	border-bottom: 1px solid $grey_app_color;
 	
 }
-.navigationLinks{
-	p{
-		margin: 0;
-		color:$primary_app_color
-	}
-	p:hover{
-		color: $red_app_color;
-		border-bottom: 2px solid $red_app_color;
-		
-	}
-}
+
 .navigationProfile{
 	text-align: right;
 }

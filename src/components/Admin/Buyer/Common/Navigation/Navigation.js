@@ -72,18 +72,7 @@ const Navigation = () => {
               <img src={logo} alt="Uplio" />
             </Link>
           </Col>
-          <Col span={8}>
-            <div className={classes.navigationLinks}>
-              <Space size={40}>
-                <Link to="/dashboard/buyer/inquiries">
-                  <p>My Inquiries </p>
-                </Link>
-                {/* <Link to="/dashboard/buyer/quote">
-                  <p>My quotes</p>
-                </Link> */}
-              </Space>
-            </div>
-          </Col>
+          <Col span={8}></Col>
           <Col span={12}>
             <div className={classes.navigationProfile}>
               <Space>

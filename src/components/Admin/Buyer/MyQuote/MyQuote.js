@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Row, Col, Table, Tag, Spin, Space } from 'antd'
 import classes from './MyQuote.module.scss'
+import { Link } from 'react-router-dom'
 import Navigation from '../Common/Navigation/Navigation'
 import axios from 'axios'
 import moment from 'moment'
@@ -63,6 +64,16 @@ const MyQuote = () => {
   return (
     <>
       <Navigation />
+      <div className={classes.container}>
+        <div className={classes.navigationLinks}>
+          <Space size={40}>
+            <Link to="/dashboard/buyer/inquiries">
+              <h3>My Inquiries </h3>
+            </Link>
+            <p>My quotes </p>
+          </Space>
+        </div>
+      </div>
       <div className={classes.container}>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           <Col span={24} align="center">

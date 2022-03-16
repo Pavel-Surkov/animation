@@ -32,6 +32,14 @@
 	}
 	
 }
+.mainSectionHeading{
+	h3{
+		margin-top: 28px;
+		color:$red_app_color;
+		font-family: 'Inter',sans-serif;
+		font-size: 23px;
+	}
+}
 .addAddress{
 	background-color: $primary_app_color !important; 
 	border-color: $primary_app_color !important;

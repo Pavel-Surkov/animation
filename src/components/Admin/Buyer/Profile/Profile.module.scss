@@ -8,7 +8,17 @@
 	.spin{
 		text-align: center;
 	}
+	
 }
+.mainSectionHeading{
+	h3{
+		margin-top: 28px;
+		color:$red_app_color;
+		font-family: 'Inter',sans-serif;
+		font-size: 23px;
+	}
+}
+
 .uploadButton{
 	background-color: $secondary_app_color;
 	border: 1px dashed $light_grey_app_color;
@@ -16,6 +26,7 @@
 	height:75px;
 	border-radius: 12px;
 }
+.main
 .mainForm{
 	border-radius: 4px;
 	padding: 5px 10px;

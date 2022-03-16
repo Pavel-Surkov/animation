@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Table, Tag, Spin, Space } from 'antd'
+import { Row, Col, Divider, Table, Tag, Spin, Space } from 'antd'
 import classes from './MyInquiries.module.scss'
 import Navigation from '../Common/Navigation/Navigation'
 import axios from 'axios'
@@ -55,6 +55,17 @@ const MyInquiries = () => {
   return (
     <>
       <Navigation />
+      <div className={classes.container}>
+        <div className={classes.navigationLinks}>
+          <Space size={40}>
+            <Link to="/dashboard/buyer/inquiries">
+              <p>My Inquiries </p>
+            </Link>
+            <h3>My quotes</h3>
+          </Space>
+        </div>
+      </div>
+
       <div className={classes.container}>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           <Col span={24} align="center">

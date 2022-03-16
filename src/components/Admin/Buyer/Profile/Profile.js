@@ -5,6 +5,7 @@ import {
   Col,
   Button,
   Form,
+  Divider,
   Input,
   Avatar,
   Spin,
@@ -16,7 +17,11 @@ import plusIcon from '../../../../assets/svg/uploadIcon.svg'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import Navigation from '../Common/Navigation/Navigation'
-import { UserOutlined, PlusOutlined } from '@ant-design/icons'
+import {
+  UserOutlined,
+  PlusOutlined,
+  DeliveredProcedureOutlined,
+} from '@ant-design/icons'
 const Profile = () => {
   const history = useHistory()
   const [loading, setLoading] = useState(false)
@@ -117,6 +122,12 @@ const Profile = () => {
   return (
     <>
       <Navigation />
+      <div className={classes.container}>
+        <div className={classes.mainSectionHeading}>
+          <h3>Account Settings</h3>
+        </div>
+      </div>
+      <Divider />
       <div className={classes.container}>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           <Col span={8}>
