@@ -5,6 +5,7 @@ import {
   Divider,
   Button,
   Form,
+  Select,
   Input,
   Space,
   Avatar,
@@ -15,11 +16,12 @@ import classes from './ShippingAddress.module.scss'
 
 import axios from 'axios'
 import Navigation from '../Common/Navigation/Navigation'
-import { UserOutlined } from '@ant-design/icons'
 import { useHistory } from 'react-router-dom'
 const ShippingAddress = () => {
   const history = useHistory()
   const [loading, setLoading] = useState(false)
+  const [countriesListingData, setCountriesListingData] = useState(null)
+  const [stateListingData, setStateListingData] = useState(null)
   const [updateModal, setUpdateModal] = useState(false)
   const [addressData, setAddressData] = useState([])
 
@@ -34,7 +36,22 @@ const ShippingAddress = () => {
   const [state, setState] = useState('')
   const [zipCode, setZipCode] = useState('')
 
+  const Option = Select
   const token = localStorage.getItem('token')
+
+  useEffect(() => {
+    setLoading(true)
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/countries/`)
+      .then((res) => {
+        setCountriesListingData(res.data.countries)
+        setLoading(false)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
+
   useEffect(() => {
     setLoading(true)
     axios
@@ -53,6 +70,17 @@ const ShippingAddress = () => {
         console.log(err)
       })
   }, [])
+
+  useEffect(() => {
+    setState(null)
+    if (countriesListingData !== null) {
+      countriesListingData.map((item) => {
+        if (item.country === country) {
+          return setStateListingData(item.states)
+        }
+      })
+    }
+  }, [country, countriesListingData])
 
   const handleSavingAddress = () => {
     setLoading(true)
@@ -105,6 +133,9 @@ const ShippingAddress = () => {
       })
   }
 
+  const handleCountryChange = (e) => {
+    setCountry(e)
+  }
   const handleUpdateAddress = (data) => {
     setName(data.name)
     setStreet(data.address1)
@@ -363,11 +394,21 @@ const ShippingAddress = () => {
                 </Col>
                 <Col span={24}>
                   <Form.Item label="Country">
-                    <Input
+                    <Select
+                      placeholder="Select a country..."
+                      style={{ width: '100%' }}
+                      onChange={(e) => handleCountryChange(e)}
+                      allowClear
                       size="large"
-                      value={country}
-                      onChange={(e) => setCountry(e.target.value)}
-                    />
+                    >
+                      {countriesListingData === null ? (
+                        <Option value="null">Select</Option>
+                      ) : (
+                        countriesListingData.map((item) => (
+                          <Option value={item.country}>{item.country}</Option>
+                        ))
+                      )}
+                    </Select>
                   </Form.Item>
                 </Col>
                 <Col span={24}>
@@ -399,11 +440,22 @@ const ShippingAddress = () => {
                 </Col>
                 <Col span={12}>
                   <Form.Item label="State">
-                    <Input
-                      size="large"
+                    <Select
+                      placeholder="Select a country..."
+                      style={{ width: '100%' }}
+                      onChange={(e) => setState(e)}
+                      allowClear
                       value={state}
-                      onChange={(e) => setState(e.target.value)}
-                    />
+                      size="large"
+                    >
+                      {stateListingData === null ? (
+                        <Option value="null">Select</Option>
+                      ) : (
+                        stateListingData.map((item) => (
+                          <Option value={item}>{item}</Option>
+                        ))
+                      )}
+                    </Select>
                   </Form.Item>
                 </Col>
                 <Col span={12}>
