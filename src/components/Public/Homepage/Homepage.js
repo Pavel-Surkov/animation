@@ -28,11 +28,23 @@ import icon6 from '../../../assets/images/Group 84.png'
 import banner_1 from '../../../assets/images/main_banner.png'
 import banner_2 from '../../../assets/images/banner_2.png'
 import banner_3 from '../../../assets/images/banner_3.png'
-const Hompagetemp = () => {
+const Homepage = () => {
   const history = useHistory()
-
   const [value, setValue] = useState('')
-
+  const bannerContentText = [
+    'Furniture',
+    'Cosmetics',
+    'Fashion',
+    'Apparel',
+    'Candle',
+    'Food & Beverage',
+    'Furniture',
+    'Cosmetics',
+    'Fashion',
+    'Apparel',
+    'Candle',
+    'Food & Beverage',
+  ]
   const [screenSize, getDimension] = useState({
     dynamicWidth: window.innerWidth,
     dynamicHeight: window.innerHeight,
@@ -188,78 +200,11 @@ const Hompagetemp = () => {
           draggable={true}
           pauseOnHover={false}
         >
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Furniture</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Cosmetics</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Fashion</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Apparel</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Candle</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Food & Beverage</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Furniture</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Cosmetics</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Fashion</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Apparel</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Candle</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Food & Beverage</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Furniture</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Cosmetics</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Fashion</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Apparel</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Candle</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Food & Beverage</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Furniture</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Cosmetics</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Fashion</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Apparel</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Candle</h3>
-          </div>
-          <div className={classes.categoriesCarouselContent}>
-            <h3>Food & Beverage</h3>
-          </div>
+          {bannerContentText.map((item) => (
+            <div className={classes.categoriesCarouselContent}>
+              <h3>{item}</h3>
+            </div>
+          ))}
         </Carousel>
       </div>
       <div className={classes.container}>
@@ -460,4 +405,4 @@ const Hompagetemp = () => {
     </>
   )
 }
-export default Hompagetemp
+export default Homepage

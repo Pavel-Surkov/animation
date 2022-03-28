@@ -44,6 +44,7 @@ export default function Products() {
   const [search, setSearch] = useState('')
   const [searchInput, setSearchInput] = useState('')
   const [categoryFilterData, setCategoryFilterData] = useState([])
+  const [currentCategory, setCurrentCategory] = useState('')
   const [filterQuantity, setFilterQuantity] = useState('')
   const [selectedCateory, setSelectedCategory] = useState('')
 
@@ -53,6 +54,7 @@ export default function Products() {
   useEffect(() => {
     setLoading(true)
     setSearch(id)
+    setCurrentCategory(id)
     setSelectedCategory(id)
     axios
       .get(
@@ -151,6 +153,7 @@ export default function Products() {
                       value={filterQuantity}
                     >
                       <Space direction="vertical">
+                        <Radio value="">All</Radio>
                         <Radio value="500 units or less">
                           500 units or less
                         </Radio>
@@ -170,9 +173,10 @@ export default function Products() {
                     <Divider orientation="left">Category</Divider>
                     <Radio.Group
                       onChange={handleFilterCategory}
-                      value={filterQuantity}
+                      value={currentCategory}
                     >
                       <Space direction="vertical">
+                        <Radio value="all">All</Radio>
                         {categoryFilterData.map((item) => (
                           <Radio value={item.name}>{item.name}</Radio>
                         ))}
