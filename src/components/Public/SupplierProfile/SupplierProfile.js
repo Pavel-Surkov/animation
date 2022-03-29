@@ -82,8 +82,6 @@ const SupplierProfile = () => {
       } else if (this.height === imageHeight) {
         return false
       }
-
-      // alert(this.width + ' ' + this.height)
     }
     img.src = url
 
@@ -97,17 +95,12 @@ const SupplierProfile = () => {
         const imageData = []
         if (res.data.images.length >= 3) {
           for (let i = 0; i < res.data.images.length; i++) {
-            //  INFO: check for correct resolution
-            // if (getMeta(res.data.images[i])) {
-            //   setShowBanner(false)
-            //   break
-            // }
             res.data.images.map((item) => {
               imageData.push(item)
             })
           }
         }
-        // setShowBanner(true)
+
         setSupplierSlierImage(imageData)
         setSupplierData(res.data)
       })
@@ -145,19 +138,21 @@ const SupplierProfile = () => {
         <Row>
           {/* TODO fix banner */}
           <Col lg={24} md={24} xs={0} sm={0}>
-            {showBanner ? (
-              <Slider {...settings}>
-                {supplierData.images !== undefined ? (
-                  supplierSliderImage.map((item) => (
-                    <div className={classes.slide}>
-                      <img src={item} alt="uplio" />
-                    </div>
-                  ))
-                ) : (
-                  <Spin />
-                )}
-              </Slider>
-            ) : null}
+            <div className={classes.slideContainer}>
+              {showBanner ? (
+                <Slider {...settings}>
+                  {supplierData.images !== undefined ? (
+                    supplierSliderImage.map((item) => (
+                      <div className={classes.slide}>
+                        <img src={item} alt="uplio" />
+                      </div>
+                    ))
+                  ) : (
+                    <Spin />
+                  )}
+                </Slider>
+              ) : null}
+            </div>
           </Col>
           <Col lg={0} md={0} xs={24} sm={24} align="center">
             <Slider {...settingsMobile}>

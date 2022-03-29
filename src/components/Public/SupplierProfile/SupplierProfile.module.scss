@@ -20,6 +20,11 @@
 .section{
 	padding: 42px 0;
 }
+.slideContainer{
+	max-width: 1500px;
+	margin: 0 auto;
+	text-align: center;
+}
 .slide{
 	border: 1px solid $light_grey_app_color;
     	width: fit-content !important;

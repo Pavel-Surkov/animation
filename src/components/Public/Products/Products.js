@@ -12,7 +12,7 @@ import {
   Empty,
   Divider,
   Image,
-  Spin,
+  Skeleton,
   Carousel,
 } from 'antd'
 
@@ -128,14 +128,11 @@ export default function Products() {
   return (
     <>
       <Navigation />
-
-      {!loading ? (
-        <>
-          <div className={classes.container}>
-            <Row gutter={16}>
-              <Col md={5} lg={5} xs={0} sm={0}>
-                <div className={classes.section}>
-                  {/* <div className={classes.searchFilter}>
+      <div className={classes.container}>
+        <Row gutter={16}>
+          <Col md={5} lg={5} xs={0} sm={0}>
+            <div className={classes.section}>
+              {/* <div className={classes.searchFilter}>
                 <Input
                   value={searchInput}
                   size="large"
@@ -146,44 +143,42 @@ export default function Products() {
                 />
                 <h3>Ex. fabric, retro, minimal, etc...</h3>
               </div> */}
-                  <div className={classes.filterOption}>
-                    <Divider orientation="left">Minimum Quantity </Divider>
-                    <Radio.Group
-                      onChange={handleFilterQuantity}
-                      value={filterQuantity}
-                    >
-                      <Space direction="vertical">
-                        <Radio value="">All</Radio>
-                        <Radio value="500 units or less">
-                          500 units or less
-                        </Radio>
-                        <Radio value="1,000 units or less">
-                          1,000 units or less
-                        </Radio>
-                        <Radio value="10,000 units or less">
-                          10,000 units or less
-                        </Radio>
-                        <Radio value="10,000 units or more">
-                          10,000 units or more
-                        </Radio>
-                      </Space>
-                    </Radio.Group>
-                  </div>
-                  <div className={classes.filterOption}>
-                    <Divider orientation="left">Category</Divider>
-                    <Radio.Group
-                      onChange={handleFilterCategory}
-                      value={currentCategory}
-                    >
-                      <Space direction="vertical">
-                        <Radio value="all">All</Radio>
-                        {categoryFilterData.map((item) => (
-                          <Radio value={item.name}>{item.name}</Radio>
-                        ))}
-                      </Space>
-                    </Radio.Group>
-                  </div>
-                  {/* <div className={classes.filterOption}>
+              <div className={classes.filterOption}>
+                <Divider orientation="left">Minimum Quantity </Divider>
+                <Radio.Group
+                  onChange={handleFilterQuantity}
+                  value={filterQuantity}
+                >
+                  <Space direction="vertical">
+                    <Radio value="">All</Radio>
+                    <Radio value="500 units or less">500 units or less</Radio>
+                    <Radio value="1,000 units or less">
+                      1,000 units or less
+                    </Radio>
+                    <Radio value="10,000 units or less">
+                      10,000 units or less
+                    </Radio>
+                    <Radio value="10,000 units or more">
+                      10,000 units or more
+                    </Radio>
+                  </Space>
+                </Radio.Group>
+              </div>
+              <div className={classes.filterOption}>
+                <Divider orientation="left">Category</Divider>
+                <Radio.Group
+                  onChange={handleFilterCategory}
+                  value={currentCategory}
+                >
+                  <Space direction="vertical">
+                    <Radio value="all">All</Radio>
+                    {categoryFilterData.map((item) => (
+                      <Radio value={item.name}>{item.name}</Radio>
+                    ))}
+                  </Space>
+                </Radio.Group>
+              </div>
+              {/* <div className={classes.filterOption}>
                 <Divider orientation="left">Category</Divider>
                 <Radio.Group>
                   <Space direction="vertical">
@@ -194,9 +189,10 @@ export default function Products() {
                   </Space>
                 </Radio.Group>
               </div> */}
-                </div>
-              </Col>
-
+            </div>
+          </Col>
+          {!loading ? (
+            <>
               <Col md={19} lg={19} xs={24} sm={24}>
                 <div className={classes.section}>
                   <div className={classes.resultsHeader}>
@@ -511,14 +507,22 @@ export default function Products() {
                   </div>
                 </div>
               </Col>
-            </Row>
-          </div>
-        </>
-      ) : (
-        <div className={classes.spinner}>
-          <Spin />
-        </div>
-      )}
+            </>
+          ) : (
+            <Col md={19} lg={19} xs={24} sm={24}>
+              <div className={classes.spinner}>
+                <Divider />
+                <Skeleton active />
+                <Divider />
+                <Skeleton active />
+                <Divider />
+                <Skeleton active />
+                <Divider />
+              </div>
+            </Col>
+          )}
+        </Row>
+      </div>
     </>
   )
 }
