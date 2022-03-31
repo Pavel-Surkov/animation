@@ -13,7 +13,7 @@ import {
   Modal,
 } from 'antd'
 import classes from './ShippingAddress.module.scss'
-import { Formik } from 'formik'
+import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 import Navigation from '../Common/Navigation/Navigation'
@@ -84,69 +84,55 @@ const ShippingAddress = () => {
   }, [country, countriesListingData])
 
   const handleSavingAddress = () => {
+    debugger
     setLoading(true)
-    if (street !== '') {
-      if (apt !== '') {
-        if (city !== '') {
-          if (country !== '') {
-            if (name !== '') {
-              if (state !== '') {
-                if (zipCode !== '') {
-                  addressData.push({
-                    address1: street,
-                    address2: apt,
-                    city: city,
-                    country: country,
-                    name: name,
-                    state: state,
-                    zip: zipCode,
-                    _id: (
-                      '0'.repeat(16) +
-                      Math.floor(Math.random() * 16 ** 16).toString(16)
-                    ).slice(-16),
-                  })
-                  axios
-                    .post(
-                      `${process.env.REACT_APP_API_URL}/users/${user.id}/add_shipping_address`,
-                      {
-                        shippingAddress: {
-                          address1: street,
-                          address2: apt,
-                          city: city,
-                          country: country,
-                          name: name,
-                          state: state,
-                          zip: zipCode,
-                        },
-                      },
-                      {
-                        headers: {
-                          Authorization: `Bearer ${token}`,
-                        },
-                      }
-                    )
-                    .then((res) => {
-                      console.log(res)
-                      setLoading(false)
-                      setModal(false)
-                      setName('')
-                      setStreet('')
-                      setApt('')
-                      setCity('')
-                      setCountry('')
-                      setState('')
-                      setZipCode('')
-                    })
-                    .catch((err) => {
-                      console.log(err)
-                    })
-                }
-              }
-            }
-          }
+    addressData.push({
+      address1: formik.values.street,
+      address2: formik.values.apt,
+      city: formik.values.city,
+      country: country,
+      name: formik.values.name,
+      state: state,
+      zip: formik.values.zipCode,
+      _id: (
+        '0'.repeat(16) + Math.floor(Math.random() * 16 ** 16).toString(16)
+      ).slice(-16),
+    })
+    axios
+      .post(
+        `${process.env.REACT_APP_API_URL}/users/${user.id}/add_shipping_address`,
+        {
+          shippingAddress: {
+            address1: formik.values.street,
+            address2: formik.values.apt,
+            city: formik.values.city,
+            country: country,
+            name: formik.values.name,
+            state: state,
+            zip: formik.values.zipCode,
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      }
-    }
+      )
+      .then((res) => {
+        console.log(res)
+        setLoading(false)
+        setModal(false)
+        setName('')
+        setStreet('')
+        setApt('')
+        setCity('')
+        setCountry('')
+        setState('')
+        setZipCode('')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   const handleCountryChange = (e) => {
@@ -259,23 +245,39 @@ const ShippingAddress = () => {
   }
 
   //Formik validation schema
-  const SignupSchema = Yup.object().shape({
-    firstName: Yup.string()
-      .min(2, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Required'),
-    lastName: Yup.string()
-      .min(2, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
+
+  const formik = useFormik({
+    initialValues: {
+      street: '',
+      apt: '',
+      city: '',
+      country: '',
+      name: '',
+      state: '',
+      zipCode: '',
+    },
+
+    validationSchema: Yup.object().shape({
+      street: Yup.string()
+        .min(2, 'Too Short!')
+        .max(150, 'Too Long!')
+        .required('Required'),
+      apt: Yup.string()
+        .min(2, 'Too Short!')
+        .max(150, 'Too Long!')
+        .required('Required'),
+      city: Yup.string().required('Required'),
+      country: Yup.string().required('Required'),
+      name: Yup.string('Number are not allowed !')
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+      state: Yup.string().required('Required'),
+      zipCode: Yup.string()
+        .matches('^[1-9][0-9]{5}$', 'Please enter a valid zip code !')
+        .required('Required'),
+    }),
   })
-
-  const initialValues = {
-    username: '',
-    email: '',
-  }
-
   return (
     <>
       <Navigation />
@@ -415,113 +417,127 @@ const ShippingAddress = () => {
         <div className={classes.mainSection}>
           <div className={classes.mainForm}>
             <h4>Add new shipping address </h4>
-            <Formik
-              initialValues={initialValues}
-              onSubmit={(values) => {
-                // same shape as initial values
 
-                console.log(values)
-              }}
-            >
-              <Form layout="vertical">
-                <Row gutter={12}>
-                  <Col span={24}>
-                    <Form.Item label="Name">
-                      <Input
-                        size="large"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                    </Form.Item>
-                  </Col>
-                  <Col span={24}>
-                    <Form.Item label="Country">
-                      <Select
-                        placeholder="Select a country..."
-                        style={{ width: '100%' }}
-                        onChange={(e) => handleCountryChange(e)}
-                        allowClear
-                        size="large"
-                      >
-                        {countriesListingData === null ? (
-                          <Option value="null">Select</Option>
-                        ) : (
-                          countriesListingData.map((item) => (
-                            <Option value={item.country}>{item.country}</Option>
-                          ))
-                        )}
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                  <Col span={24}>
-                    <Form.Item label="Street and Number">
-                      <Input
-                        size="large"
-                        value={street}
-                        onChange={(e) => setStreet(e.target.value)}
-                      />
-                    </Form.Item>
-                  </Col>
-                  <Col span={24}>
-                    <Form.Item label="Apt, Suite (optional)">
-                      <Input
-                        size="large"
-                        value={apt}
-                        onChange={(e) => setApt(e.target.value)}
-                      />
-                    </Form.Item>
-                  </Col>
-                  <Col span={24}>
-                    <Form.Item label="City">
-                      <Input
-                        size="large"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                      />
-                    </Form.Item>
-                  </Col>
-                  <Col span={12}>
-                    <Form.Item label="State">
-                      <Select
-                        placeholder="Select a country..."
-                        style={{ width: '100%' }}
-                        onChange={(e) => setState(e)}
-                        allowClear
-                        value={state}
-                        size="large"
-                      >
-                        {stateListingData === null ? (
-                          <Option value="null">Select</Option>
-                        ) : (
-                          stateListingData.map((item) => (
-                            <Option value={item}>{item}</Option>
-                          ))
-                        )}
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                  <Col span={12}>
-                    <Form.Item label="Zip Code">
-                      <Input
-                        size="large"
-                        value={zipCode}
-                        onChange={(e) => setZipCode(e.target.value)}
-                      />
-                    </Form.Item>
-                  </Col>
-
-                  <Col span={24} align="center">
-                    <Button
-                      onClick={() => handleSavingAddress()}
-                      type="primary"
+            <Form layout="vertical">
+              <Row gutter={12}>
+                <Col span={24}>
+                  <Form.Item label="Name">
+                    <Input
+                      id="name"
+                      size="large"
+                      value={formik.values.name}
+                      onChange={formik.handleChange}
+                    />
+                    <br />
+                    <p className={classes.errorHelperText}>
+                      {formik.errors.name}
+                    </p>
+                  </Form.Item>
+                </Col>
+                <Col span={24}>
+                  <Form.Item label="Country">
+                    <Select
+                      placeholder="Select a country..."
+                      style={{ width: '100%' }}
+                      onChange={(e) => handleCountryChange(e)}
+                      allowClear
                       size="large"
                     >
-                      Add
-                    </Button>
-                  </Col>
-                </Row>
-              </Form>
-            </Formik>
+                      {countriesListingData === null ? (
+                        <Option value="null">Select</Option>
+                      ) : (
+                        countriesListingData.map((item) => (
+                          <Option value={item.country}>{item.country}</Option>
+                        ))
+                      )}
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col span={24}>
+                  <Form.Item label="Street and Number">
+                    <Input
+                      id="street"
+                      size="large"
+                      value={formik.values.street}
+                      onChange={formik.handleChange}
+                    />
+
+                    <p className={classes.errorHelperText}>
+                      {formik.errors.street}
+                    </p>
+                  </Form.Item>
+                </Col>
+                <Col span={24}>
+                  <Form.Item label="Apt, Suite (optional)">
+                    <Input
+                      id="apt"
+                      size="large"
+                      value={formik.values.apt}
+                      onChange={formik.handleChange}
+                    />
+                    <p className={classes.errorHelperText}>
+                      {formik.errors.apt}
+                    </p>
+                  </Form.Item>
+                </Col>
+                <Col span={24}>
+                  <Form.Item label="City">
+                    <Input
+                      id="city"
+                      size="large"
+                      value={formik.values.city}
+                      onChange={formik.handleChange}
+                    />
+                    <p className={classes.errorHelperText}>
+                      {formik.errors.city}
+                    </p>
+                  </Form.Item>
+                </Col>
+                <Col span={12}>
+                  <Form.Item label="State">
+                    <Select
+                      placeholder="Select a country..."
+                      style={{ width: '100%' }}
+                      onChange={(e) => setState(e)}
+                      allowClear
+                      value={state}
+                      size="large"
+                    >
+                      {stateListingData === null ? (
+                        <Option value="null">Select</Option>
+                      ) : (
+                        stateListingData.map((item) => (
+                          <Option value={item}>{item}</Option>
+                        ))
+                      )}
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col span={12}>
+                  <Form.Item label="Zip Code">
+                    <Input
+                      id="zipCode"
+                      size="large"
+                      value={formik.values.zipCode}
+                      onChange={formik.handleChange}
+                    />
+                    <p className={classes.errorHelperText}>
+                      {formik.errors.zipCode}
+                    </p>
+                  </Form.Item>
+                </Col>
+
+                <Col span={24} align="center">
+                  <Button
+                    onClick={() => handleSavingAddress()}
+                    type="primary"
+                    size="large"
+                  >
+                    Add
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
           </div>
         </div>
       </Modal>
