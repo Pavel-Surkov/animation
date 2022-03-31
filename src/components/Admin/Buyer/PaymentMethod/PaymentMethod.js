@@ -54,48 +54,64 @@ const PaymentMethod = () => {
   }, [])
 
   const handleSavingPaymentMethod = () => {
-    setLoading(true)
-    paymentData.push({
-      CVV: cvc,
-      cardExpiry: date,
-      cardNumber: cardNumber,
-      name: name,
-      zip: zipCode,
-      _id: (
-        '0'.repeat(16) + Math.floor(Math.random() * 16 ** 16).toString(16)
-      ).slice(-16),
-    })
-    axios
-      .post(
-        `${process.env.REACT_APP_API_URL}/users/${user.id}/add_card`,
-        {
-          paymentCards: {
-            name: name,
-            cardNumber: cardNumber,
-            cardExpiry: date,
-            CVV: cvc,
-            zip: zipCode,
-          },
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+    // CVV: cvc,
+    // cardExpiry: date,
+    // cardNumber: cardNumber,
+    // name: name,
+    // zip: zipCode,
+    if (cvc !== '') {
+      if (date !== '') {
+        if (cardNumber !== '') {
+          if (name !== '') {
+            if (zipCode !== '') {
+              setLoading(true)
+              paymentData.push({
+                CVV: cvc,
+                cardExpiry: date,
+                cardNumber: cardNumber,
+                name: name,
+                zip: zipCode,
+                _id: (
+                  '0'.repeat(16) +
+                  Math.floor(Math.random() * 16 ** 16).toString(16)
+                ).slice(-16),
+              })
+              axios
+                .post(
+                  `${process.env.REACT_APP_API_URL}/users/${user.id}/add_card`,
+                  {
+                    paymentCards: {
+                      name: name,
+                      cardNumber: cardNumber,
+                      cardExpiry: date,
+                      CVV: cvc,
+                      zip: zipCode,
+                    },
+                  },
+                  {
+                    headers: {
+                      Authorization: `Bearer ${token}`,
+                    },
+                  }
+                )
+                .then((res) => {
+                  console.log(res)
+                  setLoading(false)
+                  setModal(false)
+                  setName('')
+                  setCvc('')
+                  setDate('')
+                  setCardNumber('')
+                  setZipCode('')
+                })
+                .catch((err) => {
+                  console.log(err)
+                })
+            }
+          }
         }
-      )
-      .then((res) => {
-        console.log(res)
-        setLoading(false)
-        setModal(false)
-        setName('')
-        setCvc('')
-        setDate('')
-        setCardNumber('')
-        setZipCode('')
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+      }
+    }
   }
 
   const handleUpdateAddress = (data) => {
