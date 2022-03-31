@@ -216,6 +216,24 @@ const PaymentMethod = () => {
     setModal(true)
   }
 
+  const stringToStars = (val, string) => {
+    let newString = ''
+    if (val === 0) {
+      for (let i = 0; i < string.length; i++) {
+        newString += '*'
+      }
+    } else {
+      debugger
+      for (let i = string.length; i > string.length - val; i--) {
+        newString += '*'
+      }
+
+      newString =
+        newString + string.substr(string.length - (string.length - val))
+    }
+    return newString
+  }
+
   return (
     <>
       <Navigation />
@@ -282,19 +300,19 @@ const PaymentMethod = () => {
                     <Col span={12}>
                       <h3>
                         <strong>Name : </strong>
-                        {item.name}
+                        {stringToStars(0, item.name)}
                       </h3>
                     </Col>
                     <Col span={12}>
                       <h3>
                         <strong>Card : </strong>
-                        {item.cardNumber}
+                        {stringToStars(12, item.cardNumber)}
                       </h3>
                     </Col>
                     <Col span={12}>
                       <h3>
                         <strong>CVV : </strong>
-                        {item.CVV}
+                        {stringToStars(0, item.CVV)}
                       </h3>
                     </Col>
                     <Col span={12}>
@@ -306,7 +324,7 @@ const PaymentMethod = () => {
                     <Col span={12}>
                       <h3>
                         <strong>Zip : </strong>
-                        {item.zip}
+                        {stringToStars(0, item.zip)}
                       </h3>
                     </Col>
                     <Col span={24} align="center">
