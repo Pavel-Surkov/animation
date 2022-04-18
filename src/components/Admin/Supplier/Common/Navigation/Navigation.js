@@ -16,32 +16,33 @@ import {
   userLoggedOut,
   userDataStatus,
   userLoggedIn,
-} from '../../../../../CounterSlice.js'
+} from '../../../../../redux/actions/user.action'
 
 const Navigation = () => {
   const history = useHistory()
-  const refreshToken = localStorage.getItem('refresh')
-  const token = localStorage.getItem('token')
+  const refreshToken = sessionStorage.getItem('refresh')
+  const token = sessionStorage.getItem('token')
   const dispatch = useDispatch()
-  const userLoggedInState = useSelector((state) => state.counter.userLoggedIn)
 
-  useEffect(() => {
-    if (token !== null) {
-      axios
-        .get(`${process.env.REACT_APP_API_URL}/users/getUserProfile`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          dispatch(userLoggedIn())
-          dispatch(userDataStatus(''))
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    }
-  }, [])
+  const userLoggedInState = useSelector((state) => state.user.userLoggedIn)
+
+  // useEffect(() => {
+  //   if (token !== null) {
+  //     axios
+  //       .get(`${process.env.REACT_APP_API_URL}/users/getUserProfile`, {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       })
+  //       .then((res) => {
+  //         dispatch(userLoggedIn())
+  //         dispatch(userDataStatus(''))
+  //       })
+  //       .catch((err) => {
+  //         console.log(err)
+  //       })
+  //   }
+  // }, [])
 
   const handleSignOut = () => {
     axios
@@ -52,14 +53,15 @@ const Navigation = () => {
         console.log(res)
         dispatch(userLoggedOut())
         dispatch(userDataStatus(''))
-        localStorage.clear()
+        sessionStorage.clear()
         history.push('/')
       })
       .catch((err) => {
         console.log(err)
       })
   }
-  const userName = useSelector((state) => state.counter.user.name)
+  const userName = useSelector((state) => state.user.user.name)
+  const user = useSelector((state) => state.user.user)
   const handleSignIn = () => {
     history.push({ pathname: '/login' })
   }
@@ -81,7 +83,7 @@ const Navigation = () => {
                 <Link to="/dashboard/supplier/message">
                   <p>Messages</p>
                 </Link>
-                <Link to="/dashboard/supplier/services">
+                {/* <Link to="/dashboard/supplier/services">
                   <p>Services</p>
                 </Link>
                 <Link to="/dashboard/supplier/orders">
@@ -89,16 +91,16 @@ const Navigation = () => {
                 </Link>
                 <Link to="/dashboard/supplier/profile">
                   <p>Profile</p>
-                </Link>
+                </Link> */}
               </Space>
             </div>
           </Col>
           <Col span={12}>
             <div className={classes.navigationProfile}>
               <Space>
-                <Button size="large" className={classes.dashboardButton}>
+                {/* <Button size="large" className={classes.dashboardButton}>
                   Dashboard
-                </Button>
+                </Button> */}
                 {userLoggedInState ? (
                   <Space>
                     <Dropdown
@@ -110,14 +112,14 @@ const Navigation = () => {
                             </h4>
                           </Menu.Item>
                           <Divider style={{ margin: '0' }} />
-                          <Menu.Item>
+                          {/* <Menu.Item>
                             <Link>Quotes and Status</Link>
                           </Menu.Item>
                           <Menu.Item disabled>Messages</Menu.Item>
                           <Menu.Item disabled>Invoices</Menu.Item>
                           <Menu.Item disabled>Orders</Menu.Item>
                           <Menu.Item disabled>Account</Menu.Item>
-                          <Menu.Item disabled>Help</Menu.Item>
+                          <Menu.Item disabled>Help</Menu.Item> */}
                           <Divider style={{ margin: '0' }} />
                           <Menu.Item danger>
                             <Button type="link" onClick={() => handleSignOut()}>
@@ -131,7 +133,11 @@ const Navigation = () => {
                         className="ant-dropdown-link"
                         onClick={(e) => e.preventDefault()}
                       >
-                        <Avatar size={50} icon={<UserOutlined />} />
+                        {user.profileImage === '' ? (
+                          <Avatar size={50} icon={<UserOutlined />} />
+                        ) : (
+                          <Avatar size={50} src={user.profileImage} />
+                        )}
                       </a>
                     </Dropdown>
                   </Space>

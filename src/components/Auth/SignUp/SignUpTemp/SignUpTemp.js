@@ -6,13 +6,14 @@ import classes from './SignUpTemp.module.scss'
 import logo from '../../../../assets/svg/logo_black_medium.svg'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { userLoggedIn, userDataStatus } from '../../../../CounterSlice'
-import { quoteData } from '../../../../CounterSlice'
+import { singleQuoteData } from '../../../../redux/actions/singleQuote.action'
+import { connect } from 'react-redux'
 import axios from 'axios'
 
 const SignUpTemp = () => {
   const history = useHistory()
-  const quote = useSelector((state) => state.counter.quote)
+
+  const quote = useSelector((state) => state.singleQuote.quote)
   const dispatch = useDispatch()
 
   const [isQuoteCompleted, setIsQuoteCompleted] = useState(true)
@@ -27,49 +28,75 @@ const SignUpTemp = () => {
 
   const [loader, setLoader] = useState(false)
 
-  useEffect(() => {
-    if (quote === null) {
-      history.push({ pathname: '/quote' })
-    }
-    console.log(quote)
-  }, [])
-
   const handleSignUp = () => {
     setLoader(true)
     if (password === confirmPassword) {
       setErrorMessage('')
       setErrorStatus(false)
       setErrorFeedback('success')
-
-      console.log(quote)
-      axios
-        .post(`${process.env.REACT_APP_API_URL}/quotes/save_quote`, {
-          projectName: quote.projectName,
-          productCategory: quote.productCategory,
-          color: 'null',
-          name: name,
-          phone: phone,
-          description: quote.description,
-          projectStartDate: quote.projectStartDate,
-          projectLaunchDate: quote.projectLaunchDate,
-          quantity: quote.quantity,
-          budget: `$${quote.budget}`,
-          email: email,
-          password: password,
-          inspirationImages: quote.inspirationImages,
-          inspirationDocument: quote.inspirationDocument,
-          referenceImages: quote.referenceImages,
-        })
-        .then((res) => {
-          setLoader(false)
-          setIsQuoteCompleted(false)
-          dispatch(quoteData(null))
-        })
-        .catch((err) => {
-          console.log(err)
-          setLoader(false)
-        })
-
+      debugger
+      if (!quote.supplierIdExist) {
+        axios
+          .post(`${process.env.REACT_APP_API_URL}/quotes/save_quote`, {
+            projectName: quote.projectName,
+            supplier: '',
+            productCategory: quote.productCategory,
+            color: 'null',
+            name: name,
+            phone: String(phone),
+            description: quote.description,
+            projectStartDate: quote.projectStartDate,
+            projectLaunchDate: quote.projectLaunchDate,
+            quantity: quote.quantity,
+            budget: `$${quote.budget}`,
+            email: email,
+            password: password,
+            inspirationImages: quote.inspirationImages,
+            inspirationDocument: quote.inspirationDocument,
+            referenceImages: quote.referenceImages,
+          })
+          .then((res) => {
+            setLoader(false)
+            setIsQuoteCompleted(false)
+            dispatch(singleQuoteData(null))
+          })
+          .catch((err) => {
+            console.log(err)
+            setLoader(false)
+          })
+      } else {
+        axios
+          .post(
+            `${process.env.REACT_APP_API_URL}/quotes/save_quote_single_supplier`,
+            {
+              projectName: quote.projectName,
+              supplier: quote.supplierId,
+              productCategory: quote.productCategory,
+              color: 'null',
+              name: name,
+              phone: String(phone),
+              description: quote.description,
+              projectStartDate: quote.projectStartDate,
+              projectLaunchDate: quote.projectLaunchDate,
+              quantity: quote.quantity,
+              budget: `$${quote.budget}`,
+              email: email,
+              password: password,
+              inspirationImages: quote.inspirationImages,
+              inspirationDocument: quote.inspirationDocument,
+              referenceImages: quote.referenceImages,
+            }
+          )
+          .then((res) => {
+            setLoader(false)
+            setIsQuoteCompleted(false)
+            dispatch(singleQuoteData(null))
+          })
+          .catch((err) => {
+            console.log(err)
+            setLoader(false)
+          })
+      }
       // axios
       //   .post(`${process.env.REACT_APP_API_URL}/auth/register`, {
       //     email: email,
@@ -129,7 +156,7 @@ const SignUpTemp = () => {
                 </Form.Item>
                 <Form.Item label="Phone">
                   <InputNumber
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => setPhone(e)}
                     value={phone}
                     style={{ width: '100%' }}
                     size="large"
@@ -228,4 +255,10 @@ const SignUpTemp = () => {
     </>
   )
 }
-export default SignUpTemp
+const mapStateToProps = (state) => {
+  return {
+    singleQuote: state,
+  }
+}
+
+export default connect(mapStateToProps)(SignUpTemp)

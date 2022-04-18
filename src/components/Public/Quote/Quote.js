@@ -24,8 +24,9 @@ import plusIcon from '../../../assets/svg/uploadIcon.svg'
 import logo from '../../../assets/svg/logo_black_medium.svg'
 import Navigation from '../../../components/Public/Homepage/Navigation/Navigation'
 import classes from './Quote.module.scss'
-import { quoteData } from '../../../CounterSlice'
+import { singleQuoteData } from '../../../redux/actions/singleQuote.action'
 import { DeleteOutlined, EyeOutlined } from '@ant-design/icons'
+import { useParams } from 'react-router-dom'
 
 const { TextArea } = Input
 const Option = Select
@@ -33,10 +34,10 @@ const Option = Select
 const Quote = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-
-  const user = useSelector((state) => state.counter.user)
-  const userType = useSelector((state) => state.counter.userType)
-  const token = localStorage.getItem('token')
+  let { id } = useParams()
+  const user = useSelector((state) => state.user)
+  // const userType = useSelector((state) => state.counter.userType)
+  const token = sessionStorage.getItem('token')
   const [imageLoading, setImageLoading] = useState(false)
   const [imageResponseUrlArray] = useState([])
   const [projectDetail, setProjectDetail] = useState('')
@@ -49,7 +50,7 @@ const Quote = () => {
   const [color, setColor] = useState('')
   const [messageData, setMessageData] = useState('')
   const [isModalVisible, setIsModalVisible] = useState(false)
-
+  const [supplierId, setSupplierId] = useState('')
   const [uploadType, setUploadType] = useState('')
   const [referenceFiles, setRefernceFiles] = useState(false)
   const [inspirationFilesUploading, setInspirationFilesUploading] =
@@ -63,6 +64,20 @@ const Quote = () => {
   const [documentUrlArray, setDocumentUrlArray] = useState([])
 
   const [preview, setPreView] = useState('')
+
+  const [supplierIdExist, setSupplierIdExist] = useState(false)
+
+  useEffect(() => {
+    debugger
+    if (id === 'no_supplier') {
+      setSupplierIdExist(false)
+      setSupplierId('')
+    } else {
+      setSupplierIdExist(true)
+      setSupplierId(id)
+    }
+  }, [])
+
   useEffect(() => {
     if (referenceFilesUrlArray.length > 0) {
       setRefernceFiles(true)
@@ -176,7 +191,7 @@ const Quote = () => {
 
   const handleSubmit = () => {
     dispatch(
-      quoteData({
+      singleQuoteData({
         projectName: projectDetail,
         productCategory: category,
         color: color,
@@ -188,6 +203,8 @@ const Quote = () => {
         inspirationImages: inspirationFilesUrlArray,
         inspirationDocument: documentUrlArray,
         referenceImages: referenceFilesUrlArray,
+        supplierIdExist: supplierIdExist,
+        supplierId: supplierId,
       })
     )
     history.push({ pathname: '/signup' })

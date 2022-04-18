@@ -93,11 +93,17 @@
 	}
 }
 
+.messageChatSection{
+	overflow-y: scroll;
+	height: 70vh;
+}
+
 .messageBubble{
 	border-radius: 10px;
 	border:1px solid $light_grey_app_color;
 	padding: 10px;
 	margin: 10px 0;
+	margin-left: 55px;
 	.divider{
 		margin: 8px 0;
 	}
@@ -136,6 +142,7 @@
 	border:1px solid $light_grey_app_color;
 	padding: 10px;
 	margin: 10px 0;
+	margin-right: 55px;
 	background-color:$off_grey_app_color ;
 	.divider{
 		margin: 8px 0;
@@ -172,14 +179,10 @@
 }
 
 .messageEditor{
-	margin-top: 200px;
-	padding-top:70px;
-	padding-right: 10px;
-	text-align: right;
-	height: 121px;
-	background-color:$off_grey_app_color ;
-	border-radius: 10px;
-	border:1px solid $light_grey_app_color;
+	position: absolute;
+    	bottom: 0;
+    	width: 100%;
+	
 	.sendButton{
 		width: 80px;	
 		font-family: 'Inter',sans-serif;

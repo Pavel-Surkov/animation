@@ -13,7 +13,7 @@ const BuyerAccountDetails = () => {
 
   const user = useSelector((state) => state.counter.user)
   const userType = useSelector((state) => state.counter.userType)
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
   const [fullName, setFullName] = useState('')
   const [companyName, setCompanyName] = useState('')
   const [phone, setPhone] = useState('')

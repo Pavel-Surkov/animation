@@ -38,7 +38,7 @@ const ShippingAddress = () => {
   const [zipCode, setZipCode] = useState('')
 
   const Option = Select
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
   useEffect(() => {
     setLoading(true)
@@ -84,7 +84,6 @@ const ShippingAddress = () => {
   }, [country, countriesListingData])
 
   const handleSavingAddress = () => {
-    debugger
     setLoading(true)
     addressData.push({
       address1: formik.values.street,

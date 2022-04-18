@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import classes from './SupplierAccountDetails.module.scss'
 import axios from 'axios'
 
-import Item from 'antd/lib/list/Item'
 const { Option } = Select
 
 const SupplierAccountDetails = () => {
@@ -14,7 +13,7 @@ const SupplierAccountDetails = () => {
 
   const user = useSelector((state) => state.counter.user)
   const userType = useSelector((state) => state.counter.userType)
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
   const [fullName, setFullName] = useState('')
   const [companyName, setCompanyName] = useState('')
   const [phone, setPhone] = useState('')

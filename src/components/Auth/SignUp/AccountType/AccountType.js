@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { userType } from '../../../../CounterSlice'
+// import { userType } from '../../../../CounterSlice'
 import classes from './AccountType.module.scss'
 import { Row, Col } from 'antd'
 
@@ -9,22 +9,24 @@ import BuyerAccountDetails from '../BuyerAccountDetails/BuyerAccountDetails'
 import SupplierImage from '../../../../assets/images/supplier_card_background.png'
 import BuyerImage from '../../../../assets/images/buyer_card_background.png'
 
+// TODO Uncomment this component as per the updated flow of signUp for supplier and buyer
+
 const AccountType = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-  const handleAccountType = (value) => {
-    if (value === 'supplier') {
-      history.push('/signup/supplier')
-      dispatch(userType('supplier'))
-    } else if (value === 'buyer') {
-      history.push('/signup/buyer')
-      dispatch(userType('buyer'))
-    }
-  }
+  // const handleAccountType = (value) => {
+  //   if (value === 'supplier') {
+  //     history.push('/signup/supplier')
+  //     dispatch(userType('supplier'))
+  //   } else if (value === 'buyer') {
+  //     history.push('/signup/buyer')
+  //     dispatch(userType('buyer'))
+  //   }
+  // }
 
   return (
     <>
-      <div className={classes.mainSection}>
+      {/* <div className={classes.mainSection}>
         <h3>Choose your account type:</h3>
         <Row gutter={50}>
           <Col span={12}>
@@ -50,7 +52,7 @@ const AccountType = () => {
             </div>
           </Col>
         </Row>
-      </div>
+      </div> */}
     </>
   )
 }

@@ -1,33 +1,33 @@
-import classes from './Leads.module.scss'
+import classes from './DirectLead.module.scss'
 import React, { useEffect, useState } from 'react'
 import { Row, Col, Button, Space, Badge, Divider } from 'antd'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 import message from '../../../../assets/svg/Message.svg'
 import check from '../../../../assets/svg/Tick.svg'
 import cross from '../../../../assets/svg/Cross.svg'
 import chat from '../../../../assets/svg/Chat.svg'
 import { useHistory } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+
 import moment from 'moment'
 import loader from '../../../../assets/gif/loader.gif'
-const Leads = () => {
-  const history = useHistory()
+
+const DirectLeads = () => {
   const token = sessionStorage.getItem('token')
-
+  const history = useHistory()
   const userId = useSelector((state) => state.user.user.id)
-
+  const arr = [1]
   const [loading, setLoading] = useState(true)
   const [leads, setLeads] = useState([])
   useEffect(() => {
     axios
       .get(
-        `http://localhost:3000/v1/users/${userId}/get_supplier_opportunities_by_supplierId`,
+        `${process.env.REACT_APP_API_URL}/quotes/${userId}/get_buyer_quotes_by_supplierId`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
       .then((res) => {
-        debugger
         setLoading(false)
         setLeads(res.data.data)
       })
@@ -36,15 +36,7 @@ const Leads = () => {
         console.log(err)
       })
   }, [])
-  const handleRequest = (type, id) => {
-    let arr = []
-    leads.map((item) => {
-      if (item._id !== id) {
-        arr.push(item)
-      }
-    })
-    setLeads(arr)
-  }
+
   return (
     <>
       <div className={classes.container}>
@@ -55,30 +47,30 @@ const Leads = () => {
                 onClick={() =>
                   history.push({ pathname: '/dashboard/supplier/lead' })
                 }
-                className={classes.opportunityButton}
+                className={classes.directMessageButton}
                 size="large"
-                type="primary"
+                type="link"
               >
-                <img src={message} alt="Uplio" />
+                <img src={chat} alt="Uplio" />
                 Opportunities
               </Button>
               <Button
                 onClick={() =>
                   history.push({ pathname: '/dashboard/supplier/direct-lead' })
                 }
-                className={classes.directMessageButton}
+                className={classes.opportunityButton}
                 size="large"
-                type="link"
+                type="primary"
               >
-                <img src={chat} alt="Uplio" />
+                <img src={message} alt="Uplio" />
                 Direct Requests
               </Button>
             </div>
           </Col>
           <Col span={16}>
             <div className={classes.mainSection}>
-              <h3>Opportunity knocks...</h3>
-              <p>Take a look at the requests we found for you. </p>
+              <h3>Direct Requests...</h3>
+              {/* <p>Take a look at the requests we found for you. </p> */}
               <Divider />
               {loading ? (
                 <div className={classes.loader}>
@@ -94,57 +86,31 @@ const Leads = () => {
                           <Row gutter={12}>
                             <Col span={12}>
                               <Space>
-                                <Badge dot={true}>
-                                  <h5>{lead.projectName}</h5>
-                                </Badge>
+                                {/* <Badge dot={true}> */}
+                                <h5>{lead.projectName}</h5>
+                                {/* </Badge> */}
                                 <p>
-                                  {moment(lead.projectStartDate).format(
-                                    'ddd h:mm A'
+                                  {moment(lead.projectLaunchDate).format(
+                                    'MMM Do YY'
                                   )}
                                 </p>
                               </Space>
                             </Col>
                             <Col span={12}>
                               <div className={classes.messageSection}>
-                                <Button
+                                {/* <Button
                                   type="primary"
                                   size="large"
                                   className={classes.messageButton}
                                 >
                                   Message
-                                </Button>
+                                </Button> */}
                               </div>
                             </Col>
                           </Row>
-                          <h4>{lead.firstName}</h4>
+                          <h4>{lead.user.name}</h4>
                           <Divider className={classes.divider} />
                           <p>{lead.description}</p>
-                        </div>
-                        <div className={classes.action}>
-                          <Row gutter={12}>
-                            <Col span={12}>
-                              <Button
-                                onClick={() =>
-                                  handleRequest('accept', lead._id)
-                                }
-                                size="large"
-                                className={classes.acceptButton}
-                              >
-                                <img src={check} alt="Uplio" /> Accept
-                              </Button>
-                            </Col>
-                            <Col span={12}>
-                              <Button
-                                onClick={() =>
-                                  handleRequest('reject', lead._id)
-                                }
-                                size="large"
-                                className={classes.cancelButton}
-                              >
-                                <img src={cross} alt="Uplio" /> Pass
-                              </Button>
-                            </Col>
-                          </Row>
                         </div>
                       </div>
                     )
@@ -158,4 +124,4 @@ const Leads = () => {
     </>
   )
 }
-export default Leads
+export default DirectLeads

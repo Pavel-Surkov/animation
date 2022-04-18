@@ -38,6 +38,7 @@ import BuyerDashboardProfilePaymentMethod from '../../components/Admin/Buyer/Pay
 import BuyerDashboardProfileShippingAddress from '../../components/Admin/Buyer/ShippingAddress/ShippingAddress'
 import BlogListing from '../../components/Public/Blog/BlogListing/BlogListing'
 import Blog from '../../components/Public/Blog/Blog/Blog'
+import SupplierDashboardDirectLead from '../../components/Admin/Supplier/DashboardDirectLeadTemp'
 const PublicRoutes = () => (
   <Suspense fallback={<p>Loading ..</p>}>
     <Router>
@@ -101,14 +102,18 @@ const PublicRoutes = () => (
           />
           <Route exact path="/profile/:id" component={SupplierProfile} />
           <Route exact path="/products/:id" component={Products} />
-          <Route exact path="/quote" component={Quote} />
+          <Route exact path="/quote/:id" component={Quote} />
           <Route exact path="/signup/completed" component={GreetingTemp} />
           <Route
             exact
             path="/dashboard/supplier/lead"
             component={SupplierDashboard}
           />
-
+          <Route
+            exact
+            path="/dashboard/supplier/direct-lead"
+            component={SupplierDashboardDirectLead}
+          />
           <Route
             exact
             path="/dashboard/supplier/message"

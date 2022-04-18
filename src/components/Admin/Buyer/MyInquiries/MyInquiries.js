@@ -8,7 +8,7 @@ import { Link, useHistory } from 'react-router-dom'
 const { Column, ColumnGroup } = Table
 
 const MyInquiries = () => {
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
   const [quoteData, setQuoteData] = useState()
   const [loading, setLoading] = useState(true)
 

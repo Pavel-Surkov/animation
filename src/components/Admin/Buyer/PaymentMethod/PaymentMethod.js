@@ -32,7 +32,7 @@ const PaymentMethod = () => {
   const [cvc, setCvc] = useState('')
   const [zipCode, setZipCode] = useState('')
 
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
   useEffect(() => {
     setLoading(true)
     axios
@@ -223,7 +223,6 @@ const PaymentMethod = () => {
         newString += '*'
       }
     } else {
-      debugger
       for (let i = string.length; i > string.length - val; i--) {
         newString += '*'
       }

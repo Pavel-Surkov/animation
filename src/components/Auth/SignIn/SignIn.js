@@ -8,12 +8,17 @@ import classes from './SignIn.module.scss'
 import logo from '../../../assets/svg/logo_red_medium.svg'
 
 import { ArrowRightOutlined } from '@ant-design/icons'
-import { useSelector, useDispatch } from 'react-redux'
-import { userLoggedIn, userDataStatus } from '../../../CounterSlice'
+import { connect, useSelector, useDispatch } from 'react-redux'
 
-const SignIn = () => {
+import {
+  userLoggedIn,
+  userDataStatus,
+  postUserLogin,
+} from '../../../redux/actions/user.action.js'
+
+const SignIn = (props) => {
   const history = useHistory()
-  const user = useSelector((state) => state.counter.user)
+  const user = useSelector((state) => state.user.user)
   const dispatch = useDispatch()
 
   const [email, setEmail] = useState('')
@@ -30,6 +35,11 @@ const SignIn = () => {
 
   const handleSignIn = () => {
     setLoader(true)
+    const user = {
+      email: email,
+      password: password,
+    }
+    // dispatch(postUserLogin(user))
     axios
       .post(`${process.env.REACT_APP_API_URL}/auth/login`, {
         email: email,
@@ -40,9 +50,10 @@ const SignIn = () => {
         if (!res.data.error) {
           dispatch(userLoggedIn())
           dispatch(userDataStatus(res.data.user))
+          // props.userDataStatus(userData)
           history.goBack()
-          localStorage.setItem('token', res.data.tokens.access.token)
-          localStorage.setItem('refresh', res.data.tokens.refresh.token)
+          sessionStorage.setItem('token', res.data.tokens.access.token)
+          sessionStorage.setItem('refresh', res.data.tokens.refresh.token)
         } else {
           openNotificationWithIcon('warning', 'Oops', res.data.message)
         }
@@ -117,4 +128,19 @@ const SignIn = () => {
     </>
   )
 }
-export default SignIn
+
+const mapStateToProps = (state) => {
+  return {
+    user: state,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userLoggedIn: () => dispatch(userLoggedIn()),
+
+    userDataStatus: () => dispatch(userDataStatus()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

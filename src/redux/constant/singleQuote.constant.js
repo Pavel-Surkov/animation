@@ -1,0 +1,1 @@
+export const SINGLE_QUOTE_DATA = 'SINGLE_QUOTE_DATA'

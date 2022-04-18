@@ -6,7 +6,7 @@ import Profile from './Profile/Profile'
 const DashboardProfileTemp = () => {
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
 
       <Profile />
     </>

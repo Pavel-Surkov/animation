@@ -40,7 +40,7 @@ const Profile = () => {
 
   const [imageUploading, setImageUploading] = useState(false)
 
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
   useEffect(() => {
     setLoading(true)

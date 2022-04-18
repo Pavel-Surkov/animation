@@ -16,12 +16,12 @@ import {
   userLoggedOut,
   userDataStatus,
   userLoggedIn,
-} from '../../../../../CounterSlice.js'
+} from '../../../../../redux/actions/user.action.js'
 
 const Navigation = () => {
   const history = useHistory()
-  const refreshToken = localStorage.getItem('refresh')
-  const token = localStorage.getItem('token')
+  const refreshToken = sessionStorage.getItem('refresh')
+  const token = sessionStorage.getItem('token')
   const dispatch = useDispatch()
   const userLoggedInState = useSelector((state) => state.counter.userLoggedIn)
   const userProfile = useSelector((state) => state.counter.user.profileImage)
@@ -52,7 +52,7 @@ const Navigation = () => {
         console.log(res)
         dispatch(userLoggedOut())
         dispatch(userDataStatus(''))
-        localStorage.clear()
+        sessionStorage.clear()
         history.push('/')
       })
       .catch((err) => {

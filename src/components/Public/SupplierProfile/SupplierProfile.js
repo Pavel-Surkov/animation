@@ -68,7 +68,7 @@ const SupplierProfile = () => {
   const [imageHeight, setImageHeight] = useState(0)
   const handleQuote = () => {
     history.push({
-      pathname: `/quote`,
+      pathname: `/quote/${id}`,
     })
   }
 

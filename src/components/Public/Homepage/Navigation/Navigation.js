@@ -11,6 +11,7 @@ import {
   Divider,
   Drawer,
 } from 'antd'
+import { connect } from 'react-redux'
 import classes from './Navigation.module.scss'
 import logo from '../../../../assets/svg/logo_red_small.svg'
 import logo_mobile from '../../../../assets/svg/logo_mobile.svg'
@@ -27,40 +28,42 @@ import {
   userLoggedOut,
   userDataStatus,
   userLoggedIn,
-} from '../../../../CounterSlice'
+} from '../../../../redux/actions/user.action.js'
 
 const Navigation = (params) => {
   const history = useHistory()
-  const refreshToken = localStorage.getItem('refresh')
+  const refreshToken = sessionStorage.getItem('refresh')
   const [visible, setVisible] = useState(false)
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
   const dispatch = useDispatch()
-  const userLoggedInState = useSelector((state) => state.counter.userLoggedIn)
+  const userLoggedInState = useSelector((state) => state.user.userLoggedIn)
 
-  // Auto SignOut session clear
-  useEffect(() => {
-    if (!userLoggedInState) {
-      localStorage.clear()
-    }
-  }, [])
-
+  const user = useSelector((state) => state.user.user)
+  // // Auto SignOut session clear
   // useEffect(() => {
-  //   if (token !== null) {
-  //     axios
-  //       .get(`${process.env.REACT_APP_API_URL}/users/getUserProfile`, {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       })
-  //       .then((res) => {
-  //         dispatch(userLoggedIn())
-  //         dispatch(userDataStatus(res.data.data))
-  //       })
-  //       .catch((err) => {
-  //         console.log(err)
-  //       })
+  //   if (!userLoggedInState) {
+  //     sessionStorage.clear()
   //   }
   // }, [])
+
+  useEffect(() => {
+    if (token !== null) {
+      console.log('Test')
+      // axios
+      //   .get(`${process.env.REACT_APP_API_URL}/users/getUserProfile`, {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   })
+      //   .then((res) => {
+      //     dispatch(userLoggedIn())
+      //     dispatch(userDataStatus(res.data))
+      //   })
+      //   .catch((err) => {
+      //     console.log(err)
+      //   })
+    }
+  }, [])
 
   const handleSignOut = () => {
     axios
@@ -70,7 +73,7 @@ const Navigation = (params) => {
       .then((res) => {
         dispatch(userLoggedOut())
         dispatch(userDataStatus(''))
-        localStorage.clear()
+        sessionStorage.clear()
         history.push('/')
       })
       .catch((err) => {
@@ -78,8 +81,6 @@ const Navigation = (params) => {
       })
   }
 
-  const userName = useSelector((state) => state.counter.user.name)
-  const userProfile = useSelector((state) => state.counter.user.profileImage)
   const handleSignIn = () => {
     history.push({ pathname: '/login' })
   }
@@ -108,46 +109,83 @@ const Navigation = (params) => {
           </Col>
           <Col md={6} xl={6} xs={0} align="right">
             {userLoggedInState ? (
-              <Space>
-                <Dropdown
-                  overlay={
-                    <Menu>
-                      <Menu.Item>
-                        <h4 style={{ letterSpacing: '2px' }}>
-                          <strong>Hi,</strong> {userName}
-                        </h4>
-                      </Menu.Item>
-                      <Divider style={{ margin: '0' }} />
-                      <Menu.Item>
-                        <Link to="/dashboard/buyer/inquiries">
-                          Quotes and Status
-                        </Link>
-                      </Menu.Item>
-                      <Menu.Item>
-                        <Link to="/dashboard/buyer/profile">Account</Link>
-                      </Menu.Item>
-                      {/* <Menu.Item disabled>Invoices</Menu.Item>
-                      <Menu.Item disabled>Orders</Menu.Item>
-                      <Menu.Item disabled>Account</Menu.Item>
-                      <Menu.Item disabled>Help</Menu.Item> */}
-                      <Divider style={{ margin: '0' }} />
-                      <Menu.Item danger>
-                        <Button type="link" onClick={() => handleSignOut()}>
-                          Sign Out
-                        </Button>
-                      </Menu.Item>
-                    </Menu>
-                  }
-                >
-                  <Button className={classes.dropDownButton}>
-                    {userProfile === '' ? (
-                      <Avatar size={50} icon={<UserOutlined />} />
-                    ) : (
-                      <Avatar size={50} src={userProfile} />
-                    )}
+              user.userType === 'supplier' ? (
+                <Space>
+                  <Button
+                    onClick={() => {
+                      history.push({ pathname: '/dashboard/supplier/lead' })
+                    }}
+                  >
+                    Dashboard
                   </Button>
-                </Dropdown>
-              </Space>
+                  <Dropdown
+                    overlay={
+                      <Menu>
+                        <Menu.Item>
+                          <h4 style={{ letterSpacing: '2px' }}>
+                            <strong>Hi,</strong> {user.name}
+                          </h4>
+                        </Menu.Item>
+                        <Divider style={{ margin: '0' }} />
+                        <Menu.Item danger>
+                          <Button type="link" onClick={() => handleSignOut()}>
+                            Sign Out
+                          </Button>
+                        </Menu.Item>
+                      </Menu>
+                    }
+                  >
+                    <Button className={classes.dropDownButton}>
+                      {user.profileImage === '' ? (
+                        <Avatar size={50} icon={<UserOutlined />} />
+                      ) : (
+                        <Avatar size={50} src={user.profileImage} />
+                      )}
+                    </Button>
+                  </Dropdown>
+                </Space>
+              ) : (
+                <Space>
+                  <Dropdown
+                    overlay={
+                      <Menu>
+                        <Menu.Item>
+                          <h4 style={{ letterSpacing: '2px' }}>
+                            <strong>Hi,</strong> {user.name}
+                          </h4>
+                        </Menu.Item>
+                        <Divider style={{ margin: '0' }} />
+                        <Menu.Item>
+                          <Link to="/dashboard/buyer/inquiries">
+                            Quotes and Status
+                          </Link>
+                        </Menu.Item>
+                        <Menu.Item>
+                          <Link to="/dashboard/buyer/profile">Account</Link>
+                        </Menu.Item>
+                        {/* <Menu.Item disabled>Invoices</Menu.Item>
+                     <Menu.Item disabled>Orders</Menu.Item>
+                     <Menu.Item disabled>Account</Menu.Item>
+                     <Menu.Item disabled>Help</Menu.Item> */}
+                        <Divider style={{ margin: '0' }} />
+                        <Menu.Item danger>
+                          <Button type="link" onClick={() => handleSignOut()}>
+                            Sign Out
+                          </Button>
+                        </Menu.Item>
+                      </Menu>
+                    }
+                  >
+                    <Button className={classes.dropDownButton}>
+                      {user.profileImage === '' ? (
+                        <Avatar size={50} icon={<UserOutlined />} />
+                      ) : (
+                        <Avatar size={50} src={user.profileImage} />
+                      )}
+                    </Button>
+                  </Dropdown>
+                </Space>
+              )
             ) : (
               <Space>
                 <Button
@@ -185,7 +223,7 @@ const Navigation = (params) => {
           <Space direction="vertical">
             <Divider style={{ margin: '0' }} />
             <h4 style={{ letterSpacing: '2px' }}>
-              <strong>Hi,</strong> {userName}
+              <strong>Hi,</strong> {user.name}
             </h4>
             <Divider style={{ margin: '0' }} />
             <Link to="/dashboard/buyer/inquiries">Quotes and Status</Link>
@@ -264,4 +302,18 @@ function useStickyHeader(offset = 0) {
   return stick
 }
 
-export default Navigation
+const mapStateToProps = (state) => {
+  return {
+    user: state,
+  }
+}
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     increaseCounter: () => dispatch(increaseCounter()),
+
+//     decreaseCounter: () => dispatch(decreaseCounter()),
+//   }
+// }
+
+export default connect(mapStateToProps)(Navigation)

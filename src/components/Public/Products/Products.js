@@ -56,10 +56,11 @@ export default function Products() {
     setSearch(id)
     setCurrentCategory(id)
     setSelectedCategory(id)
+
     axios
       .get(
         `${process.env.REACT_APP_API_URL}/users/suppliers?category=${
-          id === undefined ? searchInput : id
+          id === undefined ? searchInput : id === 'all' ? '' : id
         }`
       )
       .then((res) => {

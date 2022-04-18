@@ -7,7 +7,6 @@ const DashboardMessageTemp = () => {
   return (
     <>
       <Navigation />
-
       <Messages />
     </>
   )

@@ -12,7 +12,7 @@ const { Column, ColumnGroup } = Table
 
 const MyQuote = () => {
   let { id } = useParams()
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
   const [quoteData, setQuoteData] = useState()
   const [loading, setLoading] = useState(true)
 
@@ -42,7 +42,6 @@ const MyQuote = () => {
         setLoading(false)
         const quoteDataArray = []
         res.data.data.map((item) => {
-          debugger
           quoteDataArray.push({
             //     key: item._id,
             supplier: item.user_id.name,

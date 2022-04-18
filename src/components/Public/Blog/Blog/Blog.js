@@ -19,7 +19,6 @@ const BlogListing = () => {
         console.log(res)
 
         res.data.data.map((item) => {
-          debugger
           if (item._id === id) {
             setBlogData(item)
           }
