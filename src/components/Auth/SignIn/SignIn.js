@@ -40,6 +40,8 @@ const SignIn = (props) => {
       password: password,
     }
     // dispatch(postUserLogin(user))
+    debugger
+    console.log(process.env.REACT_APP_API_URL)
     axios
       .post(`${process.env.REACT_APP_API_URL}/auth/login`, {
         email: email,
