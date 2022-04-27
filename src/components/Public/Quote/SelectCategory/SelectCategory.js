@@ -26,23 +26,30 @@ const SelectQuantity = ({ setQuoteView }) => {
 
   return (
     <>
+      <div className={classes.getQuoteSection}>
+        <h2>Get your Quote</h2>
+      </div>
       <div className={classes.container}>
         <div className={classes.section}>
           <div className={classes.heading}>
-            <div className={classes.getQuoteSection}>
-              <h2>Get your Quote</h2>
-            </div>
             <ProgressBar width={'20%'} />
 
             <div className={classes.selectField}>
               <h2>Select a category that fits your request</h2>
-              <InputWithDropDown
-                dropdown={data}
-                placeholder="- Select a category -"
-                width={'100%'}
-                setDropdownValue={setDropdown}
-              />
-              {dropdown === 'Others' ? <InputElement /> : null}
+              <div style={{ marginBottom: '32px' }}>
+                <InputWithDropDown
+                  dropdown={data}
+                  placeholder="- Select a category -"
+                  width={'100%'}
+                  setDropdown={setDropdown}
+                />
+              </div>
+              {dropdown === 'Others' ? (
+                <InputElement
+                  placeholder="Enter the name of your category"
+                  width={'100%'}
+                />
+              ) : null}
             </div>
             <Row>
               <Col span={12}></Col>

@@ -10,12 +10,12 @@ import { Link } from 'react-router-dom'
 const PostSignUp = ({ setQuoteView }) => {
   return (
     <>
+      <div className={classes.getQuoteSection}>
+        <h2>Get your Quote</h2>
+      </div>
       <div className={classes.container}>
         <div className={classes.section}>
           <div className={classes.heading}>
-            <div className={classes.getQuoteSection}>
-              <h2>Get your Quote</h2>
-            </div>
             <ProgressBar width={'80%'} />
             <div>
               <Row gutter={64}>
@@ -54,9 +54,15 @@ const PostSignUp = ({ setQuoteView }) => {
                     </Space>
                     <p>
                       By submitting this form, you acknowledge that you have
-                      read and agree to our
-                      <Link to="terms-conditions">Terms of Service</Link> and
-                      <Link to="/privacy-policy"> Privacy Policy</Link>.
+                      read and agree to our{' '}
+                      <Link className={classes.links} to="terms-conditions">
+                        Terms of Service
+                      </Link>{' '}
+                      and{' '}
+                      <Link className={classes.links} to="/privacy-policy">
+                        Privacy Policy
+                      </Link>
+                      .
                     </p>
                   </div>
                 </Col>

@@ -9,12 +9,12 @@ import InputElement from '../../../../constant/public/Input/InputElement'
 const PreSignUp = ({ setQuoteView }) => {
   return (
     <>
+      <div className={classes.getQuoteSection}>
+        <h2>Get your Quote</h2>
+      </div>
       <div className={classes.container}>
         <div className={classes.section}>
           <div className={classes.heading}>
-            <div className={classes.getQuoteSection}>
-              <h2>Get your Quote</h2>
-            </div>
             <ProgressBar width={'70%'} />
             <div className={classes.mainSection}>
               <h2>Tell us your name and email address so we can contact you</h2>

@@ -13,12 +13,12 @@ import shield from '../../../../assets/svg/bi_shield-check.svg'
 const UploadDocument = ({ setQuoteView }) => {
   return (
     <>
+      <div className={classes.getQuoteSection}>
+        <h2>Get your Quote</h2>
+      </div>
       <div className={classes.container}>
         <div className={classes.section}>
           <div className={classes.heading}>
-            <div className={classes.getQuoteSection}>
-              <h2>Get your Quote</h2>
-            </div>
             <ProgressBar width={'60%'} />
             <div className={classes.mainSection}>
               <h3>

@@ -6,12 +6,15 @@ import { Link } from 'react-router-dom'
 import logo from '../../../assets/svg/logo_rectangle_black.svg'
 import { Row, Col, Space } from 'antd'
 import InputElement from '../Input/InputElement'
-
+import image from '../../../assets/svg/back_to_top.svg'
 const Footer = () => {
   return (
     <>
       <div className={classes.container}>
         <div className={classes.footer}>
+          <div className={classes.footerArrow}>
+            <img src={image} alt="Uplio" />
+          </div>
           <Row>
             <Col span={6}>
               <Link to="/">

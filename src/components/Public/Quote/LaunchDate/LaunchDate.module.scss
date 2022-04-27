@@ -5,16 +5,16 @@
 	margin: 0 auto;
 }
 .section{
-	padding: 128px 0;
+	// padding: 128px 0;
 }
 
 .getQuoteSection{
 	background: linear-gradient(90deg, #F1408B 0%, #F34242 100%);
-	width: 702px;
+	width: 45%;
 	height: 83px;
 	padding: 14px 34px;
 	text-align: right;
-	margin-left: -35px;
+	margin-top: 128px;
 	h2{
 		margin: 0;
 		font-family: 'Poppins';
@@ -82,5 +82,5 @@
 
 .actionButtonSection{
 	margin-top: 64px;
-	margin-bottom: 56px;
+	margin-bottom: 184px;
 }

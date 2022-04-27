@@ -10,15 +10,9 @@ const InputWithDropDown = (props) => {
   const toggleDropdown = () => setOpen(!isOpen)
 
   const handleItemClick = (id) => {
-    if (value === id) {
-      setValue(null)
-      toggleDropdown()
-      props.setDropdown(value)
-    } else {
-      setValue(id)
-      toggleDropdown()
-      props.setDropdown(value)
-    }
+    setValue(id)
+    toggleDropdown()
+    props.setDropdown(id)
   }
 
   return (
@@ -29,7 +23,7 @@ const InputWithDropDown = (props) => {
         onClick={toggleDropdown}
       >
         {value ? (
-          <h3>{items.find((item) => item.id === value).label}</h3>
+          <h3>{items.find((item) => item.label === value).label}</h3>
         ) : (
           <h3>
             {props.placeholder}
@@ -51,7 +45,7 @@ const InputWithDropDown = (props) => {
           <button
             key={item.id}
             className={classes.dropdownItem}
-            onClick={() => handleItemClick(item.id)}
+            onClick={() => handleItemClick(item.label)}
             id={item.id}
           >
             <span

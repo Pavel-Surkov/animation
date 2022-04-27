@@ -9,12 +9,12 @@ const PostQuoteSubmit = ({ setQuoteView }) => {
   const history = useHistory()
   return (
     <>
+      <div className={classes.getQuoteSection}>
+        <h2>Get your Quote</h2>
+      </div>
       <div className={classes.container}>
         <div className={classes.section}>
           <div className={classes.heading}>
-            <div className={classes.getQuoteSection}>
-              <h2>Get your Quote</h2>
-            </div>
             <ProgressBar width={'100%'} />
             <div className={classes.mainSection}>
               <h3>Your request has been sent!</h3>

@@ -8,12 +8,12 @@ import classes from './LaunchDate.module.scss'
 const LaunchDate = ({ setQuoteView }) => {
   return (
     <>
+      <div className={classes.getQuoteSection}>
+        <h2>Get your Quote</h2>
+      </div>
       <div className={classes.container}>
         <div className={classes.section}>
           <div className={classes.heading}>
-            <div className={classes.getQuoteSection}>
-              <h2>Get your Quote</h2>
-            </div>
             <ProgressBar width={'50%'} />
             <div className={classes.mainSection}>
               <h3>When do you want to launch your product line?</h3>
