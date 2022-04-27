@@ -3,7 +3,7 @@ import classes from './ButtonElement.module.scss'
 const ButtonElement = (props) => {
   return (
     <>
-      <button className={classes.button} onClick={() => props.function}>
+      <button className={classes.button} onClick={props.function}>
         {props.content}
       </button>
     </>

@@ -1,0 +1,16 @@
+@import '../../../theme/variable.module.scss';
+
+.textarea{
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid #303030;
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 24px;
+	/* identical to box height, or 133% */
+
+	letter-spacing: 0.02em;
+}

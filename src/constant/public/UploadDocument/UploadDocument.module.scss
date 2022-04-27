@@ -1,0 +1,26 @@
+@import '../../../theme/variable.module.scss';
+
+.input{
+	button{
+		width: 209px;
+		height: 40px;
+		border: 1px solid #303030;
+	}
+	p{
+		margin-top: 24px;
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 300;
+		font-size: 12px;
+		line-height: 22px;
+		/* identical to box height, or 183% */
+
+		letter-spacing: 0.02em;
+
+		/* Black */
+
+		color: #303030;
+
+		opacity: 0.3;
+	}
+}

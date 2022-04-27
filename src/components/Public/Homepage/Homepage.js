@@ -25,6 +25,7 @@ import image_2 from '../../../assets/svg/TIME.svg'
 
 import ButtonWithRightArrow from '../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow'
 import Testimonials from './Testimonials /Testimonials'
+import BackToTop from '../../common/BackToTop/BackToTop'
 
 const Homepage = () => {
   const [question1, setQuestion1] = useState(false)
@@ -153,12 +154,12 @@ const Homepage = () => {
       </div>
       <div className={classes.boxOverlay}>
         <Row gutter={[0, 68]}>
-          <Col span={13}>
+          <Col span={15}>
             <div className={classes.saveTimeBanner}>
               <img src={image_1} alt="Uplio" />
             </div>
           </Col>
-          <Col span={13} offset={11}>
+          <Col span={16} offset={10}>
             <div className={classes.timeBanner}>
               <img src={image_2} alt="Uplio" />
             </div>
@@ -465,7 +466,7 @@ const Homepage = () => {
             <div className={classes.faq}>
               <button onClick={() => setQuestion1(!question1)}>
                 <h3>
-                  What is Uplio? <span>{!question1 ? '+' : 'x'}</span>
+                  What is Uplio? <span>{!question1 ? '+' : '-'}</span>
                 </h3>
               </button>
 
@@ -482,7 +483,7 @@ const Homepage = () => {
               <button onClick={() => setQuestion2(!question2)}>
                 <h3>
                   How much does Uplio cost?{' '}
-                  <span>{!question2 ? '+' : 'x'}</span>
+                  <span>{!question2 ? '+' : '-'}</span>
                 </h3>
               </button>
 
@@ -498,7 +499,7 @@ const Homepage = () => {
               <button onClick={() => setQuestion3(!question3)}>
                 <h3>
                   How do I get manufacturing quote? How do I see costs and lead
-                  times? <span>{!question3 ? '+' : 'x'}</span>
+                  times? <span>{!question3 ? '+' : '-'}</span>
                 </h3>
               </button>
 
@@ -514,8 +515,8 @@ const Homepage = () => {
             <div className={classes.faq}>
               <button onClick={() => setQuestion4(!question4)}>
                 <h3>
-                  What type of products does Uplio offer?{' '}
-                  <span>{!question4 ? '+' : 'x'}</span>
+                  What type of products does Uplio offer?
+                  <span>{!question4 ? '+' : '-'}</span>
                 </h3>
               </button>
               {question4 ? (
@@ -531,7 +532,7 @@ const Homepage = () => {
               <button onClick={() => setQuestion5(!question5)}>
                 <h3>
                   How do I ensure my design is safe?
-                  <span>{!question5 ? '+' : 'x'}</span>
+                  <span>{!question5 ? '+' : '-'}</span>
                 </h3>
               </button>
 
@@ -547,7 +548,7 @@ const Homepage = () => {
               <button onClick={() => setQuestion6(!question6)}>
                 <h3>
                   I am a manufacturer, how do I join the Uplio Network?
-                  <span>{!question6 ? '+' : 'x'}</span>
+                  <span>{!question6 ? '+' : '-'}</span>
                 </h3>
               </button>
               {question6 ? (
@@ -562,7 +563,7 @@ const Homepage = () => {
               <button onClick={() => setQuestion7(!question7)}>
                 <h3>
                   How do I pay for orders?
-                  <span>{!question7 ? '+' : 'x'}</span>
+                  <span>{!question7 ? '+' : '-'}</span>
                 </h3>
               </button>
 
@@ -591,15 +592,12 @@ const Homepage = () => {
             <div className={classes.inputSection}>
               <Row gutter={[16, 32]}>
                 <Col span={12}>
-                  {/* <InputElement placeholder="Search" /> */}
                   <input className={classes.inputDark} placeholder="Name" />
                 </Col>
                 <Col span={12}>
-                  {/* <input className={classes.inputDark} placeholder="Name" /> */}
                   <input className={classes.inputDark} placeholder="Email" />
                 </Col>
                 <Col span={24}>
-                  {/* <InputElement placeholder="Search" /> */}
                   <input className={classes.inputDark} placeholder="Question" />
                 </Col>
                 <Col span={13}></Col>
@@ -609,13 +607,14 @@ const Homepage = () => {
               </Row>
             </div>
             <img
-              style={{ marginTop: '-615px', marginLeft: '610px' }}
+              style={{ marginTop: '-555px', marginLeft: '610px' }}
               src={contact}
               alt="uplio"
             />
           </div>
         </div>
       </div>
+      <BackToTop />
       <Footer />
     </>
   )

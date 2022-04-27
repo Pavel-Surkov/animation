@@ -1,12 +1,13 @@
 @import '../../../theme/variable.module.scss';
 
 .button{
+		transition: 800ms;
 		padding-top: 24px;
 		padding-bottom: 24px;
 		padding-right: 50px;
 		padding-left: 50px;
 		width: 350px;	
-	text-align: left;	
+		text-align: left;	
 		font-family: 'Poppins';
 		font-style: normal;
 		font-weight: 500;
@@ -30,7 +31,7 @@
 .button:hover{
 	transition: 800ms;
 	background:linear-gradient(90deg, #F1408B 0%, #F34242 100%);
-	// padding-right:40px ;
+	padding-right: 40px;
 	img{
 		transition: 800ms;	
 		margin-left: 10px;

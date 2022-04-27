@@ -7,3 +7,59 @@
 .section{
 	padding: 128px 0;
 }
+
+.getQuoteSection{
+	background: linear-gradient(90deg, #F1408B 0%, #F34242 100%);
+	width: 702px;
+	height: 83px;
+	padding: 14px 34px;
+	text-align: right;
+	margin-left: -35px;
+	h2{
+		margin: 0;
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 600;
+		font-size: 48px;
+		line-height: 56px;
+		/* identical to box height, or 117% */
+		color: $secondary_app_color;
+		text-transform: uppercase;
+	}
+}
+.mainSection{
+	margin-bottom: 184px;
+	.rightSection{
+		position: absolute;
+		     bottom: -72px;
+	
+		    h2{
+			font-family: 'Poppins';
+			font-style: normal;
+			font-weight: 500;
+			font-size: 24px;
+			line-height: 32px;
+			/* or 133% */
+			margin-bottom: 24px;	
+			letter-spacing: 0.02em;
+			text-transform: uppercase;
+		    }
+		    p{
+			font-family: 'Poppins';
+			font-style: normal;
+			font-weight: 300;
+			font-size: 16px;
+			line-height: 24px;
+			/* identical to box height, or 150% */
+			margin-bottom: 64px;
+			letter-spacing: 0.06em;
+		    }
+	}
+}
+
+
+
+.heading{
+
+	
+}

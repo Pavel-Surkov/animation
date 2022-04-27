@@ -18,6 +18,12 @@
 
 		color:$primary_app_color;
 	}
+
+	h3:hover{
+		background:linear-gradient(90deg, #F34242 0%, #F1408B 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;	
+	}
 }
 .footerLinks{
 	
@@ -46,7 +52,6 @@
 	button{
 		float:right;
 		margin-top: 16px;	
-		margin-right: 16px;
 		padding: 11px 28px;
 		background: linear-gradient(90deg, #F34242 0%, #F1408B 100%);
 		font-family: 'Poppins';
@@ -75,6 +80,17 @@
 		color:$primary_app_color;
 	}
 
+	h4:hover{
+		background: linear-gradient(90deg, #F34242 0%, #F1408B 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	h3:hover{
+		background:linear-gradient(90deg, #F34242 0%, #F1408B 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
 }
 
 
@@ -110,5 +126,11 @@
 		/* Black */
 		margin: 0;
 		color: #303030;
+	}
+
+	h4:hover{
+		background:linear-gradient(90deg, #F34242 0%, #F1408B 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 }

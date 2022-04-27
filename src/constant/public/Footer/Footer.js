@@ -89,7 +89,7 @@ const Footer = () => {
                 <Col span={9}>
                   <div className={classes.footerLinks}>
                     <h5>SUBSCRIBE TO OUR NEWSLETTER:</h5>
-                    <InputElement placeholder="Email" />
+                    <InputElement placeholder="Email" width={'100%'} />
                     <button>SUBSCRIBE</button>
                   </div>
                 </Col>

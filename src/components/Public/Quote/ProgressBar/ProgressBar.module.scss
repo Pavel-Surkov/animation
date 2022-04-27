@@ -1,0 +1,15 @@
+@import '../../../../theme/variable.module.scss';
+
+.progressBar{
+	width: 907px;	
+	margin: 0 auto;
+	margin-top: 64px;
+	margin-bottom: 96px;
+	height: 4px;
+	background: #f6c6d9;	
+
+	.bar{
+		height: 4px;
+		background: linear-gradient(90deg, #F34242 0%, #F1408B 100%);		
+	}
+}
