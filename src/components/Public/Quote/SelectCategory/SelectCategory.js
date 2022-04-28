@@ -77,7 +77,7 @@ const SelectQuantity = (props) => {
                       PREVIOUS
                     </button>
                     <ButtonWithRightArrow
-                      disable={disable}
+                      disabled={disable}
                       content="NEXT"
                       function={() => props.setQuoteView('projectDescription')}
                     />

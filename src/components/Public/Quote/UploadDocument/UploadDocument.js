@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Space, Col, Row } from 'antd'
 import axios from 'axios'
 import classes from './UploadDocument.module.scss'
@@ -13,45 +13,72 @@ import shield from '../../../../assets/svg/bi_shield-check.svg'
 const UploadDocument = (props) => {
   const [disable, setDisable] = useState(false)
   const [loadingImage, setLoadingImage] = useState(false)
+
+  const [value, setValue] = useState(null)
+  const [documentValue, setDocumentValue] = useState(null)
+
+  const [imageArray, setImageArray] = useState([])
+  const [documentArray, setDocumentArray] = useState([])
+
   const [loadingDocument, setLoadingDocument] = useState(false)
   const [images, setImages] = useState([])
   const [document, setDocuments] = useState([])
+
+  useEffect(() => {
+    handleChange(documentValue, false)
+  }, [documentValue])
+
+  useEffect(() => {
+    handleChange(value, true)
+  }, [value])
+
   // setQuoteView
   // setImageUploaded
   // setDocumentUploaded
 
   const handleChange = (event, document) => {
-    if (document) {
-      setLoadingDocument(true)
-    } else {
-      setLoadingImage(true)
+    if (event !== null) {
+      if (document) {
+        setLoadingDocument(true)
+      } else {
+        setLoadingImage(true)
+      }
+
+      const fileUploaded = event.target.files[0]
+
+      const data = new FormData()
+
+      data.append('file', fileUploaded)
+
+      let url = `${process.env.REACT_APP_API_URL}/quotes/uploadFile`
+
+      axios
+        .post(url, data, {
+          // receive two parameter endpoint url ,form data
+        })
+        .then((res) => {
+          debugger
+          if (document) {
+            setLoadingDocument(false)
+            const arr = documentArray.push(res.data.data)
+            setDocumentArray(arr)
+          } else {
+            setLoadingImage(false)
+            if (imageArray.length > 0) {
+              imageArray.push(res.data.data)
+              setImageArray(imageArray)
+            } else {
+              const arr = []
+              arr.push(res.data.data)
+              setImageArray(arr)
+            }
+          }
+          // then print response status
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
-
-    const fileUploaded = event.target.files[0]
-
-    const data = new FormData()
-
-    data.append('file', fileUploaded)
-
-    let url = `${process.env.REACT_APP_API_URL}/quotes/uploadFile`
-
-    axios
-      .post(url, data, {
-        // receive two parameter endpoint url ,form data
-      })
-      .then((res) => {
-        debugger
-
-        if (document) {
-          setLoadingDocument(false)
-        } else {
-          setLoadingImage(false)
-        }
-        // then print response status
-      })
-      .catch((err) => {
-        console.log(err)
-      })
   }
   return (
     <>
@@ -67,7 +94,25 @@ const UploadDocument = (props) => {
                 Upload your inspiration image/design so that your supplier gets
                 an idea of the style you are looking for (Optional)
               </h3>
-              <UploadFiles />
+              <Row>
+                <Col span={4}>
+                  <UploadFiles
+                    disabled={loadingImage}
+                    onChange={handleChange}
+                  />
+                </Col>
+                {imageArray.length > 0
+                  ? imageArray.map((item) => (
+                      <Col span={4}>
+                        <img
+                          className={classes.imageLoaded}
+                          src={item}
+                          alt="Uplio"
+                        />
+                      </Col>
+                    ))
+                  : null}
+              </Row>
               <UploadDocumentFiles />
               <h5>
                 <img src={shield} alt="uplio" />

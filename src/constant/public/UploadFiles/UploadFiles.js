@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
+import { Row, Col } from 'antd'
 import classes from './UploadFiles.module.scss'
-import { PlusOutlined } from '@ant-design/icons'
+import { PlusOutlined, LoadingOutlined } from '@ant-design/icons'
 const UploadFiles = (props) => {
   const inputFile = useRef(null)
   const openAttachment = () => {
@@ -10,20 +11,27 @@ const UploadFiles = (props) => {
     <>
       <input
         type="file"
+        onChange={(e) => props.onChange(e)}
         id="file"
         ref={inputFile}
         style={{ display: 'none' }}
       />
+
       <div className={classes.input}>
         <p>Images (.JPEG, .PDF)</p>
         <button
+          disabled={props.disabled}
           id="attachment"
           type="button"
           class="file"
           name="attachement"
           onClick={() => openAttachment()}
         >
-          <PlusOutlined width={32} />
+          {!props.disabled ? (
+            <PlusOutlined width={32} />
+          ) : (
+            <LoadingOutlined style={{ fontSize: 24 }} spin />
+          )}
         </button>
       </div>
     </>
