@@ -27,13 +27,13 @@ const Navigation = () => {
               <Space size={64}>
                 <Space size={40}>
                   <InputElement width={'325px'} placeholder="Search" />
-                  <Link to="/products/all">
+                  <Link to="/#category">
                     <h3>CATEGORIES</h3>
                   </Link>
-                  <Link to="/">
+                  <Link to="/#how-it-works">
                     <h3>HOW IT WORKS</h3>
                   </Link>
-                  <Link to="/faq">
+                  <Link to="/#faq">
                     <h3>FAQ</h3>
                   </Link>
                 </Space>

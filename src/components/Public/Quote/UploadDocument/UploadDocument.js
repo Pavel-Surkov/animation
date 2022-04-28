@@ -1,16 +1,58 @@
+import React, { useState } from 'react'
 import { Space, Col, Row } from 'antd'
-
+import axios from 'axios'
 import classes from './UploadDocument.module.scss'
 
 import ProgressBar from '../ProgressBar/ProgressBar'
-import React from 'react'
 import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow'
 import UploadFiles from '../../../../constant/public/UploadFiles/UploadFiles'
 import UploadDocumentFiles from '../../../../constant/public/UploadDocument/UploadDocument'
 
 import shield from '../../../../assets/svg/bi_shield-check.svg'
 
-const UploadDocument = ({ setQuoteView }) => {
+const UploadDocument = (props) => {
+  const [disable, setDisable] = useState(false)
+  const [loadingImage, setLoadingImage] = useState(false)
+  const [loadingDocument, setLoadingDocument] = useState(false)
+  const [images, setImages] = useState([])
+  const [document, setDocuments] = useState([])
+  // setQuoteView
+  // setImageUploaded
+  // setDocumentUploaded
+
+  const handleChange = (event, document) => {
+    if (document) {
+      setLoadingDocument(true)
+    } else {
+      setLoadingImage(true)
+    }
+
+    const fileUploaded = event.target.files[0]
+
+    const data = new FormData()
+
+    data.append('file', fileUploaded)
+
+    let url = `${process.env.REACT_APP_API_URL}/quotes/uploadFile`
+
+    axios
+      .post(url, data, {
+        // receive two parameter endpoint url ,form data
+      })
+      .then((res) => {
+        debugger
+
+        if (document) {
+          setLoadingDocument(false)
+        } else {
+          setLoadingImage(false)
+        }
+        // then print response status
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
   return (
     <>
       <div className={classes.getQuoteSection}>
@@ -39,13 +81,14 @@ const UploadDocument = ({ setQuoteView }) => {
                   <Space size={48}>
                     <button
                       className={classes.actionButton}
-                      onClick={() => setQuoteView('launchDate')}
+                      onClick={() => props.setQuoteView('launchDate')}
                     >
                       PREVIOUS
                     </button>
                     <ButtonWithRightArrow
+                      disabled={disable}
                       content="NEXT"
-                      function={() => setQuoteView('preSignUp')}
+                      function={() => props.setQuoteView('preSignUp')}
                     />
                   </Space>
                 </div>

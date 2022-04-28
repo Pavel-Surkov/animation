@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Space, Row, Col } from 'antd'
 
@@ -8,8 +8,10 @@ import ProgressBar from '../ProgressBar/ProgressBar'
 import InputWithDropDown from '../../../../constant/public/InputWithDropDown/InputWithDropDown'
 import InputElement from '../../../../constant/public/Input/InputElement'
 
-const SelectQuantity = ({ setQuoteView }) => {
+const SelectQuantity = (props) => {
   const [dropdown, setDropdown] = useState('')
+  const [otherCategory, setOtherCategory] = useState('')
+  const [disable, setDisable] = useState(true)
 
   const data = [
     { id: 1, label: 'Apparel' },
@@ -20,9 +22,19 @@ const SelectQuantity = ({ setQuoteView }) => {
     { id: 6, label: 'Others' },
   ]
 
-  useState(() => {
-    console.log(dropdown)
-  }, [dropdown])
+  useEffect(() => {
+    if (dropdown !== '') {
+      if (dropdown === 'Others') {
+        if (otherCategory !== '') {
+          setDisable(false)
+          props.setCategory(otherCategory)
+        }
+      } else {
+        setDisable(false)
+        props.setCategory(dropdown)
+      }
+    }
+  }, [dropdown, otherCategory])
 
   return (
     <>
@@ -46,6 +58,8 @@ const SelectQuantity = ({ setQuoteView }) => {
               </div>
               {dropdown === 'Others' ? (
                 <InputElement
+                  value={otherCategory}
+                  onChange={setOtherCategory}
                   placeholder="Enter the name of your category"
                   width={'100%'}
                 />
@@ -58,13 +72,14 @@ const SelectQuantity = ({ setQuoteView }) => {
                   <Space size={48}>
                     <button
                       className={classes.actionButton}
-                      onClick={() => setQuoteView('getStarted')}
+                      onClick={() => props.setQuoteView('getStarted')}
                     >
                       PREVIOUS
                     </button>
                     <ButtonWithRightArrow
+                      disable={disable}
                       content="NEXT"
-                      function={() => setQuoteView('projectDescription')}
+                      function={() => props.setQuoteView('projectDescription')}
                     />
                   </Space>
                 </div>

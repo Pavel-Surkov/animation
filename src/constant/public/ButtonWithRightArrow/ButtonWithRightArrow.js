@@ -8,7 +8,11 @@ import arrowRight from '../../../assets/svg/Arrow_Right.svg'
 const ButtonWithRightArrow = (props) => {
   return (
     <>
-      <button className={classes.button} onClick={props.function}>
+      <button
+        disabled={props.disabled === undefined ? false : props.disabled}
+        className={props.disabled ? classes.buttonDisabled : classes.button}
+        onClick={props.function}
+      >
         <Row>
           <Col span={12}>{props.content}</Col>
           <Col span={12} align="right">

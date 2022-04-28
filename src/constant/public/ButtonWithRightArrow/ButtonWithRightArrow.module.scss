@@ -1,5 +1,26 @@
 @import '../../../theme/variable.module.scss';
 
+.buttonDisabled{
+		transition: 800ms;
+		padding-top: 24px;
+		padding-bottom: 24px;
+		padding-right: 50px;
+		padding-left: 50px;
+		width: 350px;	
+		text-align: left;	
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 24px;
+		/* identical to box height, or 133% */
+		color: $secondary_app_color;
+		letter-spacing: 0.02em;
+		margin: 0;
+		opacity: 0.2;	
+		background: linear-gradient(90deg, #F34242 0%, #F1408B 100%);	
+}
+
 .button{
 		transition: 800ms;
 		padding-top: 24px;

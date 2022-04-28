@@ -17,19 +17,47 @@ import PostSignUp from './PostSignUp/PostSignUp'
 
 const Quote = () => {
   const [quoteView, setQuoteView] = useState('getStarted')
+  const [category, setCategory] = useState('')
+  const [projectDescription, setProjectDescription] = useState('')
+  const [quantity, setQuantity] = useState('')
+  const [budget, setBudget] = useState('')
+  const [launchDate, setLaunchDate] = useState('')
+  const [imageUploaded, setImageUploaded] = useState('')
+  const [documentUploaded, setDocumentUploaded] = useState('')
   const handleQuotes = () => {
     if (quoteView === 'getStarted') {
       return <GetStarted setQuoteView={setQuoteView} />
     } else if (quoteView === 'selectCategory') {
-      return <SelectCategory setQuoteView={setQuoteView} />
+      return (
+        <SelectCategory setQuoteView={setQuoteView} setCategory={setCategory} />
+      )
     } else if (quoteView === 'projectDescription') {
-      return <ProjectDescription setQuoteView={setQuoteView} />
+      return (
+        <ProjectDescription
+          setQuoteView={setQuoteView}
+          setProjectDescription={setProjectDescription}
+        />
+      )
     } else if (quoteView === 'selectQuantity') {
-      return <SelectQuantity setQuoteView={setQuoteView} />
+      return (
+        <SelectQuantity
+          setQuoteView={setQuoteView}
+          setQuantity={setQuantity}
+          setBudget={setBudget}
+        />
+      )
     } else if (quoteView === 'launchDate') {
-      return <LaunchDate setQuoteView={setQuoteView} />
+      return (
+        <LaunchDate setQuoteView={setQuoteView} setLaunchDate={setLaunchDate} />
+      )
     } else if (quoteView === 'uploadDocument') {
-      return <UploadDocument setQuoteView={setQuoteView} />
+      return (
+        <UploadDocument
+          setQuoteView={setQuoteView}
+          setImageUploaded={setImageUploaded}
+          setDocumentUploaded={setDocumentUploaded}
+        />
+      )
     } else if (quoteView === 'preSignUp') {
       return <PreSignUp setQuoteView={setQuoteView} />
     } else if (quoteView === 'postSignUp') {

@@ -12,9 +12,9 @@ const Footer = () => {
     <>
       <div className={classes.container}>
         <div className={classes.footer}>
-          <div className={classes.footerArrow}>
+          {/* <div className={classes.footerArrow}>
             <img src={image} alt="Uplio" />
-          </div>
+          </div> */}
           <Row>
             <Col span={6}>
               <Link to="/">

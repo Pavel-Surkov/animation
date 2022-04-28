@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Space, Row, Col } from 'antd'
 import HeroBanner from './HeroBanner/HeroBanner'
 import Navigation from './../../../constant/public/Navigation/Navigation'
@@ -28,6 +28,8 @@ import Testimonials from './Testimonials /Testimonials'
 import BackToTop from '../../common/BackToTop/BackToTop'
 
 const Homepage = () => {
+  const history = useHistory()
+
   const [question1, setQuestion1] = useState(false)
   const [question2, setQuestion2] = useState(false)
   const [question3, setQuestion3] = useState(false)
@@ -39,13 +41,13 @@ const Homepage = () => {
     <>
       <Navigation />
       <HeroBanner />
-      <div className={classes.container}>
+      <div id={'category'} className={classes.container}>
         <div className={classes.section}>
           <div
             style={{ marginBottom: '256px' }}
             className={classes.categorySection}
           >
-            <h3 style={{ marginTop: '200px' }}>
+            <h3>
               Explore top trending <br /> categories on UPLIO
             </h3>
             <Row gutter={[24, 24]}>
@@ -111,7 +113,10 @@ const Homepage = () => {
                     Contact us and we will find you
                     <br /> suppliers within our network.
                   </h5>
-                  <ButtonWithRightArrow content="SEE MORE" />
+                  <ButtonWithRightArrow
+                    function={() => history.push({ pathname: '/products/all' })}
+                    content="SEE MORE"
+                  />
                 </div>
               </Col>
 
@@ -166,7 +171,7 @@ const Homepage = () => {
           </Col>
         </Row>
       </div>
-      <div className={classes.container}>
+      <div id={'how-it-works'} className={classes.container}>
         <div className={classes.section}>
           <div className={classes.howItWorksSection}>
             <h2>HOW IT WORKS?</h2>
@@ -391,7 +396,12 @@ const Homepage = () => {
                   Tired of complicated
                   <br /> processes?
                 </h2>
-                <ButtonWithRightArrow content="MAKE IT EASY" />
+                <ButtonWithRightArrow
+                  function={() =>
+                    history.push({ pathname: '/quote/generic_quote' })
+                  }
+                  content="MAKE IT EASY"
+                />
               </Space>
             </div>
           </div>
@@ -436,7 +446,10 @@ const Homepage = () => {
                         <br />
                         in your category.
                       </p>
-                      <ButtonWithRightArrow content="SIGN UP" />
+                      <ButtonWithRightArrow
+                        function={() => history.push({ pathname: '/signup' })}
+                        content="SIGN UP"
+                      />
                     </div>
                   </Col>
                 </Row>
@@ -458,7 +471,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      <div className={classes.section}>
+      <div id={'faq'} className={classes.section}>
         <div className={classes.faqSection}>
           <div className={classes.container}>
             <h2>FAQ</h2>
@@ -614,7 +627,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      <BackToTop />
+      {/* <BackToTop /> */}
       <Footer />
     </>
   )

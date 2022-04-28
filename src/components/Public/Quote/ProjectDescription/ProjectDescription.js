@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow'
 
 import { Row, Col, Space } from 'antd'
 import ProgressBar from '../ProgressBar/ProgressBar'
 import classes from './ProjectDescription.module.scss'
 import TextInput from '../../../../constant/public/TextInput/TextInput'
-const ProjectDescription = ({ setQuoteView }) => {
+const ProjectDescription = (props) => {
+  const [disabled, setDisabled] = useState(true)
+  const [value, setValue] = useState('')
+
+  useEffect(() => {
+    if (value !== '') {
+      setDisabled(false)
+      props.setProjectDescription(value)
+    }
+  }, [value])
+
   return (
     <>
       <div className={classes.getQuoteSection}>
@@ -24,6 +34,8 @@ const ProjectDescription = ({ setQuoteView }) => {
                 provide the right recommendations, prices and service.
               </p>
               <TextInput
+                value={value}
+                onChange={setValue}
                 rows={5}
                 width={'100%'}
                 placeholder="As an example, I am launching an active wear line and looking for sustainable fabric."
@@ -36,13 +48,14 @@ const ProjectDescription = ({ setQuoteView }) => {
                   <Space size={48}>
                     <button
                       className={classes.actionButton}
-                      onClick={() => setQuoteView('selectCategory')}
+                      onClick={() => props.setQuoteView('selectCategory')}
                     >
                       PREVIOUS
                     </button>
                     <ButtonWithRightArrow
+                      disabled={disabled}
                       content="NEXT"
-                      function={() => setQuoteView('selectQuantity')}
+                      function={() => props.setQuoteView('selectQuantity')}
                     />
                   </Space>
                 </div>

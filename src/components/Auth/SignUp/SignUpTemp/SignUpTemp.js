@@ -34,7 +34,7 @@ const SignUpTemp = () => {
       setErrorMessage('')
       setErrorStatus(false)
       setErrorFeedback('success')
-      debugger
+
       if (!quote.supplierIdExist) {
         axios
           .post(`${process.env.REACT_APP_API_URL}/quotes/save_quote`, {

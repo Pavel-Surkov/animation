@@ -27,7 +27,6 @@ const Leads = () => {
         }
       )
       .then((res) => {
-        debugger
         setLoading(false)
         setLeads(res.data.data)
       })

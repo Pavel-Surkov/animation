@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Col, Row, Space } from 'antd'
 import ProgressBar from '../ProgressBar/ProgressBar'
@@ -7,7 +7,19 @@ import classes from './SelectQuantity.module.scss'
 import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow'
 import InputElement from '../../../../constant/public/Input/InputElement'
 
-const SelectQuantity = ({ setQuoteView }) => {
+const SelectQuantity = (props) => {
+  const [disable, setDisable] = useState(true)
+  const [quantity, setQuantity] = useState('')
+  const [budget, setBudget] = useState('')
+
+  useEffect(() => {
+    if (quantity !== '' && budget !== '') {
+      setDisable(false)
+      props.setQuantity()
+      props.setBudget()
+    }
+  }, [quantity, budget, props])
+
   return (
     <>
       <div className={classes.getQuoteSection}>
@@ -19,9 +31,21 @@ const SelectQuantity = ({ setQuoteView }) => {
             <ProgressBar width={'40%'} />
             <div className={classes.mainSection}>
               <h3>Select the quantity you are looking to order</h3>
-              <InputElement placeholder="e.g. 500 pieces" width={'100%'} />
+              <InputElement
+                type="number"
+                value={budget}
+                onChange={setBudget}
+                placeholder="e.g. 500 pieces"
+                width={'100%'}
+              />
               <h3>What is your budget for this project?</h3>
-              <InputElement placeholder="$ budget amount" width={'100%'} />
+              <InputElement
+                type="number"
+                value={quantity}
+                onChange={setQuantity}
+                placeholder="$ budget amount"
+                width={'100%'}
+              />
             </div>
             <Row>
               <Col span={12}></Col>
@@ -30,13 +54,14 @@ const SelectQuantity = ({ setQuoteView }) => {
                   <Space size={48}>
                     <button
                       className={classes.actionButton}
-                      onClick={() => setQuoteView('projectDescription')}
+                      onClick={() => props.setQuoteView('projectDescription')}
                     >
                       PREVIOUS
                     </button>
                     <ButtonWithRightArrow
+                      disabled={disable}
                       content="NEXT"
-                      function={() => setQuoteView('launchDate')}
+                      function={() => props.setQuoteView('launchDate')}
                     />
                   </Space>
                 </div>
