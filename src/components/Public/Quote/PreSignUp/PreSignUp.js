@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import classes from './PreSignUp.module.scss'
 import ProgressBar from '../ProgressBar/ProgressBar'
@@ -6,7 +6,17 @@ import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArr
 import { Row, Col, Space } from 'antd'
 import InputElement from '../../../../constant/public/Input/InputElement'
 
-const PreSignUp = ({ setQuoteView }) => {
+const PreSignUp = (props) => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [disable, setDisable] = useState(true)
+
+  useEffect(() => {
+    if (name !== '' && email !== '') {
+      setDisable(false)
+    }
+  }, [name, email])
+
   return (
     <>
       <div className={classes.getQuoteSection}>
@@ -21,22 +31,35 @@ const PreSignUp = ({ setQuoteView }) => {
               <p>We won’t share your contact info with suppliers</p>
 
               <h4>Name</h4>
-              <InputElement placeholder="Name" width="100%" />
+              <InputElement
+                value={name}
+                onChange={setName}
+                placeholder="Name"
+                width="100%"
+              />
 
               <h4>Email</h4>
-              <InputElement placeholder="Email" width="100%" />
+              <InputElement
+                value={email}
+                onChange={setEmail}
+                placeholder="Email"
+                width="100%"
+              />
             </div>
             <Row>
               <Col span={12}></Col>
               <Col span={12}>
                 <div className={classes.actionButtonSection}>
                   <Space size={48}>
-                    <button onClick={() => setQuoteView('uploadDocument')}>
+                    <button
+                      onClick={() => props.setQuoteView('uploadDocument')}
+                    >
                       PREVIOUS
                     </button>
                     <ButtonWithRightArrow
+                      disabled={disable}
                       content="NEXT"
-                      function={() => setQuoteView('postSignUp')}
+                      function={() => props.setQuoteView('postSignUp')}
                     />
                   </Space>
                 </div>
