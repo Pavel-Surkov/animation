@@ -24,6 +24,7 @@ const Quote = () => {
   const [launchDate, setLaunchDate] = useState('')
   const [imageUploaded, setImageUploaded] = useState('')
   const [documentUploaded, setDocumentUploaded] = useState('')
+
   const handleQuotes = () => {
     if (quoteView === 'getStarted') {
       return <GetStarted setQuoteView={setQuoteView} />

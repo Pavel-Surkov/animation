@@ -32,10 +32,6 @@ const UploadDocument = (props) => {
     handleChange(value, true)
   }, [value])
 
-  // setQuoteView
-  // setImageUploaded
-  // setDocumentUploaded
-
   const handleChange = (event, document) => {
     if (event !== null) {
       if (document) {
@@ -60,17 +56,27 @@ const UploadDocument = (props) => {
           debugger
           if (document) {
             setLoadingDocument(false)
-            const arr = documentArray.push(res.data.data)
-            setDocumentArray(arr)
+            if (documentArray.length > 0) {
+              let arr = documentArray
+              arr.push(res.data.data)
+              setDocumentArray(arr)
+            } else {
+              const arr = []
+              arr.push(res.data.data)
+              setDocumentArray(arr)
+            }
           } else {
             setLoadingImage(false)
             if (imageArray.length > 0) {
-              imageArray.push(res.data.data)
-              setImageArray(imageArray)
+              let arr = imageArray
+              arr.push(res.data.data)
+              setImageArray(arr)
+              props.setImageUploaded(imageArray)
             } else {
               const arr = []
               arr.push(res.data.data)
               setImageArray(arr)
+              props.setImageUploaded(imageArray)
             }
           }
           // then print response status
@@ -80,6 +86,46 @@ const UploadDocument = (props) => {
         })
     }
   }
+
+  const handleChangeDocument = (event) => {
+    if (event !== null) {
+      setLoadingDocument(true)
+
+      const fileUploaded = event.target.files[0]
+
+      const data = new FormData()
+
+      data.append('file', fileUploaded)
+
+      let url = `${process.env.REACT_APP_API_URL}/quotes/uploadFile`
+
+      axios
+        .post(url, data, {
+          // receive two parameter endpoint url ,form data
+        })
+        .then((res) => {
+          setLoadingDocument(false)
+          if (documentArray.length > 0) {
+            let arr = documentArray
+            arr.push(res.data.data)
+            setDocumentArray(arr)
+
+            props.setDocumentUploaded(documentArray)
+          } else {
+            const arr = []
+            arr.push(res.data.data)
+            setDocumentArray(arr)
+            props.setDocumentUploaded(documentArray)
+          }
+
+          // then print response status
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+  }
+
   return (
     <>
       <div className={classes.getQuoteSection}>
@@ -98,7 +144,7 @@ const UploadDocument = (props) => {
                 <Col span={4}>
                   <UploadFiles
                     disabled={loadingImage}
-                    onChange={handleChange}
+                    onChange={setDocumentValue}
                   />
                 </Col>
                 {imageArray.length > 0
@@ -113,7 +159,21 @@ const UploadDocument = (props) => {
                     ))
                   : null}
               </Row>
-              <UploadDocumentFiles />
+              <Row>
+                <Col span={6}>
+                  <UploadDocumentFiles
+                    disabled={loadingDocument}
+                    onChange={handleChangeDocument}
+                  />
+                </Col>
+                {documentArray.map((item) => (
+                  <Col span={6}>
+                    <div className={classes.documentLoaded}>
+                      {item.substring(0, 24) + '...'}
+                    </div>
+                  </Col>
+                ))}
+              </Row>
               <h5>
                 <img src={shield} alt="uplio" />
                 All uploads are secure and confidential.{' '}
