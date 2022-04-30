@@ -1,39 +1,30 @@
 @import '../../../theme/variable.module.scss';
 
-.container{
-	width: 1200px;
-	margin:0 auto;
-}
 
-.logoContainer{
-	
-		margin-top: 126px;
-}
-.textOverlaySupplier{
-	transform: rotate(270deg);
-	margin-left: -1320px;
-	margin-top: -770px;    
-	font-style: normal;    
-	font-size: 65px;    
-	line-height: 146px;
-	h1{
-		color:$primary_app_color;
-		opacity: 0.1;
-		font-weight: 800;
-		
-	}	
-}
-.textOverlayBuyer{
-	transform: rotate(270deg);
-	margin-left: -1320px;
-	margin-top: -950px;    
-	font-style: normal;    
-	font-size: 65px;    
-	line-height: 146px;
-	h1{
-		color:$primary_app_color;
-		opacity: 0.1;
-		font-weight: 800;
-		
+
+.sideTitle{
+	margin-top: 128px;
+	margin-bottom: 62px;
+	background: linear-gradient(90deg, #F1408B 0%, #F34242 100%);
+	width: 26%;
+	text-align: right;
+	padding: 14px 0;
+	padding-right: 58px;
+	h2{
+		margin: 0;
+
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 600;
+		font-size: 48px;
+		line-height: 56px;
+		/* identical to box height, or 117% */
+
+		text-transform: uppercase;
+
+		/* BG and Text */
+
+		color: #FFFFFF;
 	}
+
 }

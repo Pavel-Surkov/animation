@@ -14,8 +14,8 @@ const ButtonWithRightArrow = (props) => {
         onClick={props.function}
       >
         <Row>
-          <Col span={12}>{props.content}</Col>
-          <Col span={12} align="right">
+          <Col span={18}>{props.content}</Col>
+          <Col span={6} align="right">
             <img src={arrowRight} alt="Uplio" />
           </Col>
         </Row>

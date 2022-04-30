@@ -1,105 +1,63 @@
 @import '../../../../theme/variable.module.scss';
-.mainSection{
-	h3{
-		font-family: 'Inter',sans-serif;
+.container{
+	max-width: 960px;
+	margin:0 auto;
+}
+.sideTitle{
+	margin-top: 128px;
+	margin-bottom: 62px;
+	background: linear-gradient(90deg, #F1408B 0%, #F34242 100%);
+	width: 26%;
+	text-align: right;
+	padding: 14px 0;
+	padding-right: 58px;
+	h2{
+		margin: 0;
+
+		font-family: 'Poppins';
 		font-style: normal;
-		font-weight: 800;
-		font-size: 30px;
-		line-height: 40px;
-		color:$red_app_color;
-		letter-spacing: 1px;
-		
+		font-weight: 600;
+		font-size: 48px;
+		line-height: 56px;
+		/* identical to box height, or 117% */
+
+		text-transform: uppercase;
+
+		/* BG and Text */
+
+		color: #FFFFFF;
 	}
-	h4{
-		font-family:'Montserrat',sans-serif;
+}
+
+
+.mainSection{
+	h2{
+		margin-top: 32px;
+		margin-bottom: 64px;
+		font-family: 'Poppins';
 		font-style: normal;
 		font-weight: 500;
-		font-size: 17px;
-		line-height: 26px;
-		letter-spacing: 1px;
-		margin: 0;
-	}
-	h5{
-		font-family: 'Montserrat',sans-serif;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 17px;
-		line-height: 26px;
-		opacity: 0.5;
+		font-size: 24px;
+		line-height: 32px;
 		text-align: center;
-		padding-bottom: 120px;
 	}
-	p{
-		font-family: 'Montserrat',sans-serif;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 12px;
-		line-height: 20px;
-		letter-spacing: 1px;
-		opacity: 0.5;
-	}
-	hr{
-		margin:50px 0;
-		background:$primary_app_color;
-		opacity: 0.2
-	}
+
 	.card{
-		margin: 50px auto;
-		border-radius: 25px;
-		width: 500px;
-		height: 500px;
-		border: 1px solid $light_grey_app_color;
-		background-color: $off_grey_app_color;
 		text-align: center;
-		
-		button{
-			background: none;
-			color: inherit;
-			border: none;
-			padding: 0;
-			font: inherit;
-			cursor: pointer;
-			outline: inherit;
+		margin-bottom: 184px;
+		h3{			
+			font-family: 'Poppins';
+			font-style: normal;
+			font-weight: 500;
+			font-size: 24px;
+			line-height: 24px;
+			/* identical to box height, or 100% */
+
+			letter-spacing: 0.02em;
 		}
-		
 		img{
-			width: 500px;
-			border-top-left-radius: 25px;
-			border-top-right-radius: 25px;
-			-webkit-filter: grayscale(1) invert(0);
-   			filter: grayscale(1) invert(0);
-				
-		}
-		h2{
-			margin-top: 12px;
-			font-family: Inter;
-			font-style: normal;
-			font-weight: 800;
-			font-size: 38px;
-			line-height: 52px;
-			
-		}
-		p{
-			margin-top: 12px;
-			font-family: Montserrat;
-			font-style: normal;
-			font-weight: 500;	
-			font-size: 17px;
-			line-height: 26px;
-		
-		}
-		
-	}
-	.card:hover{
-			img{
-				-webkit-filter: invert(0);
-				filter: invert(0);			     
-			}
-		h2{
-			color:$red_app_color
-		}
-		p{
-			color:$red_app_color
+			margin-bottom:34px ;
+
 		}
 	}
 }

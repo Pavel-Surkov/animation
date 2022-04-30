@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useEffect, useState, useRef } from 'react'
 import { Row, Col, Space } from 'antd'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import classes from './Navigation.module.scss'
 import ButtonElement from '../Button/ButtonElement'
 import logo from '../../../assets/svg/logo_rectangle_black.svg'
@@ -8,6 +8,7 @@ import InputElement from '../Input/InputElement'
 
 const Navigation = () => {
   const ref = useRef()
+  const history = useHistory()
   let [check, setCheck] = useState(true)
   const sticky = useStickyHeader(50)
 
@@ -38,7 +39,10 @@ const Navigation = () => {
                   </Link>
                 </Space>
                 <Space size={16}>
-                  <ButtonElement content={'SIGN UP'} />
+                  <ButtonElement
+                    function={() => history.push({ pathname: '/signup' })}
+                    content="SIGN UP"
+                  />
                   <Link to="/login">
                     <h3>SIGN IN</h3>
                   </Link>

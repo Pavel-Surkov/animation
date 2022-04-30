@@ -5,13 +5,11 @@ import { useDispatch } from 'react-redux'
 import classes from './AccountType.module.scss'
 import { Row, Col } from 'antd'
 
-import BuyerAccountDetails from '../BuyerAccountDetails/BuyerAccountDetails'
-import SupplierImage from '../../../../assets/images/supplier_card_background.png'
-import BuyerImage from '../../../../assets/images/buyer_card_background.png'
+import SupplierImage from '../../../../assets/svg/supplier.svg'
+import BuyerImage from '../../../../assets/svg/buyer.svg'
+import ButtonElement from '../../../../constant/public/Button/ButtonElement'
 
-// TODO Uncomment this component as per the updated flow of signUp for supplier and buyer
-
-const AccountType = () => {
+const AccountType = (props) => {
   const history = useHistory()
   const dispatch = useDispatch()
   // const handleAccountType = (value) => {
@@ -26,33 +24,38 @@ const AccountType = () => {
 
   return (
     <>
-      {/* <div className={classes.mainSection}>
-        <h3>Choose your account type:</h3>
-        <Row gutter={50}>
-          <Col span={12}>
-            <div className={classes.card}>
-              <button onClick={() => handleAccountType('buyer')}>
+      <div className={classes.sideTitle}>
+        <h2>SIGN IN</h2>
+      </div>
+      <div className={classes.container}>
+        <div className={classes.mainSection}>
+          <h2>Choose your account type:</h2>
+          <Row gutter={164}>
+            <Col span={12}>
+              <div className={classes.card}>
+                <h3>[BUYER]</h3>
                 <img src={BuyerImage} alt="Uplio" />
-                <div className={classes.cardContent}>
-                  <h2>Buyer</h2>
-                  <p>Purchase from suppliers</p>
-                </div>
-              </button>
-            </div>
-          </Col>
-          <Col span={12}>
-            <div className={classes.card}>
-              <button onClick={() => handleAccountType('supplier')}>
+                <ButtonElement
+                  function={() => props.setCurrentView('userDetails')}
+                  content="I WANT TO FIND A SUPPLIER"
+                  width={'325px'}
+                />
+              </div>
+            </Col>
+            <Col span={12}>
+              <div className={classes.card}>
+                <h3>[SUPPLIER]</h3>
                 <img src={SupplierImage} alt="Uplio" />
-                <div className={classes.cardContent}>
-                  <h2>Supplier</h2>
-                  <p>Acquire and support customers</p>
-                </div>
-              </button>
-            </div>
-          </Col>
-        </Row>
-      </div> */}
+                <ButtonElement
+                  function={() => props.setCurrentView('supplierDetails')}
+                  content="I WANT TO SUPPLY"
+                  width={'325px'}
+                />
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
     </>
   )
 }

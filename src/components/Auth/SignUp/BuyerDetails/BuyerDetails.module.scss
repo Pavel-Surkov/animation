@@ -1,10 +1,8 @@
-@import'../../../theme/variable.module.scss';
-
+@import '../../../../theme/variable.module.scss';
 .container{
-	max-width: 730px;
-	margin: 0 auto;
+	max-width: 960px;
+	margin:0 auto;
 }
-
 .sideTitle{
 	margin-top: 128px;
 	margin-bottom: 62px;
@@ -32,7 +30,7 @@
 
 }
 .mainContent{
-	margin-bottom: 184px;	
+	margin-bottom: 64px;
 	h3{
 		margin-top: 32px;
 		font-family: 'Poppins';
@@ -42,40 +40,23 @@
 		line-height: 24px;
 		/* identical to box height, or 150% */
 
-		letter-spacing: 0.06em;
+		letter-spacing: 0.06em;	
 	}
-	p{
-		font-family: 'Poppins';
-		font-style: normal;
-		font-weight: 500;
-		font-size: 12px;
-		line-height: 20px;
-	}	
+
 }
 .actionButton{
-	margin-top: 64px;		
+	text-align: right;
 	width: 350px;
+	margin-bottom: 184px;
 	h4{
-		margin-top: 24px;
-		width: 350px;
+		margin-top: 16px;
 		text-align: left;
 		font-family: 'Poppins';
 		font-style: normal;
 		font-weight: 300;
 		font-size: 12px;
-		line-height: 20px;
+		line-height: 18px;
 	}
-}
-
-
-/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
-
-/* Portrait and Landscape */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2) { 
-
 }
 
 /* Portrait */
@@ -84,11 +65,6 @@ and (min-device-width: 375px)
 and (max-device-width: 667px) 
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) { 
-	.container{
-		max-width: 350px;
-		margin: 0 auto;
-	}	
-	
 
 }
 

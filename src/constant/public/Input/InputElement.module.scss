@@ -13,6 +13,35 @@
 	border-left: 0;	
 
 }
+.inputPassword{
+	font-family: 'Poppins',sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 24px;
+	background-color: transparent;
+	border-bottom: 1px solid $primary_app_color;
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;	
+}
+.icon{
+	padding: 10px;	
+	border-bottom: 1px solid $primary_app_color;
+	text-align: center;
+}
+.iconVisible{
+	padding: 10px;	
+	border-bottom: 1px solid $primary_app_color;
+	text-align: center;
+	color:#d6d6d6;
+}
+.inputContainer{
+	display: -ms-flexbox; /* IE10 */
+	display: flex;
+	width: 100%;
+	margin-bottom: 15px;
+}
 
 *:focus {
 	outline: none;

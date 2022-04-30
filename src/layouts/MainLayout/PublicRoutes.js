@@ -13,11 +13,7 @@ import Homepage from '../../components/Public/Homepage/Homepage.js'
 import Newsroom from '../../components/Public/Newsroom/Newsroom.js'
 import SignUp from '../../components/Auth/SignUp/SignUp.js'
 import SignIn from '../../components/Auth/SignIn/SignIn.js'
-import GreetingTemp from '../../components/Auth/SignUp/GreetingTemp.js'
-import BuyerTemp from '../../components/Auth/SignUp/Buyertemp.js'
-import SupplierTemp from '../../components/Auth/SignUp/SupplierTemp'
-import SupplierDetailTemp from '../../components/Auth/SignUp/SupplierDetailTemp.js'
-import SupplierCompletedTemp from '../../components/Auth/SignUp/SupplierCompleted.js'
+
 import SupplierProfile from '../../components/Public/SupplierProfile/SupplierProfile.js'
 import Products from '../../components/Public/Products/Products'
 import Quote from '../../components/Public/Quote/Quote.js'
@@ -27,7 +23,7 @@ import SupplierDashboardService from '../../components/Admin/Supplier/DashboardS
 import SupplierDashboardOrders from '../../components/Admin/Supplier/DashboardOrderTemp'
 import SupplierDashboardProfile from '../../components/Admin/Supplier/DashboardProfileTemp'
 import ForgotPassword from '../../components/Auth/ForgotPassword/ForgotPassword.js'
-import SignUpTemp from '../../components/Auth/SignUp/SignUpTemp/SignUpTemp.js'
+
 import PrivacyPolicy from '../../components/Public/PrivacyPolicy/PrivacyPolicy.js'
 import FrequentlyAskedQuestion from '../../components/Public/FrequentlyAskedQuestion/FrequentlyAskedQuestion.js'
 import TermsAndConditions from '../../components/Public/TermsAndConditions/TermsAndConditions'
@@ -51,8 +47,8 @@ const PublicRoutes = () => (
           <Route exact path="/help-center" component={Helpcenter} />
           <Route exact path="/blog" component={BlogListing} />
           <Route exact path="/blog/:id" component={Blog} />
-          <Route exact path="/user-type" component={SignUp} />
-          <Route exact path="/signup" component={SignUpTemp} />
+
+          <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={SignIn} />
 
           {/* TODO remove link  */}
@@ -82,28 +78,18 @@ const PublicRoutes = () => (
             component={BuyerDashboardProfileShippingAddress}
           />
           <Route exact path="/privacy-policy" component={PrivacyPolicy} />
-          <Route exact path="/signup/buyer" component={BuyerTemp} />
-          <Route exact path="/signup/supplier" component={SupplierTemp} />
+
           <Route exact path="/faq" component={FrequentlyAskedQuestion} />
           <Route
             exact
             path="/terms-conditions"
             component={TermsAndConditions}
           />
-          <Route
-            exact
-            path="/signup/supplier-details"
-            component={SupplierDetailTemp}
-          />
-          <Route
-            exact
-            path="/signup/completed-supplier"
-            component={SupplierCompletedTemp}
-          />
+
           <Route exact path="/profile/:id" component={SupplierProfile} />
           <Route exact path="/products/:id" component={Products} />
           <Route exact path="/quote/:id" component={Quote} />
-          <Route exact path="/signup/completed" component={GreetingTemp} />
+
           <Route
             exact
             path="/dashboard/supplier/lead"

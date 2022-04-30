@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 import { Link, useHistory } from 'react-router-dom'
-import { Form, Input, Spin, notification } from 'antd'
+import { Col, Row, notification } from 'antd'
 
 import classes from './SignIn.module.scss'
 import logo from '../../../assets/svg/logo_red_medium.svg'
@@ -15,6 +15,11 @@ import {
   userDataStatus,
   postUserLogin,
 } from '../../../redux/actions/user.action.js'
+
+import Navigation from '../../../constant/public/Navigation/Navigation'
+import Footer from '../../../constant/public/Footer/Footer'
+import InputElement from '../../../constant/public/Input/InputElement'
+import ButtonWithRightArrow from '../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow'
 
 const SignIn = (props) => {
   const history = useHistory()
@@ -70,63 +75,49 @@ const SignIn = (props) => {
 
   return (
     <>
+      <Navigation />
+      <div className={classes.sideTitle}>
+        <h2>SIGN IN</h2>
+      </div>
       <div className={classes.container}>
         <div className={classes.mainContent}>
-          <Link to="/">
-            <img src={logo} alt="uplio" />
+          <h3>Email</h3>
+          <InputElement
+            width="100%"
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={setEmail}
+          />
+          <h3>Password</h3>
+          <InputElement
+            width="100%"
+            type="password"
+            value={password}
+            onChange={setPassword}
+            placeholder="Password"
+          />
+          <Link>
+            <h4> Forgot Password?</h4>
           </Link>
-          <h3>Welcome back!</h3>
-          <h5>Sign in to access your account.</h5>
-          <p>(*Required field)</p>
 
-          <Form layout="vertical">
-            <Form.Item label="*Email">
-              <Input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                size="large"
-                placeholder="Email address..."
-              />
-            </Form.Item>
-            <Form.Item label="*Password">
-              <Input.Password
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                size="large"
-                onPressEnter={() => handleSignIn()}
-                placeholder="Password..."
-              />
-            </Form.Item>
-          </Form>
-
-          <div className={classes.footerContent}>
-            {/* <h3>
-              *Passwords must contain a combination of letters, numbers and{' '}
-              <br />
-              special characters (ex. @). Please use at least (1) capital
-              letter.
-            </h3> */}
-            <button
-              onClick={() => handleSignIn()}
-              className={classes.buttonLogin}
-              to="/"
-            >
-              {loader ? (
-                <Spin style={{ marginBottom: '24px' }} />
-              ) : (
-                <h6>
-                  Sign in <ArrowRightOutlined />
-                </h6>
-              )}
-            </button>
-            <h5>
-              You acknowledge that you have read and agree <br /> to our
-              <Link to="/terms-conditions"> Terms of Service</Link> and{' '}
-              <Link to="/privacy-policy">Privacy Policy</Link>.
-            </h5>
-          </div>
+          <Row>
+            <Col span={12}></Col>
+            <Col span={12} align="right">
+              <div className={classes.actionButton}>
+                <ButtonWithRightArrow
+                  content="SIGN IN"
+                  function={() => handleSignIn()}
+                />
+                <h4>
+                  Don’t have an account? <Link to="/signup">Sign Up</Link>
+                </h4>
+              </div>
+            </Col>
+          </Row>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

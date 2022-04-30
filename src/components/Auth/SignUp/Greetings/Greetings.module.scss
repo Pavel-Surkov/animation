@@ -1,87 +1,48 @@
 @import '../../../../theme/variable.module.scss';
+
+.container{
+	max-width: 636px;
+	margin: 0 auto;
+}
+
 .mainSection{
-	h3{
-		font-family: 'Inter',sans-serif;
+	margin-top: 128px;
+	h1{
+		margin-bottom: 16px;
+		font-family: 'Poppins';
 		font-style: normal;
-		font-weight: 800;
-		font-size: 30px;
-		line-height: 40px;
-		color:$red_app_color;
-		letter-spacing: 1px;
+		font-weight: 500;
+		font-size: 36px;
+		line-height: 48px;
+		/* identical to box height, or 133% */
 		
-	}
-	h4{
-		font-family:'Montserrat',sans-serif;
-		font-style: normal;
-		font-weight: 500;
-		font-size: 17px;
-		line-height: 26px;
-		letter-spacing: 1px;
-		margin: 0;
-	}
-	h5{
-		font-family: 'Montserrat',sans-serif;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 17px;
-		line-height: 26px;
-		opacity: 0.5;
-		text-align: center;
-		padding-bottom: 120px;
-	}
-	p{
-		font-family: 'Montserrat',sans-serif;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 12px;
-		line-height: 20px;
-		letter-spacing: 1px;
-		opacity: 0.5;
-	}
-	hr{
-		margin:50px 0;
-		background:$primary_app_color;
-		opacity: 0.2
-	}
-	p{
-		font-family: 'Montserrat',sans-serif;
-		font-style: normal;
-		font-weight: 500;
-		font-size: 17px;
-		line-height: 26px;
-		opacity: 1;
-	}
-	
-}
-.buttonHome{
-	text-align: center;
-	h6{
-		background: #000;
-		padding: 10px;
-		color: #fff;
-		border-radius: 4px;
-		width: 100%;
-		font-family: Montserrat;
-		font-style: normal;
-		font-weight: 500;
-		font-size: 17px;
-		line-height: 26px;
-	}
-	
-}
-.buttonSignUp{
-	text-align: center;
-	h6{
-		background:#fff;
-		padding: 9px;
-		color:#000;
-		border-radius: 4px;
-		width: 100%;
-		border: 1px solid #000;
-		font-family: Montserrat;
-		font-style: normal;
-		font-weight: 500;
-		font-size: 17px;
-		line-height: 26px;
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
 	}	
+
+	h3{
+		margin: 16px 0;
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 24px;
+		/* identical to box height, or 150% */
+
+		letter-spacing: 0.06em;
+	}
+}
+.actionButton{
+	margin-top: 76px;
+	margin-bottom: 298px;
+	h2{
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 24px;
+		/* or 150% */
+
+		letter-spacing: 0.06em;
+	}
 }
