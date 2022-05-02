@@ -10,7 +10,7 @@ import image from '../../../assets/svg/back_to_top.svg'
 const Footer = () => {
   return (
     <>
-      <div className={classes.container}>
+      <footer className={classes.container}>
         <div className={classes.footer}>
           {/* <div className={classes.footerArrow}>
             <img src={image} alt="Uplio" />
@@ -117,7 +117,7 @@ const Footer = () => {
             </Col>
           </Row>
         </div>
-      </div>
+      </footer>
     </>
   )
 }

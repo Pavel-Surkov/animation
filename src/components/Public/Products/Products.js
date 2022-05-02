@@ -16,7 +16,8 @@ import {
   Carousel,
 } from 'antd'
 
-import Navigation from '../../Public/Homepage/Navigation/Navigation'
+import Navigation from '../../../constant/public/Navigation/Navigation'
+import Footer from '../../../constant/public/Footer/Footer'
 import loadingImage from '../../../assets/gif/Pulse-1.5s-201px.gif'
 import companyLogo from '../../../assets/images/profile_image.png'
 import defaultImage from '../../../assets/images/sample_logo_img.png'
@@ -48,9 +49,6 @@ export default function Products() {
   const [filterQuantity, setFilterQuantity] = useState('')
   const [selectedCateory, setSelectedCategory] = useState('')
 
-  const handleSearch = (e) => {
-    history.push({ pathname: `/products/${searchInput}` })
-  }
   useEffect(() => {
     setLoading(true)
     setSearch(id)
@@ -129,7 +127,7 @@ export default function Products() {
   return (
     <>
       <Navigation />
-      <div className={classes.container}>
+      <main className={classes.container}>
         <Row gutter={16}>
           <Col md={5} lg={5} xs={0} sm={0}>
             <div className={classes.section}>
@@ -523,7 +521,8 @@ export default function Products() {
             </Col>
           )}
         </Row>
-      </div>
+      </main>
+      {/* <Footer /> */}
     </>
   )
 }

@@ -4,12 +4,15 @@ import { Link, useHistory } from 'react-router-dom'
 import classes from './Navigation.module.scss'
 import ButtonElement from '../Button/ButtonElement'
 import logo from '../../../assets/svg/logo_rectangle_black.svg'
-import InputElement from '../Input/InputElement'
+import Search from '../Search/Search'
 
 const Navigation = () => {
   const ref = useRef()
   const history = useHistory()
   let [check, setCheck] = useState(true)
+
+  const [search, setSearch] = useState('')
+
   const sticky = useStickyHeader(50)
 
   const { clientHeight } = ref
@@ -27,7 +30,8 @@ const Navigation = () => {
             <Col span={20} align="right">
               <Space size={64}>
                 <Space size={40}>
-                  <InputElement width={'325px'} placeholder="Search" />
+                  <Search width={'295px'} placeholder="Search" />
+
                   <Link to="/#category">
                     <h3>CATEGORIES</h3>
                   </Link>
