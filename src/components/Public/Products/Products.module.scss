@@ -4,21 +4,67 @@
 	max-width: $max-width_container_lg;
 	margin: 0 auto;
 }
+
+.resultsHeader{
+	margin-bottom: 32px;	
+	h2{
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 24px;
+		margin:0;
+		
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+	}
+}
+.loadMore{
+	margin: 0 auto;
+	margin-top: 56px;
+	width: fit-content;
+	text-align: center;
+	h3{
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 24px;
+		/* identical to box height, or 133% */
+		
+		letter-spacing: 0.02em;
+	}
+}
+.productCardBottom{
+	padding-bottom: 24px;
+	border-bottom: 0.5px solid rgba(135, 135, 135, 0.5);
+}
+
 .spinner{
 	text-align: center;
 	margin-top: 100px;
 }
 .section {
-	padding: 60px 0;
+	padding-top:96px;
+	padding-bottom: 184px;
 }
 .filterOption{
-	h3{
-		font-family:'Montserrat', sans-serif;
+	margin-bottom: 32px;
+	button{
+		font-family: 'Poppins';
 		font-style: normal;
 		font-weight: 500;
-		font-size: 17px;
-		line-height: 26px;
-		padding-top: 32px ;
+		font-size: 18px;
+		line-height: 24px;
+		/* identical to box height, or 133% */
+		
+		letter-spacing: 0.02em;
+		margin-bottom: 16px;		
+	}
+	img{
+		position:absolute;
+		right: 0;
+		margin-top: 8px;
 	}
 }
 .searchFilter{

@@ -1,0 +1,52 @@
+.carousel {
+	overflow: hidden;
+	position: absolute;
+	width: 379px;
+	// height: 259px;
+      }
+      
+      .inner {
+	white-space: nowrap;
+	transition: transform 0.3s;
+      }
+      
+      .carousel-item {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+      }
+     .number{	
+	position: absolute;
+	bottom: 24px;
+	left: 24px;
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	/* identical to box height, or 150% */
+
+	letter-spacing: 0.06em;
+
+	/* BG and Text */
+
+	color: #FFFFFF;
+     } 
+      .indicators {
+	// display: flex;
+	// justify-content: center;
+	position: absolute;
+	bottom: 24px;
+	right: 24px;
+      }
+      
+      .indicators > button {
+	margin:0 8px;
+      }
+      
+      .indicators > button.active {
+	background-color: green;
+	color: #fff;
+      }
+      

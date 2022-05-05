@@ -39,6 +39,7 @@ const SignIn = (props) => {
   }
 
   const handleSignIn = () => {
+    debugger
     setLoader(true)
     const user = {
       email: email,
@@ -55,8 +56,9 @@ const SignIn = (props) => {
       .then((res) => {
         setLoader(false)
         if (!res.data.error) {
-          dispatch(userLoggedIn())
+          debugger
           dispatch(userDataStatus(res.data.user))
+          dispatch(userLoggedIn())
           // props.userDataStatus(userData)
           history.goBack()
           sessionStorage.setItem('token', res.data.tokens.access.token)

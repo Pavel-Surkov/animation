@@ -1,0 +1,69 @@
+.egl-radio-with-check {
+	display: inline-block;
+	align-items: center;
+	height: 25px;
+      
+      }
+      
+      label {
+	display: flex;
+	
+	align-items: center;
+	      color: #333;
+	      position: relative;
+	      padding: 0 0 0 30px;
+	      margin: 0;
+	      margin-bottom: 8px ;
+	      justify-content: center;
+	      cursor: pointer;
+	      white-space: nowrap;
+	      text-align: left;
+	      width: fit-content;
+	      height: 20px;
+
+	      font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 24px;
+		/* identical to box height, or 150% */
+
+		letter-spacing: 0.06em;
+
+      }
+     
+	 .radio-input {
+	      position: absolute;
+	      opacity: 0;
+	     
+      
+	      & + label:before {
+		  content: '';
+		  width: 16px;
+		  height: 16px;
+		  background: white;
+		  border: 1px solid #979797;
+		  border-radius: 0%;
+		  margin-right: 10px;
+		  position: absolute;
+		  left: 0;
+	      }
+	  }
+      
+	  .radio-input:checked + label:before {
+	      background: #fff;
+	      border: 1px solid #000;
+	  }
+      
+	  .radio-input:checked + label:after {
+		content: "";
+		position: absolute;
+		left: 6px;
+		top: 2px;
+		transform: rotate(45deg);
+		height: 12px;
+		width: 4.5px;
+		border-bottom: 1px solid #000;
+		border-right: 1px solid #000;
+		display: inline-block;
+	  }

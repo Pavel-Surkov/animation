@@ -2,7 +2,7 @@
 
 
 .container{
-	max-width: 1200px;
+	max-width: $max-width_container_lg;
 	margin :0 auto;
 }
 .spin{
@@ -17,8 +17,22 @@
 	    
 	}
 }
-.section{
-	padding: 42px 0;
+.main{
+	margin-top: 139px;
+	margin-bottom: 184px;
+}
+.actionButton{
+	position: absolute;
+	right:24px;
+		
+}
+.mainSection{
+	padding-top: 40px;
+	padding-bottom: 72px;
+}
+.quoteButton{
+	position: absolute;
+	bottom: 48px;
 }
 .slideContainer{
 	max-width: 1500px;
@@ -35,16 +49,46 @@
 	}
 }
 .companyDetails{
-	img{
-		// border-radius: 45px;
+	display: flex;
+	
+	margin-bottom: 40px;
+	.logoImg{
+		border-radius: 25px;
+    		object-fit: contain;
 	}
-	h3{
-		font-family: 'Inter',sans-serif;
+	h1{
+		margin-left: 16px;
+		margin-right: 9px;
+		margin-bottom: 0;
+		font-family: 'Poppins';
 		font-style: normal;
-		font-weight: 700;
+		font-weight: 500;
 		font-size: 24px;
-		line-height: 30px;
-		letter-spacing: 0.04em;
+		line-height: 32px;
+		/* identical to box height, or 133% */
+		padding: 8px 0;
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+	}
+
+	h4{
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 300;
+		font-size: 12px;
+		line-height: 20px;
+		/* identical to box height, or 167% */
+
+		letter-spacing: 0.02em;
+
+		/* Secondary / Small */
+		margin-bottom: 0;
+
+		color: #878787;
+		img{
+			margin-right: 4px;
+			padding:14px 0;
+		}
 	}
 }
 
@@ -89,6 +133,68 @@
 		
 	}
 	
+}
+.supplierSectionTopBorder{
+	border-top:0.5px solid rgba(135, 135, 135, 0.5);
+}
+.supplierSectionBottomBorder{
+	border-bottom: 0.5px solid rgba(135, 135, 135, 0.5);
+}
+.supplierSection{
+	
+	padding: 40px 0;
+	h2{
+		width: 625px;		
+		margin-bottom: 16px;
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 24px;
+		/* identical to box height, or 133% */
+
+		letter-spacing: 0.02em;
+
+	}
+	h3{
+		width: 625px;		
+		margin-bottom: 16px;
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 24px;
+		/* identical to box height, or 150% */
+
+		letter-spacing: 0.06em;
+
+		/* Black */
+
+		color: #303030;
+	}
+	ul{
+		width: 625px;		
+		padding: 0 !important;
+		overflow-wrap: break-word;	
+	}
+	ul li{
+		display: inline;
+		text-decoration: underline;
+		list-style-type:dot;	
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 24px;
+		/* identical to box height, or 150% */
+		padding-inline-start:0;
+		letter-spacing: 0.02em;
+		
+		a{
+			color: $primary_app_color;
+			margin-right: 53px;
+		}
+	}
 }
 .companyDetailsSection{
 	h3{
@@ -207,13 +313,7 @@ hr{
 		font-size: 16px;
 		line-height: 30px;
 	}
-	li{
-		font-family: 'Inter',sans-serif;		
-		font-weight: 400;
-		font-size: 14px;
-		line-height: 26px;
-		letter-spacing: 0.02em;
-	}
+	
 }
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
