@@ -139,9 +139,16 @@ const BuyerDetails = (props) => {
           <h3>Name*</h3>
           <InputElement
             type="text"
+            name="name"
             placeholder="Name*"
-            value={name}
-            onChange={setName}
+            value={props.Formik.values.name}
+            onChange={props.Formik.handleChange}
+            onBlur={props.Formik.handleBlur}
+            helperText={
+              props.Formik.errors.name && props.Formik.touched.email
+                ? props.Formik?.errors.email
+                : null
+            }
             width={'100%'}
           />
           <h3>Email*</h3>
