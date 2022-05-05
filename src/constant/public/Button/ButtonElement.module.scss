@@ -1,6 +1,6 @@
 @import '../../../theme/variable.module.scss';
 
-.button{
+.button {
 	color: $secondary_app_color;
 	font-family: 'Poppins';
 	font-style: normal;
@@ -9,20 +9,20 @@
 	line-height: 24px;
 	padding: 12px 40px;
 	transition: 800ms;
-	background:linear-gradient(90deg, #F34242 0%, #F1408B 100%);
-
+	background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
 }
-.button:hover{
+.button:hover {
 	transition: 800ms;
-	background:linear-gradient(90deg, #F1408B 0%, #F34242 100%);
+	background: linear-gradient(90deg, #f1408b 0%, #f34242 100%);
 }
 
-.button:active{
+.button:active {
 	opacity: 0.6;
 }
 
-
-button, input[type="submit"], input[type="reset"] {
+button,
+input[type='submit'],
+input[type='reset'] {
 	background: none;
 	color: inherit;
 	border: none;

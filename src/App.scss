@@ -1,0 +1,105 @@
+@import './theme/variable.module.scss';
+
+html {
+	font-size: 10px;
+	font-family: 'Poppins';
+	&.is-locked {
+		body {
+			overflow: hidden;
+		}
+	}
+}
+
+.container {
+	max-width: 1372px;
+	margin: 0 auto;
+}
+
+.burger {
+	position: relative;
+	width: 32px;
+	height: 32px;
+	& span {
+		position: absolute;
+		width: calc(100% - 10px);
+		height: 2px;
+		background: $primary_app_color;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		top: 50%;
+		&:first-child {
+			transform: translateY(calc(-50% - 6px)) translateX(-50%);
+		}
+		&:last-child {
+			transform: translateY(calc(-50% + 6px)) translateX(-50%);
+		}
+	}
+}
+
+.button {
+	color: $secondary_app_color;
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1.8rem;
+	line-height: calc(24 / 18);
+	padding: 12px 40px;
+	transition: 800ms;
+	text-transform: uppercase;
+	background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
+}
+.button:hover {
+	transition: 800ms;
+	background: linear-gradient(90deg, #f1408b 0%, #f34242 100%);
+}
+
+.button:active {
+	opacity: 0.6;
+}
+
+.link {
+	font-family: 'Poppins';
+	font-size: 1.8rem;
+	line-height: calc(24 / 18);
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	font-weight: 500;
+	color: $primary_app_color;
+	&:hover {
+		background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+}
+
+.input {
+	border: none;
+	padding: 0;
+	padding-bottom: 8px;
+	border-bottom: 1px solid $primary_app_color;
+}
+
+@media screen and (max-width: 1380px) {
+	.container {
+		max-width: 960px;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.container {
+		max-width: 750px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.container {
+		max-width: 540px;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.container {
+		width: 100%;
+		padding: 0 24px;
+	}
+}
