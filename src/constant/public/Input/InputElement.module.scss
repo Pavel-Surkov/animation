@@ -13,6 +13,15 @@
 	border-left: 0;	
 
 }
+.errorMessage{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 10px;
+	line-height: 22px;
+	color:$red_app_color;
+
+}
 .inputPassword{
 	font-family: 'Poppins',sans-serif;
 	font-style: normal;

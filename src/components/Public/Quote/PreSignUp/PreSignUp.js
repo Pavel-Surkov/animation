@@ -7,15 +7,13 @@ import { Row, Col, Space } from 'antd'
 import InputElement from '../../../../constant/public/Input/InputElement'
 
 const PreSignUp = (props) => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
   const [disable, setDisable] = useState(true)
 
   useEffect(() => {
-    if (name !== '' && email !== '') {
+    if (props.Formik.values.name !== '' && props.Formik.values.email !== '') {
       setDisable(false)
     }
-  }, [name, email])
+  }, [props])
 
   return (
     <>
@@ -32,16 +30,26 @@ const PreSignUp = (props) => {
 
               <h4>Name</h4>
               <InputElement
-                value={name}
-                onChange={setName}
+                name="name"
+                value={props.Formik.values.name}
+                onChange={props.Formik.handleChange}
+                onBlur={props.Formik.handleBlur}
+                helperText={false}
                 placeholder="Name"
                 width="100%"
               />
 
               <h4>Email</h4>
               <InputElement
-                value={email}
-                onChange={setEmail}
+                name="email"
+                value={props.Formik.values.email}
+                onChange={props.Formik.handleChange}
+                onBlur={props.Formik.handleBlur}
+                helperText={
+                  props.Formik.errors.email && props.Formik.touched.email
+                    ? props.Formik?.errors.email
+                    : null
+                }
                 placeholder="Email"
                 width="100%"
               />

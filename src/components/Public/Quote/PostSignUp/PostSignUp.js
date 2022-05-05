@@ -7,7 +7,10 @@ import classes from './PostSignUp.module.scss'
 import image from '../../../../assets/images/g12.png'
 import { Link } from 'react-router-dom'
 
-const PostSignUp = ({ setQuoteView }) => {
+const PostSignUp = (props) => {
+  const handleSubmit = () => {
+    props.handleSubmit()
+  }
   return (
     <>
       <div className={classes.getQuoteSection}>
@@ -44,12 +47,12 @@ const PostSignUp = ({ setQuoteView }) => {
                 <Col span={12}>
                   <div className={classes.actionButtonSection}>
                     <Space size={48}>
-                      <button onClick={() => setQuoteView('preSignUp')}>
+                      <button onClick={() => props.setQuoteView('preSignUp')}>
                         PREVIOUS
                       </button>
                       <ButtonWithRightArrow
                         content="Submit"
-                        function={() => setQuoteView('postQuoteSubmit')}
+                        function={() => handleSubmit()}
                       />
                     </Space>
                     <p>

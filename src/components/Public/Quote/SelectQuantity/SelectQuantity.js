@@ -9,16 +9,15 @@ import InputElement from '../../../../constant/public/Input/InputElement'
 
 const SelectQuantity = (props) => {
   const [disable, setDisable] = useState(true)
-  const [quantity, setQuantity] = useState('')
-  const [budget, setBudget] = useState('')
 
   useEffect(() => {
-    if (quantity !== '' && budget !== '') {
+    if (
+      props.Formik.values.quantity !== '' &&
+      props.Formik.values.budget !== ''
+    ) {
       setDisable(false)
-      props.setQuantity()
-      props.setBudget()
     }
-  }, [quantity, budget, props])
+  }, [props])
 
   return (
     <>
@@ -32,17 +31,23 @@ const SelectQuantity = (props) => {
             <div className={classes.mainSection}>
               <h3>Select the quantity you are looking to order</h3>
               <InputElement
+                name="quantity"
                 type="number"
-                value={budget}
-                onChange={setBudget}
+                value={props.Formik.values.quantity}
+                onChange={props.Formik.handleChange}
+                helperText={false}
+                onBlur={props.Formik.handleBlur}
                 placeholder="e.g. 500 pieces"
                 width={'100%'}
               />
               <h3>What is your budget for this project?</h3>
               <InputElement
                 type="number"
-                value={quantity}
-                onChange={setQuantity}
+                name="budget"
+                value={props.Formik.values.budget}
+                onChange={props.Formik.handleChange}
+                helperText={false}
+                onBlur={props.Formik.handleBlur}
                 placeholder="$ budget amount"
                 width={'100%'}
               />

@@ -5,8 +5,11 @@ import classes from './PostQuoteSubmit.module.scss'
 import { Row, Col } from 'antd'
 import { useHistory } from 'react-router-dom'
 
-const PostQuoteSubmit = ({ setQuoteView }) => {
+const PostQuoteSubmit = (props) => {
   const history = useHistory()
+  const onSubmit = () => {
+    history.push({ pathname: '/login' })
+  }
   return (
     <>
       <div className={classes.getQuoteSection}>
@@ -39,7 +42,7 @@ const PostQuoteSubmit = ({ setQuoteView }) => {
                 <div>
                   <ButtonElement
                     content="GO TO DASHBOARD"
-                    function={() => history.push({ pathname: '/login' })}
+                    function={() => onSubmit()}
                   />
                 </div>
               </Col>

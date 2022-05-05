@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-
+import { Formik, useFormik } from 'formik'
 import { Link, useHistory } from 'react-router-dom'
 import { Col, Row, notification } from 'antd'
 
 import classes from './SignIn.module.scss'
 import logo from '../../../assets/svg/logo_red_medium.svg'
-
+import * as yup from 'yup'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import { connect, useSelector, useDispatch } from 'react-redux'
 
@@ -23,11 +23,23 @@ import ButtonWithRightArrow from '../../../constant/public/ButtonWithRightArrow/
 
 const SignIn = (props) => {
   const history = useHistory()
+
+  const Formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: yup.object({
+      email: yup.string().email('Invalid email.').required('Email is Required'),
+      password: yup.string().required('Password is required.'),
+    }),
+    onSubmit: (values) => {
+      debugger
+    },
+  })
+
   const user = useSelector((state) => state.user.user)
   const dispatch = useDispatch()
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
 
   const [loader, setLoader] = useState(false)
 
@@ -38,13 +50,9 @@ const SignIn = (props) => {
     })
   }
 
-  const handleSignIn = () => {
-    debugger
+  const handleSignIn = (email, password) => {
     setLoader(true)
-    const user = {
-      email: email,
-      password: password,
-    }
+    debugger
     // dispatch(postUserLogin(user))
 
     console.log(process.env.REACT_APP_API_URL)
@@ -87,19 +95,33 @@ const SignIn = (props) => {
           <InputElement
             width="100%"
             type="text"
+            name="email"
             placeholder="Email"
-            value={email}
-            onChange={setEmail}
+            value={Formik.values.email}
+            onChange={Formik.handleChange}
+            onBlur={Formik.handleBlur}
+            helperText={
+              Formik.errors.email && Formik.touched.email
+                ? Formik?.errors.email
+                : null
+            }
           />
           <h3>Password</h3>
           <InputElement
             width="100%"
+            name="password"
             type="password"
-            value={password}
-            onChange={setPassword}
+            value={Formik.values.password}
+            onChange={Formik.handleChange}
+            onBlur={Formik.handleBlur}
             placeholder="Password"
+            helperText={
+              Formik.errors.password && Formik.touched.password
+                ? Formik?.errors.password
+                : null
+            }
           />
-          <Link>
+          <Link to="/">
             <h4> Forgot Password?</h4>
           </Link>
 
@@ -108,8 +130,11 @@ const SignIn = (props) => {
             <Col span={12} align="right">
               <div className={classes.actionButton}>
                 <ButtonWithRightArrow
+                  type="button"
                   content="SIGN IN"
-                  function={() => handleSignIn()}
+                  function={() =>
+                    handleSignIn(Formik.values.email, Formik.values.password)
+                  }
                 />
                 <h4>
                   Don’t have an account? <Link to="/signup">Sign Up</Link>

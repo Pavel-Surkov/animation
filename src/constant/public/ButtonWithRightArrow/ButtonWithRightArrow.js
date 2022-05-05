@@ -9,6 +9,7 @@ const ButtonWithRightArrow = (props) => {
   return (
     <>
       <button
+        type={props.type}
         disabled={props.disabled === undefined ? false : props.disabled}
         className={props.disabled ? classes.buttonDisabled : classes.button}
         onClick={props.function}

@@ -13,7 +13,8 @@ import rootSaga from './sagas/index'
 import { composeWithDevTools } from 'redux-devtools-extension'
 const sagaMiddleware = createSagaMiddleware()
 const store = compose(
-  applyMiddleware(sagaMiddleware)
+  applyMiddleware(sagaMiddleware),
+  composeWithDevTools()
   //   window.devToolsExtension && window.devToolsExtension()
 )(createStore)(rootReducer)
 
