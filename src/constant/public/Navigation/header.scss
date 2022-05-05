@@ -1,8 +1,17 @@
 @import '../../../theme/variable.module.scss';
 
 .header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	z-index: 2;
 	&-wrapper {
+		background: $secondary_app_color;
 		padding: 40px 0;
+	}
+	&-burger {
+		display: none;
 	}
 	&-content {
 		display: flex;
@@ -71,6 +80,12 @@
 
 @media screen and (max-width: 991px) {
 	.header {
+		&-wrapper {
+			padding: 20px 0;
+		}
+		&-burger {
+			display: block;
+		}
 		&-content {
 			justify-content: space-between;
 			&__search {

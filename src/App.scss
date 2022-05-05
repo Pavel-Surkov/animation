@@ -10,6 +10,12 @@ html {
 	}
 }
 
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
 .container {
 	max-width: 1372px;
 	margin: 0 auto;
@@ -27,6 +33,7 @@ html {
 		left: 50%;
 		transform: translateY(-50%) translateX(-50%);
 		top: 50%;
+		transition: all 0.3s;
 		&:first-child {
 			transform: translateY(calc(-50% - 6px)) translateX(-50%);
 		}
@@ -34,9 +41,24 @@ html {
 			transform: translateY(calc(-50% + 6px)) translateX(-50%);
 		}
 	}
+	&_close {
+		& span {
+			width: calc(100% - 12px);
+			&:nth-child(2) {
+				opacity: 0;
+			}
+			&:first-child {
+				transform: translateX(-50%) translateY(calc(-50%)) rotate(-45deg);
+			}
+			&:last-child {
+				transform: translateX(-50%) translateY(calc(-50%)) rotate(45deg);
+			}
+		}
+	}
 }
 
 .button {
+	display: inline-block;
 	color: $secondary_app_color;
 	font-family: 'Poppins';
 	font-style: normal;
@@ -66,6 +88,11 @@ html {
 	font-weight: 500;
 	color: $primary_app_color;
 	&:hover {
+		background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	&_fade {
 		background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;

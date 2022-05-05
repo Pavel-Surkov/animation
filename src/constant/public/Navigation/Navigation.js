@@ -34,6 +34,7 @@ import {
 
 const Navigation = () => {
   const [isSigned, setIsSigned] = useState(false);
+  const [menuOpened, setMenuOpened] = useState(false);
 
   return (
     <header className="header">
@@ -77,13 +78,19 @@ const Navigation = () => {
             )}
             {isSigned && <div className="header__account"></div>}
             <div className="header-burger">
-              <button type="button" className="burger header-burger">
+              <button
+                type="button"
+                className={`burger header-burger ${
+                  menuOpened ? 'burger_close' : null
+                }`}
+                onClick={() => setMenuOpened((prev) => !prev)}
+              >
                 <span></span>
                 <span></span>
                 <span></span>
               </button>
             </div>
-            <MobileMenu />
+            <MobileMenu isSigned={isSigned} menuOpened={menuOpened} />
           </div>
         </div>
       </div>

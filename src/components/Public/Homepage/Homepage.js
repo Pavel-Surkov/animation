@@ -33,7 +33,7 @@ const Homepage = () => {
     <>
       <Navigation />
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
