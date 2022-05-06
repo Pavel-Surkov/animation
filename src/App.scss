@@ -65,18 +65,27 @@ ul {
 	font-weight: 500;
 	font-size: 1.8rem;
 	line-height: calc(24 / 18);
-	padding: 12px 40px;
-	transition: 800ms;
+	padding: 0.6667em 2.222em;
+	transition: 0.3s;
+	letter-spacing: 0.02em;
 	text-transform: uppercase;
 	background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
-}
-.button:hover {
-	transition: 800ms;
-	background: linear-gradient(90deg, #f1408b 0%, #f34242 100%);
-}
-
-.button:active {
-	opacity: 0.6;
+	&:hover {
+		color: $secondary_app_color;
+		background: linear-gradient(90deg, #f1408b 0%, #f34242 100%);
+		-webkit-transition: background 0.3s linear;
+		-ms-transition: background 0.3s linear;
+		transition: background 0.3s linear;
+	}
+	&:active {
+		opacity: 0.6;
+	}
+	&:disabled {
+		box-shadow: 0px 4px 12px 0px #0000001a inset;
+		opacity: 0.1;
+	}
+	&-arrow {
+	}
 }
 
 .link {
@@ -87,15 +96,18 @@ ul {
 	text-transform: uppercase;
 	font-weight: 500;
 	color: $primary_app_color;
+	&_fade {
+		background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
 	&:hover {
 		background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 	}
-	&_fade {
-		background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
+	&:active {
+		opacity: 0.6;
 	}
 }
 

@@ -35,6 +35,35 @@ import {
 const Navigation = () => {
   const [isSigned, setIsSigned] = useState(false);
   const [menuOpened, setMenuOpened] = useState(false);
+  const [search, setSearch] = useState('');
+
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+
+  const userLoggedInState = useSelector((state) => state.user.userLoggedIn);
+
+  const user = useSelector((state) => state.user.user);
+
+  // const handleSignOut = () => {
+  //   axios
+  //     .post(`${process.env.REACT_APP_API_URL}/auth/logout`, {
+  //       refreshToken: refreshToken,
+  //     })
+  //     .then((res) => {
+  //       dispatch(userLoggedOut());
+  //       dispatch(userDataStatus(''));
+  //       sessionStorage.clear();
+  //       history.push('/');
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  // const handleSignIn = () => {
+  //   history.push({ pathname: '/login' });
+  // };
 
   return (
     <header className="header">
@@ -42,13 +71,14 @@ const Navigation = () => {
         <div className="container">
           <div className="header-content">
             <div className="header-content__logo">
-              <Link to="/">
+              <Link className="link" to="/">
                 <img height="48" src={logo} alt="" />
               </Link>
             </div>
-            <div className="header-content__search">
-              <input className="input" type="text" placeholder="Search" />
-            </div>
+            <Search
+              containerClass="header-content__search"
+              placeholder="Search"
+            />
             <ul className="header-links">
               <li className="header-links__link">
                 <NavLink className="link" to="/#categories">
@@ -66,17 +96,17 @@ const Navigation = () => {
                 </NavLink>
               </li>
             </ul>
-            {!isSigned && (
+            {!userLoggedInState && (
               <div className="header__sign">
-                <Link to="/" className="button">
+                <Link to="/signup" className="button">
                   Sign up
                 </Link>
-                <Link to="/" className="link">
+                <Link to="/login" className="link">
                   Sign in
                 </Link>
               </div>
             )}
-            {isSigned && <div className="header__account"></div>}
+            {userLoggedInState && <div className="header__account"></div>}
             <div className="header-burger">
               <button
                 type="button"
