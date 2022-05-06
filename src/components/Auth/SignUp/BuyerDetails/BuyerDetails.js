@@ -145,8 +145,8 @@ const BuyerDetails = (props) => {
             onChange={props.Formik.handleChange}
             onBlur={props.Formik.handleBlur}
             helperText={
-              props.Formik.errors.name && props.Formik.touched.email
-                ? props.Formik?.errors.email
+              props.Formik.errors.name && props.Formik.touched.name
+                ? props.Formik?.errors.name
                 : null
             }
             width={'100%'}
@@ -154,24 +154,39 @@ const BuyerDetails = (props) => {
           <h3>Email*</h3>
           <InputElement
             type="text"
+            name="email"
             placeholder="Email*"
-            value={email}
-            onChange={setEmail}
+            value={props.Formik.values.email}
+            onChange={props.Formik.handleChange}
+            onBlur={props.Formik.handleBlur}
+            helperText={
+              props.Formik.errors.email && props.Formik.touched.email
+                ? props.Formik?.errors.email
+                : null
+            }
             width={'100%'}
           />
           <h3>Phone Number (Optional)</h3>
           <InputElement
             type="number"
+            name="phone"
             placeholder="+1 562-985-4111"
-            value={phone}
-            onChange={setPhone}
+            value={props.Formik.values.phone}
+            onChange={props.Formik.handleChange}
+            onBlur={props.Formik.handleBlur}
+            helperText={
+              props.Formik.errors.phone && props.Formik.touched.phone
+                ? props.Formik?.errors.phone
+                : null
+            }
             width={'100%'}
           />
           <h3>Password*</h3>
           <InputElement
             type="password"
+            name="name"
+            value={props.Formik.values.password}
             placeholder="Password"
-            value={password}
             onChange={setPassword}
             width={'100%'}
           />
