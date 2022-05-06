@@ -6,7 +6,7 @@
 	}
 	&-content {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: calc(50% - 12px) calc(50% - 12px);
 		grid-gap: 24px;
 		&__text {
 			& p {
@@ -26,9 +26,79 @@
 			color: $secondary_app_color;
 			padding: 32px;
 		}
+		&__image {
+			& img {
+				max-width: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+		}
 		&__sign {
 			& .category-item {
 				height: 100%;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1380px) {
+	.why {
+		&-content {
+			grid-template-columns: calc(65% - 12px) calc(35% - 12px);
+		}
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.why {
+		&__title {
+			margin-bottom: 40px;
+		}
+		&-content {
+			grid-template-columns: 100%;
+			grid-gap: 32px;
+			&__text {
+				order: -1;
+				& p {
+					margin: 0;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.why {
+		&-answer {
+			&__sign {
+				& .category-item {
+					display: flex;
+				}
+			}
+		}
+		&-content {
+			&__text {
+				& p {
+					font-size: 1.6rem;
+					line-height: calc(24 / 16);
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.why {
+		&-answer {
+			grid-gap: 40px;
+			grid-template-columns: 100%;
+			&__answer {
+				min-height: 224px;
+			}
+			&__image {
+				&_m_hidden {
+					display: none;
+				}
 			}
 		}
 	}

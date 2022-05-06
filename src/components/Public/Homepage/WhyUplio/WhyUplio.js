@@ -19,15 +19,15 @@ const WhyUplio = () => {
             <div className="why-answer">
               <div className="why-answer__answer">
                 <ul className="list list-arrow why-answer__list">
-                  <li classname="why-answer__item">Fast response</li>
-                  <li classname="why-answer__item">Transparent Pricing</li>
-                  <li classname="why-answer__item">Trusted Experience</li>
+                  <li className="why-answer__item">Fast response</li>
+                  <li className="why-answer__item">Transparent Pricing</li>
+                  <li className="why-answer__item">Trusted Experience</li>
                 </ul>
               </div>
               <div className="why-answer__image">
                 <img width="325" src={nathan} srcSet={nathan2x} alt="" />
               </div>
-              <div className="why-answer__image">
+              <div className="why-answer__image why-answer__image_m_hidden">
                 <img width="325" src={irene} srcSet={irene2x} alt="" />
               </div>
               <div className="why-answer__sign">
@@ -36,7 +36,9 @@ const WhyUplio = () => {
                     Want to achieve sucsess?
                   </h3>
                   <div className="category-item__subtitle">
-                    <p>Join us and find the best suppliers in your category.</p>
+                    <p>
+                      Join us and find the best suppliers in&nbsp;your category.
+                    </p>
                   </div>
                   <div className="category-item__see">
                     <ButtonWithRightArrow
