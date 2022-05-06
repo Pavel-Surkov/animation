@@ -140,40 +140,77 @@ const SupplierDetails = (props) => {
           <InputElement
             type="text"
             placeholder="Business Name"
-            value={name}
-            onChange={setName}
+            name="businessName"
+            value={props.Formik.values.businessName}
+            onChange={props.Formik.handleChange}
+            onBlur={props.Formik.handleBlur}
+            helperText={
+              props.Formik.errors.businessName &&
+              props.Formik.touched.businessName
+                ? props.Formik?.errors.businessName
+                : null
+            }
             width={'100%'}
           />
           <h3>Email*</h3>
           <InputElement
             type="text"
+            name="email"
             placeholder="Email*"
-            value={email}
-            onChange={setEmail}
+            value={props.Formik.values.email}
+            onChange={props.Formik.handleChange}
+            onBlur={props.Formik.handleBlur}
+            helperText={
+              props.Formik.errors.email && props.Formik.touched.email
+                ? props.Formik?.errors.email
+                : null
+            }
             width={'100%'}
           />
           <h3>Phone Number (Optional)</h3>
           <InputElement
             type="number"
+            name="phone"
             placeholder="+1 562-985-4111"
-            value={phone}
-            onChange={setPhone}
+            value={props.Formik.values.phone}
+            onChange={props.Formik.handleChange}
+            onBlur={props.Formik.handleBlur}
+            helperText={
+              props.Formik.errors.phone && props.Formik.touched.phone
+                ? props.Formik?.errors.phone
+                : null
+            }
             width={'100%'}
           />
           <h3>Password*</h3>
           <InputElement
             type="password"
+            name="password"
+            value={props.Formik.values.password}
+            onChange={props.Formik.handleChange}
+            onBlur={props.Formik.handleBlur}
             placeholder="Password"
-            value={password}
-            onChange={setPassword}
+            helperText={
+              props.Formik.errors.password && props.Formik.touched.password
+                ? props.Formik?.errors.password
+                : null
+            }
             width={'100%'}
           />
           <h3>Confirm the Password*</h3>
           <InputElement
+            name="confirmPassword"
             type="password"
             placeholder="Password"
-            value={confirmPassword}
-            onChange={setConfirmPassword}
+            onChange={props.Formik.handleChange}
+            onBlur={props.Formik.handleBlur}
+            helperText={
+              props.Formik.errors.confirmPassword &&
+              props.Formik.touched.confirmPassword
+                ? props.Formik?.errors.confirmPassword
+                : null
+            }
+            value={props.Formik.values.confirmPassword}
             width={'100%'}
           />
         </div>

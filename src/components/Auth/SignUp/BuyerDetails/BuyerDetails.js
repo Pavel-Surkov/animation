@@ -184,18 +184,32 @@ const BuyerDetails = (props) => {
           <h3>Password*</h3>
           <InputElement
             type="password"
-            name="name"
+            name="password"
             value={props.Formik.values.password}
+            onChange={props.Formik.handleChange}
+            onBlur={props.Formik.handleBlur}
             placeholder="Password"
-            onChange={setPassword}
+            helperText={
+              props.Formik.errors.password && props.Formik.touched.password
+                ? props.Formik?.errors.password
+                : null
+            }
             width={'100%'}
           />
           <h3>Confirm the Password*</h3>
           <InputElement
+            name="confirmPassword"
             type="password"
             placeholder="Password"
-            value={confirmPassword}
-            onChange={setConfirmPassword}
+            onChange={props.Formik.handleChange}
+            onBlur={props.Formik.handleBlur}
+            helperText={
+              props.Formik.errors.confirmPassword &&
+              props.Formik.touched.confirmPassword
+                ? props.Formik?.errors.confirmPassword
+                : null
+            }
+            value={props.Formik.values.confirmPassword}
             width={'100%'}
           />
         </div>
