@@ -66,7 +66,7 @@ const Navigation = () => {
   // };
 
   return (
-    <header className="header">
+    <header id={'header'} className="header">
       <div className="header-wrapper">
         <div className="container">
           <div className="header-content">
@@ -120,7 +120,7 @@ const Navigation = () => {
                 <span></span>
               </button>
             </div>
-            <MobileMenu isSigned={isSigned} menuOpened={menuOpened} />
+            <MobileMenu isSigned={userLoggedInState} menuOpened={menuOpened} />
           </div>
         </div>
       </div>

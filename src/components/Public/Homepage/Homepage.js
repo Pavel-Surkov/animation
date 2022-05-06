@@ -38,7 +38,7 @@ const Homepage = () => {
         <TrendingCategories />
         <WhyUplio />
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

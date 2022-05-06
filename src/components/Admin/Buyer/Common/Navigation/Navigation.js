@@ -25,6 +25,7 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const userLoggedInState = useSelector((state) => state.counter.userLoggedIn);
   const userProfile = useSelector((state) => state.counter.user.profileImage);
+
   useEffect(() => {
     if (token !== null) {
       axios

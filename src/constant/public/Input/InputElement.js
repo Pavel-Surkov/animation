@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import classes from './InputElement.module.scss'
-import eye from '../../../assets/svg/password_eye.svg'
+import React, { useState } from 'react';
+import classes from './InputElement.module.scss';
+import eye from '../../../assets/svg/password_eye.svg';
 const InputElement = (props) => {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false);
   const handleValue = (e) => {
-    props.onChange(e)
-  }
+    props.onChange(e);
+  };
 
   return (
     <>
@@ -13,10 +13,11 @@ const InputElement = (props) => {
         <input
           type={props.type !== undefined ? props.type : 'text'}
           style={{ width: `${props.width}` }}
-          className={classes.input}
+          className={`input ${props.className ? props.className : null}`}
           value={props.value}
           onChange={(e) => handleValue(e.target.value)}
           placeholder={props.placeholder}
+          required={props.required ? true : false}
         />
       ) : (
         <div className={classes.inputContainer}>
@@ -27,6 +28,7 @@ const InputElement = (props) => {
             value={props.value}
             onChange={(e) => handleValue(e.target.value)}
             placeholder={props.placeholder}
+            required={props.required ? true : false}
           />
           <button onClick={() => setVisible(!visible)}>
             <img
@@ -38,6 +40,6 @@ const InputElement = (props) => {
         </div>
       )}
     </>
-  )
-}
-export default InputElement
+  );
+};
+export default InputElement;
