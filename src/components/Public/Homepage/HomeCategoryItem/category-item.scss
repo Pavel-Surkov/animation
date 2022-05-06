@@ -27,6 +27,9 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
+		&_mobile {
+			display: none;
+		}
 	}
 	&__link {
 		display: flex;
@@ -84,6 +87,46 @@
 		}
 		& svg {
 			transition: transform 0.3s;
+		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.category-item {
+		&_text {
+			display: none;
+			&_mobile {
+				display: block;
+			}
+			&__title {
+				font-size: 2.4rem;
+				line-height: calc(32 / 24);
+			}
+		}
+		&__see {
+			& .button {
+				padding-left: 2em;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.category-item {
+		&_mobile_hidden {
+			display: none;
+		}
+		&_text {
+			&_mobile {
+				max-width: 360px;
+				padding-top: 16px;
+			}
+		}
+		&__see {
+			margin-top: 24px;
+			& .button {
+				padding-left: 2.667em;
+			}
 		}
 	}
 }

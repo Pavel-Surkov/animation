@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './category-item.scss';
 
-const HomeCategoryItem = ({ title, image, link }) => {
+const HomeCategoryItem = ({ title, image, link, className }) => {
   return (
-    <article className="category-item">
-      <Link to="/products/Apparel" className="category-item__link">
+    <article className={`category-item ${className ? className : null}`}>
+      <Link to={link ? link : ''} className="category-item__link">
         <h3 className="title title_item category-item__title">{title}</h3>
         <div className="category-item__img">
           <img

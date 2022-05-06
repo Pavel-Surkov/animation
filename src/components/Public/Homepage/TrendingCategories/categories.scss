@@ -10,3 +10,24 @@
 		grid-gap: 24px;
 	}
 }
+
+@media screen and (max-width: 991px) {
+	.categories {
+		&__title {
+			margin-bottom: 40px;
+		}
+		&-content {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.categories {
+		&__title {
+		}
+		&-content {
+			grid-template-columns: 100%;
+		}
+	}
+}

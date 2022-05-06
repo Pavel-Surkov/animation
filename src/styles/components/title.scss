@@ -31,21 +31,22 @@
 
 @media screen and (max-width: 991px) {
 	.title {
-		font-weight: 700;
 		&_size {
 			&-l {
+				font-weight: 700;
 				font-size: 3.6rem;
 				line-height: calc(44 / 36);
 				letter-spacing: initial;
 			}
 			&-m {
+				font-weight: 700;
 				font-size: 3.6rem;
 				line-height: calc(44 / 36);
 			}
 		}
-		&_item {
-			font-size: 1.8rem;
-			line-height: calc(24 / 18);
-		}
+		// &_item {
+		// 	font-size: 1.8rem;
+		// 	line-height: calc(24 / 18);
+		// }
 	}
 }
