@@ -1,2 +1,9 @@
+@import '../../../../theme/variable.module.scss';
+
 .category-item {
+	position: relative;
+	&__title {
+		position: absolute;
+		color: $secondary_app_color;
+	}
 }

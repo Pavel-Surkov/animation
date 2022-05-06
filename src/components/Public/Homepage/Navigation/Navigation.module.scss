@@ -1,44 +1,43 @@
 @import '../../../../theme/variable.module.scss';
+
 .header {
-	// box-shadow: 0 0 20px #ccc;	
+	// box-shadow: 0 0 20px #ccc;
 	letter-spacing: 8px;
 	line-height: 0;
 	padding: 25px 15px;
 	height: 10vh;
 	background: $secondary_app_color;
-      }
-  
-      .signIn{
+}
+
+.signIn {
 	color: $primary_app_color !important;
-	font-family: 'Montserrat',sans-serif;
-	
+	font-family: 'Montserrat', sans-serif;
+
 	font-size: 17px;
 	line-height: 26px;
-      }
-      .signUp{
-	font-family: "Montserrat", sans-serif;
-	color: $secondary_app_color ;
-	background:  $primary_app_color ;		
-	font-weight: 500 ;
+}
+.signUp {
+	font-family: 'Montserrat', sans-serif;
+	color: $secondary_app_color;
+	background: $primary_app_color;
+	font-weight: 500;
 	font-size: 14px;
 	padding: 5px 10px;
 	border-radius: 4px;
 	letter-spacing: 1px;
-	line-height: 26px;	
-	
-      }
-      .signUp:hover{
-	color: rgba($secondary_app_color, 0.5) ;	
+	line-height: 26px;
 }
-.dropDownButton{
+.signUp:hover {
+	color: rgba($secondary_app_color, 0.5);
+}
+.dropDownButton {
 	border-color: $secondary_app_color !important;
 	height: auto !important;
 	width: 50px !important;
 	padding: 0 !important;
 }
 
-      
-      .sticky {
+.sticky {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -48,78 +47,60 @@
 	animation: slide 0.3s;
 	// box-shadow: 0 20px 30px rgba($primary_app_color, 0.2);
 	background: rgba($light_white_app_color, 0.5);
-	
+
 	label {
-	  font-weight: bold;
-	  text-transform: uppercase;
+		font-weight: bold;
+		text-transform: uppercase;
 	}
-      }
-      
-     
-      
-      @keyframes slide {
+}
+
+@keyframes slide {
 	0% {
-	  opacity: 0;
-	  transform: translateY(-50px);
+		opacity: 0;
+		transform: translateY(-50px);
 	}
 	100% {
-	  opacity: 1;
-	  transform: translateY(0%);
+		opacity: 1;
+		transform: translateY(0%);
 	}
-      }
-      
-      @keyframes pulse {
+}
+
+@keyframes pulse {
 	0% {
-	  transform: scale(1);
+		transform: scale(1);
 	}
 	50% {
-	  transform: scale(1.2, 1.05);
+		transform: scale(1.2, 1.05);
 	}
 	100% {
-	  transform: scale(1);
+		transform: scale(1);
 	}
-      }
-
+}
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 
 /* Portrait and Landscape */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2) { 
-
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
 }
 
 /* Portrait */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: portrait) { 
-	.container{
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+	.container {
 		max-width: 350px;
 		margin: 0 auto;
-	}	
-	.hamburgerMenu	{
-		
-		  height: 40px !important;			  
-  }
-  
-  .logo{
-	border-radius: 5px;
-	width: 40px;
-  }
+	}
+	.hamburgerMenu {
+		height: 40px !important;
+	}
 
+	.logo {
+		border-radius: 5px;
+		width: 40px;
+	}
 }
 
 /* Landscape */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: landscape) { 
-
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
 }
 
 /* ----------- iPhone 6+, 7+ and 8+ ----------- */
