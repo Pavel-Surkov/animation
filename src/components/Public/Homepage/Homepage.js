@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Space, Row, Col } from 'antd';
 import Navigation from './../../../constant/public/Navigation/Navigation';
+import TrendingCategories from './TrendingCategories/TrendingCategories';
 import InputElement from '../../../constant/public/Input/InputElement';
 import Footer from '../../../constant/public/Footer/Footer';
 
@@ -32,7 +33,9 @@ const Homepage = () => {
   return (
     <>
       <Navigation />
-
+      <main className="main home">
+        <TrendingCategories />
+      </main>
       {/* <Footer /> */}
     </>
   );
