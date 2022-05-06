@@ -12,6 +12,9 @@
 	}
 	&-socials {
 		margin-top: 16px;
+		&_m {
+			display: none;
+		}
 		&__item {
 			margin-bottom: 8px;
 			&:last-child {
@@ -111,6 +114,9 @@
 		}
 		&__submit {
 			padding: 0.6111em 1.5556em;
+			& svg {
+				display: none;
+			}
 			&-wrapper {
 				text-align: right;
 			}
@@ -168,6 +174,135 @@
 				& p {
 					text-align: right;
 				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.footer {
+		margin-top: 128px;
+		&-wrapper {
+			padding-top: 0;
+		}
+		&-socials {
+			display: none;
+			&_m {
+				margin: 0;
+				margin-bottom: 40px;
+				width: 50%;
+				display: block;
+			}
+			&__item {
+				margin-bottom: 16px;
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+			&__link {
+				letter-spacing: 0.06em;
+			}
+		}
+		&-logo {
+			width: 100%;
+			margin-bottom: 48px;
+		}
+		&-navigation {
+			width: 50%;
+			margin-bottom: 40px;
+			&__link {
+				font-size: 1.4rem;
+				font-weight: 500;
+				letter-spacing: 0.06em;
+				line-height: calc(24 / 14);
+			}
+		}
+		&-top {
+			padding-top: 0;
+			padding-bottom: 56px;
+			flex-wrap: wrap;
+			border: none;
+			&-arrow {
+				transform: none;
+				& img {
+					max-height: 48px;
+				}
+			}
+		}
+		&-bottom {
+			padding-top: 0;
+		}
+		&-contact {
+			order: 1;
+			width: 100%;
+			margin-bottom: 40px;
+			&__title {
+				font-size: 1.4rem;
+				line-height: calc(24 / 14);
+				margin-bottom: 8px;
+				letter-spacing: 0.06em;
+			}
+			&__contact {
+				margin-bottom: 16px;
+				&:last-child {
+					margin-bottom: 0;
+				}
+				& a {
+					letter-spacing: 0.06em;
+				}
+			}
+		}
+		&-subscribtion {
+			order: 2;
+			width: 100%;
+			&__title {
+				font-size: 1.4rem;
+				line-height: calc(24 / 14);
+				text-align: left;
+				margin-bottom: 24px;
+				letter-spacing: 0.06em;
+			}
+			&__input {
+				&-wrapper {
+					margin-bottom: 32px;
+				}
+			}
+			&__submit {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 1.333em;
+				width: 100%;
+				max-width: 320px;
+				& svg {
+					display: inline-block;
+				}
+				& svg {
+					transition: transform 0.3s;
+				}
+				&:hover {
+					& svg {
+						transform: translateX(8px);
+					}
+				}
+			}
+		}
+		&-bottom {
+			flex-wrap: wrap;
+			&__rights {
+				order: 1;
+				width: 100%;
+				text-align: center;
+				padding-top: 16px;
+				border-top: 1px solid rgba($primary_app_color, 0.05);
+			}
+			&__terms {
+				width: 50%;
+				padding-bottom: 16px;
+			}
+			&__policy {
+				width: 50%;
+				padding-bottom: 16px;
 			}
 		}
 	}
