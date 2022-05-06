@@ -9,6 +9,25 @@
 		left: 24px;
 		color: $secondary_app_color;
 	}
+	&__see {
+		margin-top: 40px;
+	}
+	&__subtitle {
+		margin-top: 8px;
+		& p {
+			font-size: 1.6rem;
+			font-weight: 300;
+			line-height: calc(24 / 16);
+			letter-spacing: 0.06em;
+			margin: 0;
+		}
+	}
+	&_text {
+		max-width: 325px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
 	&__link {
 		display: flex;
 		&:hover {

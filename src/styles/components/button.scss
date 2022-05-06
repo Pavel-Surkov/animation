@@ -26,5 +26,23 @@
 		opacity: 0.1;
 	}
 	&-arrow {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.333em 2.667em;
+		width: 100%;
+		max-width: 325px;
+		& p {
+			margin: 0;
+			margin-right: 30px;
+		}
+		& img {
+			transition: transform 0.3s;
+		}
+		&:hover {
+			& img {
+				transform: translateX(16px);
+			}
+		}
 	}
 }
