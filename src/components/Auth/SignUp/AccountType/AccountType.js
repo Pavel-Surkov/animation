@@ -25,7 +25,7 @@ const AccountType = (props) => {
   return (
     <>
       <div className={classes.sideTitle}>
-        <h2>SIGN IN</h2>
+        <h2>SIGN UP</h2>
       </div>
       <div className={classes.container}>
         <div className={classes.mainSection}>
