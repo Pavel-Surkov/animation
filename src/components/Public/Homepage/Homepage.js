@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Space, Row, Col } from 'antd';
 import Navigation from './../../../constant/public/Navigation/Navigation';
 import TrendingCategories from './TrendingCategories/TrendingCategories';
+import WhyUplio from './WhyUplio/WhyUplio';
 import InputElement from '../../../constant/public/Input/InputElement';
 import Footer from '../../../constant/public/Footer/Footer';
 
@@ -35,6 +36,7 @@ const Homepage = () => {
       <Navigation />
       <main className="main home">
         <TrendingCategories />
+        <WhyUplio />
       </main>
       {/* <Footer /> */}
     </>
