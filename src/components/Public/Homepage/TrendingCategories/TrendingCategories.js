@@ -6,7 +6,7 @@ import clothes2x from '../../../../assets/images/clothing-line-1@2x.jpg';
 
 const TrendingCategories = () => {
   return (
-    <section id="category" className="categories">
+    <section id="category" className="section categories">
       <div className="categories-wrapper">
         <div className="container">
           <h2 className="title title_size-m categories__title">

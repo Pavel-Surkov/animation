@@ -4,6 +4,67 @@
 	position: relative;
 	&__title {
 		position: absolute;
+		z-index: 2;
+		top: 24px;
+		left: 24px;
 		color: $secondary_app_color;
+	}
+	&__link {
+		display: flex;
+		&:hover {
+			& .filter {
+				opacity: 0.5;
+			}
+			& .category-item__explore {
+				& svg {
+					transform: translateX(8px);
+				}
+			}
+		}
+		&:active {
+			& .filter {
+				opacity: 0.3;
+			}
+			& .category-item__explore {
+				& svg {
+					transform: none;
+				}
+			}
+		}
+	}
+	&__img {
+		width: 100%;
+		height: 100%;
+		& .filter {
+			background: $primary_app_color;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+			opacity: 0.3;
+			transition: opacity 0.3s;
+		}
+		& img {
+			width: inherit;
+			height: inherit;
+			object-fit: cover;
+		}
+	}
+	&__explore {
+		position: absolute;
+		z-index: 2;
+		bottom: 24px;
+		right: 24px;
+		display: flex;
+		align-items: center;
+		& p {
+			color: $secondary_app_color;
+			margin-right: 26px;
+		}
+		& svg {
+			transition: transform 0.3s;
+		}
 	}
 }
