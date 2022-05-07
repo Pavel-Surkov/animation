@@ -1,2 +1,20 @@
+@import '../../../../theme/variable.module.scss';
+
 .how-works {
+	&__title {
+		text-align: center;
+		margin-bottom: 56px;
+	}
+	&__quote {
+		margin-top: 56px;
+		display: flex;
+		justify-content: center;
+		&-text {
+			max-width: 365px;
+			margin-right: 24px;
+		}
+	}
+	&-content {
+		display: flex;
+	}
 }

@@ -1,10 +1,234 @@
 import React from 'react';
 import './how-works.scss';
+import './creators.scss';
+import './suppliers.scss';
+import { useHistory } from 'react-router-dom';
+import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow';
 
 const HowItWorks = () => {
+  const history = useHistory();
+
   return (
     <section id="how-it-works" className="section how-works">
-      <div className="how-works__wrapper"></div>
+      <div className="how-works__wrapper">
+        <h2 className="title title_size-m how-works__title">How it works?</h2>
+        <div className="how-works__content-wrapper">
+          {/*  */}
+          <div className="how-works__bg"></div>
+          {/*  */}
+          <div className="container">
+            <div className="how-works-content">
+              <div className="suppliers">
+                <button className="title title_item suppliers-tab">
+                  [For suppliers]
+                </button>
+                <ol className="suppliers-list">
+                  <li className="suppliers-item">
+                    <div className="arrow">
+                      <svg
+                        width="16"
+                        height="38"
+                        viewBox="0 0 16 38"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7.29289 37.7071C7.68342 38.0976 8.31658 38.0976 8.70711 37.7071L15.0711 31.3431C15.4616 30.9526 15.4616 30.3195 15.0711 29.9289C14.6805 29.5384 14.0474 29.5384 13.6569 29.9289L8 35.5858L2.34315 29.9289C1.95262 29.5384 1.31946 29.5384 0.928933 29.9289C0.538409 30.3195 0.538409 30.9526 0.928934 31.3431L7.29289 37.7071ZM7 4.37114e-08L7 37L9 37L9 -4.37114e-08L7 4.37114e-08Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <div data-number="1." className="suppliers-item__num"></div>
+                    <h3 className="title title_item suppliers-item__title">
+                      Access Qualified Leads
+                    </h3>
+                    <p className="suppliers-item__text">
+                      Join us to access a network of qualified leads that fit
+                      your capabilities
+                    </p>
+                  </li>
+                  <li className="suppliers-item">
+                    <div className="arrow">
+                      <svg
+                        width="16"
+                        height="38"
+                        viewBox="0 0 16 38"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7.29289 37.7071C7.68342 38.0976 8.31658 38.0976 8.70711 37.7071L15.0711 31.3431C15.4616 30.9526 15.4616 30.3195 15.0711 29.9289C14.6805 29.5384 14.0474 29.5384 13.6569 29.9289L8 35.5858L2.34315 29.9289C1.95262 29.5384 1.31946 29.5384 0.928933 29.9289C0.538409 30.3195 0.538409 30.9526 0.928934 31.3431L7.29289 37.7071ZM7 4.37114e-08L7 37L9 37L9 -4.37114e-08L7 4.37114e-08Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <div data-number="2." className="suppliers-item__num"></div>
+                    <h3 className="title title_item suppliers-item__title">
+                      Provide Quotes
+                    </h3>
+                    <p className="suppliers-item__text">
+                      Quote to more opportunities faster and message with
+                      customers
+                    </p>
+                  </li>
+                  <li className="suppliers-item">
+                    <div className="arrow">
+                      <svg
+                        width="16"
+                        height="38"
+                        viewBox="0 0 16 38"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7.29289 37.7071C7.68342 38.0976 8.31658 38.0976 8.70711 37.7071L15.0711 31.3431C15.4616 30.9526 15.4616 30.3195 15.0711 29.9289C14.6805 29.5384 14.0474 29.5384 13.6569 29.9289L8 35.5858L2.34315 29.9289C1.95262 29.5384 1.31946 29.5384 0.928933 29.9289C0.538409 30.3195 0.538409 30.9526 0.928934 31.3431L7.29289 37.7071ZM7 4.37114e-08L7 37L9 37L9 -4.37114e-08L7 4.37114e-08Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <div data-number="3." className="suppliers-item__num"></div>
+                    <h3 className="title title_item suppliers-item__title">
+                      Accept Orders
+                    </h3>
+                    <p className="suppliers-item__text">
+                      Receive orders and get paid on time
+                    </p>
+                  </li>
+                  <li className="suppliers-item">
+                    <div className="arrow">
+                      <svg
+                        width="16"
+                        height="38"
+                        viewBox="0 0 16 38"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7.29289 37.7071C7.68342 38.0976 8.31658 38.0976 8.70711 37.7071L15.0711 31.3431C15.4616 30.9526 15.4616 30.3195 15.0711 29.9289C14.6805 29.5384 14.0474 29.5384 13.6569 29.9289L8 35.5858L2.34315 29.9289C1.95262 29.5384 1.31946 29.5384 0.928933 29.9289C0.538409 30.3195 0.538409 30.9526 0.928934 31.3431L7.29289 37.7071ZM7 4.37114e-08L7 37L9 37L9 -4.37114e-08L7 4.37114e-08Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <div data-number="4." className="suppliers-item__num"></div>
+                    <h3 className="title title_item suppliers-item__title">
+                      DONE!
+                    </h3>
+                    <p className="suppliers-item__text">It’s that simple!</p>
+                  </li>
+                </ol>
+              </div>
+              <div className="creators">
+                <button className="title title_item creators-tab">
+                  [For creators]
+                </button>
+                <ol className="creators-list">
+                  <li className="creators-item">
+                    <div className="arrow">
+                      <svg
+                        width="16"
+                        height="38"
+                        viewBox="0 0 16 38"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7.29289 37.7071C7.68342 38.0976 8.31658 38.0976 8.70711 37.7071L15.0711 31.3431C15.4616 30.9526 15.4616 30.3195 15.0711 29.9289C14.6805 29.5384 14.0474 29.5384 13.6569 29.9289L8 35.5858L2.34315 29.9289C1.95262 29.5384 1.31946 29.5384 0.928933 29.9289C0.538409 30.3195 0.538409 30.9526 0.928934 31.3431L7.29289 37.7071ZM7 4.37114e-08L7 37L9 37L9 -4.37114e-08L7 4.37114e-08Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <div data-number="1." className="creators-item__num"></div>
+                    <h3 className="title title_item creators-item__title">
+                      Submit Requirements
+                    </h3>
+                    <p className="creators-item__text">
+                      Send your request to all relevant suppliers in one click
+                    </p>
+                  </li>
+                  <li className="creators-item">
+                    <div className="arrow">
+                      <svg
+                        width="16"
+                        height="38"
+                        viewBox="0 0 16 38"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7.29289 37.7071C7.68342 38.0976 8.31658 38.0976 8.70711 37.7071L15.0711 31.3431C15.4616 30.9526 15.4616 30.3195 15.0711 29.9289C14.6805 29.5384 14.0474 29.5384 13.6569 29.9289L8 35.5858L2.34315 29.9289C1.95262 29.5384 1.31946 29.5384 0.928933 29.9289C0.538409 30.3195 0.538409 30.9526 0.928934 31.3431L7.29289 37.7071ZM7 4.37114e-08L7 37L9 37L9 -4.37114e-08L7 4.37114e-08Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <div data-number="2." className="creators-item__num"></div>
+                    <h3 className="title title_item creators-item__title">
+                      Get Multiple Quotes
+                    </h3>
+                    <p className="creators-item__text">
+                      Compare quotes and choose the best supplier that fit your
+                      requirements
+                    </p>
+                  </li>
+                  <li className="creators-item">
+                    <div className="arrow">
+                      <svg
+                        width="16"
+                        height="38"
+                        viewBox="0 0 16 38"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7.29289 37.7071C7.68342 38.0976 8.31658 38.0976 8.70711 37.7071L15.0711 31.3431C15.4616 30.9526 15.4616 30.3195 15.0711 29.9289C14.6805 29.5384 14.0474 29.5384 13.6569 29.9289L8 35.5858L2.34315 29.9289C1.95262 29.5384 1.31946 29.5384 0.928933 29.9289C0.538409 30.3195 0.538409 30.9526 0.928934 31.3431L7.29289 37.7071ZM7 4.37114e-08L7 37L9 37L9 -4.37114e-08L7 4.37114e-08Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <div data-number="2." className="creators-item__num"></div>
+                    <h3 className="title title_item creators-item__title">
+                      Order Samples
+                    </h3>
+                    <p className="creators-item__text">
+                      Place a sample, track your order and your supplier
+                      communications in one place
+                    </p>
+                  </li>
+                  <li className="creators-item">
+                    <div className="arrow">
+                      <svg
+                        width="16"
+                        height="38"
+                        viewBox="0 0 16 38"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7.29289 37.7071C7.68342 38.0976 8.31658 38.0976 8.70711 37.7071L15.0711 31.3431C15.4616 30.9526 15.4616 30.3195 15.0711 29.9289C14.6805 29.5384 14.0474 29.5384 13.6569 29.9289L8 35.5858L2.34315 29.9289C1.95262 29.5384 1.31946 29.5384 0.928933 29.9289C0.538409 30.3195 0.538409 30.9526 0.928934 31.3431L7.29289 37.7071ZM7 4.37114e-08L7 37L9 37L9 -4.37114e-08L7 4.37114e-08Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <div data-number="2." className="creators-item__num"></div>
+                    <h3 className="title title_item creators-item__title">
+                      DONE!
+                    </h3>
+                    <p className="creators-item__text">It’s that simple!</p>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="how-works__quote">
+          <h3 className="title title_item how-works__quote-text">
+            Tired of comlplicated processes?
+          </h3>
+          <ButtonWithRightArrow
+            content={'Make it easy'}
+            function={() => history.push({ pathname: '/quote/generic_quote' })}
+          />
+        </div>
+      </div>
     </section>
   );
 };
