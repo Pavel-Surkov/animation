@@ -6,7 +6,8 @@ import TrendingCategories from './TrendingCategories/TrendingCategories';
 import WhyUplio from './WhyUplio/WhyUplio';
 import Faq from './Faq/Faq';
 import ContactUs from './ContactUs/ContactUs';
-import InputElement from '../../../constant/public/Input/InputElement';
+import HowItWorks from './HowItWorks/HowItWorks';
+// import InputElement from '../../../constant/public/Input/InputElement';
 import Footer from '../../../constant/public/Footer/Footer';
 
 import classes from './Homepage.module.scss';
@@ -38,6 +39,7 @@ const Homepage = () => {
       <Navigation />
       <main className="main home">
         <TrendingCategories />
+        <HowItWorks />
         <WhyUplio />
         <Faq />
         <ContactUs />

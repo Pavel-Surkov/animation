@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './m-menu.scss';
 
-export const MobileMenu = ({ isSigned, menuOpened }) => {
+export const MobileMenu = ({ isSigned, menuOpened, setMenuOpened }) => {
   return (
     <div className={`m-menu ${menuOpened ? 'm-menu_opened' : null}`}>
       <div className="container">
@@ -12,19 +12,31 @@ export const MobileMenu = ({ isSigned, menuOpened }) => {
           </div>
           <ul className="m-menu-links">
             <li className="m-menu-links__link">
-              <NavLink className="link" to="/#categories">
+              <a
+                className="link"
+                href="/#categories"
+                onClick={() => setMenuOpened(false)}
+              >
                 Categories
-              </NavLink>
+              </a>
             </li>
             <li className="m-menu-links__link">
-              <NavLink className="link" to="/#how-it-works">
+              <a
+                className="link"
+                href="/#how-it-works"
+                onClick={() => setMenuOpened(false)}
+              >
                 How it works
-              </NavLink>
+              </a>
             </li>
             <li className="m-menu-links__link">
-              <NavLink className="link" to="/#faq">
+              <a
+                className="link"
+                href="/#faq"
+                onClick={() => setMenuOpened(false)}
+              >
                 FAQ
-              </NavLink>
+              </a>
             </li>
           </ul>
           {!isSigned && (

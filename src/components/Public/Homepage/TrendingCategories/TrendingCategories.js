@@ -18,7 +18,7 @@ const TrendingCategories = () => {
   const history = useHistory();
 
   return (
-    <section id="category" className="section categories">
+    <section id="categories" className="section categories">
       <div className="categories-wrapper">
         <div className="container">
           <h2 className="title title_size-m categories__title">

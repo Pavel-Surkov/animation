@@ -33,7 +33,6 @@ import {
 } from '../../../redux/actions/user.action';
 
 const Navigation = () => {
-  const [isSigned, setIsSigned] = useState(false);
   const [menuOpened, setMenuOpened] = useState(false);
   const [search, setSearch] = useState('');
 
@@ -42,7 +41,6 @@ const Navigation = () => {
   const dispatch = useDispatch();
 
   const userLoggedInState = useSelector((state) => state.user.userLoggedIn);
-
   const user = useSelector((state) => state.user.user);
 
   // const handleSignOut = () => {
@@ -81,19 +79,19 @@ const Navigation = () => {
             />
             <ul className="header-links">
               <li className="header-links__link">
-                <NavLink className="link" to="/#categories">
+                <a className="link" href="/#categories">
                   Categories
-                </NavLink>
+                </a>
               </li>
               <li className="header-links__link">
-                <NavLink className="link" to="/#how-it-works">
+                <a className="link" href="/#how-it-works">
                   How it works
-                </NavLink>
+                </a>
               </li>
               <li className="header-links__link">
-                <NavLink className="link" to="/#faq">
+                <a className="link" href="/#faq">
                   FAQ
-                </NavLink>
+                </a>
               </li>
             </ul>
             {!userLoggedInState && (
@@ -120,7 +118,11 @@ const Navigation = () => {
                 <span></span>
               </button>
             </div>
-            <MobileMenu isSigned={userLoggedInState} menuOpened={menuOpened} />
+            <MobileMenu
+              isSigned={userLoggedInState}
+              menuOpened={menuOpened}
+              setMenuOpened={setMenuOpened}
+            />
           </div>
         </div>
       </div>
