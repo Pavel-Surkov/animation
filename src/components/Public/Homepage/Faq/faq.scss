@@ -23,6 +23,7 @@
 		&__question {
 			width: 100%;
 			padding: 24px 0;
+			padding-right: 24px;
 			color: $secondary_app_color;
 			font-size: 2.4rem;
 			line-height: calc(32 / 24);
@@ -71,7 +72,7 @@
 	.faq {
 		&-block {
 			max-width: calc(((100vw - $max-width_container_md) / 2) + (($max-width_container_md * 10 / 12) - 6px));
-			padding: 104px 116px 176px calc((100vw - $max-width_container_md) / 2);
+			padding: 104px 116px 104px calc((100vw - $max-width_container_md) / 2);
 		}
 	}
 }
@@ -79,8 +80,8 @@
 @media screen and (max-width: 991px) {
 	.faq {
 		&-block {
-			max-width: calc(((100vw - $max-width_container_s) / 2) + (($max-width_container_s * 10 / 12) - 6px));
-			padding: 104px 116px 176px calc((100vw - $max-width_container_s) / 2);
+			max-width: none;
+			padding: 104px calc((100vw - $max-width_container_s) / 2) 176px calc((100vw - $max-width_container_s) / 2);
 		}
 	}
 }
@@ -90,6 +91,26 @@
 		&-block {
 			max-width: none;
 			padding: 40px calc((100vw - $max-width_container_xs) / 2) 56px calc((100vw - $max-width_container_xs) / 2);
+			&__title {
+				margin-bottom: 16px;
+			}
+			&__subtitle {
+				margin-bottom: 40px;
+			}
+		}
+		&-item {
+			&__question {
+				font-size: 1.8rem;
+				line-height: calc(24 / 18);
+				&::after {
+					top: 22px;
+				}
+			}
+			&__answer {
+				& p {
+					margin-bottom: 16px;
+				}
+			}
 		}
 	}
 }
