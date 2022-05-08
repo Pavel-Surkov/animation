@@ -79,6 +79,14 @@
 				margin-left: calc($max-width_container_md * 1.6 / 12 + 4px);
 			}
 		}
+		&-item {
+			&:nth-child(2) {
+				margin-left: 0;
+			}
+			&:nth-child(3) {
+				margin-left: 0;
+			}
+		}
 	}
 }
 
@@ -140,9 +148,29 @@
 
 @media screen and (max-width: 576px) {
 	.suppliers {
+		&-item {
+			grid-template-rows: auto 1fr;
+			grid-row-gap: 16px;
+			&__title {
+				display: flex;
+				align-items: center;
+				max-height: 56px;
+			}
+		}
 		&-tab {
 			font-size: 1.8rem;
 			line-height: calc(24 / 18);
+		}
+	}
+}
+
+@media screen and (max-width: 370px) {
+	.suppliers {
+		&-item {
+			grid-row-gap: 12px;
+			&__title {
+				max-height: none;
+			}
 		}
 	}
 }

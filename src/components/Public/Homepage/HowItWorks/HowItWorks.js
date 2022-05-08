@@ -4,6 +4,8 @@ import './creators.scss';
 import './suppliers.scss';
 import { useHistory } from 'react-router-dom';
 import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow';
+import save50 from '../../../../assets/svg/save50.svg';
+import time from '../../../../assets/svg/TIME.svg';
 
 const HowItWorks = () => {
   const [isMobile, setIsMobile] = useState(
@@ -41,9 +43,14 @@ const HowItWorks = () => {
       <div className="how-works__wrapper">
         <h2 className="title title_size-m how-works__title">How it works?</h2>
         <div className="how-works__content-wrapper">
-          {/*  */}
-          <div className="how-works__bg"></div>
-          {/*  */}
+          <div className="how-works__bg">
+            <div className="how-works__bg-save">
+              <img width="554" height="266" src={save50} alt="" />
+            </div>
+            <div className="how-works__bg-time">
+              <img width="601" height="256" src={time} alt="" />
+            </div>
+          </div>
           <div className="container">
             <div className="how-works-content">
               <div className="how-works__tabs">
