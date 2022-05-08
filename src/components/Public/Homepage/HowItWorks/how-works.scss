@@ -5,6 +5,11 @@
 		text-align: center;
 		margin-bottom: 56px;
 	}
+	&__tabs {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
 	&__quote {
 		margin-top: 56px;
 		display: flex;
@@ -13,8 +18,57 @@
 			max-width: 365px;
 			margin-right: 24px;
 		}
+		& .button-arrow {
+			& p {
+				letter-spacing: 0.1em;
+			}
+		}
 	}
 	&-content {
 		display: flex;
+		flex-wrap: wrap;
+	}
+	&__general-step {
+		margin-top: 40px;
+		width: 100%;
+		& .suppliers-item {
+			margin: 0 auto;
+		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.how-works {
+		&__title {
+			text-align: left;
+			padding-left: calc((100vw - $max-width_container_xs) / 2);
+		}
+		&__tabs {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-gap: 22px;
+			margin-bottom: 32px;
+		}
+		&__general-step {
+			margin-top: 24px;
+		}
+		&__quote {
+			margin-top: 40px;
+			flex-direction: column;
+			align-items: center;
+			&-text {
+				margin: 0;
+				margin-bottom: 24px;
+				max-width: 325px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.how-works {
+		&__title {
+			padding-left: 24px;
+		}
 	}
 }
