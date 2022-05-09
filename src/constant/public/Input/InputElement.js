@@ -18,6 +18,7 @@ const InputElement = (props) => {
             value={props.value}
             onChange={props.onChange}
             placeholder={props.placeholder}
+            required={props.required ? true : false}
           />
           <p className={classes.errorMessage}>
             {props.helperText ? <img src={errorIcon} alt="Uplio" /> : null}{' '}

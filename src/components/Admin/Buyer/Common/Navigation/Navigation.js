@@ -1,30 +1,31 @@
-import React, { useLayoutEffect, useEffect, useState, useRef } from 'react'
-import logo from '../../../../../assets/svg/logo_red_small.svg'
-import { Row, Col, Space, Button, Menu, Dropdown, Avatar, Divider } from 'antd'
-import classes from './Navigation.module.scss'
-import { useSelector, useDispatch } from 'react-redux'
-import { createBrowserHistory as history } from 'history'
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+import logo from '../../../../../assets/svg/logo_red_small.svg';
+import { Row, Col, Space, Button, Menu, Dropdown, Avatar, Divider } from 'antd';
+import classes from './Navigation.module.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { createBrowserHistory as history } from 'history';
 import {
   RotateRightOutlined,
   UserOutlined,
   DownOutlined,
-} from '@ant-design/icons'
-import { Link, useHistory } from 'react-router-dom'
-import Search from '../../../../common/Search/Search'
-import axios from 'axios'
+} from '@ant-design/icons';
+import { Link, useHistory } from 'react-router-dom';
+import Search from '../../../../common/Search/Search';
+import axios from 'axios';
 import {
   userLoggedOut,
   userDataStatus,
   userLoggedIn,
-} from '../../../../../redux/actions/user.action.js'
+} from '../../../../../redux/actions/user.action.js';
 
 const Navigation = () => {
-  const history = useHistory()
-  const refreshToken = sessionStorage.getItem('refresh')
-  const token = sessionStorage.getItem('token')
-  const dispatch = useDispatch()
-  const userLoggedInState = useSelector((state) => state.counter.userLoggedIn)
-  const userProfile = useSelector((state) => state.counter.user.profileImage)
+  const history = useHistory();
+  const refreshToken = sessionStorage.getItem('refresh');
+  const token = sessionStorage.getItem('token');
+  const dispatch = useDispatch();
+  const userLoggedInState = useSelector((state) => state.counter.userLoggedIn);
+  const userProfile = useSelector((state) => state.counter.user.profileImage);
+
   useEffect(() => {
     if (token !== null) {
       axios
@@ -34,14 +35,14 @@ const Navigation = () => {
           },
         })
         .then((res) => {
-          dispatch(userLoggedIn())
-          dispatch(userDataStatus(res.data.data))
+          dispatch(userLoggedIn());
+          dispatch(userDataStatus(res.data.data));
         })
         .catch((err) => {
-          console.log(err)
-        })
+          console.log(err);
+        });
     }
-  }, [])
+  }, []);
 
   const handleSignOut = () => {
     axios
@@ -49,20 +50,20 @@ const Navigation = () => {
         refreshToken: refreshToken,
       })
       .then((res) => {
-        console.log(res)
-        dispatch(userLoggedOut())
-        dispatch(userDataStatus(''))
-        sessionStorage.clear()
-        history.push('/')
+        console.log(res);
+        dispatch(userLoggedOut());
+        dispatch(userDataStatus(''));
+        sessionStorage.clear();
+        history.push('/');
       })
       .catch((err) => {
-        console.log(err)
-      })
-  }
-  const userName = useSelector((state) => state.counter.user.name)
+        console.log(err);
+      });
+  };
+  const userName = useSelector((state) => state.counter.user.name);
   const handleSignIn = () => {
-    history.push({ pathname: '/login' })
-  }
+    history.push({ pathname: '/login' });
+  };
   return (
     <>
       <div className={classes.header}>
@@ -146,6 +147,6 @@ const Navigation = () => {
         </Row>
       </div>
     </>
-  )
-}
-export default Navigation
+  );
+};
+export default Navigation;

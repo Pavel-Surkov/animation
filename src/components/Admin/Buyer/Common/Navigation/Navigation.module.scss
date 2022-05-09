@@ -1,19 +1,16 @@
-@import'../../../../../theme/variable.module.scss';
+@import '../../../../../theme/variable.module.scss';
 
-.header{
-	
+.header {
 	padding: 15px 30px;
 	border-bottom: 1px solid $grey_app_color;
-	
 }
 
-.navigationProfile{
-	text-align: right;
-}
-.dashboardButton{
-	font-family: 'Montserrat',sans-serif;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 12px !important;
-	line-height: 20px !important;
+.link {
+	text-transform: uppercase;
+	color: $primary_app_color;
+	&:hover {
+		background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
 }

@@ -50,9 +50,15 @@ const SignIn = (props) => {
     })
   }
 
+  const handleError = (data) => {
+    if (data.message === 'You are not registered with us') {
+      history.push({ pathname: '/signup' })
+    }
+  }
+
   const handleSignIn = (email, password) => {
     setLoader(true)
-    debugger
+
     // dispatch(postUserLogin(user))
 
     console.log(process.env.REACT_APP_API_URL)
@@ -73,6 +79,7 @@ const SignIn = (props) => {
           sessionStorage.setItem('refresh', res.data.tokens.refresh.token)
         } else {
           openNotificationWithIcon('warning', 'Oops', res.data.message)
+          handleError(res.data)
         }
       })
       .catch((err) => {

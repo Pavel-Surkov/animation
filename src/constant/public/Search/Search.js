@@ -1,49 +1,53 @@
-import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import classes from './Search.module.scss'
-import cross from '../../../assets/svg/clear.svg'
-import { useParams } from 'react-router'
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import classes from './Search.module.scss';
+import cross from '../../../assets/svg/clear.svg';
+import { useParams } from 'react-router';
 
 const Search = (props) => {
-  const history = useHistory()
-  const [search, setSearch] = useState('')
-  const [clear, setClear] = useState(false)
+  const history = useHistory();
+  const [search, setSearch] = useState('');
+  const [clear, setClear] = useState(false);
 
   useEffect(() => {
     if (search !== '') {
-      setClear(true)
+      setClear(true);
     } else {
-      setClear(false)
+      setClear(false);
     }
-  }, [search])
+  }, [search]);
 
   const handleClear = () => {
-    setSearch('')
-  }
+    setSearch('');
+  };
 
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
-      history.push({ pathname: `/products/${search}` })
+      history.push({ pathname: `/products/${search}` });
     }
-  }
+  };
   return (
-    <div className={classes.inputContainer}>
+    <div
+      className={
+        props.containerClass ? props.containerClass : classes.inputContainer
+      }
+    >
       <input
         type="text"
         style={{ width: `${props.width}` }}
-        className={classes.input}
+        className="input"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder={props.placeholder}
         onKeyPress={handleSearch}
       />
-      <button
+      {/* <button
         onClick={() => handleClear()}
         className={!clear ? classes.icon : classes.iconVisible}
       >
         <img src={cross} alt="Uplio" />
-      </button>
+      </button> */}
     </div>
-  )
-}
-export default Search
+  );
+};
+export default Search;

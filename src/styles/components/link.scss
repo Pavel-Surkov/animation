@@ -1,0 +1,22 @@
+.link {
+	font-family: 'Poppins';
+	font-size: 1.8rem;
+	line-height: calc(24 / 18);
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	font-weight: 500;
+	color: $primary_app_color;
+	&_fade {
+		background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	&:hover {
+		background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	&:active {
+		opacity: 0.6;
+	}
+}

@@ -1,0 +1,132 @@
+@import '../../../../theme/variable.module.scss';
+
+.category-item {
+	position: relative;
+	&__title {
+		position: absolute;
+		z-index: 2;
+		top: 24px;
+		left: 24px;
+		color: $secondary_app_color;
+	}
+	&__see {
+		margin-top: 40px;
+	}
+	&__subtitle {
+		margin-top: 8px;
+		& p {
+			font-size: 1.6rem;
+			font-weight: 300;
+			line-height: calc(24 / 16);
+			letter-spacing: 0.06em;
+			margin: 0;
+		}
+	}
+	&_text {
+		max-width: 325px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		&_mobile {
+			display: none;
+		}
+	}
+	&__link {
+		display: flex;
+		&:hover {
+			& .filter {
+				opacity: 0.5;
+			}
+			& .category-item__explore {
+				& svg {
+					transform: translateX(8px);
+				}
+			}
+		}
+		&:active {
+			& .filter {
+				opacity: 0.3;
+			}
+			& .category-item__explore {
+				& svg {
+					transform: none;
+				}
+			}
+		}
+	}
+	&__img {
+		width: 100%;
+		height: 100%;
+		& .filter {
+			background: $primary_app_color;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+			opacity: 0.3;
+			transition: opacity 0.3s;
+		}
+		& img {
+			width: inherit;
+			height: inherit;
+			object-fit: cover;
+		}
+	}
+	&__explore {
+		position: absolute;
+		z-index: 2;
+		bottom: 24px;
+		right: 24px;
+		display: flex;
+		align-items: center;
+		& p {
+			color: $secondary_app_color;
+			margin-right: 26px;
+		}
+		& svg {
+			transition: transform 0.3s;
+		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.category-item {
+		&_text {
+			display: none;
+			&_mobile {
+				display: block;
+			}
+			&__title {
+				font-size: 2.4rem;
+				line-height: calc(32 / 24);
+			}
+		}
+		&__see {
+			& .button {
+				padding-left: 2em;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.category-item {
+		&_mobile_hidden {
+			display: none;
+		}
+		&_text {
+			&_mobile {
+				max-width: 360px;
+				padding-top: 16px;
+			}
+		}
+		&__see {
+			margin-top: 24px;
+			& .button {
+				padding-left: 2.667em;
+			}
+		}
+	}
+}

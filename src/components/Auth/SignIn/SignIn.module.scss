@@ -1,19 +1,19 @@
-@import'../../../theme/variable.module.scss';
+@import '../../../theme/variable.module.scss';
 
-.container{
+.container {
 	max-width: 730px;
 	margin: 0 auto;
 }
 
-.sideTitle{
+.sideTitle {
 	margin-top: 128px;
 	margin-bottom: 62px;
-	background: linear-gradient(90deg, #F1408B 0%, #F34242 100%);
+	background: linear-gradient(90deg, #f1408b 0%, #f34242 100%);
 	width: 26%;
 	text-align: right;
 	padding: 14px 0;
 	padding-right: 58px;
-	h2{
+	h2 {
 		margin: 0;
 
 		font-family: 'Poppins';
@@ -27,13 +27,12 @@
 
 		/* BG and Text */
 
-		color: #FFFFFF;
+		color: #ffffff;
 	}
-
 }
-.mainContent{
-	margin-bottom: 184px;	
-	h3{
+.mainContent {
+	margin-bottom: 184px;
+	h3 {
 		margin-top: 32px;
 		font-family: 'Poppins';
 		font-style: normal;
@@ -44,18 +43,18 @@
 
 		letter-spacing: 0.06em;
 	}
-	p{
+	p {
 		font-family: 'Poppins';
 		font-style: normal;
 		font-weight: 500;
 		font-size: 12px;
 		line-height: 20px;
-	}	
+	}
 }
-.actionButton{
-	margin-top: 64px;		
+.actionButton {
+	margin-top: 64px;
 	width: 350px;
-	h4{
+	h4 {
 		margin-top: 24px;
 		width: 350px;
 		text-align: left;
@@ -67,38 +66,22 @@
 	}
 }
 
-
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 
 /* Portrait and Landscape */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2) { 
-
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
 }
 
 /* Portrait */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: portrait) { 
-	.container{
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+	.container {
 		max-width: 350px;
 		margin: 0 auto;
-	}	
-	
-
+	}
 }
 
 /* Landscape */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: landscape) { 
-
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
 }
 
 /* ----------- iPhone 6+, 7+ and 8+ ----------- */

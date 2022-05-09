@@ -1,0 +1,28 @@
+.list {
+	font-size: 1.8rem;
+	color: $secondary_app_color;
+	font-weight: 500;
+	line-height: calc(24 / 18);
+	letter-spacing: 0.02em;
+	& li {
+		margin-bottom: 16px;
+		position: relative;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	&-arrow {
+		& li {
+			padding-left: 44px;
+			&::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 3px;
+				width: 25px;
+				height: 16px;
+				background: url('../../assets/svg/Arrow_Pointer.svg') no-repeat 50%;
+			}
+		}
+	}
+}

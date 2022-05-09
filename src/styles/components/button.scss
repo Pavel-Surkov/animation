@@ -1,0 +1,55 @@
+.button {
+	display: inline-block;
+	color: $secondary_app_color;
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1.8rem;
+	line-height: calc(24 / 18);
+	padding: 0.6667em 2.222em;
+	transition: 0.3s;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
+	&:hover {
+		color: $secondary_app_color;
+		background: linear-gradient(90deg, #f1408b 0%, #f34242 100%);
+		-webkit-transition: background 0.3s linear;
+		-ms-transition: background 0.3s linear;
+		transition: background 0.3s linear;
+	}
+	&:active {
+		opacity: 0.6;
+	}
+	&:disabled {
+		box-shadow: 0px 4px 12px 0px #0000001a inset;
+		opacity: 0.1;
+	}
+	&-arrow {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.333em 2.667em;
+		width: 100%;
+		max-width: 325px;
+		& p {
+			margin: 0;
+			margin-right: 30px;
+		}
+		& img {
+			transition: transform 0.3s;
+		}
+		&:hover {
+			& img {
+				transform: translateX(16px);
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.button {
+		&-arrow {
+		}
+	}
+}

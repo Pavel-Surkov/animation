@@ -1,70 +1,71 @@
 @import '../../../theme/variable.module.scss';
 
-.buttonDisabled{
-		transition: 800ms;
-		padding-top: 24px;
-		padding-bottom: 24px;
-		padding-right: 50px;
-		padding-left: 50px;
-		width: 350px;	
-		text-align: left;	
-		font-family: 'Poppins';
-		font-style: normal;
-		font-weight: 500;
-		font-size: 18px;
-		line-height: 24px;
-		/* identical to box height, or 133% */
-		color: $secondary_app_color;
-		letter-spacing: 0.02em;
-		margin: 0;
-		opacity: 0.2;	
-		background: linear-gradient(90deg, #F34242 0%, #F1408B 100%);	
+.buttonDisabled {
+	transition: 800ms;
+	padding-top: 24px;
+	padding-bottom: 24px;
+	padding-right: 50px;
+	padding-left: 50px;
+	width: 350px;
+	text-align: left;
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 24px;
+	/* identical to box height, or 133% */
+	color: $secondary_app_color;
+	letter-spacing: 0.02em;
+	margin: 0;
+	opacity: 0.2;
+	background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
 }
 
-.button{
-		transition: 800ms;
-		padding-top: 24px;
-		padding-bottom: 24px;
-		padding-right: 50px;
-		padding-left: 50px;
-		width: 350px;	
-		text-align: left;	
-		font-family: 'Poppins';
-		font-style: normal;
-		font-weight: 500;
-		font-size: 18px;
-		line-height: 24px;
-		/* identical to box height, or 133% */
-		color: $secondary_app_color;
-		letter-spacing: 0.02em;
-		margin: 0;
-			
-	background: linear-gradient(90deg, #F34242 0%, #F1408B 100%);
-	
+.button {
+	transition: 800ms;
+	padding-top: 24px;
+	padding-bottom: 24px;
+	padding-right: 50px;
+	padding-left: 50px;
+	width: 350px;
+	text-align: left;
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 24px;
+	/* identical to box height, or 133% */
+	color: $secondary_app_color;
+	letter-spacing: 0.02em;
+	margin: 0;
+
+	background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
 }
 
-.img{
+.img {
 	margin-left: 0px;
 	position: absolute;
 	transition: 800ms;
 }
 
-.button:hover{
+.button:hover {
 	transition: 800ms;
-	background:linear-gradient(90deg, #F1408B 0%, #F34242 100%);
+	background: linear-gradient(90deg, #f1408b 0%, #f34242 100%);
 	padding-right: 40px;
-	img{
-		transition: 800ms;	
+	img {
+		transition: 800ms;
 		margin-left: 10px;
 		// position: absolute;
 	}
 }
 
-.button:active{
+.button:active {
 	opacity: 0.6;
 }
 
-button, input[type="submit"], input[type="reset"] {
+button,
+input[type='submit'],
+input[type='reset'] {
 	background: none;
 	color: inherit;
 	border: none;

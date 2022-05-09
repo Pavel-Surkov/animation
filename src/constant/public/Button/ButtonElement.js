@@ -1,5 +1,5 @@
-import React from 'react'
-import classes from './ButtonElement.module.scss'
+import React from 'react';
+import classes from './ButtonElement.module.scss';
 const ButtonElement = (props) => {
   return (
     <>
@@ -11,6 +11,6 @@ const ButtonElement = (props) => {
         {props.content}
       </button>
     </>
-  )
-}
-export default ButtonElement
+  );
+};
+export default ButtonElement;
