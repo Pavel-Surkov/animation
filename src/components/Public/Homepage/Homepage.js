@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Space, Row, Col } from 'antd';
 import Navigation from './../../../constant/public/Navigation/Navigation';
+import HomeMain from './HomeMain/HomeMain';
 import TrendingCategories from './TrendingCategories/TrendingCategories';
 import WhyUplio from './WhyUplio/WhyUplio';
 import Faq from './Faq/Faq';
@@ -38,6 +39,7 @@ const Homepage = () => {
     <>
       <Navigation />
       <main className="main home">
+        <HomeMain />
         <TrendingCategories />
         <HowItWorks />
         <WhyUplio />

@@ -1,0 +1,16 @@
+.home-main {
+	&-wrapper {
+		padding-top: 76px;
+	}
+	&__content {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 24px;
+	}
+	&__title {
+		margin-bottom: 40px;
+	}
+	&__subtitle {
+		margin-bottom: 16px;
+	}
+}
