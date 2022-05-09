@@ -8,6 +8,7 @@ import WhyUplio from './WhyUplio/WhyUplio';
 import Faq from './Faq/Faq';
 import ContactUs from './ContactUs/ContactUs';
 import HowItWorks from './HowItWorks/HowItWorks';
+import Reviews from './Reviews/Reviews';
 // import InputElement from '../../../constant/public/Input/InputElement';
 import Footer from '../../../constant/public/Footer/Footer';
 
@@ -44,6 +45,7 @@ const Homepage = () => {
         <HowItWorks />
         <WhyUplio />
         <Faq />
+        <Reviews />
         <ContactUs />
       </main>
       <Footer />
