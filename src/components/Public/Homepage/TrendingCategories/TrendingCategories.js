@@ -75,7 +75,7 @@ const TrendingCategories = () => {
             <HomeCategoryItem
               title={'[FURNITURE]'}
               image={{ quality1x: furniture, quality2x: furniture2x }}
-              link={'/products/All'}
+              link={'/products/Furniture'}
               className="category-item_mobile_hidden"
             />
             <HomeCategoryItem

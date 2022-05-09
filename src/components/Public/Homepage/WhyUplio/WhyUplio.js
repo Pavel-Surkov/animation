@@ -11,7 +11,7 @@ const WhyUplio = () => {
   const history = useHistory();
 
   return (
-    <section className="section why">
+    <section id="why" className="section why">
       <div className="why-wrapper">
         <div className="container">
           <h2 className="title title_size-m why__title">Why Uplio?</h2>

@@ -23,7 +23,9 @@ const HomeMain = () => {
               <div className="home-main__btn">
                 <ButtonWithRightArrow
                   content={'Get a quote'}
-                  function={() => history.push({ pathname: '/quote' })}
+                  function={() =>
+                    history.push({ pathname: '/quote/generic_quotation' })
+                  }
                 />
               </div>
             </div>

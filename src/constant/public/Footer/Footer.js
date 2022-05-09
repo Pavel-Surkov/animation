@@ -131,27 +131,30 @@ const Footer = () => {
               </div>
               <ul className="footer-navigation">
                 <li className="footer-navigation__item">
-                  <Link to="/about" className="link footer-navigation__link">
+                  <a href="/#why" className="link footer-navigation__link">
                     About us
-                  </Link>
+                  </a>
                 </li>
                 <li className="footer-navigation__item">
-                  <Link
-                    to="/#how-it-works"
+                  <a
+                    href="/#how-it-works"
                     className="link footer-navigation__link"
                   >
                     How it works
-                  </Link>
+                  </a>
                 </li>
                 <li className="footer-navigation__item">
-                  <Link to="/faq" className="link footer-navigation__link">
+                  <a href="/#faq" className="link footer-navigation__link">
                     FAQ
-                  </Link>
+                  </a>
                 </li>
                 <li className="footer-navigation__item">
-                  <Link to="" className="link footer-navigation__link">
+                  <a
+                    href="/#categories"
+                    className="link footer-navigation__link"
+                  >
                     Categories
-                  </Link>
+                  </a>
                 </li>
               </ul>
               <div className="footer-contact">
