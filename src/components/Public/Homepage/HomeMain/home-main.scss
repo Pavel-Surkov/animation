@@ -6,11 +6,39 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		grid-gap: 24px;
+		&-img {
+			& img {
+				max-width: 100%;
+				height: auto;
+			}
+		}
 	}
 	&__title {
 		margin-bottom: 40px;
 	}
 	&__subtitle {
 		margin-bottom: 16px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.home-main {
+		&-wrapper {
+			padding-top: 32px;
+		}
+		&__content {
+			grid-template-columns: 100%;
+			&-img {
+				& img {
+					display: none;
+				}
+			}
+			&-text {
+				max-width: 500px;
+			}
+		}
+		&__title {
+			margin-bottom: 32px;
+		}
 	}
 }

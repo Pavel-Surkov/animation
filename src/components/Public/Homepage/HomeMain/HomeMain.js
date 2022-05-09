@@ -15,7 +15,7 @@ const HomeMain = () => {
           <div className="home-main__content">
             <div className="home-main__content-text">
               <h1 className="title title_size-l home-main__title">
-                Convert your&nbsp;dream into a product
+                Convert your&nbsp;dream into a&nbsp;product
               </h1>
               <div className="title title_item home-main__subtitle">
                 Find a trusted supplier
