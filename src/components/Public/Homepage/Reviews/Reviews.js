@@ -60,7 +60,7 @@ const Reviews = () => {
       const activeIndex = swiper.activeIndex;
       const prevIndex = swiper.previousIndex;
 
-      console.log(activeIndex, prevIndex, lastMainSlide);
+      // console.log(activeIndex, prevIndex, lastMainSlide);
 
       if (prevIndex === 0 || prevIndex === lastMainSlide) {
         return;
