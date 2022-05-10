@@ -21,3 +21,31 @@
 		}
 	}
 }
+
+@media screen and (max-width: 767px) {
+	.reviews {
+		&-left {
+			margin-right: 17px;
+			& svg {
+				max-width: 40px;
+			}
+			&:hover {
+				transform: translateX(-12px);
+			}
+			&:active {
+				transform: none;
+			}
+		}
+		&-right {
+			& svg {
+				max-width: 40px;
+			}
+			&:hover {
+				transform: translateX(12px);
+			}
+			&:active {
+				transform: none;
+			}
+		}
+	}
+}
