@@ -11,6 +11,7 @@
 	padding: 20px 0;
 	transition: transform 0.3s;
 	transform: translateX(100%);
+	overflow: scroll;
 	&_opened {
 		transform: none;
 	}
@@ -36,6 +37,11 @@
 				margin-bottom: 0;
 			}
 		}
+		&_signed {
+			margin-bottom: 0;
+			padding-bottom: 24px;
+			border-bottom: 1px solid $light_lightgrey_app_color;
+		}
 	}
 	&__sign {
 		align-self: flex-start;
@@ -44,5 +50,39 @@
 		align-items: center;
 		width: 100%;
 		max-width: 247px;
+	}
+	&-signed {
+		padding: 24px 0;
+		width: 100%;
+		&__title {
+			text-align: center;
+		}
+		&__list {
+			padding-top: 16px;
+		}
+		&__item {
+			margin-bottom: 16px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+			&_messages {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				& .m-menu__messages {
+					width: 20px;
+					height: 20px;
+					background: $average_grey_app_color;
+					color: $secondary_app_color;
+					font-size: 1.2rem;
+					line-height: 1;
+					letter-spacing: 0.02em;
+					font-weight: 700;
+					display: grid;
+					place-items: center;
+					border-radius: 50%;
+				}
+			}
+		}
 	}
 }
