@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-import './footer.scss'
-import axios from 'axios'
-import * as yup from 'yup'
-import { Formik, useFormik } from 'formik'
-import { Link } from 'react-router-dom'
-import logo from '../../../assets/svg/logo_rectangle_black.svg'
-import { Row, Col, Space } from 'antd'
-import SubscribePopup from '../SubscribePopup/SubscribePopup'
-import InputElement from '../Input/InputElement'
-import top from '../../../assets/svg/back_to_top.svg'
-import FormList from 'antd/lib/form/FormList'
+import React, { useState } from 'react';
+import './footer.scss';
+import axios from 'axios';
+import * as yup from 'yup';
+import { Formik, useFormik } from 'formik';
+import { Link } from 'react-router-dom';
+import logo from '../../../assets/svg/logo_rectangle_black.svg';
+import { Row, Col, Space } from 'antd';
+import SubscribePopup from '../SubscribePopup/SubscribePopup';
+import InputElement from '../Input/InputElement';
+import top from '../../../assets/svg/back_to_top.svg';
+import FormList from 'antd/lib/form/FormList';
 
 const Footer = () => {
   const Formik = useFormik({
@@ -20,23 +20,23 @@ const Footer = () => {
       email: yup.string().email('Invalid email.').required('Email is Required'),
     }),
     onSubmit: (values) => {
-      debugger
+      debugger;
     },
-  })
+  });
 
-  const [email, setEmail] = useState('')
-  const [popupOpened, setPopupOpened] = useState(false)
+  const [email, setEmail] = useState('');
+  const [popupOpened, setPopupOpened] = useState(false);
 
   const handleSubscribe = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    document.documentElement.classList.add('is-locked')
+    document.documentElement.classList.add('is-locked');
 
-    setPopupOpened(true)
-    handleSubmit()
-  }
+    setPopupOpened(true);
+    handleSubmit();
+  };
 
-  const { setFieldValue } = Formik
+  const { setFieldValue } = Formik;
 
   const handleSubmit = () => {
     axios
@@ -44,12 +44,12 @@ const Footer = () => {
         email: Formik.values.email,
       })
       .then((res) => {
-        setFieldValue('email', '')
+        setFieldValue('email', '');
       })
       .catch((err) => {
-        console.log(err)
-      })
-  }
+        console.log(err);
+      });
+  };
 
   return (
     <>
@@ -243,10 +243,10 @@ const Footer = () => {
                 <p>@2022 Uplio, Inc. All rights reserved</p>
               </div>
               <div className="footer-bottom__terms">
-                <p>TERMS & CONDITIONS</p>
+                <Link to="/terms-conditions">TERMS & CONDITIONS</Link>
               </div>
               <div className="footer-bottom__policy">
-                <p>PRIVACY POLICY</p>
+                <Link to="/privacy-policy">PRIVACY POLICY</Link>
               </div>
             </div>
           </div>
@@ -255,6 +255,6 @@ const Footer = () => {
       <div className={`blocker ${popupOpened ? 'blocker_opened' : null}`}></div>
       <SubscribePopup isOpened={popupOpened} setOpened={setPopupOpened} />
     </>
-  )
-}
-export default Footer
+  );
+};
+export default Footer;

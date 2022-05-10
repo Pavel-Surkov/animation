@@ -1,16 +1,16 @@
-import React from 'react'
-import { Row, Col, Space } from 'antd'
-import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow'
-import ProgressBar from '../ProgressBar/ProgressBar'
-import classes from './PostSignUp.module.scss'
+import React from 'react';
+import { Row, Col, Space } from 'antd';
+import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import classes from './PostSignUp.module.scss';
 
-import image from '../../../../assets/images/g12.png'
-import { Link } from 'react-router-dom'
+import image from '../../../../assets/images/g12.png';
+import { Link } from 'react-router-dom';
 
 const PostSignUp = (props) => {
   const handleSubmit = () => {
-    props.handleSubmit()
-  }
+    props.handleSubmit();
+  };
   return (
     <>
       <div className={classes.sideTitle}>
@@ -47,15 +47,13 @@ const PostSignUp = (props) => {
                 <Col lg={12} md={12} sm={24} xs={24}></Col>
                 <Col lg={12} md={12} sm={0} xs={0}>
                   <div className={classes.actionButtonSection}>
-                    <Space size={48}>
-                      <button onClick={() => props.setQuoteView('preSignUp')}>
-                        PREVIOUS
-                      </button>
-                      <ButtonWithRightArrow
-                        content="Submit"
-                        function={() => handleSubmit()}
-                      />
-                    </Space>
+                    <button onClick={() => props.setQuoteView('preSignUp')}>
+                      PREVIOUS
+                    </button>
+                    <ButtonWithRightArrow
+                      content="Submit"
+                      function={() => handleSubmit()}
+                    />
                     <p>
                       By submitting this form, you acknowledge that you have
                       read and agree to our{' '}
@@ -72,15 +70,13 @@ const PostSignUp = (props) => {
                 </Col>
                 <Col lg={0} md={0} sm={24} xs={24}>
                   <div className={classes.actionButtonSection}>
-                    <Space direction="vertical" size={48}>
-                      <ButtonWithRightArrow
-                        content="Submit"
-                        function={() => handleSubmit()}
-                      />
-                      <button onClick={() => props.setQuoteView('preSignUp')}>
-                        PREVIOUS
-                      </button>
-                    </Space>
+                    <ButtonWithRightArrow
+                      content="Submit"
+                      function={() => handleSubmit()}
+                    />
+                    <button onClick={() => props.setQuoteView('preSignUp')}>
+                      PREVIOUS
+                    </button>
                     <p>
                       By submitting this form, you acknowledge that you have
                       read and agree to our{' '}
@@ -101,6 +97,6 @@ const PostSignUp = (props) => {
         </div>
       </div>
     </>
-  )
-}
-export default PostSignUp
+  );
+};
+export default PostSignUp;

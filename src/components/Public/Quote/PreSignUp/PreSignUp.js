@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
-import classes from './PreSignUp.module.scss'
-import ProgressBar from '../ProgressBar/ProgressBar'
-import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow'
-import { Row, Col, Space } from 'antd'
-import InputElement from '../../../../constant/public/Input/InputElement'
+import classes from './PreSignUp.module.scss';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow';
+import { Row, Col, Space } from 'antd';
+import InputElement from '../../../../constant/public/Input/InputElement';
 
 const PreSignUp = (props) => {
-  const [disable, setDisable] = useState(true)
+  const [disable, setDisable] = useState(true);
 
   useEffect(() => {
     if (props.Formik.values.name !== '' && props.Formik.values.email !== '') {
-      setDisable(false)
+      setDisable(false);
     }
-  }, [props])
+  }, [props]);
 
   return (
     <>
@@ -59,7 +59,7 @@ const PreSignUp = (props) => {
               <Col lg={12} md={12} sm={0} xs={0}></Col>
               <Col lg={12} md={12} sm={0} xs={0}>
                 <div className={classes.actionButtonSection}>
-                  <Space size={48}>
+                  <Space size={48} style={{ width: '100%' }}>
                     <button
                       onClick={() => props.setQuoteView('uploadDocument')}
                     >
@@ -75,18 +75,14 @@ const PreSignUp = (props) => {
               </Col>
               <Col lg={0} md={0} sm={24} xs={24}>
                 <div className={classes.actionButtonSection}>
-                  <Space direction="vertical" size={48}>
-                    <ButtonWithRightArrow
-                      disabled={disable}
-                      content="NEXT"
-                      function={() => props.setQuoteView('postSignUp')}
-                    />
-                    <button
-                      onClick={() => props.setQuoteView('uploadDocument')}
-                    >
-                      PREVIOUS
-                    </button>
-                  </Space>
+                  <ButtonWithRightArrow
+                    disabled={disable}
+                    content="NEXT"
+                    function={() => props.setQuoteView('postSignUp')}
+                  />
+                  <button onClick={() => props.setQuoteView('uploadDocument')}>
+                    PREVIOUS
+                  </button>
                 </div>
               </Col>
             </Row>
@@ -94,6 +90,6 @@ const PreSignUp = (props) => {
         </div>
       </div>
     </>
-  )
-}
-export default PreSignUp
+  );
+};
+export default PreSignUp;

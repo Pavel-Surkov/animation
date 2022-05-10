@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow'
+import React, { useEffect, useState } from 'react';
+import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow';
 
-import { Row, Col, Space } from 'antd'
-import ProgressBar from '../ProgressBar/ProgressBar'
-import classes from './ProjectDescription.module.scss'
-import TextInput from '../../../../constant/public/TextInput/TextInput'
+import { Row, Col, Space } from 'antd';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import classes from './ProjectDescription.module.scss';
+import TextInput from '../../../../constant/public/TextInput/TextInput';
 const ProjectDescription = (props) => {
-  const [disabled, setDisabled] = useState(true)
-  const [value, setValue] = useState('')
+  const [disabled, setDisabled] = useState(true);
+  const [value, setValue] = useState('');
 
   useEffect(() => {
     if (value !== '') {
-      setDisabled(false)
-      props.setProjectDescription(value)
+      setDisabled(false);
+      props.setProjectDescription(value);
     }
-  }, [value])
+  }, [value]);
 
   return (
     <>
@@ -46,22 +46,20 @@ const ProjectDescription = (props) => {
               <Col lg={12} md={12} xs={0} sm={0}></Col>
               <Col lg={12} md={12} xs={0} sm={0}>
                 <div className={classes.actionButtonSection}>
-                  <Space size={48}>
-                    <button
-                      className={classes.actionButton}
-                      onClick={() => props.setQuoteView('selectCategory')}
-                    >
-                      PREVIOUS
-                    </button>
-                    <ButtonWithRightArrow
-                      disabled={disabled}
-                      content="NEXT"
-                      function={() => props.setQuoteView('selectQuantity')}
-                    />
-                  </Space>
+                  <button
+                    className={classes.actionButton}
+                    onClick={() => props.setQuoteView('selectCategory')}
+                  >
+                    PREVIOUS
+                  </button>
+                  <ButtonWithRightArrow
+                    disabled={disabled}
+                    content="NEXT"
+                    function={() => props.setQuoteView('selectQuantity')}
+                  />
                 </div>
               </Col>
-              <Col lg={12} md={12} xs={24} sm={24}>
+              {/* <Col lg={12} md={12} xs={24} sm={24}>
                 <div className={classes.actionButtonSection}>
                   <Space direction="vertical" size={48}>
                     <ButtonWithRightArrow
@@ -77,12 +75,12 @@ const ProjectDescription = (props) => {
                     </button>
                   </Space>
                 </div>
-              </Col>
+              </Col> */}
             </Row>
           </div>
         </div>
       </div>
     </>
-  )
-}
-export default ProjectDescription
+  );
+};
+export default ProjectDescription;

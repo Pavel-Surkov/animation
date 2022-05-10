@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-import classes from './InputElement.module.scss'
-import eye from '../../../assets/svg/password_eye.svg'
-import clsx from 'clsx'
-import errorIcon from '../../../assets/svg/error_icon.svg'
+import React, { useState } from 'react';
+import classes from './InputElement.module.scss';
+import eye from '../../../assets/svg/password_eye.svg';
+import clsx from 'clsx';
+import errorIcon from '../../../assets/svg/error_icon.svg';
 const InputElement = (props) => {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false);
 
   return (
     <>
       {props.type !== 'password' ? (
-        <>
+        <div className={classes.inputWrapper}>
           <input
             name={props.name}
             type={props.type !== undefined ? props.type : 'text'}
@@ -25,9 +25,9 @@ const InputElement = (props) => {
             {props.helperText ? <img src={errorIcon} alt="Uplio" /> : null}{' '}
             {props.helperText}
           </p>
-        </>
+        </div>
       ) : (
-        <>
+        <div className={classes.inputWrapper}>
           <div className={classes.inputContainer}>
             <input
               name={props.name}
@@ -51,9 +51,9 @@ const InputElement = (props) => {
             {props.helperText ? <img src={errorIcon} alt="Uplio" /> : null}{' '}
             {props.helperText}
           </p>
-        </>
+        </div>
       )}
     </>
-  )
-}
-export default InputElement
+  );
+};
+export default InputElement;

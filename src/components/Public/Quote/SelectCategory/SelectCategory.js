@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
-import { Space, Row, Col } from 'antd'
+import { Space, Row, Col } from 'antd';
 
-import classes from './SelectCategory.module.scss'
-import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow'
-import ProgressBar from '../ProgressBar/ProgressBar'
-import InputWithDropDown from '../../../../constant/public/InputWithDropDown/InputWithDropDown'
-import InputElement from '../../../../constant/public/Input/InputElement'
+import classes from './SelectCategory.module.scss';
+import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import InputWithDropDown from '../../../../constant/public/InputWithDropDown/InputWithDropDown';
+import InputElement from '../../../../constant/public/Input/InputElement';
 
 const SelectQuantity = (props) => {
-  const [dropdown, setDropdown] = useState('')
-  const [otherCategory, setOtherCategory] = useState('')
-  const [disable, setDisable] = useState(true)
+  const [dropdown, setDropdown] = useState('');
+  const [otherCategory, setOtherCategory] = useState('');
+  const [disable, setDisable] = useState(true);
 
   const data = [
     { id: 1, label: 'Apparel' },
@@ -20,21 +20,21 @@ const SelectQuantity = (props) => {
     { id: 4, label: 'Home Décor' },
     { id: 5, label: 'Textile' },
     { id: 6, label: 'Others' },
-  ]
+  ];
 
   useEffect(() => {
     if (dropdown !== '') {
       if (dropdown === 'Others') {
         if (otherCategory !== '') {
-          setDisable(false)
-          props.setCategory(otherCategory)
+          setDisable(false);
+          props.setCategory(otherCategory);
         }
       } else {
-        setDisable(false)
-        props.setCategory(dropdown)
+        setDisable(false);
+        props.setCategory(dropdown);
       }
     }
-  }, [dropdown, otherCategory])
+  }, [dropdown, otherCategory]);
 
   return (
     <>
@@ -75,19 +75,17 @@ const SelectQuantity = (props) => {
               <Col lg={12} md={12} sm={0} xs={0}></Col>
               <Col lg={12} md={12} sm={0} xs={0}>
                 <div className={classes.actionButtonSection}>
-                  <Space size={48}>
-                    <button
-                      className={classes.actionButton}
-                      onClick={() => props.setQuoteView('getStarted')}
-                    >
-                      PREVIOUS
-                    </button>
-                    <ButtonWithRightArrow
-                      disabled={disable}
-                      content="NEXT"
-                      function={() => props.setQuoteView('projectDescription')}
-                    />
-                  </Space>
+                  <button
+                    className={classes.actionButton}
+                    onClick={() => props.setQuoteView('getStarted')}
+                  >
+                    PREVIOUS
+                  </button>
+                  <ButtonWithRightArrow
+                    disabled={disable}
+                    content="NEXT"
+                    function={() => props.setQuoteView('projectDescription')}
+                  />
                 </div>
               </Col>
               <Col lg={0} md={0} sm={24} xs={24}>
@@ -112,6 +110,6 @@ const SelectQuantity = (props) => {
         </div>
       </div>
     </>
-  )
-}
-export default SelectQuantity
+  );
+};
+export default SelectQuantity;

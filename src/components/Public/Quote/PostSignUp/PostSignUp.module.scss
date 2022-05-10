@@ -1,24 +1,23 @@
 @import '../../../../theme/variable.module.scss';
 
-.container{
+.container {
 	max-width: 1370px;
 	margin: 0 auto;
 }
-.section{
+.section {
 	// padding: 128px 0;
 }
-.links{
+.links {
 	color: $primary_app_color;
 	text-decoration: underline;
 }
-.link:hover{
-	background: linear-gradient(90deg, #F34242 0%, #F1408B 100%);
+.link:hover {
+	background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 	text-fill-color: transparent;
 	text-decoration: underline;
-
 }
 .sideTitle {
 	margin-top: 216px;
@@ -32,7 +31,7 @@
 	// !Correct position
 	position: relative;
 	width: calc(((100vw - 907px) / 2) + 442px);
-	h4{
+	h4 {
 		display: none;
 	}
 	h2 {
@@ -57,12 +56,17 @@
 		left: calc((100vw - 907px) / 2);
 	}
 }
-.actionButtonSection{
+.actionButtonSection {
 	margin-top: 64px;
 	margin-bottom: 184px;
-	p{
+	display: flex;
+	align-items: center;
+	& button:first-child {
+		margin-right: 48px;
+	}
+	p {
 		position: absolute;
-    		right: 0;
+		right: 0;
 		font-family: 'Poppins';
 		font-style: normal;
 		font-weight: 300;
@@ -72,19 +76,17 @@
 		width: 325px;
 	}
 }
-.actionButton:hover{
-	
-		background: linear-gradient(90deg, #F34242 0%, #F1408B 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		text-fill-color: transparent;
-	
+.actionButton:hover {
+	background: linear-gradient(90deg, #f34242 0%, #f1408b 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-fill-color: transparent;
 }
-.mainSection{
+.mainSection {
 	position: absolute;
-    	bottom: 0;
-	h2{
+	bottom: 0;
+	h2 {
 		font-family: 'Poppins';
 		font-style: normal;
 		font-weight: 500;
@@ -95,7 +97,7 @@
 		letter-spacing: 0.02em;
 		text-transform: uppercase;
 	}
-	p{	
+	p {
 		width: 319px;
 		font-family: 'Poppins';
 		font-style: normal;
@@ -105,16 +107,12 @@
 		/* or 167% */
 
 		letter-spacing: 0.02em;
-
 	}
 }
-.submitSection{
+.submitSection {
 	width: 907px;
 	margin: 0 auto;
 }
-
-
-
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 
@@ -128,16 +126,16 @@
 		max-width: 350px;
 		margin: 0 auto;
 	}
-	.sideTitle{
+	.sideTitle {
 		width: 100%;
-		background:transparent;
+		background: transparent;
 		padding: 0;
 		margin-top: 124px;
 		margin-bottom: 32px;
-		h2{
+		h2 {
 			display: none;
 		}
-		h4{
+		h4 {
 			font-family: 'Poppins';
 			text-align: center;
 			font-style: normal;
@@ -150,20 +148,19 @@
 			text-transform: uppercase;
 		}
 	}
-	
-	.leftSection{
-		.img{
+
+	.leftSection {
+		.img {
 			width: 100%;
 		}
 	}
 
-	.mainSection{
+	.mainSection {
 		margin-bottom: 48px;
 		position: relative;
-	
 	}
 	.actionButton {
-		margin-top:0px;
+		margin-top: 0px;
 		width: 350px;
 		h4 {
 			margin-top: 24px;

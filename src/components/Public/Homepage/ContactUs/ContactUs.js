@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import InputElement from '../../../../constant/public/Input/InputElement'
-import './contact.scss'
-import contact from '../../../../assets/png/contact-img.png'
-import contact2x from '../../../../assets/png/contact-img@2x.png'
-import axios from 'axios'
-import * as yup from 'yup'
-import { Formik, useFormik } from 'formik'
-import FormList from 'antd/lib/form/FormList'
+import React, { useState } from 'react';
+import InputElement from '../../../../constant/public/Input/InputElement';
+import './contact.scss';
+import contact from '../../../../assets/png/contact-img.png';
+import contact2x from '../../../../assets/png/contact-img@2x.png';
+import axios from 'axios';
+import * as yup from 'yup';
+import { Formik, useFormik } from 'formik';
+import FormList from 'antd/lib/form/FormList';
 
 const ContactUs = () => {
   const Formik = useFormik({
@@ -20,10 +20,10 @@ const ContactUs = () => {
       email: yup.string().email('Invalid email.').required('Email is Required'),
     }),
     onSubmit: (values) => {
-      debugger
+      debugger;
     },
-  })
-  const { setFieldValue } = Formik
+  });
+  const { setFieldValue } = Formik;
   const handleSubmit = () => {
     axios
       .post(`https://uplio-newsletter.herokuapp.com/api/auth/register`, {
@@ -32,14 +32,14 @@ const ContactUs = () => {
         question: Formik.values.question,
       })
       .then((res) => {
-        setFieldValue('name', '')
-        setFieldValue('email', '')
-        setFieldValue('question', '')
+        setFieldValue('name', '');
+        setFieldValue('email', '');
+        setFieldValue('question', '');
       })
       .catch((err) => {
-        console.log(err)
-      })
-  }
+        console.log(err);
+      });
+  };
 
   return (
     <section className="section contact">
@@ -61,39 +61,45 @@ const ContactUs = () => {
                 Contact us and we will answer any questions you have.
               </p>
               <div className="contact-inputs">
-                <InputElement
-                  className="contact-inputs__input input"
-                  type="text"
-                  name="name"
-                  width="100%"
-                  value={Formik.values.name}
-                  onChange={Formik.handleChange}
-                  onBlur={Formik.handleBlur}
-                  placeholder="Name"
-                  required="true"
-                />
-                <InputElement
-                  name="email"
-                  className="contact-inputs__input input"
-                  type="text"
-                  width="100%"
-                  placeholder="Email"
-                  required="true"
-                  value={Formik.values.email}
-                  onBlur={Formik.handleBlur}
-                  onChange={Formik.handleChange}
-                />
-                <InputElement
-                  name="question"
-                  className="contact-inputs__input contact-inputs__input_long"
-                  type="text"
-                  width="100%"
-                  placeholder="Question"
-                  required="true"
-                  value={Formik.values.question}
-                  onBlur={Formik.handleBlur}
-                  onChange={Formik.handleChange}
-                />
+                <div className="contact-inputs__input-wrapper">
+                  <InputElement
+                    className="contact-inputs__input input"
+                    type="text"
+                    name="name"
+                    width="100%"
+                    value={Formik.values.name}
+                    onChange={Formik.handleChange}
+                    onBlur={Formik.handleBlur}
+                    placeholder="Name"
+                    required="true"
+                  />
+                </div>
+                <div className="contact-inputs__input-wrapper">
+                  <InputElement
+                    name="email"
+                    className="contact-inputs__input input"
+                    type="text"
+                    width="100%"
+                    placeholder="Email"
+                    required="true"
+                    value={Formik.values.email}
+                    onBlur={Formik.handleBlur}
+                    onChange={Formik.handleChange}
+                  />
+                </div>
+                <div className="contact-inputs__input_long">
+                  <InputElement
+                    name="question"
+                    className="contact-inputs__input input"
+                    type="text"
+                    width="100%"
+                    placeholder="Question"
+                    required="true"
+                    value={Formik.values.question}
+                    onBlur={Formik.handleBlur}
+                    onChange={Formik.handleChange}
+                  />
+                </div>
               </div>
               <div className="contact-form__submit-wrapper">
                 <button
@@ -120,7 +126,7 @@ const ContactUs = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ContactUs
+export default ContactUs;

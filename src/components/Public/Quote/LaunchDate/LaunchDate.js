@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
-import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow'
-import moment from 'moment'
-import ProgressBar from '../ProgressBar/ProgressBar'
-import { Space, Row, Col, DatePicker } from 'antd'
-import classes from './LaunchDate.module.scss'
+import React, { useState } from 'react';
+import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow';
+import moment from 'moment';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import { Space, Row, Col, DatePicker } from 'antd';
+import classes from './LaunchDate.module.scss';
 
 const LaunchDate = (props) => {
-  const [disable, setDisable] = useState(true)
-  const dateFormat = 'MM/DD/YYYY'
+  const [disable, setDisable] = useState(true);
+  const dateFormat = 'MM/DD/YYYY';
   const handleDateStartDate = (date, dateString) => {
-    setDisable(false)
-    props.setLaunchDate(dateString)
-  }
+    setDisable(false);
+    props.setLaunchDate(dateString);
+  };
 
   return (
     <>
@@ -28,8 +28,8 @@ const LaunchDate = (props) => {
               <DatePicker
                 format={dateFormat}
                 disabledDate={(current) => {
-                  let customDate = moment().format('YYYY-MM-DD')
-                  return current && current < moment(customDate, 'YYYY-MM-DD')
+                  let customDate = moment().format('YYYY-MM-DD');
+                  return current && current < moment(customDate, 'YYYY-MM-DD');
                 }}
                 onChange={handleDateStartDate}
                 className={classes.datePicker}
@@ -39,36 +39,32 @@ const LaunchDate = (props) => {
               <Col lg={12} md={12} sm={0} xs={0}></Col>
               <Col lg={12} md={12} sm={0} xs={0}>
                 <div className={classes.actionButtonSection}>
-                  <Space size={48}>
-                    <button
-                      className={classes.actionButton}
-                      onClick={() => props.setQuoteView('selectQuantity')}
-                    >
-                      PREVIOUS
-                    </button>
-                    <ButtonWithRightArrow
-                      disabled={disable}
-                      content="NEXT"
-                      function={() => props.setQuoteView('uploadDocument')}
-                    />
-                  </Space>
+                  <button
+                    className={classes.actionButton}
+                    onClick={() => props.setQuoteView('selectQuantity')}
+                  >
+                    PREVIOUS
+                  </button>
+                  <ButtonWithRightArrow
+                    disabled={disable}
+                    content="NEXT"
+                    function={() => props.setQuoteView('uploadDocument')}
+                  />
                 </div>
               </Col>
               <Col lg={0} md={0} sm={24} xs={24}>
                 <div className={classes.actionButtonSection}>
-                  <Space direction="vertical" size={48}>
-                    <ButtonWithRightArrow
-                      disabled={disable}
-                      content="NEXT"
-                      function={() => props.setQuoteView('uploadDocument')}
-                    />
-                    <button
-                      className={classes.actionButton}
-                      onClick={() => props.setQuoteView('selectQuantity')}
-                    >
-                      PREVIOUS
-                    </button>
-                  </Space>
+                  <ButtonWithRightArrow
+                    disabled={disable}
+                    content="NEXT"
+                    function={() => props.setQuoteView('uploadDocument')}
+                  />
+                  <button
+                    className={classes.actionButton}
+                    onClick={() => props.setQuoteView('selectQuantity')}
+                  >
+                    PREVIOUS
+                  </button>
                 </div>
               </Col>
             </Row>
@@ -76,6 +72,6 @@ const LaunchDate = (props) => {
         </div>
       </div>
     </>
-  )
-}
-export default LaunchDate
+  );
+};
+export default LaunchDate;

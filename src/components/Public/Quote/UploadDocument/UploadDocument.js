@@ -1,130 +1,130 @@
-import React, { useEffect, useState } from 'react'
-import { Space, Col, Row } from 'antd'
-import axios from 'axios'
-import classes from './UploadDocument.module.scss'
+import React, { useEffect, useState } from 'react';
+import { Space, Col, Row } from 'antd';
+import axios from 'axios';
+import classes from './UploadDocument.module.scss';
 
-import ProgressBar from '../ProgressBar/ProgressBar'
-import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow'
-import UploadFiles from '../../../../constant/public/UploadFiles/UploadFiles'
-import UploadDocumentFiles from '../../../../constant/public/UploadDocument/UploadDocument'
+import ProgressBar from '../ProgressBar/ProgressBar';
+import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow';
+import UploadFiles from '../../../../constant/public/UploadFiles/UploadFiles';
+import UploadDocumentFiles from '../../../../constant/public/UploadDocument/UploadDocument';
 
-import shield from '../../../../assets/svg/bi_shield-check.svg'
+import shield from '../../../../assets/svg/bi_shield-check.svg';
 
 const UploadDocument = (props) => {
-  const [disable, setDisable] = useState(false)
-  const [loadingImage, setLoadingImage] = useState(false)
+  const [disable, setDisable] = useState(false);
+  const [loadingImage, setLoadingImage] = useState(false);
 
-  const [value, setValue] = useState(null)
-  const [documentValue, setDocumentValue] = useState(null)
+  const [value, setValue] = useState(null);
+  const [documentValue, setDocumentValue] = useState(null);
 
-  const [imageArray, setImageArray] = useState([])
-  const [documentArray, setDocumentArray] = useState([])
+  const [imageArray, setImageArray] = useState([]);
+  const [documentArray, setDocumentArray] = useState([]);
 
-  const [loadingDocument, setLoadingDocument] = useState(false)
-  const [images, setImages] = useState([])
-  const [document, setDocuments] = useState([])
-
-  useEffect(() => {
-    handleChange(documentValue, false)
-  }, [documentValue])
+  const [loadingDocument, setLoadingDocument] = useState(false);
+  const [images, setImages] = useState([]);
+  const [document, setDocuments] = useState([]);
 
   useEffect(() => {
-    handleChange(value, true)
-  }, [value])
+    handleChange(documentValue, false);
+  }, [documentValue]);
+
+  useEffect(() => {
+    handleChange(value, true);
+  }, [value]);
 
   const handleChange = (event, document) => {
     if (event !== null) {
       if (document) {
-        setLoadingDocument(true)
+        setLoadingDocument(true);
       } else {
-        setLoadingImage(true)
+        setLoadingImage(true);
       }
 
-      const fileUploaded = event.target.files[0]
+      const fileUploaded = event.target.files[0];
 
-      const data = new FormData()
+      const data = new FormData();
 
-      data.append('file', fileUploaded)
+      data.append('file', fileUploaded);
 
-      let url = `${process.env.REACT_APP_API_URL}/quotes/uploadFile`
+      let url = `${process.env.REACT_APP_API_URL}/quotes/uploadFile`;
 
       axios
         .post(url, data, {
           // receive two parameter endpoint url ,form data
         })
         .then((res) => {
-          debugger
+          debugger;
           if (document) {
-            setLoadingDocument(false)
+            setLoadingDocument(false);
             if (documentArray.length > 0) {
-              let arr = documentArray
-              arr.push(res.data.data)
-              setDocumentArray(arr)
+              let arr = documentArray;
+              arr.push(res.data.data);
+              setDocumentArray(arr);
             } else {
-              const arr = []
-              arr.push(res.data.data)
-              setDocumentArray(arr)
+              const arr = [];
+              arr.push(res.data.data);
+              setDocumentArray(arr);
             }
           } else {
-            setLoadingImage(false)
+            setLoadingImage(false);
             if (imageArray.length > 0) {
-              let arr = imageArray
-              arr.push(res.data.data)
-              setImageArray(arr)
-              props.setImageUploaded(imageArray)
+              let arr = imageArray;
+              arr.push(res.data.data);
+              setImageArray(arr);
+              props.setImageUploaded(imageArray);
             } else {
-              const arr = []
-              arr.push(res.data.data)
-              setImageArray(arr)
-              props.setImageUploaded(imageArray)
+              const arr = [];
+              arr.push(res.data.data);
+              setImageArray(arr);
+              props.setImageUploaded(imageArray);
             }
           }
           // then print response status
         })
         .catch((err) => {
-          console.log(err)
-        })
+          console.log(err);
+        });
     }
-  }
+  };
 
   const handleChangeDocument = (event) => {
     if (event !== null) {
-      setLoadingDocument(true)
+      setLoadingDocument(true);
 
-      const fileUploaded = event.target.files[0]
+      const fileUploaded = event.target.files[0];
 
-      const data = new FormData()
+      const data = new FormData();
 
-      data.append('file', fileUploaded)
+      data.append('file', fileUploaded);
 
-      let url = `${process.env.REACT_APP_API_URL}/quotes/uploadFile`
+      let url = `${process.env.REACT_APP_API_URL}/quotes/uploadFile`;
 
       axios
         .post(url, data, {
           // receive two parameter endpoint url ,form data
         })
         .then((res) => {
-          setLoadingDocument(false)
+          setLoadingDocument(false);
           if (documentArray.length > 0) {
-            let arr = documentArray
-            arr.push(res.data.data)
-            setDocumentArray(arr)
+            let arr = documentArray;
+            arr.push(res.data.data);
+            setDocumentArray(arr);
 
-            props.setDocumentUploaded(documentArray)
+            props.setDocumentUploaded(documentArray);
           } else {
-            const arr = []
-            arr.push(res.data.data)
-            setDocumentArray(arr)
-            props.setDocumentUploaded(documentArray)
+            const arr = [];
+            arr.push(res.data.data);
+            setDocumentArray(arr);
+            props.setDocumentUploaded(documentArray);
           }
 
           // then print response status
         })
         .catch((err) => {
-          console.log(err)
-        })
+          console.log(err);
+        });
     }
-  }
+  };
 
   return (
     <>
@@ -184,19 +184,17 @@ const UploadDocument = (props) => {
               <Col lg={12} md={12} sm={0} xs={0}></Col>
               <Col lg={12} md={12} sm={0} xs={0}>
                 <div className={classes.actionButtonSection}>
-                  <Space size={48}>
-                    <button
-                      className={classes.actionButton}
-                      onClick={() => props.setQuoteView('launchDate')}
-                    >
-                      PREVIOUS
-                    </button>
-                    <ButtonWithRightArrow
-                      disabled={disable}
-                      content="NEXT"
-                      function={() => props.setQuoteView('preSignUp')}
-                    />
-                  </Space>
+                  <button
+                    className={classes.actionButton}
+                    onClick={() => props.setQuoteView('launchDate')}
+                  >
+                    PREVIOUS
+                  </button>
+                  <ButtonWithRightArrow
+                    disabled={disable}
+                    content="NEXT"
+                    function={() => props.setQuoteView('preSignUp')}
+                  />
                 </div>
               </Col>
               <Col lg={0} md={0} sm={24} xs={24}>
@@ -219,6 +217,6 @@ const UploadDocument = (props) => {
         </div>
       </div>
     </>
-  )
-}
-export default UploadDocument
+  );
+};
+export default UploadDocument;

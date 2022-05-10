@@ -1,7 +1,7 @@
 @import '.././../../theme/variable.module.scss';
 
-.input{
-	font-family: 'Poppins',sans-serif;
+.input {
+	font-family: 'Poppins', sans-serif;
 	font-style: normal;
 	font-weight: 300;
 	font-size: 16px;
@@ -10,20 +10,21 @@
 	border-bottom: 1px solid $primary_app_color;
 	border-top: 0;
 	border-right: 0;
-	border-left: 0;	
-
+	border-left: 0;
 }
-.errorMessage{
-	font-family: 'Poppins',sans-serif;
+.inputWrapper {
+	position: relative;
+}
+.errorMessage {
+	font-family: 'Poppins', sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 10px;
 	line-height: 22px;
-	color:$red_app_color;
-
+	color: $red_app_color;
 }
-.inputPassword{
-	font-family: 'Poppins',sans-serif;
+.inputPassword {
+	font-family: 'Poppins', sans-serif;
 	font-style: normal;
 	font-weight: 300;
 	font-size: 16px;
@@ -32,20 +33,20 @@
 	border-bottom: 1px solid $primary_app_color;
 	border-top: 0;
 	border-right: 0;
-	border-left: 0;	
+	border-left: 0;
 }
-.icon{
-	padding: 10px;	
+.icon {
+	padding: 10px;
 	border-bottom: 1px solid $primary_app_color;
 	text-align: center;
 }
-.iconVisible{
-	padding: 10px;	
+.iconVisible {
+	padding: 10px;
 	border-bottom: 1px solid $primary_app_color;
 	text-align: center;
-	color:#d6d6d6;
+	color: #d6d6d6;
 }
-.inputContainer{
+.inputContainer {
 	display: -ms-flexbox; /* IE10 */
 	display: flex;
 	width: 100%;
@@ -54,19 +55,18 @@
 
 *:focus {
 	outline: none;
-    }
+}
 
-
-    ::-webkit-input-placeholder { /* Edge */
+::-webkit-input-placeholder {
+	/* Edge */
 	color: #d8d8d8;
-      }
-      
-      :-ms-input-placeholder { /* Internet Explorer 10-11 */
-	color: #d8d8d8;
-      }
-      
-      ::placeholder {
-	color: #d8d8d8;
-      }
+}
 
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #d8d8d8;
+}
 
+::placeholder {
+	color: #d8d8d8;
+}
