@@ -1,0 +1,23 @@
+.reviews {
+	&-left {
+		margin-right: 24px;
+		transform: none;
+		transition: 0.3s transform;
+		&:hover {
+			transform: translateX(-16px);
+		}
+		&:active {
+			transform: none;
+		}
+	}
+	&-right {
+		transform: none;
+		transition: 0.3s transform;
+		&:hover {
+			transform: translateX(16px);
+		}
+		&:active {
+			transform: none;
+		}
+	}
+}

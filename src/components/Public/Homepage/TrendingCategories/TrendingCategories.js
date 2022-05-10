@@ -1,24 +1,24 @@
-import React from 'react';
-import './categories.scss';
-import { useHistory } from 'react-router-dom';
-import HomeCategoryItem from '../HomeCategoryItem/HomeCategoryItem';
-import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow';
-import clothes from '../../../../assets/images/clothing-line-1.jpg';
-import clothes2x from '../../../../assets/images/clothing-line-1@2x.jpg';
-import cosmetics from '../../../../assets/images/cosmetics-1.jpg';
-import cosmetics2x from '../../../../assets/images/cosmetics-1@2x.jpg';
-import jewelry from '../../../../assets/images/jewelry-1.jpg';
-import jewelry2x from '../../../../assets/images/jewelry-1@2x.jpg';
-import furniture from '../../../../assets/images/furniture-1.jpg';
-import furniture2x from '../../../../assets/images/furniture-1@2x.jpg';
-import textile from '../../../../assets/images/textile-1.jpg';
-import textile2x from '../../../../assets/images/textile-1@2x.jpg';
+import React from 'react'
+import './categories.scss'
+import { useHistory } from 'react-router-dom'
+import HomeCategoryItem from '../HomeCategoryItem/HomeCategoryItem'
+import ButtonWithRightArrow from '../../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow'
+import clothes from '../../../../assets/images/clothing-line-1.jpg'
+import clothes2x from '../../../../assets/images/clothing-line-1@2x.jpg'
+import cosmetics from '../../../../assets/images/cosmetics-1.jpg'
+import cosmetics2x from '../../../../assets/images/cosmetics-1@2x.jpg'
+import jewelry from '../../../../assets/images/jewelry-1.jpg'
+import jewelry2x from '../../../../assets/images/jewelry-1@2x.jpg'
+import furniture from '../../../../assets/images/furniture-1.jpg'
+import furniture2x from '../../../../assets/images/furniture-1@2x.jpg'
+import textile from '../../../../assets/images/textile-1.jpg'
+import textile2x from '../../../../assets/images/textile-1@2x.jpg'
 
 const TrendingCategories = () => {
-  const history = useHistory();
+  const history = useHistory()
 
   return (
-    <section id="category" className="section categories">
+    <section id="categories" className="section categories">
       <div className="categories-wrapper">
         <div className="container">
           <h2 className="title title_size-m categories__title">
@@ -28,17 +28,17 @@ const TrendingCategories = () => {
             <HomeCategoryItem
               title={'[APPAREL]'}
               image={{ quality1x: clothes, quality2x: clothes2x }}
-              link={'/products/Apparel'}
+              link={'/coming-soon'}
             />
             <HomeCategoryItem
               title={'[COSMETICS]'}
               image={{ quality1x: cosmetics, quality2x: cosmetics2x }}
-              link={'/products/Cosmetics'}
+              link={'/coming-soon'}
             />
             <HomeCategoryItem
               title={'[JEWELRY]'}
               image={{ quality1x: jewelry, quality2x: jewelry2x }}
-              link={'/products/Jewelry'}
+              link={'/coming-soon'}
             />
             <div className="category-item category-item_text">
               <h3 className="title title_item category-item_text__title">
@@ -51,7 +51,7 @@ const TrendingCategories = () => {
               </div>
               <div className="category-item__see">
                 <ButtonWithRightArrow
-                  function={() => history.push({ pathname: '/products/all' })}
+                  function={() => history.push({ pathname: '/coming-soon' })}
                   content={'See more'}
                 />
               </div>
@@ -67,7 +67,7 @@ const TrendingCategories = () => {
               </div>
               <div className="category-item__see">
                 <ButtonWithRightArrow
-                  function={() => history.push({ pathname: '/products/all' })}
+                  function={() => history.push({ pathname: '/coming-soon' })}
                   content={'See more'}
                 />
               </div>
@@ -75,20 +75,20 @@ const TrendingCategories = () => {
             <HomeCategoryItem
               title={'[FURNITURE]'}
               image={{ quality1x: furniture, quality2x: furniture2x }}
-              link={'/products/All'}
+              link={'/coming-soon'}
               className="category-item_mobile_hidden"
             />
             <HomeCategoryItem
               title={'[TEXTILE]'}
               image={{ quality1x: textile, quality2x: textile2x }}
-              link={'/products/Textile'}
+              link={'/coming-soon'}
               className="category-item_mobile_hidden"
             />
           </div>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default TrendingCategories;
+export default TrendingCategories

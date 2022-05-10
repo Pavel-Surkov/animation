@@ -50,6 +50,22 @@
 			display: inline-block;
 		}
 	}
+	&-account {
+		display: flex;
+		align-items: center;
+		margin-left: auto;
+		&__notifications {
+			display: grid;
+			place-items: center;
+			margin-right: 16px;
+		}
+		&__profile {
+			border-radius: 50%;
+			overflow: hidden;
+			display: grid;
+			place-items: center;
+		}
+	}
 }
 
 @media screen and (max-width: 1380px) {
@@ -92,7 +108,8 @@
 				display: none;
 			}
 		}
-		&-links {
+		&-links,
+		&-account {
 			display: none;
 		}
 		&__sign {

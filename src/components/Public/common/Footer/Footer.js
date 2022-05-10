@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import axios from 'axios'
 import { Row, Col, Divider, Space } from 'antd'
+
 import logo from '../../../../assets/svg/logo_red_medium.svg'
 import facebookIcon from '../../../../assets/svg/facebook_icon.svg'
 import instagramIcon from '../../../../assets/svg/instagramIcon.svg'

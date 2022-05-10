@@ -1,0 +1,15 @@
+.blocker {
+	position: fixed;
+	z-index: 15;
+	width: 100vw;
+	height: 100vh;
+	left: 0;
+	top: 0;
+	pointer-events: none;
+	background: rgba($primary_app_color, 0.5);
+	opacity: 0;
+	transition: opacity 0.2s;
+	&_opened {
+		opacity: 1;
+	}
+}

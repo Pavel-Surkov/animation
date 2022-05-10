@@ -2,9 +2,14 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Space, Row, Col } from 'antd'
 import Navigation from './../../../constant/public/Navigation/Navigation'
+import HomeMain from './HomeMain/HomeMain'
 import TrendingCategories from './TrendingCategories/TrendingCategories'
 import WhyUplio from './WhyUplio/WhyUplio'
-import InputElement from '../../../constant/public/Input/InputElement'
+import Faq from './Faq/Faq'
+import ContactUs from './ContactUs/ContactUs'
+import HowItWorks from './HowItWorks/HowItWorks'
+import Reviews from './Reviews/Reviews'
+// import InputElement from '../../../constant/public/Input/InputElement';
 import Footer from '../../../constant/public/Footer/Footer'
 
 import classes from './Homepage.module.scss'
@@ -35,9 +40,13 @@ const Homepage = () => {
     <>
       <Navigation />
       <main className="main home">
+        <HomeMain />
         <TrendingCategories />
-        <Link to="/dashboard/buyer/profile">/dashboard/buyer/profile</Link>
+        <HowItWorks />
         <WhyUplio />
+        <Faq />
+        <Reviews />
+        <ContactUs />
       </main>
       <Footer />
     </>

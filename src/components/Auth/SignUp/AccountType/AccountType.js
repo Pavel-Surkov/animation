@@ -47,7 +47,7 @@ const AccountType = (props) => {
                 <h3>[SUPPLIER]</h3>
                 <img src={SupplierImage} alt="Uplio" />
                 <ButtonElement
-                  function={() => props.setCurrentView('supplierDetails')}
+                  function={() => history.push({ pathname: '/coming-soon' })}
                   content="I WANT TO SUPPLY"
                   width={'325px'}
                 />

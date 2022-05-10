@@ -23,7 +23,8 @@ const Search = (props) => {
 
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
-      history.push({ pathname: `/products/${search}` });
+      // history.push({ pathname: `/products/${search}` });
+      history.push({pathname:'/coming-soon'})
     }
   };
   return (

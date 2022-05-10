@@ -1,0 +1,125 @@
+@import '../../../../theme/variable.module.scss';
+
+.faq {
+	&-block {
+		background: $primary_app_color;
+		max-width: calc(((100vw - $max-width_container_lg) / 2) + (($max-width_container_lg * 10 / 12) - 6px));
+		padding: 104px 116px 176px calc((100vw - $max-width_container_lg) / 2);
+		&__title {
+			color: $secondary_app_color;
+			margin-bottom: 24px;
+		}
+		&__subtitle {
+			color: $secondary_app_color;
+			margin-bottom: 48px;
+		}
+	}
+	&-list {
+		margin: 0;
+		border-top: 1px solid $secondary_app_color;
+	}
+	&-item {
+		border-bottom: 1px solid $secondary_app_color;
+		&__question {
+			width: 100%;
+			padding: 24px 0;
+			padding-right: 24px;
+			color: $secondary_app_color;
+			font-size: 2.4rem;
+			line-height: calc(32 / 24);
+			letter-spacing: 0.02em;
+			text-align: left;
+			font-weight: 500;
+			text-transform: uppercase;
+			position: relative;
+			&::after {
+				content: '+';
+				position: absolute;
+				font-size: 2.4rem;
+				line-height: calc(32 / 24);
+				right: 0;
+				top: 24px;
+			}
+		}
+		&__answer {
+			display: none;
+			& p {
+				margin: 0;
+				margin-top: 8px;
+				font-size: 1.6rem;
+				font-weight: 300;
+				line-height: calc(24 / 16);
+				letter-spacing: 0.06em;
+				color: $secondary_app_color;
+				margin-bottom: 24px;
+			}
+		}
+		&_opened {
+			& .faq-item__question {
+				padding-bottom: 0;
+				&::after {
+					content: '-';
+				}
+			}
+			& .faq-item__answer {
+				display: block;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1380px) {
+	.faq {
+		&-block {
+			max-width: calc(((100vw - $max-width_container_md) / 2) + (($max-width_container_md * 10 / 12) - 6px));
+			padding: 104px 116px 104px calc((100vw - $max-width_container_md) / 2);
+		}
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.faq {
+		&-block {
+			max-width: none;
+			padding: 104px calc((100vw - $max-width_container_s) / 2) 176px calc((100vw - $max-width_container_s) / 2);
+		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.faq {
+		&-block {
+			max-width: none;
+			padding: 40px calc((100vw - $max-width_container_xs) / 2) 56px calc((100vw - $max-width_container_xs) / 2);
+			&__title {
+				margin-bottom: 16px;
+			}
+			&__subtitle {
+				margin-bottom: 40px;
+			}
+		}
+		&-item {
+			&__question {
+				font-size: 1.8rem;
+				line-height: calc(24 / 18);
+				&::after {
+					top: 22px;
+				}
+			}
+			&__answer {
+				& p {
+					margin-bottom: 16px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.faq {
+		&-block {
+			max-width: none;
+			padding: 40px 24px 56px 24px;
+		}
+	}
+}
