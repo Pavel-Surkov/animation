@@ -9,12 +9,13 @@ const ButtonWithRightArrow = (props) => {
   return (
     <>
       <button
-        type={props.type}
         disabled={props.disabled === undefined ? false : props.disabled}
-        className={props.disabled ? classes.buttonDisabled : classes.button}
+        className={
+          props.disabled ? classes.buttonDisabled : 'button button-arrow'
+        }
         onClick={props.function}
       >
-        {props.content}
+        <p>{props.content}</p>
         <img width="55" src={arrowRight} alt="Uplio" />
       </button>
     </>

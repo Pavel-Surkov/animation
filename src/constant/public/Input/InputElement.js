@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import classes from './InputElement.module.scss'
 import eye from '../../../assets/svg/password_eye.svg'
+import clsx from 'clsx'
 import errorIcon from '../../../assets/svg/error_icon.svg'
 const InputElement = (props) => {
   const [visible, setVisible] = useState(false)
@@ -13,7 +14,7 @@ const InputElement = (props) => {
             name={props.name}
             type={props.type !== undefined ? props.type : 'text'}
             style={{ width: `${props.width}` }}
-            className={classes.input}
+            className={clsx(props.className, classes.input)}
             onBlur={props.onBlur}
             value={props.value}
             onChange={props.onChange}

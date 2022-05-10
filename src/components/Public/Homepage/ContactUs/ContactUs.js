@@ -62,7 +62,7 @@ const ContactUs = () => {
               </p>
               <div className="contact-inputs">
                 <InputElement
-                  className="contact-inputs__input"
+                  className="contact-inputs__input input"
                   type="text"
                   name="name"
                   width="100%"
@@ -74,7 +74,7 @@ const ContactUs = () => {
                 />
                 <InputElement
                   name="email"
-                  className="contact-inputs__input"
+                  className="contact-inputs__input input"
                   type="text"
                   width="100%"
                   placeholder="Email"
