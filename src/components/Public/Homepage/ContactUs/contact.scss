@@ -1,6 +1,7 @@
 @import '../../../../theme/variable.module.scss';
 
 .contact {
+	margin-bottom: 256px;
 	&-wrapper {
 		padding-top: 77px;
 		overflow: hidden;
@@ -54,6 +55,7 @@
 
 @media screen and (max-width: 991px) {
 	.contact {
+		margin-bottom: 128px;
 		&-wrapper {
 			padding: 0;
 		}
