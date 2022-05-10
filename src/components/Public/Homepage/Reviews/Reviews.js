@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import classes from './Reviews.module.scss';
 import './reviews.scss';
 import sahil from '../../../../assets/images/HomePage/Reviews/sahil-moosa.jpg';
@@ -47,7 +47,11 @@ const Reviews = () => {
   const mainSwiperRef = useRef(null);
   const additionalSwiperRef = useRef(null);
 
-  const handleMainChange = (swiper) => {
+  const [isMobile, setIsMobile] = useState(
+    window.innerWidth >= 992 ? false : true
+  );
+
+  const handleSlideChange = (swiper) => {
     const lastMainSlide = swiper.slides.length - 1;
 
     if (additionalSwiperRef.current !== null) {
@@ -70,15 +74,31 @@ const Reviews = () => {
     }
   };
 
-  const handleAdditionalChange = (swiper) => {};
+  // Checking for mobile screen
+  useEffect(() => {
+    function checkMobile() {
+      if (window.innerWidth >= 992) {
+        setIsMobile(false);
+      } else {
+        setIsMobile(true);
+      }
+    }
+
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   const mainSwiperParams = {
     modules: [Navigation],
+    spaceBetween: 10,
     navigation: {
       prevEl: '.reviews-left',
       nextEl: '.reviews-right',
     },
-    onSlideChange: handleMainChange,
+    onSlideChange: handleSlideChange,
     slidesPerView: 1,
     loop: true,
   };
@@ -93,16 +113,23 @@ const Reviews = () => {
       nextEl: '.reviews-right',
     },
     allowTouchMove: false,
-    onSlideChange: handleAdditionalChange,
     loop: true,
     touchRatio: 0.2,
+    breakpoints: {
+      1380: {
+        spaceBetween: 24,
+      },
+      991: {
+        spaceBetween: 16,
+      },
+    },
   };
 
   return (
     <section className={`section ${classes.reviews}`}>
       <div className={classes.reviewsWrapper}>
         <h2 className={`title title_size-m ${classes.reviewsTitle}`}>
-          WHY CUSTOMERS TRUST US?
+          Why customers trust&nbsp;us?
         </h2>
         <div className={classes.reviewsContent}>
           <div className={`title title_item ${classes.reviewsSideTitle}`}>
@@ -157,15 +184,17 @@ const Reviews = () => {
                           alt=""
                         />
                       </div>
-                      <div className={classes.reviewsMainSlideName}>
-                        <span className={classes.reviewsName}>
-                          {review.name}
-                        </span>
-                        <span
-                          className={`title title_item-s ${classes.reviewsCategory}`}
-                        >
-                          [{review.category}]
-                        </span>
+                      <div className={classes.reviewsMainSlideNameWrapper}>
+                        <div className={classes.reviewsMainSlideName}>
+                          <span className={classes.reviewsName}>
+                            {review.name}
+                          </span>
+                          <span
+                            className={`title title_item-s ${classes.reviewsCategory}`}
+                          >
+                            [{review.category}]
+                          </span>
+                        </div>
                       </div>
                       <div className={classes.reviewsMainSlideReview}>
                         <q
@@ -179,7 +208,10 @@ const Reviews = () => {
               })}
             </Swiper>
           </div>
-          <div className={classes.reviewsAdditionalBlock}>
+          <div
+            className={classes.reviewsAdditionalBlock}
+            style={isMobile ? { display: 'none' } : { display: 'block' }}
+          >
             <h4
               className={`title title_item-s ${classes.reviewsAdditionalTitle}`}
             >
