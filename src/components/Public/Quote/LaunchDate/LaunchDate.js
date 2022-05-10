@@ -15,8 +15,9 @@ const LaunchDate = (props) => {
 
   return (
     <>
-      <div className={classes.getQuoteSection}>
+      <div className={classes.sideTitle}>
         <h2>Get your Quote</h2>
+        <h4>Get your Quote</h4>
       </div>
       <div className={classes.container}>
         <div className={classes.section}>
@@ -35,8 +36,8 @@ const LaunchDate = (props) => {
               />
             </div>
             <Row>
-              <Col span={12}></Col>
-              <Col span={12}>
+              <Col lg={12} md={12} sm={0} xs={0}></Col>
+              <Col lg={12} md={12} sm={0} xs={0}>
                 <div className={classes.actionButtonSection}>
                   <Space size={48}>
                     <button
@@ -50,6 +51,23 @@ const LaunchDate = (props) => {
                       content="NEXT"
                       function={() => props.setQuoteView('uploadDocument')}
                     />
+                  </Space>
+                </div>
+              </Col>
+              <Col lg={0} md={0} sm={24} xs={24}>
+                <div className={classes.actionButtonSection}>
+                  <Space direction="vertical" size={48}>
+                    <ButtonWithRightArrow
+                      disabled={disable}
+                      content="NEXT"
+                      function={() => props.setQuoteView('uploadDocument')}
+                    />
+                    <button
+                      className={classes.actionButton}
+                      onClick={() => props.setQuoteView('selectQuantity')}
+                    >
+                      PREVIOUS
+                    </button>
                   </Space>
                 </div>
               </Col>

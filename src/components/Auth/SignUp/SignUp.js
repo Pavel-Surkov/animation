@@ -15,13 +15,14 @@ import { ref } from 'yup'
 import SupplierDetails from './SupplierDetails/SupplierDetails'
 const SignUp = () => {
   const [currentView, setCurrentView] = useState('accountType')
+  const [accountType, setAccountType] = useState('buyer')
 
   const Formik = useFormik({
     initialValues: {
       email: '',
       password: '',
       confirmPassword: '',
-      phone: '',
+      phone: 0,
       name: '',
       businessName: '',
     },
@@ -65,9 +66,21 @@ const SignUp = () => {
     if (currentView === 'accountType') {
       return <AccountType Formik={Formik} setCurrentView={setCurrentView} />
     } else if (currentView === 'userDetails') {
-      return <BuyerDetails Formik={Formik} setCurrentView={setCurrentView} />
+      return (
+        <BuyerDetails
+          setAccountType={setAccountType}
+          Formik={Formik}
+          setCurrentView={setCurrentView}
+        />
+      )
     } else if (currentView === 'supplierDetails') {
-      return <SupplierDetails Formik={Formik} setCurrentView={setCurrentView} />
+      return (
+        <SupplierDetails
+          setAccountType={setAccountType}
+          Formik={Formik}
+          setCurrentView={setCurrentView}
+        />
+      )
     } else if (currentView === 'greetings') {
       return <Greetings setCurrentView={setCurrentView} />
     } else if (currentView === 'postSignUp') {

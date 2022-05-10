@@ -1,0 +1,36 @@
+@import '../../../theme/variable.module.scss';
+
+.container{
+	max-width: 1140px;
+	margin: 0 auto;
+	margin-top: 88px;
+}
+
+.mainContent{
+	position: absolute;
+	bottom: 0;
+    
+	h1{
+		text-align: left;
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 600;
+		font-size: 48px;
+		line-height: 56px;
+		/* identical to box height, or 117% */
+		margin-bottom: 8px;
+		text-transform: uppercase;
+	}
+	h2{
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 24px;
+		line-height: 32px;
+		/* or 133% */
+		text-align: left;
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+		margin-bottom: 48px;
+	}
+}

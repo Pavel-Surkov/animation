@@ -1,136 +1,315 @@
 @import '../../../../theme/variable.module.scss';
-
-
 .container{
-	max-width: 1200px;
-	margin:60px auto;
+	max-width: 1370px;
+	margin: 0 auto;
+	margin-top: 96px;
 }
-
 .mainSection{
-	h3{
-		font-family: 'Inter',sans-serif;
-		font-style: normal;
-		font-weight: 800;
-		font-size: 30px;
-		line-height: 40px;
-		color:$red_app_color;
-		letter-spacing: 0.04rem;
-		margin-bottom: 8px;
-	}
-	p{
-		font-family: 'Montserrat',sans-serif;
-		font-style: normal;
-		font-weight: 500;
-		font-size: 17px;
-		line-height: 26px;
-		margin-bottom: 50px;
-	}
-}
-.navigationLinks{
-	border-bottom: 1px solid $red_app_color;
-	width: 45vw;
-	p{
-		font-weight: 700;
-		font-size: 18px;
-		font-family:'Inter',sans-serif;
-		line-height: 30px;
-	}
-	h3{
-		font-weight: 300;
-		font-size: 18px;
-		font-family:'Inter',sans-serif;
-		line-height: 30px;
-		color: $red_app_color;
-		margin-bottom: 18px;
-	}
-}
-.leadSection{	
-	h5{
-		font-family:'Inter',sans-serif;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 16px;
-		line-height: 30px;
-	}
-	p{
-		font-family: 'Montserrat',sans-serif;
-		font-style: normal;
-		font-weight: 300;
-		font-size: 14px;
-		line-height: 30px;
-		color: $dark_grey_app_color;
-		margin-bottom: 8px;
-	}
-	h4{
-		font-family: 'Inter',sans-serif;
-		font-style: normal;
-		font-weight: 500;
-		font-size: 14px;
-		line-height: 18px;
-	}
-	.divider{
-		margin: 8px 0;
-	}
-	.leadMainSection{
-		margin: 10px 0;
-		border: 1px solid $mid_white_app_color;
-		border-radius: 15px;
-		padding: 10px;
-	}
-}
-.opportunityButton{
-	text-align: left;
-	width: 320px;
-	font-family: 'Inter',sans-serif;
-	font-style: normal;
-	font-weight: 500;
-
-	 img{
-		margin: 0 15px;
-	}
- 	
-}
-.directMessageButton{
-		text-align: left;
-	width: 320px;
-	font-family: 'Inter',sans-serif;
-	font-style: normal;
-	font-weight: 500;
 	
-	color:$primary_app_color;
+	margin-top: 96px;
 	
-	img{
-	       margin: 0 15px;
-	       color: $primary_app_color;
-       }	
-}
-.messageSection{
-	text-align: right;
-	.messageButton{
+	padding-top: 32px;
+	.spin{
 		text-align: center;
-		width: 110px;
-		font-family: 'Montserrat',sans-serif;
+	}
+	h2{
+		font-family: 'Poppins';
 		font-style: normal;
 		font-weight: 500;
+		font-size: 24px;
+		line-height: 32px;
+		/* identical to box height, or 133% */
+
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+		margin-bottom: 32px;
+	}	
+	h4{
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 24px;
+		/* identical to box height, or 150% */
+
+		letter-spacing: 0.02em;
+		margin-bottom: 56px;
+
+	}
+}
+.inputSection{
+	margin-top: 64px;
+	.inputSectionElements{
+		margin-bottom: 48px;
+	}
+	h3{
+		margin-top: 92px;
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 24px;
+		/* identical to box height, or 133% */
+
+		letter-spacing: 0.02em;
+
+	}
+}
+.mainSectionHeading{
+	h3{
+		margin-top: 28px;
+		color:$red_app_color;
+		font-family: 'Inter',sans-serif;
+		font-size: 23px;
+	}
+}
+.actionButtonEdit{
+	margin-bottom: 108px;
+}
+.table{
+	border-top:  0.5px solid #C3C3C3;
+	margin-bottom: 264px;
+	.tableContent{
+		margin-top: 24px;
+		border-bottom:  0.5px solid #C3C3C3;
+		h3{
+			font-family: 'Poppins';
+			font-style: normal;
+			font-weight: 300;
+			font-size: 16px;
+			line-height: 24px;
+			/* identical to box height, or 150% */
+
+			letter-spacing: 0.06em;
+			color: #ADADAD;
+
+		}
+
+		h2{
+			
+			font-family: 'Poppins';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 24px;
+			/* identical to box height, or 150% */
+
+			letter-spacing: 0.06em;
+
+		}
+		h4{
+			font-family: 'Poppins';
+			font-style: normal;
+			font-weight: 500;
+			font-size: 18px;
+			line-height: 24px;
+			/* identical to box height, or 133% */
+			margin-top: 16px;
+			margin-bottom: 0;
+			letter-spacing: 0.02em;
+			margin-bottom: 0px;
+		}
+	}
+}
+
+
+.main
+.mainForm{
+	border-radius: 4px;
+	padding: 5px 10px;
+	border: 1px solid $light_grey_app_color;
+	h4{
 		font-size: 17px;
-		line-height: 26px;
+		font-weight: 500;
+		font-family: 'Inter',sans-serif;
+		text-align: center;
+		margin-bottom: 20px;
 	}
-	
 }
-.action{
-	
-	.cancelButton{
-		width: 100%;	
-		img{
-			margin: 0 15px;
-		}
-	}
-	.acceptButton{
-		background-color: $primary_app_color;
-		color: $secondary_app_color;	
+.actionSection{
+	margin-top:136px;
+
+	.actionButton{		
 		width: 100%;
-		img{
-			margin: 0 15px;
+		margin-bottom: 24px;
+		text-align: left;
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 24px;
+		/* identical to box height, or 133% */
+
+		letter-spacing: 0.02em;
+		
+
+	}
+	.active{
+		
+		width: 220px;
+		color: #ADADAD;
+		
+	}
+	.borderTop{
+		padding-top: 24px;
+		border-top: 0.5px solid #C3C3C3;
+	}
+}
+.responsiveHeader{
+	display: none;
+}
+
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+	.container {
+		max-width: 350px;
+		margin: 0 auto;
+		margin-top: 96px;
+	}
+	.table{
+		border-top:  0.5px solid #C3C3C3;
+		margin-bottom: 264px;
+		.tableContent{
+			margin-top: 24px;
+			border-bottom:  0.5px solid #C3C3C3;
+			h3{
+				font-family: 'Poppins';
+				font-style: normal;
+				font-weight: 300;
+				font-size: 16px;
+				line-height: 24px;
+				/* identical to box height, or 150% */
+	
+				letter-spacing: 0.06em;
+				color: #ADADAD;
+	
+			}
+	
+			h2{
+				
+				font-family: 'Poppins';
+				font-style: normal;
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 24px;
+				/* identical to box height, or 150% */
+	
+				letter-spacing: 0.06em;
+	
+			}
+			h4{
+				font-family: 'Poppins';
+				font-style: normal;
+				font-weight: 500;
+				font-size: 18px;
+				line-height: 24px;
+				/* identical to box height, or 133% */
+				margin-top: 16px;
+				margin-bottom: 0;
+				letter-spacing: 0.02em;
+				margin-bottom: 24px;
+			}
+		}
+	}
+	.mainSectionHeading{
+		
+		h3{
+			font-family: 'Poppins';
+			font-style: normal;
+			font-weight: 500;
+			font-size: 18px;
+			line-height: 24px;
+			/* identical to box height, or 133% */
+
+			letter-spacing: 0.02em;
+
+			/* Black */
+
+			color: #303030;
+
+		}
+	}
+	.responsiveHeader{
+		margin-top: 88px;
+		display: block;
+		h3{
+			font-family: 'Poppins';
+			font-style: normal;
+			font-weight: 500;
+			font-size: 24px;
+			line-height: 32px;
+			/* identical to box height, or 133% */
+
+			letter-spacing: 0.02em;
+			text-transform: uppercase;
+		}
+	}	
+	.mainSection{
+		margin-top: 8px;
+		border-top: 0.5px solid #C3C3C3;
+		padding-top: 32px;
+		.spin{
+			text-align: center;
+		}
+		h2{
+			font-family: 'Poppins';
+			font-style: normal;
+			font-weight: 500;
+			font-size: 24px;
+			line-height: 32px;
+			/* identical to box height, or 133% */
+	
+			letter-spacing: 0.02em;
+			text-transform: uppercase;
+			margin-bottom: 32px;
+		}	
+		h4{
+			font-family: 'Poppins';
+			font-style: normal;
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 24px;
+			/* identical to box height, or 150% */
+	
+			letter-spacing: 0.02em;
+			margin-bottom: 56px;
+	
+		}
+	
+	}
+	.editButton{
+		margin-top: 0;
+		margin-left:175px ;
+	}	
+	.inputSection{
+		margin-top: 24px;
+		.inputSectionElements{
+			margin-bottom: 48px;
+		}
+		h4{
+			margin-bottom: 8px;
+			font-family: 'Poppins';
+			font-style: normal;
+			font-weight: 500;
+			font-size: 18px;
+			line-height: 24px;
+			/* identical to box height, or 133% */
+	
+			letter-spacing: 0.02em;
+	
 		}
 	}
 }
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+}
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */

@@ -43,7 +43,7 @@ const Quote = () => {
   const [documentUploaded, setDocumentUploaded] = useState('')
   const [supplierIdExist, setSupplierIdExist] = useState(false)
   const [supplierId, setSupplierId] = useState('')
-
+  const [userExist, setUserExist] = useState(false)
   let { id } = useParams()
   const dispatch = useDispatch()
 
@@ -58,7 +58,6 @@ const Quote = () => {
   }, [])
 
   const handleSubmit = () => {
-    debugger
     dispatch(
       singleQuoteData({
         projectName: '',
@@ -81,18 +80,18 @@ const Quote = () => {
       .post(
         `${process.env.REACT_APP_API_URL}/quotes/save_quote`,
         {
-          projectName: '',
+          projectName: 'Uplio',
           productCategory: category,
           color: '',
-          inspirationImg: imageUploaded,
+          // inspirationImg: '',
           description: projectDescription,
           projectStartDate: '',
           projectLaunchDate: launchDate,
           quantity: Formik.values.quantity,
-          budget: Formik.values.budget,
+          budget: toString(Formik.values.budget),
 
-          name: Formik.name.values,
-          email: Formik.name.email,
+          name: Formik.values.name,
+          email: Formik.values.email,
           password: '123123',
         },
         {
@@ -104,6 +103,7 @@ const Quote = () => {
       .then((res) => {
         console.log(res)
         setQuoteView('postQuoteSubmit')
+        setUserExist(res.data.userExist)
       })
       .catch((err) => {
         console.log(err)
@@ -148,7 +148,9 @@ const Quote = () => {
     } else if (quoteView === 'postSignUp') {
       return <PostSignUp handleSubmit={handleSubmit} />
     } else if (quoteView === 'postQuoteSubmit') {
-      return <PostQuoteSubmit setQuoteView={setQuoteView} />
+      return (
+        <PostQuoteSubmit userExist={userExist} setQuoteView={setQuoteView} />
+      )
     } else {
       return <GetStarted setQuoteView={setQuoteView} />
     }

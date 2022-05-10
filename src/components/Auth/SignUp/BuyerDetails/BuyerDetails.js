@@ -37,102 +37,36 @@ const BuyerDetails = (props) => {
   }, [password, confirmPassword])
 
   const handleSignUp = () => {
-    setLoader(true)
-    if (password === confirmPassword) {
-      setErrorMessage('')
-      setErrorStatus(false)
-      setErrorFeedback('success')
+    debugger
 
-      if (!quote.supplierIdExist) {
-        axios
-          .post(`${process.env.REACT_APP_API_URL}/quotes/save_quote`, {
-            projectName: quote.projectName,
-            supplier: '',
-            productCategory: quote.productCategory,
-            color: 'null',
-            name: name,
-            phone: String(phone),
-            description: quote.description,
-            projectStartDate: quote.projectStartDate,
-            projectLaunchDate: quote.projectLaunchDate,
-            quantity: quote.quantity,
-            budget: `$${quote.budget}`,
-            email: email,
-            password: password,
-            inspirationImages: quote.inspirationImages,
-            inspirationDocument: quote.inspirationDocument,
-            referenceImages: quote.referenceImages,
-          })
-          .then((res) => {
-            setLoader(false)
-            setIsQuoteCompleted(false)
-            dispatch(singleQuoteData(null))
-          })
-          .catch((err) => {
-            console.log(err)
-            setLoader(false)
-          })
-      } else {
-        axios
-          .post(
-            `${process.env.REACT_APP_API_URL}/quotes/save_quote_single_supplier`,
-            {
-              projectName: quote.projectName,
-              supplier: quote.supplierId,
-              productCategory: quote.productCategory,
-              color: 'null',
-              name: name,
-              phone: String(phone),
-              description: quote.description,
-              projectStartDate: quote.projectStartDate,
-              projectLaunchDate: quote.projectLaunchDate,
-              quantity: quote.quantity,
-              budget: `$${quote.budget}`,
-              email: email,
-              password: password,
-              inspirationImages: quote.inspirationImages,
-              inspirationDocument: quote.inspirationDocument,
-              referenceImages: quote.referenceImages,
-            }
-          )
-          .then((res) => {
-            setLoader(false)
-            setIsQuoteCompleted(false)
-            dispatch(singleQuoteData(null))
-          })
-          .catch((err) => {
-            console.log(err)
-            setLoader(false)
-          })
-      }
-      // axios
-      //   .post(`${process.env.REACT_APP_API_URL}/auth/register`, {
-      //     email: email,
-      //     password: password,
-      //   })
-      //   .then((res) => {
-      //     setLoader(false)
-      //     dispatch(userLoggedIn())
-      //     dispatch(userDataStatus(res.data.user))
-      //     history.push('/user-type')
-      //     localStorage.setItem('token', res.data.tokens.access.token)
-      //   })
-      //   .catch((err) => {
-      //     console.log(err)
-      //     setLoader(false)
-      //   })
-    } else {
-      setErrorMessage("Password Don't match")
-      setErrorStatus(true)
-      setErrorFeedback('error')
-      setLoader(false)
-    }
+    setErrorMessage('')
+    setErrorStatus(false)
+    setErrorFeedback('success')
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/auth/register`, {
+        name: props.Formik.values.name,
+        // phone: toString(props.Formik.values.phone),
+        email: props.Formik.values.email,
+        password: props.Formik.values.password,
+        userType: 'buyer',
+      })
+      .then((res) => {
+        debugger
+        setLoader(false)
+        props.setCurrentView('postSignUp')
+      })
+      .catch((err) => {
+        history.push({ pathname: '/login' })
+        console.log(err)
+        setLoader(false)
+      })
   }
 
   return (
     <>
       <div className={classes.sideTitle}>
         <h2>SIGN UP</h2>
+        <h4>SIGN UP</h4>
       </div>
       <div className={classes.container}>
         <div className={classes.mainContent}>
@@ -214,12 +148,12 @@ const BuyerDetails = (props) => {
           />
         </div>
         <Row>
-          <Col span={12}></Col>
-          <Col span={12} align="right">
+          <Col lg={12} md={12} sm={0} xs={0}></Col>
+          <Col lg={12} md={12} sm={24} xs={24} align="right">
             <div className={classes.actionButton}>
               <ButtonWithRightArrow
                 disabled={!disable}
-                function={() => props.setCurrentView('greetings')}
+                function={() => handleSignUp()}
                 content="SIGN UP"
                 width={'325px'}
               />

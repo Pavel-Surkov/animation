@@ -8,12 +8,18 @@ import { useHistory } from 'react-router-dom'
 const PostQuoteSubmit = (props) => {
   const history = useHistory()
   const onSubmit = () => {
-    history.push({ pathname: '/login' })
+    if (props.userExist) {
+      history.push({ pathname: '/login' })
+    } else {
+      history.push({ pathname: '/signup' })
+    }
   }
+
   return (
     <>
-      <div className={classes.getQuoteSection}>
+      <div className={classes.sideTitle}>
         <h2>Get your Quote</h2>
+        <h4>Get your Quote</h4>
       </div>
       <div className={classes.container}>
         <div className={classes.section}>
@@ -37,8 +43,16 @@ const PostQuoteSubmit = (props) => {
               </h4>
             </div>
             <Row className={classes.actionButtonSection}>
-              <Col span={12}></Col>
-              <Col span={12} align="right">
+              <Col lg={12} md={12} sm={0} xs={12}></Col>
+              <Col lg={12} md={12} sm={0} xs={0} align="right">
+                <div>
+                  <ButtonElement
+                    content="GO TO DASHBOARD"
+                    function={() => onSubmit()}
+                  />
+                </div>
+              </Col>
+              <Col lg={0} md={0} sm={24} xs={24}>
                 <div>
                   <ButtonElement
                     content="GO TO DASHBOARD"

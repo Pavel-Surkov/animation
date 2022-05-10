@@ -11,21 +11,22 @@ import ProgressBar from '../ProgressBar/ProgressBar'
 const GetStarted = ({ setQuoteView }) => {
   return (
     <>
-      <div className={classes.getQuoteSection}>
+      <div className={classes.sideTitle}>
         <h2>Get your Quote</h2>
+        <h4>Get your Quote</h4>
       </div>
       <div className={classes.container}>
         <div className={classes.section}>
           <div className={classes.heading}>
             <ProgressBar width={'10%'} />
             <div className={classes.mainSection}>
-              <Row gutter={68}>
-                <Col span={12} align="right">
+              <Row gutter={[{ xs: 0, sm: 0, md: 68, lg: 68 }, 24]}>
+                <Col lg={12} md={12} sm={24} xs={24} align="right">
                   <div className={classes.leftSection}>
-                    <img src={image} alt="Uplio" />
+                    <img className={classes.img} src={image} alt="Uplio" />
                   </div>
                 </Col>
-                <Col span={12}>
+                <Col lg={12} md={12} sm={24} xs={24}>
                   <div className={classes.rightSection}>
                     <h2>
                       Let’s get your dream <br /> project started

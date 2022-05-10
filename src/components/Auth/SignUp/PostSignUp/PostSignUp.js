@@ -11,11 +11,11 @@ const PostSignUp = () => {
     <>
       <div className={classes.container}>
         <div className={classes.mainSection}>
-          <Row gutter={64}>
-            <Col span={12}>
-              <img src={image} alt="Uplio" />
+          <Row gutter={[{ xs: 0, sm: 0, md: 64, lg: 64 }, 32]}>
+            <Col lg={12} md={12} sm={24} xs={24}>
+              <img className={classes.congratsImg} src={image} alt="Uplio" />
             </Col>
-            <Col span={12}>
+            <Col lg={12} md={12} sm={24} xs={24}>
               <div className={classes.actionButton}>
                 <h1>CONGRATULATIONS!</h1>
                 <h2>you have successfully registered </h2>

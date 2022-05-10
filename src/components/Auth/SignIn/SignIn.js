@@ -22,6 +22,25 @@ import InputElement from '../../../constant/public/Input/InputElement'
 import ButtonWithRightArrow from '../../../constant/public/ButtonWithRightArrow/ButtonWithRightArrow'
 
 const SignIn = (props) => {
+  const [screenSize, getDimension] = useState({
+    dynamicWidth: window.innerWidth,
+    dynamicHeight: window.innerHeight,
+  })
+  const setDimension = () => {
+    getDimension({
+      dynamicWidth: window.innerWidth,
+      dynamicHeight: window.innerHeight,
+    })
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', setDimension)
+
+    return () => {
+      window.removeEventListener('resize', setDimension)
+    }
+  }, [screenSize])
+
   const history = useHistory()
 
   const Formik = useFormik({
@@ -95,6 +114,7 @@ const SignIn = (props) => {
       <Navigation />
       <div className={classes.sideTitle}>
         <h2>SIGN IN</h2>
+        <h4>SIGN IN</h4>
       </div>
       <div className={classes.container}>
         <div className={classes.mainContent}>
@@ -133,8 +153,8 @@ const SignIn = (props) => {
           </Link>
 
           <Row>
-            <Col span={12}></Col>
-            <Col span={12} align="right">
+            <Col lg={12} md={12} sm={0} xs={0}></Col>
+            <Col lg={12} md={12} sm={24} xs={24} align="right">
               <div className={classes.actionButton}>
                 <ButtonWithRightArrow
                   type="button"

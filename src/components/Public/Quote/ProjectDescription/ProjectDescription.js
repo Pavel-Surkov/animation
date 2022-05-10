@@ -18,8 +18,9 @@ const ProjectDescription = (props) => {
 
   return (
     <>
-      <div className={classes.getQuoteSection}>
+      <div className={classes.sideTitle}>
         <h2>Get your Quote</h2>
+        <h4>Get your Quote</h4>
       </div>
       <div className={classes.container}>
         <div className={classes.section}>
@@ -42,8 +43,8 @@ const ProjectDescription = (props) => {
               />
             </div>
             <Row>
-              <Col span={12}></Col>
-              <Col span={12}>
+              <Col lg={12} md={12} xs={0} sm={0}></Col>
+              <Col lg={12} md={12} xs={0} sm={0}>
                 <div className={classes.actionButtonSection}>
                   <Space size={48}>
                     <button
@@ -57,6 +58,23 @@ const ProjectDescription = (props) => {
                       content="NEXT"
                       function={() => props.setQuoteView('selectQuantity')}
                     />
+                  </Space>
+                </div>
+              </Col>
+              <Col lg={12} md={12} xs={24} sm={24}>
+                <div className={classes.actionButtonSection}>
+                  <Space direction="vertical" size={48}>
+                    <ButtonWithRightArrow
+                      disabled={disabled}
+                      content="NEXT"
+                      function={() => props.setQuoteView('selectQuantity')}
+                    />
+                    <button
+                      className={classes.actionButton}
+                      onClick={() => props.setQuoteView('selectCategory')}
+                    >
+                      PREVIOUS
+                    </button>
                   </Space>
                 </div>
               </Col>

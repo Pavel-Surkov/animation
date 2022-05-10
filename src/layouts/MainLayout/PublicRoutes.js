@@ -35,6 +35,7 @@ import BuyerDashboardProfileShippingAddress from '../../components/Admin/Buyer/S
 import BlogListing from '../../components/Public/Blog/BlogListing/BlogListing'
 import Blog from '../../components/Public/Blog/Blog/Blog'
 import SupplierDashboardDirectLead from '../../components/Admin/Supplier/DashboardDirectLeadTemp'
+import ComingSoon from '../../components/Public/ComingSoon/ComingSoon'
 const PublicRoutes = () => (
   <Suspense fallback={<p>Loading ..</p>}>
     <Router>
@@ -72,6 +73,7 @@ const PublicRoutes = () => (
             path="/dashboard/buyer/profile/payment-method"
             component={BuyerDashboardProfilePaymentMethod}
           />
+          <Route exact path="/coming-soon" component={ComingSoon} />
           <Route
             exact
             path="/dashboard/buyer/profile/shipping-address"

@@ -30,8 +30,8 @@ const AccountType = (props) => {
       <div className={classes.container}>
         <div className={classes.mainSection}>
           <h2>Choose your account type:</h2>
-          <Row gutter={164}>
-            <Col span={12}>
+          <Row gutter={{ xs: 0, sm: 0, md: 164, lg: 164 }}>
+            <Col lg={12} md={12} xl={12} sm={24} xs={24}>
               <div className={classes.card}>
                 <h3>[BUYER]</h3>
                 <img src={BuyerImage} alt="Uplio" />
@@ -42,7 +42,7 @@ const AccountType = (props) => {
                 />
               </div>
             </Col>
-            <Col span={12}>
+            <Col lg={12} md={12} xl={12} sm={24} xs={24}>
               <div className={classes.card}>
                 <h3>[SUPPLIER]</h3>
                 <img src={SupplierImage} alt="Uplio" />

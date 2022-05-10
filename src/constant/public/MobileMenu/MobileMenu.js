@@ -1,6 +1,6 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import './m-menu.scss';
+import React from 'react'
+import { NavLink, Link } from 'react-router-dom'
+import './m-menu.scss'
 
 export const MobileMenu = ({ isSigned, menuOpened }) => {
   return (
@@ -29,10 +29,10 @@ export const MobileMenu = ({ isSigned, menuOpened }) => {
           </ul>
           {!isSigned && (
             <div className="m-menu__sign">
-              <Link to="/" className="button">
+              <Link to="/signup" className="button">
                 Sign up
               </Link>
-              <Link to="/" className="link link_fade">
+              <Link to="/login" className="link link_fade">
                 Sign in
               </Link>
             </div>
@@ -41,5 +41,5 @@ export const MobileMenu = ({ isSigned, menuOpened }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

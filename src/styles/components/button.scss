@@ -50,6 +50,7 @@
 @media screen and (max-width: 768px) {
 	.button {
 		&-arrow {
+			max-width: none;	
 		}
 	}
 }

@@ -3,15 +3,22 @@
 	max-width: 960px;
 	margin:0 auto;
 }
-.sideTitle{
+.sideTitle {
 	margin-top: 128px;
 	margin-bottom: 62px;
-	background: linear-gradient(90deg, #F1408B 0%, #F34242 100%);
-	width: 26%;
-	text-align: right;
+	background: linear-gradient(90deg, #f1408b 0%, #f34242 100%);
+	// width: 26%;
+	text-align: left;
 	padding: 14px 0;
 	padding-right: 58px;
-	h2{
+
+	// !Correct position
+	position: relative;
+	width: calc(((100vw - 960px) / 2) + 200px);
+	h4{
+		display: none;
+	}
+	h2 {
 		margin: 0;
 
 		font-family: 'Poppins';
@@ -25,9 +32,13 @@
 
 		/* BG and Text */
 
-		color: #FFFFFF;
-	}
+		color: #ffffff;
 
+		// !Correct position
+		min-width: 200px;
+		position: relative;
+		left: calc((100vw - 960px) / 2);
+	}
 }
 .mainContent{
 	margin-bottom: 64px;
@@ -59,22 +70,91 @@
 	}
 }
 
-/* Portrait */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: portrait) { 
 
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+	.container {
+		max-width: 350px;
+		margin: 0 auto;
+	}
+	.sideTitle{
+		width: 100%;
+		background:transparent;
+		padding: 0;
+		margin-top: 124px;
+		margin-bottom: 32px;
+		h2{
+			display: none;
+		}
+		h4{
+			font-family: 'Poppins';
+			text-align: center;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 18px;
+			line-height: 24px;
+			/* identical to box height, or 133% */
+			display: block;
+			letter-spacing: 0.02em;
+			text-transform: uppercase;
+		}
+	}
+	.mainContent {
+		margin-bottom: 96px;
+		h2 {
+			margin-top: 32px;
+			margin-bottom: 64px;
+			font-family: 'Poppins';
+			font-style: normal;
+			font-weight: 500;
+			font-size: 24px;
+			line-height: 32px;
+			text-align: center;
+		}
+	
+		.card {
+			text-align: center;
+			margin-bottom: 128px;
+			h3 {
+				font-family: 'Poppins';
+				font-style: normal;
+				font-weight: 500;
+				font-size: 24px;
+				line-height: 24px;
+				/* identical to box height, or 100% */
+	
+				letter-spacing: 0.02em;
+			}
+			img {
+				margin-bottom: 34px;
+				width: 100%;
+			}
+		}
+	}
+	.actionButton {
+		margin-top:0px;
+		width: 350px;
+		h4 {
+			margin-top: 24px;
+			width: 350px;
+			text-align: left;
+			font-family: 'Poppins';
+			font-style: normal;
+			font-weight: 300;
+			font-size: 12px;
+			line-height: 20px;
+		}
+	}
 }
 
 /* Landscape */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: landscape) { 
-
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
 }
 
 /* ----------- iPhone 6+, 7+ and 8+ ----------- */
