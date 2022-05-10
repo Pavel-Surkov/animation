@@ -47,12 +47,38 @@ const Reviews = () => {
   const mainSwiperRef = useRef(null);
   const additionalSwiperRef = useRef(null);
 
+  const handleMainChange = (swiper) => {
+    const lastMainSlide = swiper.slides.length - 1;
+
+    if (additionalSwiperRef.current !== null) {
+      const additionalSwiper = additionalSwiperRef.current.swiper;
+
+      const activeIndex = swiper.activeIndex;
+      const prevIndex = swiper.previousIndex;
+
+      console.log(activeIndex, prevIndex, lastMainSlide);
+
+      if (prevIndex === 0 || prevIndex === lastMainSlide) {
+        return;
+      }
+
+      if (activeIndex > prevIndex) {
+        additionalSwiper.slideNext();
+      } else {
+        additionalSwiper.slidePrev();
+      }
+    }
+  };
+
+  const handleAdditionalChange = (swiper) => {};
+
   const mainSwiperParams = {
     modules: [Navigation],
     navigation: {
       prevEl: '.reviews-left',
       nextEl: '.reviews-right',
     },
+    onSlideChange: handleMainChange,
     slidesPerView: 1,
     loop: true,
   };
@@ -66,6 +92,8 @@ const Reviews = () => {
       prevEl: '.reviews-left',
       nextEl: '.reviews-right',
     },
+    allowTouchMove: false,
+    onSlideChange: handleAdditionalChange,
     loop: true,
     touchRatio: 0.2,
   };
